@@ -1,9 +1,60 @@
 <html>
 <head>
   <title>Results night Graphs</title>
-  <script type="text/javascript" src="Chart.js/src/Chart.Bar.js"></script>
+  <script type="text/javascript" src="Chart.js/Chart.js"></script>
+  <script type="text/javascript" src="CustomBar.js"></script>
+  <script>
+  var randomScalingFactor = function(){ return Math.round(Math.random()*100);};
+  var upNext = 0;
+
+  var barChartData = {
+    labels : ["Rob Sumner","Robyn Evans","Matt Lavendar","Julian Waller"],
+    datasets : [
+      {
+        fillColor : "rgba(151,187,205,0.5)",
+        strokeColor : "rgba(151,187,205,0.8)",
+        highlightFill : "rgba(151,187,205,0.75)",
+        highlightStroke : "rgba(151,187,205,1)",
+        data : [-1,-1,-1,-1]
+      },
+      // {
+      //   fillColor : "rgba(151,151,151,0.5)",
+      //   strokeColor : "rgba(151,187,205,0.8)",
+      //   highlightFill : "rgba(151,187,205,0.75)",
+      //   highlightStroke : "rgba(151,187,205,1)",
+      //   data : [-1,-1,-1,-1]
+      // }
+    ]
+
+  };
+  window.onload = function(){
+    var ctx = document.getElementById("canvas").getContext("2d");
+    window.myBar = new Chart(ctx).StackedBar(barChartData, {
+      responsive : true,
+      scaleBeginAtZero: true,
+      animationSteps:80,
+      showScale: true,
+      showTooltips: true,
+    });
+  };
+
+  function addNext(){
+    if(upNext >= 4)
+      return;
+
+    myBar.datasets[Math.floor(upNext/4)].bars[upNext%4].value = randomScalingFactor();
+    upNext++;
+    myBar.update();
+  }
+
+  </script>
 </head>
 <body>
+  <h1>Most popular committee</h1>
+  <button onclick="addNext()">Add</button>
+  <div style="width: 50%">
+    <canvas id="canvas" height="450" width="600"></canvas>
+  </div>
 
 </body>
 </html>
