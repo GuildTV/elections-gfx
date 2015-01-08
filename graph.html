@@ -1,120 +1,16 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <!--Load the AJAX API-->
+    <meta charset="UTF-8">
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-    <script type="text/javascript">
-      //charts and data being used
-      var data = [];
-      var chart = [];
-
-      //data population
-      function addNext() {
-        var votes = randomScalingFactor();
-        data[activeChart].setValue(upNext, 1,votes );
-        data[activeChart].setValue(upNext, 2, votes+"");
-        upNext = ++upNext%4;
-
-        drawCharts();
-      }
-      var upNext = 0;
-      var activeChart = 0;
-
-      var randomScalingFactor = function(){ return Math.round(Math.random()*100);};
-
-      // Load the Visualization API and the piechart package.
-      google.load('visualization', '1.0', {'packages':['corechart']});
-
-      // Set a callback to run when the Google Visualization API is loaded.
-      google.setOnLoadCallback(init);
-
-      //all graph options
-      var options = {
-        animation:{
-          duration: 800,
-          easing: 'out',
-        },
-        legend: {position: 'none'},
-        vAxis: { 
-          minValue: 0, 
-          maxValue: 100,
-          textPosition: 'none',
-          gridlines: {
-            color: 'transparent'
-          }
-        },
-        backgroundColor: { fill:'transparent' },
-      };
-
-      function setupGraph(num){
-        var data = window.data[num] = new google.visualization.DataTable();
-        data.addColumn('string', 'Name');
-        data.addColumn('number', 'Value');
-        data.addColumn({type: 'string', role: 'annotation'});
-        data.addRow(["Rob Sumner", 0, ""]);
-        data.addRow(["Robyn Evans", 0, ""]);
-        data.addRow(["Matt Lavendar", 0, ""]);
-        data.addRow(["Julian Waller", 0, ""]);
-
-        var chart = window.chart[num] = new google.visualization.ColumnChart(
-            document.getElementById('chart_div'+num));
-      }
-
-      function drawCharts() {
-        $.each(window.chart, function(i,v){
-          v.draw(window.data[i], options);
-        });
-      }
-
-      function showChart(num){
-        $(".chart.background:not(.deleted)").removeClass('background').addClass('deleted');
-        $(".chart:not(.background):not(.deleted):not(.hidden)").addClass('background');
-
-        if($('#chart_div'+num).length === 0)
-          $('body').append($('<div></div>').addClass('chart hidden').attr('id', 'chart_div'+num));
-
-        setupGraph(num);
-        activeChart = num;
-
-        drawCharts();
-        $("#chart_div"+num).removeClass('hidden');
-      }
-
-      function init() {
-        showChart(0);
-      }
-      
-    </script>
-    <style>
-    .chart {
-      height:100%;
-      width:100%;
-      float:left;
-      position:absolute;
-      top:0;
-      left:0;
-
-      transition: all .5s ease-in-out;
-    }
-    .chart.hidden {
-      opacity: 0;
-    }
-    .chart.deleted {
-      opacity: 0;
-      top:-40px;
-      left:40px;
-    } 
-    .chart.background {
-      opacity: 0.3;
-      top:-20px;
-      left:20px;
-    }
-    body{
-      overflow:hidden;
-    }
-    </style>
+    <script type="text/javascript" src="graph.js"></script>
+    
+    <link rel="stylesheet" href="graph.css" />
   </head>
 
   <body>
+  <div id="demo"></div>
+  <div id="chart_holder"></div>
   </body>
 </html>
