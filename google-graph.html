@@ -11,58 +11,64 @@
       google.setOnLoadCallback(init);
 
       function init() {
-    var options = {
-      width: 400,
-      height: 240,
-      animation:{
-        duration: 1000,
-        easing: 'out',
-      },
-      legend: {position: 'none'},
-      vAxis: { 
-        textPosition: 'none',
-        gridlines: {
-          color: 'transparent'
+        var options = {
+          // width: 1400,
+          // height: 460,
+          animation:{
+            duration: 1000,
+            easing: 'out',
+          },
+          legend: {position: 'none'},
+          vAxis: { 
+            minValue: 0, 
+            maxValue: 100,
+            textPosition: 'none',
+            gridlines: {
+              color: 'transparent'
+            }
+          },
+        };
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'N');
+        data.addColumn('number', 'Value');
+        data.addColumn({type: 'string', role: 'annotation'});
+        data.addRow(["Rob Sumner", 0, ""]);
+        data.addRow(["Robyn Evans", 0, ""]);
+        data.addRow(["Matt Lavendar", 0, ""]);
+        data.addRow(["Julian Waller", 0, ""]);
+
+        var chart = new google.visualization.ColumnChart(
+            document.getElementById('chart_div'));
+        var button = document.getElementById('b1');
+
+        function drawChart() {
+          // Disabling the button while the chart is drawing.
+          button.disabled = true;
+          google.visualization.events.addListener(chart, 'ready',
+              function() {
+                button.disabled = false;
+              });
+          chart.draw(data, options);
         }
-      },
-    };
-    var data = new google.visualization.DataTable();
-    data.addColumn('string', 'N');
-    data.addColumn('number', 'Value');
-    data.addRow(['V', 200]);
-    data.addRow(['V2', 800]);
 
-    var chart = new google.visualization.ColumnChart(
-        document.getElementById('chart_div'));
-    var button = document.getElementById('b1');
+        button.onclick = function() {
+          var votes = randomScalingFactor();
+          data.setValue(upNext, 1,votes );
+          data.setValue(upNext, 2, votes+"");
+          upNext = ++upNext%4;
 
-    function drawChart() {
-      // Disabling the button while the chart is drawing.
-      button.disabled = true;
-      google.visualization.events.addListener(chart, 'ready',
-          function() {
-            button.disabled = false;
-          });
-      chart.draw(data, options);
-    }
-
-    button.onclick = function() {
-      var newValue = 1000 - data.getValue(0, 1);
-      data.setValue(0, 1, newValue);
-
-      newValue = 1000 - data.getValue(1, 1);
-      data.setValue(1, 1, newValue);
-
-      drawChart();
-    }
-    drawChart();
-  }
+          drawChart();
+        };
+        drawChart();
+      }
+      var upNext = 0;
+       var randomScalingFactor = function(){ return Math.round(Math.random()*100);};
     </script>
   </head>
 
   <body>
     <!--Div that will hold the pie chart-->
+    <div id="chart_div" style="height:100%"></div>
     <button id="b1">Go</button>
-    <div id="chart_div"></div>
   </body>
 </html>
