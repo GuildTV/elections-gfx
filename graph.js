@@ -16,7 +16,7 @@ function addNext() {
 var upNext = 0;
 var activeChart = 0;
 
-var randomScalingFactor = function(){ return Math.round(Math.random()*100);};
+var randomScalingFactor = function(){ return Math.round(Math.random()*1000);};
 
 // Load the Visualization API and the piechart package.
 google.load('visualization', '1.0', {'packages':['corechart']});
@@ -26,6 +26,18 @@ google.setOnLoadCallback(init);
 
 //all graph options
 var options = {
+  annotations: {
+    textStyle: {
+      // fontName: 'Times-Roman',
+      fontSize: 50,
+      // bold: true,
+      // italic: true,
+      color: '#871b47',     // The color of the text.
+      auraColor: '#d799ae', // The color of the text outline.
+      opacity: 0.8          // The transparency of the text.
+    }
+  },
+
   animation:{
     duration: 800,
     easing: 'out',
@@ -33,13 +45,22 @@ var options = {
   legend: {position: 'none'},
   vAxis: { 
     minValue: 0, 
-    maxValue: 100,
+    maxValue: 1,
     textPosition: 'none',
     gridlines: {
       color: 'transparent'
     }
   },
+  hAxis: {
+    textStyle: {
+      fontSize: 50,
+      opacity: 0.8          // The transparency of the text.
+    }
+  },
   backgroundColor: { fill:'transparent' },
+  bar: {
+    groupWidth: 200
+  }
 };
 
 function setupGraph(num){
@@ -78,6 +99,8 @@ function showChart(num){
 
 function init() {
   if(halfLoaded && !doneInit){
+    // $('body').addClass('small');
+
     showChart(0);
     doneInit = true;
   }
