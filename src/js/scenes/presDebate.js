@@ -3,6 +3,12 @@ App.scenes['presDebate'] = {
     $(".sideBarContent").html(App.templates.singleProfile(data));
   }, 
 
-  stop: function() {
+  update: function(data){
+
+  },
+  
+  stop: function(callback) {
+    if(callback !== undefined)
+      callback();
   }
 };

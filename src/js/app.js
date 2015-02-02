@@ -11,15 +11,24 @@ var App = {
       return;
 
     App.scenes[scene].render(data);
-    App.currentScene = scene;
   },
 
-  stopScene: function(scene){
-    App.scenes[scene].stop();
+  updateScene: function(scene, id){
+    var data = App.findDataById(id);
+    if(data === undefined)
+      return;
+
+    App.scenes[scene].update(data);
   },
 
-  changeScene: function(nextScene, currentScene) {
+  stopScene: function(scene, callback){
+    App.scenes[scene].stop(callback);
+  },
 
+  changeScene: function(currentScene, nextScene, id) {
+    App.stopScene(currentScene, function(){
+      App.loadScene(nextScene, id);
+    });
   },
 
   findDataById: function(id){
@@ -33,4 +42,4 @@ var App = {
       }
     }
   },
-}
+};

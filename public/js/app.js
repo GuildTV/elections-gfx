@@ -11,15 +11,24 @@ var App = {
       return;
 
     App.scenes[scene].render(data);
-    App.currentScene = scene;
   },
 
-  stopScene: function(scene){
-    App.scenes[scene].stop();
+  updateScene: function(scene, id){
+    var data = App.findDataById(id);
+    if(data === undefined)
+      return;
+
+    App.scenes[scene].update(data);
   },
 
-  changeScene: function(nextScene, currentScene) {
+  stopScene: function(scene, callback){
+    App.scenes[scene].stop(callback);
+  },
 
+  changeScene: function(currentScene, nextScene, id) {
+    App.stopScene(currentScene, function(){
+      App.loadScene(nextScene, id);
+    });
   },
 
   findDataById: function(id){
@@ -33,7 +42,7 @@ var App = {
       }
     }
   },
-}
+};
 /*
  * CASPAR-CG COMMANDS
 */
@@ -119,18 +128,30 @@ this["App"]["templates"]["topBar"] = Handlebars.template({"compiler":[6,">= 2.0.
     + ".png\">\n</div> <!-- / .logos  -->";
 },"useData":true});
 App.scenes['default'] = {
-  render: function() {
+  render: function(data) {
     $(".sideBar").html(App.templates.topBar(data));
   },
 
-  stop: function() {
+  update: function(data){
+
+  },
+
+  stop: function(callback) {
+    if(callback !== undefined)
+      callback();
   }
-}
+};
 App.scenes['presDebate'] = {
   render: function(data) {
     $(".sideBarContent").html(App.templates.singleProfile(data));
   }, 
 
-  stop: function() {
+  update: function(data){
+
+  },
+  
+  stop: function(callback) {
+    if(callback !== undefined)
+      callback();
   }
 };

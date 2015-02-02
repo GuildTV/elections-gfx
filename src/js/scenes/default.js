@@ -1,8 +1,14 @@
 App.scenes['default'] = {
-  render: function() {
+  render: function(data) {
     $(".sideBar").html(App.templates.topBar(data));
   },
 
-  stop: function() {
+  update: function(data){
+
+  },
+
+  stop: function(callback) {
+    if(callback !== undefined)
+      callback();
   }
-}
+};
