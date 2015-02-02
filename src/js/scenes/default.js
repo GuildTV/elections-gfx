@@ -1,9 +1,8 @@
 App.scenes['default'] = {
   render: function() {
-    App.parts['topBar'].render();
-  }, 
+    $(".sideBar").html(App.templates.topBar(data));
+  },
 
   stop: function() {
-    App.parts['topBar'].hide();
   }
 }
