@@ -5,4 +5,4 @@ App.scenes['presDebate'] = {
 
   stop: function() {
   }
-}
+};
