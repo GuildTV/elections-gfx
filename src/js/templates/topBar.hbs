@@ -1,24 +1,13 @@
-// App.parts['topBar'] = {
-//   setup: function() {
-//     $('.main').prepend(
-//       $('<div></div>').addClass('topBar').append(
-//         $('<div></div>').addClass('container')
-//           .append(
-//             $('<div></div>').addClass('col-md-3').append(
-//               $('<img></img>').addClass('logo').attr('src', 'public/img/logo.png')
-//             )
-//           )
-//           .append(
-//             $('<div></div>').addClass('col-md-3').text('#guildelections')
-//           )
-//           .append(
-//             $('<div></div>').addClass('col-md-3').text('LIVE')
-//           )
-//       )
-//     );
-//   },
-
-//   render: function() {
-
-//   }
-// }
+<div class="logos col-md-3">
+  <img src="public/img/logo.png">
+</div> <!-- / .logo  -->
+<div class="twitter col-md-3">
+  <h1>{{ twitter }}</h1>
+</div><!-- / .twitter -->
+<div class="text col-md-3">
+  <h1>{{ text }}</h1>
+</div><!-- / .text -->
+<div class="col-md-3">
+<div class="logos col-md-3">
+  <img src="public/img/{{logos}}.png">
+</div> <!-- / .logos  -->

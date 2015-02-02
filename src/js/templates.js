@@ -27,5 +27,12 @@ this["App"]["templates"]["singleProfile"] = Handlebars.template({"compiler":[6,"
     + "</h4>\n  </div> <!-- / .col-md-8 .col-md-offset-2 -->\n</div> <!-- / .singleProfile -->\n";
 },"useData":true});
 this["App"]["templates"]["topBar"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-  return "// App.parts['topBar'] = {\n//   setup: function() {\n//     $('.main').prepend(\n//       $('<div></div>').addClass('topBar').append(\n//         $('<div></div>').addClass('container')\n//           .append(\n//             $('<div></div>').addClass('col-md-3').append(\n//               $('<img></img>').addClass('logo').attr('src', 'public/img/logo.png')\n//             )\n//           )\n//           .append(\n//             $('<div></div>').addClass('col-md-3').text('#guildelections')\n//           )\n//           .append(\n//             $('<div></div>').addClass('col-md-3').text('LIVE')\n//           )\n//       )\n//     );\n//   },\n\n//   render: function() {\n\n//   }\n// }\n";
-  },"useData":true});
+  var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
+  return "<div class=\"logos col-md-3\">\n  <img src=\"public/img/logo.png\">\n</div> <!-- / .logo  -->\n<div class=\"twitter col-md-3\">\n  <h1>"
+    + escapeExpression(((helper = (helper = helpers.twitter || (depth0 != null ? depth0.twitter : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"twitter","hash":{},"data":data}) : helper)))
+    + "</h1>\n</div><!-- / .twitter -->\n<div class=\"text col-md-3\">\n  <h1>"
+    + escapeExpression(((helper = (helper = helpers.text || (depth0 != null ? depth0.text : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"text","hash":{},"data":data}) : helper)))
+    + "</h1>\n</div><!-- / .text -->\n<div class=\"col-md-3\">\n<div class=\"logos col-md-3\">\n  <img src=\"public/img/"
+    + escapeExpression(((helper = (helper = helpers.logos || (depth0 != null ? depth0.logos : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"logos","hash":{},"data":data}) : helper)))
+    + ".png\">\n</div> <!-- / .logos  -->";
+},"useData":true});

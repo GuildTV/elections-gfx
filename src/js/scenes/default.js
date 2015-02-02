@@ -3,7 +3,7 @@ App.scenes['default'] = {
     App.parts['topBar'].render();
   }, 
 
-  remove: function() {
-    App.parts['topBar'].render();
+  stop: function() {
+    App.parts['topBar'].hide();
   }
 }
