@@ -99,16 +99,15 @@ this["App"]["templates"]["topBar"] = Handlebars.template({"compiler":[6,">= 2.0.
 },"useData":true});
 App.scenes['default'] = {
   render: function() {
-    App.parts['topBar'].render();
-  }, 
+    $(".sideBar").html(App.templates.topBar(data));
+  },
 
   stop: function() {
-    App.parts['topBar'].hide();
   }
 }
 App.scenes['presDebate'] = {
   render: function(data) {
-    $(".sideBar").html(App.templates.singleProfile(data));
+    $(".sideBarContent").html(App.templates.singleProfile(data));
   }, 
 
   stop: function() {
