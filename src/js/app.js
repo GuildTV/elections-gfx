@@ -11,7 +11,7 @@ var App = {
       return;
 
     App.widgets[widget].render(data);
-    loadWidgets.push(widget);
+    loadedWidgets.push(widget);
   },
 
   updateWidget: function(widget, id){
