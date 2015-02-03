@@ -30,7 +30,7 @@ var App = {
 
   changeScene: function(currentScene, nextScene, template, id) {
     App.stopScene(currentScene, function(){
-      App.loadScene(nextScene, id);
+      App.loadScene(nextScene, template, id);
     });
   },
 
