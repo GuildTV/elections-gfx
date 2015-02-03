@@ -1,0 +1,9 @@
+<div class="roleProfile col-md-12">
+{{#each .}}
+  <div id="{{ uid }}" class="profile">
+    <h2>{{ name }}</h2>
+    <h3>{{ position }}</h3>
+    <img src="{{ img }}" alt="{{ name }}">
+  </div> <!-- / #{{ uid }} profile -->
+{{/each}}
+</div> <!-- / .roleProfile -->
