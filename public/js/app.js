@@ -30,7 +30,7 @@ var App = {
 
   changeScene: function(currentScene, nextScene, template, id) {
     App.stopScene(currentScene, function(){
-      App.loadScene(nextScene, id);
+      App.loadScene(nextScene, template, id);
     });
   },
 
@@ -154,6 +154,7 @@ App.scenes['presDebate'] = {
       $(".topBar").html(App.templates.topBar());
       App.topBarIsRendered = true;
     };
+
     if (template == "lowerThird") {
       data.push(name: eventName)
     },
@@ -161,8 +162,20 @@ App.scenes['presDebate'] = {
     $(".sideBarContent").html(App.templates.template(data));
   }, 
 
-  update: function(template, data){
+  update: function(action, template, data){
+    if (action == "render") {
 
+    };
+
+    if (action == "hide") {
+
+    };
+
+    if (action == "next") {
+
+    };
+
+    return;
   },
   
   stop: function(callback) {

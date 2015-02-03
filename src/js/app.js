@@ -15,7 +15,7 @@ var App = {
     currentScene = scene;
   },
 
-  updateScene: function(template, id){
+  updateScene: function(action, template, id){
     var data = App.findDataById(id);
     if(data === undefined)
       return;
