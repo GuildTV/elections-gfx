@@ -12,18 +12,20 @@ var App = {
       return;
 
     App.scenes[scene].render(data);
+    currentScene = scene;
   },
 
-  updateScene: function(scene, template, id){
+  updateScene: function(template, id){
     var data = App.findDataById(id);
     if(data === undefined)
       return;
 
-    App.scenes[scene].update(template, data);
+    App.scenes[currentScene].update(template, data);
   },
 
   stopScene: function(scene, callback){
     App.scenes[scene].stop(callback);
+    currentScene = undefined;
   },
 
   changeScene: function(currentScene, nextScene, template, id) {
