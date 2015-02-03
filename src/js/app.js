@@ -1,11 +1,12 @@
 var App = {
   scenes: [],
   currentScene: undefined,
+  topBarIsRendered: false,
   
   setup: function() {
   },
 
-  loadScene: function(scene, id) {
+  loadScene: function(scene, template, id) {
     var data = App.findDataById(id);
     if(data === undefined)
       return;
@@ -13,19 +14,19 @@ var App = {
     App.scenes[scene].render(data);
   },
 
-  updateScene: function(scene, id){
+  updateScene: function(scene, template, id){
     var data = App.findDataById(id);
     if(data === undefined)
       return;
 
-    App.scenes[scene].update(data);
+    App.scenes[scene].update(template, data);
   },
 
   stopScene: function(scene, callback){
     App.scenes[scene].stop(callback);
   },
 
-  changeScene: function(currentScene, nextScene, id) {
+  changeScene: function(currentScene, nextScene, template, id) {
     App.stopScene(currentScene, function(){
       App.loadScene(nextScene, id);
     });

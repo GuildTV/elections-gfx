@@ -1,11 +1,12 @@
 var App = {
   scenes: [],
   currentScene: undefined,
+  topBarIsRendered: false,
   
   setup: function() {
   },
 
-  loadScene: function(scene, id) {
+  loadScene: function(scene, template, id) {
     var data = App.findDataById(id);
     if(data === undefined)
       return;
@@ -13,19 +14,19 @@ var App = {
     App.scenes[scene].render(data);
   },
 
-  updateScene: function(scene, id){
+  updateScene: function(scene, template, id){
     var data = App.findDataById(id);
     if(data === undefined)
       return;
 
-    App.scenes[scene].update(data);
+    App.scenes[scene].update(template, data);
   },
 
   stopScene: function(scene, callback){
     App.scenes[scene].stop(callback);
   },
 
-  changeScene: function(currentScene, nextScene, id) {
+  changeScene: function(currentScene, nextScene, template, id) {
     App.stopScene(currentScene, function(){
       App.loadScene(nextScene, id);
     });
@@ -94,9 +95,11 @@ this["App"]["templates"] = this["App"]["templates"] || {};
 this["App"]["templates"]["lowerThird"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
   var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
   return "<h2>"
-    + escapeExpression(((helper = (helper = helpers.top || (depth0 != null ? depth0.top : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"top","hash":{},"data":data}) : helper)))
+    + escapeExpression(((helper = (helper = helpers.eventName || (depth0 != null ? depth0.eventName : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"eventName","hash":{},"data":data}) : helper)))
     + "</h2>\n<h3>"
-    + escapeExpression(((helper = (helper = helpers.bottom || (depth0 != null ? depth0.bottom : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"bottom","hash":{},"data":data}) : helper)))
+    + escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"name","hash":{},"data":data}) : helper)))
+    + " -  "
+    + escapeExpression(((helper = (helper = helpers.role || (depth0 != null ? depth0.role : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"role","hash":{},"data":data}) : helper)))
     + "</h3>\n";
 },"useData":true});
 this["App"]["templates"]["singleProfile"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
@@ -142,11 +145,21 @@ App.scenes['default'] = {
   }
 };
 App.scenes['presDebate'] = {
-  render: function(data) {
-    $(".sideBarContent").html(App.templates.singleProfile(data));
+  eventName: "Presidential Debate",
+
+  render: function(template, data) {
+    if (App.topBarIsRendered == false) {
+      $(".topBar").html(App.templates.topBar());
+      App.topBarIsRendered = true;
+    };
+    if (template == "lowerThird") {
+      data.push(name: eventName)
+    },
+
+    $(".sideBarContent").html(App.templates.template(data));
   }, 
 
-  update: function(data){
+  update: function(template, data){
 
   },
   
