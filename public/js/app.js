@@ -1,36 +1,34 @@
 var App = {
-  scenes: [],
-  currentScene: undefined,
-  topBarIsRendered: false,
-  
+  widgets: [],
+  loadedWidgets: [],
+
   setup: function() {
   },
 
-  loadScene: function(scene, template, id) {
+  loadWidget: function(widget, id) {
     var data = App.findDataById(id);
     if(data === undefined)
       return;
 
-    App.scenes[scene].render(data);
-    currentScene = scene;
+    App.widgets[widget].render(data);
+    loadWidgets.push(widget);
   },
 
-  updateScene: function(template, id){
+  updateWidget: function(widget, id){
     var data = App.findDataById(id);
     if(data === undefined)
       return;
 
-    App.scenes[currentScene].update(template, data);
+    App.widgets[widget].update(data);
   },
 
-  stopScene: function(scene, callback){
-    App.scenes[scene].stop(callback);
-    currentScene = undefined;
+  stopWidget: function(widget, callback){
+    App.widgets[widget].stop(callback);
   },
 
-  changeScene: function(currentScene, nextScene, template, id) {
-    App.stopScene(currentScene, function(){
-      App.loadScene(nextScene, template, id);
+  changeWidget: function(currentWidget, nextWidget, id) {
+    App.stopWidget(currentWidget, function(){
+      App.loadWidget(nextWidget, id);
     });
   },
 
@@ -104,6 +102,27 @@ this["App"]["templates"]["lowerThird"] = Handlebars.template({"compiler":[6,">= 
     + escapeExpression(((helper = (helper = helpers.role || (depth0 != null ? depth0.role : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"role","hash":{},"data":data}) : helper)))
     + "</h3>\n";
 },"useData":true});
+this["App"]["templates"]["multiProfile"] = Handlebars.template({"1":function(depth0,helpers,partials,data) {
+  var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
+  return "  <div id=\""
+    + escapeExpression(((helper = (helper = helpers.uid || (depth0 != null ? depth0.uid : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"uid","hash":{},"data":data}) : helper)))
+    + "\" class=\"profile\">\n    <h2>"
+    + escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"name","hash":{},"data":data}) : helper)))
+    + "</h2>\n    <h3>"
+    + escapeExpression(((helper = (helper = helpers.position || (depth0 != null ? depth0.position : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"position","hash":{},"data":data}) : helper)))
+    + "</h3>\n    <img src=\""
+    + escapeExpression(((helper = (helper = helpers.img || (depth0 != null ? depth0.img : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"img","hash":{},"data":data}) : helper)))
+    + "\" alt=\""
+    + escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"name","hash":{},"data":data}) : helper)))
+    + "\">\n  </div> <!-- / #"
+    + escapeExpression(((helper = (helper = helpers.uid || (depth0 != null ? depth0.uid : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"uid","hash":{},"data":data}) : helper)))
+    + " profile -->\n";
+},"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+  var stack1, buffer = "<div class=\"multiProfile col-md-12\">\n";
+  stack1 = helpers.each.call(depth0, depth0, {"name":"each","hash":{},"fn":this.program(1, data),"inverse":this.noop,"data":data});
+  if (stack1 != null) { buffer += stack1; }
+  return buffer + "</div> <!-- / .roleProfile -->";
+},"useData":true});
 this["App"]["templates"]["singleProfile"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
   var stack1, helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, lambda=this.lambda;
   return "<div class=\"singleProfile col-md-12\">\n  <div class=\"col-md-8 col-md-offset-2\">\n    <h2>"
@@ -132,7 +151,22 @@ this["App"]["templates"]["topBar"] = Handlebars.template({"compiler":[6,">= 2.0.
     + escapeExpression(((helper = (helper = helpers.logos || (depth0 != null ? depth0.logos : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"logos","hash":{},"data":data}) : helper)))
     + ".png\">\n</div> <!-- / .logos  -->";
 },"useData":true});
-App.scenes['default'] = {
+App.widgets['singleProfile'] = {
+  render: function(data) {
+    $(".sideBarContent").html(App.templates.singleProfile(data));
+  }, 
+
+  update: function(data){
+
+  },
+  
+  stop: function(callback) {
+    if(callback !== undefined)
+      callback();
+  }
+};
+
+App.widgets['topBar'] = {
   render: function(data) {
     $(".sideBar").html(App.templates.topBar(data));
   },
@@ -141,43 +175,6 @@ App.scenes['default'] = {
 
   },
 
-  stop: function(callback) {
-    if(callback !== undefined)
-      callback();
-  }
-};
-App.scenes['presDebate'] = {
-  eventName: "Presidential Debate",
-
-  render: function(template, data) {
-    if (App.topBarIsRendered == false) {
-      $(".topBar").html(App.templates.topBar());
-      App.topBarIsRendered = true;
-    };
-
-    if (template == "lowerThird") {
-      data.push(name: eventName)
-    },
-
-    $(".sideBarContent").html(App.templates.template(data));
-  }, 
-
-  update: function(action, template, data){
-    if (action == "render") {
-
-    };
-
-    if (action == "hide") {
-
-    };
-
-    if (action == "next") {
-
-    };
-
-    return;
-  },
-  
   stop: function(callback) {
     if(callback !== undefined)
       callback();

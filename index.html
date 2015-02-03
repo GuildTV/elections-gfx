@@ -8,6 +8,22 @@
   </head>
 
   <body>
+    <div class="temp" style="margin-top: 20%;">
+      <button onclick="App.loadWidget('singleProfile', 'pres-jane');">Load Single Profile</button>
+      <button onclick="App.updateWidget('singleProfile', 'pres-john');">Update Single Profile</button>
+      <button onclick="App.stopWidget('singleProfile';">Remove Single Profile</button>
+      
+      <br><br>
+
+      <button onclick="App.loadWidget('singleProfile', 'pres-jane');">Load Single Profile</button>
+      <button onclick="App.changeWidget('singleProfile', 'multiProfile', 'pres';">Change From Single Profile to Multi Profile</button>
+
+      <br><br>
+
+      <button onclick="App.loadWidget('lowerThird', 'talent-john');">Load Lower Third</button>
+      <button onclick="App.stopWidget('lowerThird');">Stop Lower Third</button>
+    </div>
+
     <div class="main">
       <div class="topBar container">
       </div> <!-- / .topBar -->

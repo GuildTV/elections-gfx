@@ -1,36 +1,34 @@
 var App = {
-  scenes: [],
-  currentScene: undefined,
-  topBarIsRendered: false,
-  
+  widgets: [],
+  loadedWidgets: [],
+
   setup: function() {
   },
 
-  loadScene: function(scene, template, id) {
+  loadWidget: function(widget, id) {
     var data = App.findDataById(id);
     if(data === undefined)
       return;
 
-    App.scenes[scene].render(data);
-    currentScene = scene;
+    App.widgets[widget].render(data);
+    loadWidgets.push(widget);
   },
 
-  updateScene: function(action, template, id){
+  updateWidget: function(widget, id){
     var data = App.findDataById(id);
     if(data === undefined)
       return;
 
-    App.scenes[currentScene].update(template, data);
+    App.widgets[widget].update(data);
   },
 
-  stopScene: function(scene, callback){
-    App.scenes[scene].stop(callback);
-    currentScene = undefined;
+  stopWidget: function(widget, callback){
+    App.widgets[widget].stop(callback);
   },
 
-  changeScene: function(currentScene, nextScene, template, id) {
-    App.stopScene(currentScene, function(){
-      App.loadScene(nextScene, template, id);
+  changeWidget: function(currentWidget, nextWidget, id) {
+    App.stopWidget(currentWidget, function(){
+      App.loadWidget(nextWidget, id);
     });
   },
 
