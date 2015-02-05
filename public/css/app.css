@@ -6555,16 +6555,53 @@ body {
   -webkit-font-smoothing: antialiased !important;
   /* Set aliasing of fonts - possible options: none, antialiased,  subpixel-antialiased */
 }
+@font-face {
+  font-family: "Roboto";
+  src: url(../fonts/Roboto-Regular.ttf);
+}
+body {
+  font-family: "Roboto";
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
 .hidden-animate {
   opacity: 0;
 }
 .visible-animate {
   opacity: 1;
 }
-.logo {
+.logo img {
   width: 15em;
   padding: 1em;
 }
 .top-bar {
-  background-color: #333333;
+  background-color: rgba(51, 51, 51, 0.25);
+}
+.lowerThird {
+  height: 10vh;
+  width: 60vw;
+  position: absolute;
+  bottom: 20vh;
+  left: 2.5vw;
+  padding: 1.5vh 1vw;
+  background-color: rgba(240, 240, 240, 0.25);
+  border-left: 0.5vw solid #333333;
+}
+.lowerThird h1 {
+  padding: 1vh 0;
+  color: #333333;
+}
+.lowerThird h3 {
+  color: #4545a5;
+}
+.singleProfileContainer {
+  height: 100vh;
+  background-color: rgba(51, 51, 51, 0.25);
+  color: #f0f0f0;
 }

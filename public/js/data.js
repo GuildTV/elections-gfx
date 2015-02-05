@@ -2,9 +2,10 @@ var Data = [];
 Data['president'] = [
   {
     "uid"             : "pres-john",
+    "pid"             : "pres",
     "name"            : "John Doe",
     "position"        : "President",
-    "img"             : "public/img/pres/john-doe",
+    "img"             : "http://lorempixel.com/200/200/people",
     "manifestoPoints" : {
       "one"           : "First Manifesto Point",
       "two"           : "Second Manifesto Point",
@@ -13,9 +14,10 @@ Data['president'] = [
   },
   {
     "uid"             : "pres-jane",
+    "pid"             : "pres",
     "name"            : "Jane Doe",
     "position"        : "President",
-    "img"             : "public/img/pres/jane-doe.png",
+    "img"             : "http://lorempixel.com/200/200/people",
     "manifestoPoints" : {
       "one"           : "First Manifesto Point",
       "two"           : "Second Manifesto Point",
@@ -40,9 +42,10 @@ Data['talent'] = [
 Data['vpad'] = [
   {
     "uid"             : "pres-john",
+    "pid"             : "vpad",
     "name"            : "John Doe",
     "position"        : "Vice President (Activities and Development)",
-    "img"             : "public/img/pres/john-doe",
+    "img"             : "http://lorempixel.com/200/200/people",
     "manifestoPoints" : {
       "one"           : "First Manifesto Point",
       "two"           : "Second Manifesto Point",
@@ -51,9 +54,10 @@ Data['vpad'] = [
   },
   {
     "uid"             : "pres-jane",
+    "pid"             : "vpad",
     "name"            : "Jane Doe",
     "position"        : "Vice President (Activities and Development)",
-    "img"             : "public/img/pres/jane-doe.png",
+    "img"             : "http://lorempixel.com/200/200/people",
     "manifestoPoints" : {
       "one"           : "First Manifesto Point",
       "two"           : "Second Manifesto Point",

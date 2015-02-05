@@ -1,6 +1,7 @@
 var App = {
   widgets: [],
   loadedWidgets: [],
+  eventName: "Presidential Debate", // Move this later
 
   setup: function() {
   },
@@ -8,7 +9,7 @@ var App = {
   loadWidget: function(widget, id) {
     var data = App.findDataById(id);
     if(data === undefined)
-      return;
+      data = undefined;
 
     App.widgets[widget].render(data);
     loadedWidgets.push(widget);

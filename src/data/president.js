@@ -1,9 +1,10 @@
 Data['president'] = [
   {
     "uid"             : "pres-john",
+    "pid"             : "pres",
     "name"            : "John Doe",
     "position"        : "President",
-    "img"             : "public/img/pres/john-doe",
+    "img"             : "http://lorempixel.com/200/200/people",
     "manifestoPoints" : {
       "one"           : "First Manifesto Point",
       "two"           : "Second Manifesto Point",
@@ -12,9 +13,10 @@ Data['president'] = [
   },
   {
     "uid"             : "pres-jane",
+    "pid"             : "pres",
     "name"            : "Jane Doe",
     "position"        : "President",
-    "img"             : "public/img/pres/jane-doe.png",
+    "img"             : "http://lorempixel.com/200/200/people",
     "manifestoPoints" : {
       "one"           : "First Manifesto Point",
       "two"           : "Second Manifesto Point",

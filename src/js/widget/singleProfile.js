@@ -1,6 +1,7 @@
 App.widgets['singleProfile'] = {
   render: function(data) {
-    $(".sideBarContent").html(App.templates.singleProfile(data));
+    var $sideBar = $(".sideBar")
+    $sideBar.html(App.templates.singleProfile(data));
   }, 
 
   update: function(data){

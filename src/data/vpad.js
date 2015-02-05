@@ -1,9 +1,10 @@
 Data['vpad'] = [
   {
     "uid"             : "pres-john",
+    "pid"             : "vpad",
     "name"            : "John Doe",
     "position"        : "Vice President (Activities and Development)",
-    "img"             : "public/img/pres/john-doe",
+    "img"             : "http://lorempixel.com/200/200/people",
     "manifestoPoints" : {
       "one"           : "First Manifesto Point",
       "two"           : "Second Manifesto Point",
@@ -12,9 +13,10 @@ Data['vpad'] = [
   },
   {
     "uid"             : "pres-jane",
+    "pid"             : "vpad",
     "name"            : "Jane Doe",
     "position"        : "Vice President (Activities and Development)",
-    "img"             : "public/img/pres/jane-doe.png",
+    "img"             : "http://lorempixel.com/200/200/people",
     "manifestoPoints" : {
       "one"           : "First Manifesto Point",
       "two"           : "Second Manifesto Point",

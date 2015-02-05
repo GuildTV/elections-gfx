@@ -1,6 +1,6 @@
 App.widgets['topBar'] = {
   render: function(data) {
-    $(".sideBar").html(App.templates.topBar(data));
+    $(".topBarContainer").html(App.templates.topBar(data));
   },
 
   update: function(data){

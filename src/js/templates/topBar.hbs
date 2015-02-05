@@ -1,13 +1,23 @@
-<div class="logos col-md-3">
-  <img src="public/img/logo.png">
-</div> <!-- / .logo  -->
-<div class="twitter col-md-3">
-  <h1>{{ twitter }}</h1>
-</div><!-- / .twitter -->
-<div class="text col-md-3">
-  <h1>{{ text }}</h1>
-</div><!-- / .text -->
-<div class="col-md-3">
-<div class="logos col-md-3">
-  <img src="public/img/{{logos}}.png">
-</div> <!-- / .logos  -->
+<div class="topBar">
+  <div class="logo col-md-3">
+    <img src="public/img/logo.png">
+  </div> <!-- / .logo  -->
+  <div class="twitter col-md-3">
+  {{#if twitter}}
+    <h1>{{ twitter }}</h1>
+  {{else}}
+    <h1>#guildelections</h1>
+  {{/if}}
+  </div><!-- / .twitter -->
+  <div class="text col-md-3">
+  {{#if text}}
+    <h1>{{ text }}</h1>
+  {{else}}
+    <h1>LIVE</h1>
+  {{/if}}
+  </div><!-- / .text -->
+  <div class="col-md-3">
+  <div class="logos col-md-3">
+    <img src="public/img/{{logos}}.png">
+  </div> <!-- / .logos  -->
+</div>
