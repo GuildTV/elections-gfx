@@ -1,6 +1,7 @@
-App.widgets['topBar'] = {
+App.widgets['LowerThird'] = {
   render: function(data) {
-    $(".topBarContainer").html(App.templates.topBar(data));
+    data['eventName'] = App.eventName;
+    React.render(<LowerThird data={data} />, $(".lowerThirdContainer")[0]);
   },
 
   update: function(data){

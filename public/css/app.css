@@ -6600,8 +6600,19 @@ h6 {
 .lowerThird h3 {
   color: #4545a5;
 }
+.lowerThird strong {
+  color: #333333;
+  font-weight: normal;
+}
 .singleProfileContainer {
   height: 100vh;
   background-color: rgba(51, 51, 51, 0.25);
   color: #f0f0f0;
+}
+.singleProfileContainer .singleProfile {
+  height: auto;
+}
+.singleProfileContainer .incoming {
+  position: absolute;
+  bottom: -125%;
 }

@@ -1,13 +1,12 @@
-App.widgets['singleProfile'] = {
+App.widgets['SingleProfile'] = {
   render: function(data) {
-    var $sideBar = $(".sideBar")
-    $sideBar.html(App.templates.singleProfile(data));
-  }, 
+    React.render(<SingleProfileList data={data} />, $(".sideBar")[0]);
+  },
 
   update: function(data){
 
   },
-  
+
   stop: function(callback) {
     if(callback !== undefined)
       callback();

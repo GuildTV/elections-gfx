@@ -1,3 +1,4 @@
+/** @jsx React.DOM */
 var App = {
   widgets: [],
   loadedWidgets: [],
@@ -12,7 +13,8 @@ var App = {
       data = undefined;
 
     App.widgets[widget].render(data);
-    loadedWidgets.push(widget);
+
+    App.loadedWidgets.push(widget);
   },
 
   updateWidget: function(widget, id){

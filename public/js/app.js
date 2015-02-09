@@ -1,3 +1,4 @@
+/** @jsx React.DOM */
 var App = {
   widgets: [],
   loadedWidgets: [],
@@ -12,7 +13,8 @@ var App = {
       data = undefined;
 
     App.widgets[widget].render(data);
-    loadedWidgets.push(widget);
+
+    App.loadedWidgets.push(widget);
   },
 
   updateWidget: function(widget, id){
@@ -45,6 +47,7 @@ var App = {
     }
   },
 };
+
 /*
  * CASPAR-CG COMMANDS
 */
@@ -91,92 +94,11 @@ function otherFunction(str) {
 function fake(){
   update("<templateData><componentData id=\"f0\"><data id=\"text\" value=\"Rob Sumner\" /></componentData><componentData id=\"f1\"><data id=\"text\" value=\"Is better than Julian\" /></componentData><componentData id=\"f2\"><data id=\"text\" value=\"#4455a5\" /></componentData><componentData id=\"f3\"><data id=\"text\" value=\"rollIn\" /></componentData><componentData id=\"f4\"><data id=\"text\" value=\"rollOut\" /></componentData></templateData>");
 }
-this["App"] = this["App"] || {};
-this["App"]["templates"] = this["App"]["templates"] || {};
-this["App"]["templates"]["lowerThird"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-  var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
-  return "<div class=\"lowerThird\">\n  <h3>"
-    + escapeExpression(((helper = (helper = helpers.eventName || (depth0 != null ? depth0.eventName : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"eventName","hash":{},"data":data}) : helper)))
-    + "</h3>\n  <h1>"
-    + escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"name","hash":{},"data":data}) : helper)))
-    + " - "
-    + escapeExpression(((helper = (helper = helpers.position || (depth0 != null ? depth0.position : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"position","hash":{},"data":data}) : helper)))
-    + "</h1>\n</div>";
-},"useData":true});
-this["App"]["templates"]["multiProfile"] = Handlebars.template({"1":function(depth0,helpers,partials,data) {
-  var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
-  return "  <div id=\""
-    + escapeExpression(((helper = (helper = helpers.uid || (depth0 != null ? depth0.uid : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"uid","hash":{},"data":data}) : helper)))
-    + "\" class=\"profile\">\n    <h2>"
-    + escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"name","hash":{},"data":data}) : helper)))
-    + "</h2>\n    <h3>"
-    + escapeExpression(((helper = (helper = helpers.position || (depth0 != null ? depth0.position : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"position","hash":{},"data":data}) : helper)))
-    + "</h3>\n    <img src=\""
-    + escapeExpression(((helper = (helper = helpers.img || (depth0 != null ? depth0.img : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"img","hash":{},"data":data}) : helper)))
-    + "\" alt=\""
-    + escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"name","hash":{},"data":data}) : helper)))
-    + "\">\n  </div> <!-- / #"
-    + escapeExpression(((helper = (helper = helpers.uid || (depth0 != null ? depth0.uid : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"uid","hash":{},"data":data}) : helper)))
-    + " profile -->\n";
-},"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-  var stack1, buffer = "<div class=\"multiProfile col-md-12\">\n";
-  stack1 = helpers.each.call(depth0, depth0, {"name":"each","hash":{},"fn":this.program(1, data),"inverse":this.noop,"data":data});
-  if (stack1 != null) { buffer += stack1; }
-  return buffer + "</div> <!-- / .roleProfile -->";
-},"useData":true});
-this["App"]["templates"]["singleProfile"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-  var stack1, helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, lambda=this.lambda;
-  return "<div class=\"singleProfileContainer col-md-12\">\n  <div class=\"singleProfile col-md-8 col-md-offset-2\">\n    <h1 class=\"text-center\">"
-    + escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"name","hash":{},"data":data}) : helper)))
-    + "</h1>\n    <h3 class=\"text-center\">"
-    + escapeExpression(((helper = (helper = helpers.position || (depth0 != null ? depth0.position : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"position","hash":{},"data":data}) : helper)))
-    + "</h3>\n    <div class=\"image "
-    + escapeExpression(((helper = (helper = helpers.pid || (depth0 != null ? depth0.pid : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"pid","hash":{},"data":data}) : helper)))
-    + " text-center\">\n      <img src=\""
-    + escapeExpression(((helper = (helper = helpers.img || (depth0 != null ? depth0.img : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"img","hash":{},"data":data}) : helper)))
-    + "\" alt=\""
-    + escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"name","hash":{},"data":data}) : helper)))
-    + "\">\n    </div>\n    <h2 class=\"text-center\">Manifesto</h2>\n    <h4>"
-    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.manifestoPoints : depth0)) != null ? stack1.one : stack1), depth0))
-    + "</h4>\n    <h4>"
-    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.manifestoPoints : depth0)) != null ? stack1.two : stack1), depth0))
-    + "</h4>\n    <h4>"
-    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.manifestoPoints : depth0)) != null ? stack1.three : stack1), depth0))
-    + "</h4>\n  </div> <!-- / .col-md-8 .col-md-offset-2 -->\n</div> <!-- / .singleProfile -->\n";
-},"useData":true});
-this["App"]["templates"]["topBar"] = Handlebars.template({"1":function(depth0,helpers,partials,data) {
-  var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
-  return "    <h1>"
-    + escapeExpression(((helper = (helper = helpers.twitter || (depth0 != null ? depth0.twitter : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"twitter","hash":{},"data":data}) : helper)))
-    + "</h1>\n";
-},"3":function(depth0,helpers,partials,data) {
-  return "    <h1>#guildelections</h1>\n";
-  },"5":function(depth0,helpers,partials,data) {
-  var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
-  return "    <h1>"
-    + escapeExpression(((helper = (helper = helpers.text || (depth0 != null ? depth0.text : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"text","hash":{},"data":data}) : helper)))
-    + "</h1>\n";
-},"7":function(depth0,helpers,partials,data) {
-  return "    <h1>LIVE</h1>\n";
-  },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-  var stack1, helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, buffer = "<div class=\"topBar\">\n  <div class=\"logo col-md-3\">\n    <img src=\"public/img/logo.png\">\n  </div> <!-- / .logo  -->\n  <div class=\"twitter col-md-3\">\n";
-  stack1 = helpers['if'].call(depth0, (depth0 != null ? depth0.twitter : depth0), {"name":"if","hash":{},"fn":this.program(1, data),"inverse":this.program(3, data),"data":data});
-  if (stack1 != null) { buffer += stack1; }
-  buffer += "  </div><!-- / .twitter -->\n  <div class=\"text col-md-3\">\n";
-  stack1 = helpers['if'].call(depth0, (depth0 != null ? depth0.text : depth0), {"name":"if","hash":{},"fn":this.program(5, data),"inverse":this.program(7, data),"data":data});
-  if (stack1 != null) { buffer += stack1; }
-  return buffer + "  </div><!-- / .text -->\n  <div class=\"col-md-3\">\n  <div class=\"logos col-md-3\">\n    <img src=\"public/img/"
-    + escapeExpression(((helper = (helper = helpers.logos || (depth0 != null ? depth0.logos : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"logos","hash":{},"data":data}) : helper)))
-    + ".png\">\n  </div> <!-- / .logos  -->\n</div>\n";
-},"useData":true});
-App.widgets['lowerThird'] = {
+
+App.widgets['LowerThird'] = {
   render: function(data) {
-
-    var $lowerThird = $(".lowerThirdContainer");
-
     data['eventName'] = App.eventName;
-
-    $lowerThird.html(App.templates.lowerThird(data));
+    React.render(<LowerThird data={data} />, $(".lowerThirdContainer")[0]);
   },
 
   update: function(data){
@@ -188,25 +110,9 @@ App.widgets['lowerThird'] = {
       callback();
   }
 };
-App.widgets['singleProfile'] = {
+App.widgets['SingleProfile'] = {
   render: function(data) {
-    var $sideBar = $(".sideBar")
-    $sideBar.html(App.templates.singleProfile(data));
-  }, 
-
-  update: function(data){
-
-  },
-  
-  stop: function(callback) {
-    if(callback !== undefined)
-      callback();
-  }
-};
-
-App.widgets['topBar'] = {
-  render: function(data) {
-    $(".topBarContainer").html(App.templates.topBar(data));
+    React.render(<SingleProfileList data={data} />, $(".sideBar")[0]);
   },
 
   update: function(data){
@@ -218,3 +124,88 @@ App.widgets['topBar'] = {
       callback();
   }
 };
+// App.widgets['topBar'] = {
+//   render: function(data) {
+//     $(".topBarContainer").html(App.templates.topBar(data));
+//   },
+
+//   update: function(data){
+
+//   },
+
+//   stop: function(callback) {
+//     if(callback !== undefined)
+//       callback();
+//   }
+// };
+var LowerThird = React.createClass({
+  render: function() {
+    return (
+      <div className='lowerThird'>
+        <h3>{ this.props.data.eventName } <strong>2015</strong></h3>
+        <h1>{ this.props.data.name } - { this.props.data.position }</h1>
+      </div>
+    );
+  }
+});
+var SingleProfile = React.createClass({
+  render: function() {
+    var divClass = 'singleProfile ' + this.props.data.uid + ' incoming col-md-8 col-md-offset-2'
+    var imageDivClass = 'image ' + this.props.data.pid + ' text-center';
+
+    return (
+      <div className={ divClass }>
+        <h1 className='text-center'>{ this.props.data.name }</h1>
+        <h3 className='text-center'>{ this.props.data.position }</h3>
+        <div className={ imageDivClass }>
+          <img src={ this.props.data.img } alt={ this.props.data.name } />
+        </div>
+        <h2 className='manifesto text-center'>Manifesto</h2>
+        <h4>{ this.props.data.manifestoPoints.one }</h4>
+        <h4>{ this.props.data.manifestoPoints.two }</h4>
+        <h4>{ this.props.data.manifestoPoints.three }</h4>
+      </div> 
+    );
+  }
+});
+var SingleProfileList = React.createClass({
+  getInitialState: function() {
+    return {people: []};
+  },
+  componentDidMount: function() {
+    var singleProfileContainer = $('.singleProfileContainer'),
+        tl = new TimelineLite();
+
+    TweenLite.set(singleProfileContainer, {autoAlpha:0});
+    tl.to(singleProfileContainer, 0.5, {autoAlpha:1});
+
+    this.animateIncomingNodeIn();
+  },
+  componentWillMount: function() {
+    this.state.people.push(this.props.data)
+  },
+  render: function() {
+    var peopleNodes = this.state.people.map(function (person) {
+      return (
+        <SingleProfile key={person.uid} data={person} />
+      );
+    });
+    return (
+      <div className='singleProfileContainer col-md-12'>
+        { peopleNodes }
+      </div>
+    );
+  },
+  animateIncomingNodeIn: function() {
+    var incoming = $('.incoming:first'),
+        centrePoint = ( $(window).height() - $('.incoming:first').outerHeight(true) )/2,
+        tl = new TimelineLite();
+
+    console.log(centrePoint);
+
+    tl.to(incoming, 1, {bottom:centrePoint});
+  },
+  animateCurrentNodeOut: function() {
+
+  }
+});
