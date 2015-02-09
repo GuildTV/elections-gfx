@@ -6612,6 +6612,9 @@ h6 {
 .singleProfileContainer .singleProfile {
   height: auto;
 }
+.singleProfileContainer .singleProfile img {
+  min-height: 200px;
+}
 .singleProfileContainer .incoming {
   position: absolute;
   bottom: -125%;

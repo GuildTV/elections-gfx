@@ -95,49 +95,6 @@ function fake(){
   update("<templateData><componentData id=\"f0\"><data id=\"text\" value=\"Rob Sumner\" /></componentData><componentData id=\"f1\"><data id=\"text\" value=\"Is better than Julian\" /></componentData><componentData id=\"f2\"><data id=\"text\" value=\"#4455a5\" /></componentData><componentData id=\"f3\"><data id=\"text\" value=\"rollIn\" /></componentData><componentData id=\"f4\"><data id=\"text\" value=\"rollOut\" /></componentData></templateData>");
 }
 
-App.widgets['LowerThird'] = {
-  render: function(data) {
-    data['eventName'] = App.eventName;
-    React.render(<LowerThird data={data} />, $(".lowerThirdContainer")[0]);
-  },
-
-  update: function(data){
-
-  },
-
-  stop: function(callback) {
-    if(callback !== undefined)
-      callback();
-  }
-};
-App.widgets['SingleProfile'] = {
-  render: function(data) {
-    React.render(<SingleProfileList data={data} />, $(".sideBar")[0]);
-  },
-
-  update: function(data){
-
-  },
-
-  stop: function(callback) {
-    if(callback !== undefined)
-      callback();
-  }
-};
-// App.widgets['topBar'] = {
-//   render: function(data) {
-//     $(".topBarContainer").html(App.templates.topBar(data));
-//   },
-
-//   update: function(data){
-
-//   },
-
-//   stop: function(callback) {
-//     if(callback !== undefined)
-//       callback();
-//   }
-// };
 var LowerThird = React.createClass({
   render: function() {
     return (
@@ -198,7 +155,7 @@ var SingleProfileList = React.createClass({
   },
   animateIncomingNodeIn: function() {
     var incoming = $('.incoming:first'),
-        centrePoint = ( $(window).height() - $('.incoming:first').outerHeight(true) )/2,
+        centrePoint = ( $(window).height() - $('.incoming:first').outerHeight() )/2,
         tl = new TimelineLite();
 
     console.log(centrePoint);
@@ -209,3 +166,47 @@ var SingleProfileList = React.createClass({
 
   }
 });
+
+App.widgets['LowerThird'] = {
+  render: function(data) {
+    data['eventName'] = App.eventName;
+    React.render(<LowerThird data={data} />, $(".lowerThirdContainer")[0]);
+  },
+
+  update: function(data){
+
+  },
+
+  stop: function(callback) {
+    if(callback !== undefined)
+      callback();
+  }
+};
+App.widgets['SingleProfile'] = {
+  render: function(data) {
+    React.render(<SingleProfileList data={data} />, $(".sideBar")[0]);
+  },
+
+  update: function(data){
+
+  },
+
+  stop: function(callback) {
+    if(callback !== undefined)
+      callback();
+  }
+};
+// App.widgets['topBar'] = {
+//   render: function(data) {
+//     $(".topBarContainer").html(App.templates.topBar(data));
+//   },
+
+//   update: function(data){
+
+//   },
+
+//   stop: function(callback) {
+//     if(callback !== undefined)
+//       callback();
+//   }
+// };

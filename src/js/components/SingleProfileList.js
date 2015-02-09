@@ -28,7 +28,7 @@ var SingleProfileList = React.createClass({
   },
   animateIncomingNodeIn: function() {
     var incoming = $('.incoming:first'),
-        centrePoint = ( $(window).height() - $('.incoming:first').outerHeight(true) )/2,
+        centrePoint = ( $(window).height() - $('.incoming:first').outerHeight() )/2,
         tl = new TimelineLite();
 
     console.log(centrePoint);
