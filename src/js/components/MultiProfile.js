@@ -1,6 +1,6 @@
-var SingleProfile = React.createClass({
+var MultiProfile = React.createClass({
   render: function() {
-    var divClass = 'singleProfile ' + this.props.state.SingleProfile + ' col-md-8 col-md-offset-2'
+    var divClass = 'multiProfile ' + this.props.state.MultiProfile + ' col-md-8 col-md-offset-2'
     var imageDivClass = 'image ' + this.props.data.pid + ' text-center';
 
     return (
@@ -10,10 +10,6 @@ var SingleProfile = React.createClass({
         <div className={ imageDivClass }>
           <img src={ this.props.data.img } alt={ this.props.data.name } />
         </div>
-        <h2 className='manifesto text-center'>Manifesto</h2>
-        <h4>{ this.props.data.manifestoPoints.one }</h4>
-        <h4>{ this.props.data.manifestoPoints.two }</h4>
-        <h4>{ this.props.data.manifestoPoints.three }</h4>
       </div> 
     );
   }

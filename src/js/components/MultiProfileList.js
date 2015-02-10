@@ -1,23 +1,13 @@
-var SingleProfileList = React.createClass({
-    statics: {
-    animateOut: function() {
-      var current = $('.current'),
-          singleProfileContainer = $('.singleProfileContainer'),
-          tl = new TimelineLite();
-
-      tl.to(current, 1, {top:150});
-      tl.to(singleProfileContainer, 0.5, {autoAlpha:0});
-    }
-  },
+var MultiProfileList = React.createClass({
   getInitialState: function() {
     return {people: []};
   },
   componentDidMount: function() {
-    var singleProfileContainer = $('.singleProfileContainer'),
+    var multiProfileContainer = $('.multiProfileContainer'),
         tl = new TimelineLite();
 
-    TweenLite.set(singleProfileContainer, {autoAlpha:0});
-    tl.to(singleProfileContainer, 0.5, {autoAlpha:1});
+    TweenLite.set(multiProfileContainer, {autoAlpha:0});
+    tl.to(multiProfileContainer, 0.5, {autoAlpha:1});
 
     this.animateIncomingNodeIn();
   },
@@ -25,21 +15,18 @@ var SingleProfileList = React.createClass({
     if (this.props.data['state'] === undefined)
       this.props.data['state'] = {};
 
-    this.props.data.state['SingleProfile'] = "incoming";
+    this.props.data.state['MultiProfile'] = "incoming";
 
     this.state.people.push(this.props.data)
-  },
-  componentWillLeave: function() {
-    this.animateOut();
   },
   render: function() {
     var peopleNodes = this.state.people.map(function (person) {
       return (
-        <SingleProfile key={person.uid} state={person.state} data={person} />
+        <MultiProfile key={person.uid} state={person.state} data={person} />
       );
     });
     return (
-      <div className='singleProfileContainer col-md-12'>
+      <div className='multiProfileContainer col-md-12'>
         { peopleNodes }
       </div>
     );
@@ -63,19 +50,16 @@ var SingleProfileList = React.createClass({
         outgoing  = $('.outgoing:first');
 
     if (incoming.length > 0)
-      App.findDataById(incoming.attr('data-id')).state['SingleProfile'] = "current";
+      App.findDataById(incoming.attr('data-id')).state['MultiProfile'] = "current";
       incoming.addClass('current').removeClass('incoming');
     
     if (current.length > 0)
-      App.findDataById(current.attr('data-id')).state['SingleProfile'] = "outgoing";
+      App.findDataById(current.attr('data-id')).state['MultiProfile'] = "outgoing";
       incoming.addClass('outgoing').removeClass('current');
 
     if (outgoing.length > 0)
-      App.findDataById(outgoing.attr('data-id')).state['SingleProfile'] = "incoming";
+      App.findDataById(outgoing.attr('data-id')).state['MultiProfile'] = "incoming";
       incoming.addClass('incoming').removeClass('current');
 
-  },
-  killTweens: function() {
-    TweenLite.killTweensOf(this);
   }
 });

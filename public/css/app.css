@@ -6610,6 +6610,7 @@ h6 {
   color: #f0f0f0;
 }
 .singleProfileContainer .singleProfile {
+  position: absolute;
   height: auto;
 }
 .singleProfileContainer .singleProfile img {
