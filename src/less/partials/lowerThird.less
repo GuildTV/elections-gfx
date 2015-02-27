@@ -1,26 +1,32 @@
 .lowerThird {
   height: 10vh;
-  width: 60vw;
+  width: 0.5vh;
 
   position: absolute;
-  bottom: 20vh;
+  bottom: -10%;
   left: 2.5vw;
 
-  padding: 1.5vh 1vw;
+  padding: 0;
+ // padding: 1.5vh 1vw;
 
   background-color: @lower-third-bg;
   border-left: 0.5vw solid @lower-third-border;
   
   h1 {
+    opacity: 0;
+    width: 0;
     padding: 1vh 0;
     color: @lower-third-primary-font-colour;
   }
 
   h3 {
+    font-size: 4em;
+    opacity: 0;
     color: @lower-third-secondary-font-colour;
   }
 
   strong {
+    opacity: 0;
     color: @lower-third-primary-font-colour;
     font-weight: normal;
   }

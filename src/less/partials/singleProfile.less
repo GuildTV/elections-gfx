@@ -1,20 +1,29 @@
-.singleProfileContainer {
-  height: 100vh;
-  
-  background-color: @primary-colour;
-  color: @primary-text-colour;
-
-  .singleProfile {
+.singleProfile {
+  .singleProfileList{
     position: absolute;
-    height: auto;
+    height: 100vh;
+    opacity: 0;
+    
+    background-color: @primary-colour;
+    color: @primary-text-colour;
 
-    img {
-      min-height: 200px;
+    .singleProfileNode {
+      position: absolute;
+      height: auto;
+      opacity: 0;
+      text-align: center;
+
+      h1, h2, img {
+        margin-bottom: 0.5em;
+      }
+      img {
+        min-height: 200px;
+      }
     }
-  }
 
-  .incoming {
-    position: absolute;
-    bottom: -125%;
+    .incoming {
+      position: absolute;
+      bottom: -125%;
+    }
   }
 }

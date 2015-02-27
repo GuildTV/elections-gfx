@@ -27,7 +27,8 @@
         ],
       "react" : [
         "bower_components/react/react.js",
-        "bower_components/react/JSXTransformer.js"
+        "bower_components/react/JSXTransformer.js",
+        "bower_components/react/react-with-addons.js"
         ]
     }
   },

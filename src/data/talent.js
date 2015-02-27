@@ -1,8 +1,8 @@
 Data['talent'] = [
   {
-    "uid"             : "talent-john",
-    "name"            : "John Doe",
-    "position"        : "Anchor",
+    "uid"             : "talent-host",
+    "name"            : "Wadim Wesolek",
+    "position"        : "Chair",
   },
   {
     "uid"             : "talent-jane",

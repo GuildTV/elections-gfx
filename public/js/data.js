@@ -1,36 +1,36 @@
 var Data = [];
 Data['president'] = [
   {
-    "uid"             : "pres-john",
+    "uid"             : "pres-jack",
     "pid"             : "pres",
-    "name"            : "John Doe",
+    "name"            : "Jack 'is Back' Mably",
     "position"        : "President",
     "img"             : "http://lorempixel.com/200/200/people",
     "manifestoPoints" : {
-      "one"           : "First Manifesto Point",
+      "one"           : "Bigger, Better & Varied On Campus Events",
       "two"           : "Second Manifesto Point",
       "three"         : "Third Manifesto Point",
     }
   },
   {
-    "uid"             : "pres-jane",
+    "uid"             : "pres-ed",
     "pid"             : "pres",
-    "name"            : "Jane Doe",
+    "name"            : "Edward Sainsbury",
     "position"        : "President",
     "img"             : "http://lorempixel.com/200/200/people",
     "manifestoPoints" : {
-      "one"           : "First Manifesto Point",
-      "two"           : "Second Manifesto Point",
-      "three"         : "Third Manifesto Point",
+      "one"           : "Extend 24 Hour Library",
+      "two"           : "Secure Sponsorship For More Campus Events",
+      "three"         : "Stronger Ties with Alumni",
     }
   }
 ];
 
 Data['talent'] = [
   {
-    "uid"             : "talent-john",
-    "name"            : "John Doe",
-    "position"        : "Anchor",
+    "uid"             : "talent-host",
+    "name"            : "Wadim Wesolek",
+    "position"        : "Chair",
   },
   {
     "uid"             : "talent-jane",

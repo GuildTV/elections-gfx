@@ -1,6 +1,6 @@
 App.widgets['SingleProfile'] = {
   render: function(data) {
-    React.render(<SingleProfileList data={data} />, $(".sideBar")[0]);
+    React.render(<SingleProfile data={data} />, $(".sideBar")[0]);
   },
 
   update: function(data){
@@ -11,7 +11,8 @@ App.widgets['SingleProfile'] = {
     if(callback !== undefined)
       callback();
 
-    SingleProfileList.animateOut()
+    // SingleProfileList.animateOut();
     React.unmountComponentAtNode($(".sideBar")[0]);
+
   }
 };

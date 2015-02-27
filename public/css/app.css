@@ -6585,38 +6585,52 @@ h6 {
 }
 .lowerThird {
   height: 10vh;
-  width: 60vw;
+  width: 0.5vh;
   position: absolute;
-  bottom: 20vh;
+  bottom: -10%;
   left: 2.5vw;
-  padding: 1.5vh 1vw;
+  padding: 0;
   background-color: rgba(240, 240, 240, 0.25);
   border-left: 0.5vw solid #333333;
 }
 .lowerThird h1 {
+  opacity: 0;
+  width: 0;
   padding: 1vh 0;
   color: #333333;
 }
 .lowerThird h3 {
+  font-size: 4em;
+  opacity: 0;
   color: #4545a5;
 }
 .lowerThird strong {
+  opacity: 0;
   color: #333333;
   font-weight: normal;
 }
-.singleProfileContainer {
+.singleProfile .singleProfileList {
+  position: absolute;
   height: 100vh;
+  opacity: 0;
   background-color: rgba(51, 51, 51, 0.25);
   color: #f0f0f0;
 }
-.singleProfileContainer .singleProfile {
+.singleProfile .singleProfileList .singleProfileNode {
   position: absolute;
   height: auto;
+  opacity: 0;
+  text-align: center;
 }
-.singleProfileContainer .singleProfile img {
+.singleProfile .singleProfileList .singleProfileNode h1,
+.singleProfile .singleProfileList .singleProfileNode h2,
+.singleProfile .singleProfileList .singleProfileNode img {
+  margin-bottom: 0.5em;
+}
+.singleProfile .singleProfileList .singleProfileNode img {
   min-height: 200px;
 }
-.singleProfileContainer .incoming {
+.singleProfile .singleProfileList .incoming {
   position: absolute;
   bottom: -125%;
 }
