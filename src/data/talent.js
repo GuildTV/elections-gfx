@@ -5,13 +5,18 @@ Data['talent'] = [
     "position"        : "Presenters",
   },
   {
-    "uid"             : "talent-joearmer",
-    "name"            : "Joe Armer",
-    "position"        : "Vice-President Education",
+    "uid"             : "talent-host",
+    "name"            : "Claire Lynch",
+    "position"        : "Host",
   },
   {
-    "uid"             : "talent-jack",
-    "name"            : "Jack Lock-Stevens",
-    "position"        : "Vice-President Education",
-  }
+    "uid"             : "talent-roving",
+    "name"            : "Chloe Rayner",
+    "position"        : "Roving Reporter",
+  },
+  {
+    "uid"             : "talent-anal",
+    "name"            : "Joe McDowell & XX",
+    "position"        : "Analysts",
+  },
 ];

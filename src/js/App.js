@@ -1,7 +1,7 @@
 var App = {
   widgets: [],
   loadedWidgets: [],
-  eventName: "Elections Update", // Move this later
+  eventName: "",
 
   setup: function() {
   },
@@ -9,7 +9,7 @@ var App = {
   loadWidget: function(widget, id) {
     var data = App.findDataById(id);
     if(data === undefined)
-      data = undefined;
+      data = id;
 
     App.widgets[widget].render(data);
 
@@ -19,7 +19,7 @@ var App = {
   updateWidget: function(widget, id){
     var data = App.findDataById(id);
     if(data === undefined)  
-      return;
+      data = id;
 
     App.widgets[widget].update(data);
   },
