@@ -1,7 +1,7 @@
 var App = {
   widgets: [],
   loadedWidgets: [],
-  eventName: "",
+  eventName: "Guild Elections",
 
   setup: function() {
   },

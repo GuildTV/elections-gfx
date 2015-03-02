@@ -6556,8 +6556,12 @@ body {
   /* Set aliasing of fonts - possible options: none, antialiased,  subpixel-antialiased */
 }
 @font-face {
+  font-family: "Roboto-Bold";
+  src: url(../fonts/RobotoCondensed-Bold.ttf);
+}
+@font-face {
   font-family: "Roboto";
-  src: url(../fonts/Roboto-Regular.ttf);
+  src: url(../fonts/RobotoCondensed-Regular.ttf);
 }
 body {
   font-family: "Roboto";
@@ -6587,7 +6591,7 @@ h6 {
   height: 10vh;
   width: 0.5vh;
   position: absolute;
-  bottom: -5%;
+  bottom: -10%;
   left: 2.5vw;
   padding: 0;
   background-color: rgba(240, 240, 240, 0.9);
@@ -6603,6 +6607,7 @@ h6 {
   font-size: 4em;
   opacity: 0;
   color: #4545a5;
+  font-family: "Roboto-Bold";
 }
 .lowerThird strong {
   opacity: 0;
