@@ -7,26 +7,26 @@ Data['sabbs'] = [
   {
     "uid"             : "sabbs-vpad",
     "name"            : "Wadim Wesolek",
-    "position"        : "Vice-President (Activities & Development)",
+    "position"        : "VP (Activities & Development)",
   },
   {
     "uid"             : "sabbs-vpdrs",
     "name"            : "Bethan Dovey",
-    "position"        : "Vice-President (Democracy, Resources & Sustainability)",
+    "position"        : "VP (Democracy, Resources & Sustainability)",
   },
   {
     "uid"             : "sabbs-vpe",
     "name"            : "Joe Armer",
-    "position"        : "Vice-President (Education)",
+    "position"        : "VP (Education)",
   },
   {
     "uid"             : "sabbs-vps",
     "name"            : "Molly Browne",
-    "position"        : "Vice-President (Sport)",
+    "position"        : "VP (Sport)",
   },
   {
     "uid"             : "sabbs-vpw",
     "name"            : "Frankie Greenwell",
-    "position"        : "Vice-President (Welfare)",
+    "position"        : "VP (Welfare)",
   },
 ];
