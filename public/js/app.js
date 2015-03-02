@@ -54,13 +54,14 @@ var App = {
 
       //foreach person
       for(var o in Data[i]){
-        if(Data[i][o] !== undefined && Data[i][o].uid == id)
+        if(Data[i][o] !== undefined && Data[i][o].uid == id){
           var dat = Data[i][o];
           if(win)
             dat.elect = true;
           else 
             dat.elect = false;
           return dat;
+        }
       }
     }
   },
