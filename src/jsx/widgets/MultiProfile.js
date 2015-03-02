@@ -1,5 +1,8 @@
 App.widgets['MultiProfile'] = {
   render: function(data) {
+    if(data.length <= 0)
+      return;
+    
     React.render(<MultiProfileList data={data} />, $(".sideBar")[0]);
   },
 

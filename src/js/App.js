@@ -40,9 +40,15 @@ var App = {
 
   findDataById: function(id){
     for(var i in Data){
+      //check we have data
       if(Data[i] === undefined)
         continue;
 
+      //find a role
+      if(i == id)
+        return Data[i];
+
+      //foreach person
       for(var o in Data[i]){
         if(Data[i][o] !== undefined && Data[i][o].uid == id)
           return Data[i][o];
