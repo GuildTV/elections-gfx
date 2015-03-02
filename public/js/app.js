@@ -125,10 +125,10 @@ var MultiProfile = React.createClass({displayName: "MultiProfile",
     var imageDivClass = 'image ' + this.props.data.pid + ' text-center';
 
     return (
-      React.createElement("div", {className:  divClass, "data-id":  this.props.data.uid}, 
+      React.createElement("div", {className: divClass, "data-id":  this.props.data.uid}, 
         React.createElement("h1", {className: "text-center"},  this.props.data.name), 
         React.createElement("h3", {className: "text-center"},  this.props.data.position), 
-        React.createElement("div", {className:  imageDivClass }, 
+        React.createElement("div", {className: imageDivClass }, 
           React.createElement("img", {src:  this.props.data.img, alt:  this.props.data.name})
         )
       ) 
@@ -164,7 +164,7 @@ var MultiProfileList = React.createClass({displayName: "MultiProfileList",
     });
     return (
       React.createElement("div", {className: "multiProfileContainer col-md-12"}, 
-         peopleNodes 
+        peopleNodes 
       )
     );
   },
