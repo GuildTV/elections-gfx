@@ -55,13 +55,53 @@ Data['talent'] = [
   },
 ];
 
+Data['ado'] = [
+  {
+    "uid"             : "ado-ben",
+    "pid"             : "ado",
+    "name"            : "Ben Chapman",
+    "position"        : "Activities & Development Officer Candidate",
+    "manifestoPoints" : {
+      "one"           : "Introduce 'Society Of The Week'",
+      "two"           : "Sponsorship and Networking",
+      "three"         : "Vale Society Fair",
+    }
+  },
+  {
+    "uid"             : "ado-george",
+    "pid"             : "ado",
+    "name"            : "George Hughes",
+    "position"        : "Activities & Development Officer Candidate",
+    "manifestoPoints" : {
+      "one"           : "Breaking Barriers for Committee Members",
+      "two"           : "Student Recognition",
+      "three"         : "Accessibility and Equality",
+    }
+  },
+  {
+    "uid"             : "ado-natalia",
+    "pid"             : "ado",
+    "name"            : "Natalia Organova",
+  },
+  {
+    "uid"             : "ado-alex",
+    "pid"             : "ado",
+    "name"            : "Alexander Moore",
+    "position"        : "Activities & Development Officer Candidate",
+    "manifestoPoints" : {
+      "one"           : "Better Publicity for Student Groups",
+      "two"           : "Quicker and Easier Admin",
+      "three"         : "More Ways to Improve Your SV Through Student Groups",
+    }
+  },
+];
+
 Data['president'] = [
   {
     "uid"             : "pres-jack",
     "pid"             : "pres",
     "name"            : "Jack 'is Back' Mably",
-    "position"        : "President",
-    "img"             : "public/img/roles/pres/jack.png",
+    "position"        : "Presidential Candidate",
     "manifestoPoints" : {
       "one"           : "Bigger, Better & Varied On Campus Events",
       "two"           : "Helping You Grab a Grad Job",
@@ -72,8 +112,7 @@ Data['president'] = [
     "uid"             : "pres-ed",
     "pid"             : "pres",
     "name"            : "Edward Sainsbury",
-    "position"        : "President",
-    "img"             : "public/img/roles/pres/ed.png",
+    "position"        : "Presidential Candidate",
     "manifestoPoints" : {
       "one"           : "Extend 24 Hour Library",
       "two"           : "Secure Sponsorship For More Campus Events",
@@ -83,8 +122,7 @@ Data['president'] = [
     "uid"             : "pres-suleiman",
     "pid"             : "pres",
     "name"            : "Suleiman Saidu Suleiman",
-    "position"        : "President",
-    "img"             : "public/img/roles/pres/suleiman.png",
+    "position"        : "Presidential Candidate",
     "manifestoPoints" : {
       "one"           : "To provide a more conducive learning environment for all students",
       "two"           : "To provide more learning support especially for the international students.",
@@ -92,31 +130,4 @@ Data['president'] = [
     }
   },
 
-];
-
-Data['vpad'] = [
-  {
-    "uid"             : "pres-john",
-    "pid"             : "vpad",
-    "name"            : "John Doe",
-    "position"        : "Vice President (Activities and Development)",
-    "img"             : "http://lorempixel.com/200/200/people",
-    "manifestoPoints" : {
-      "one"           : "First Manifesto Point",
-      "two"           : "Second Manifesto Point",
-      "three"         : "Third Manifesto Point",
-    }
-  },
-  {
-    "uid"             : "pres-jane",
-    "pid"             : "vpad",
-    "name"            : "Jane Doe",
-    "position"        : "Vice President (Activities and Development)",
-    "img"             : "http://lorempixel.com/200/200/people",
-    "manifestoPoints" : {
-      "one"           : "First Manifesto Point",
-      "two"           : "Second Manifesto Point",
-      "three"         : "Third Manifesto Point",
-    }
-  }
 ];
