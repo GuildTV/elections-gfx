@@ -6,6 +6,10 @@ var App = {
   setup: function() {
   },
 
+  setEventName: function(eventName) {
+    App.eventName = eventName
+  },
+
   loadWidget: function(widget, id) {
     var data = App.findDataById(id);
     if(data === undefined)
