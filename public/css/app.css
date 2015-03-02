@@ -6556,15 +6556,23 @@ body {
   /* Set aliasing of fonts - possible options: none, antialiased,  subpixel-antialiased */
 }
 @font-face {
-  font-family: "Roboto-Bold";
+  font-family: "RobotoCondensed-Bold";
   src: url(../fonts/RobotoCondensed-Bold.ttf);
 }
 @font-face {
-  font-family: "Roboto";
+  font-family: "RobotoCondensed";
   src: url(../fonts/RobotoCondensed-Regular.ttf);
 }
+@font-face {
+  font-family: "Roboto-Bold";
+  src: url(../fonts/Roboto-Bold.ttf);
+}
+@font-face {
+  font-family: "Roboto-Black";
+  src: url(../fonts/Roboto-Black.ttf);
+}
 body {
-  font-family: "Roboto";
+  font-family: "RobotoCondensed";
 }
 h1,
 h2,
@@ -6588,31 +6596,40 @@ h6 {
   background-color: rgba(51, 51, 51, 0.25);
 }
 .lowerThird {
-  height: 10vh;
-  width: 0.5vh;
+  height: 13.3vh;
+  width: 0.6vh;
   position: absolute;
-  bottom: -10%;
-  left: 2.5vw;
+  bottom: -20%;
+  left: 5vw;
   padding: 0;
-  background-color: rgba(240, 240, 240, 0.9);
-  border-left: 0.5vw solid #333333;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-left: 0.6vw solid #4a4a4a;
 }
 .lowerThird h1 {
+  width: 93vw;
+  position: absolute;
+  left: 11px;
+  top: 58px;
+  color: #4a4a4a;
   opacity: 0;
-  width: 0;
-  padding: 1vh 0;
-  color: #333333;
+  font-family: "Roboto-Black";
+  font-size: 4.25em;
+  font-weight: bold;
 }
 .lowerThird h3 {
-  font-size: 4em;
-  opacity: 0;
+  width: 93vw;
+  position: absolute;
+  left: -80vw;
+  top: 36.82px;
   color: #355e88;
-  font-family: "Roboto-Bold";
+  -webkit-filter: blur(5px);
+  font-size: 70px;
+  font-family: "Roboto-Black";
+  font-weight: bold;
 }
 .lowerThird strong {
-  opacity: 0;
-  color: #333333;
-  font-weight: normal;
+  color: #4a4a4a;
+  font-weight: bold;
 }
 .singleProfile .singleProfileList {
   position: absolute;
@@ -6633,7 +6650,7 @@ h6 {
   margin-bottom: 0.5em;
 }
 .singleProfile .singleProfileList .singleProfileNode img {
-  background-color: #333333;
+  background-color: #4a4a4a;
   min-height: 200px;
 }
 .singleProfile .singleProfileList .incoming {

@@ -1,34 +1,48 @@
 .lowerThird {
-  height: 10vh;
-  width: 0.5vh;
+  height: 13.3vh;
+  width: 0.6vh;
 
   position: absolute;
-  bottom: -10%;
-  left: 2.5vw;
+  bottom: -20%;
+  left: 5vw;
 
   padding: 0;
- // padding: 1.5vh 1vw;
 
   background-color: @lower-third-bg;
-  border-left: 0.5vw solid @lower-third-border;
+  border-left: 0.6vw solid @lower-third-border;
   
   h1 {
-    opacity: 0;
-    width: 0;
-    padding: 1vh 0;
+    width: 93vw;
+
+    position: absolute;
+    left: 11px;
+    top: 58px;
+
     color: @lower-third-primary-font-colour;
+    opacity: 0;
+
+    font-family: "Roboto-Black";
+    font-size: 4.25em;
+    font-weight: bold;
   }
 
   h3 {
-    font-size: 4em;
-    opacity: 0;
+    width: 93vw;
+
+    position: absolute;
+    left: -80vw;
+    top: 36.82px;
+
     color: @lower-third-secondary-font-colour;
-    font-family: "Roboto-Bold";
+    -webkit-filter: blur(5px);
+
+    font-size: 70px;
+    font-family: "Roboto-Black";
+    font-weight: bold;
   }
 
   strong {
-    opacity: 0;
     color: @lower-third-primary-font-colour;
-    font-weight: normal;
+    font-weight: bold;
   }
 }

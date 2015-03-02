@@ -3,10 +3,11 @@ var LowerThird = React.createClass({
     animateOut: function() {
       var tl = new TimelineLite();
 
-    tl.to($('.event'), 0, {css: {width: "0%", opacity: "0"}})
-      .to($('.strap'), 0, {css: {width: "0%", opacity: "0"}})
-      .to($('.lowerThird'), 0.25, {css: {width: "0.5vh", padding: "0"}})
-      .to($('.lowerThird'), 0.25, {css: {bottom: "-10%"}, onComplete: this.kill}, "=0.5");
+    tl.to($('.event'), 0.3, {autoAlpha: 0})
+      .to($('.strap'), 0.3, {autoAlpha: 0}, '-=0.3')
+      .to($('.lowerThird'), 0.3, {css: {width: "0.5.vw"}}, '-=0.3')
+      
+    tl.to($('.lowerThird'), 0.3, {css: {bottom: "-20%"}, onComplete: this.kill});
     },
     kill: function() {
       React.unmountComponentAtNode($(".lowerThirdContainer")[0])
@@ -18,21 +19,14 @@ var LowerThird = React.createClass({
 
     var tl = new TimelineLite();
 
-    tl.to($('.lowerThird'), 0.25, {css: {bottom: "10vh"}}, 0.5);
-    tl.to($('.lowerThird'), 0.1, {css: {padding: "1.5vh 1vw"}});
+    tl.to($('.lowerThird'), 0.5, {css: {bottom: "4.76vh"}}, 0.5);
 
-    tl.to($('.lowerThird'), 0.75, {css: {width: "80vw"}})
-      .to($('.event'), 0.25, {css: {width: "100%", opacity: "1"}}, '-=0.5')
-      .to($('strong'), 0.25, {css: {width: "100%", opacity: "1"}}, '-=1.25')
-      .to($('.event'), 0.5, {css: {fontSize: "28px"}})
-      .to($('.strap'), 0, {css: {width: "100%"}})
-      .to($('.strap'), 0.5, {css: {opacity: "1"}});
-  },
-  componentWillUnmount: function() {
-    var tl = new TimelineLite();
-
-    tl.to($('.lowerThird'), 0.25, {autoAlpha: 0}, 0.5);
-    console.log("componentWillUnmount")
+    tl.to($('.lowerThird'), 0.25, {css: {width: "95vw"}})
+      .to($('.event'), 0.25, {css: {opacity: "1", left: "11px"}},'-=0.25')
+      .to($('.event'), 0, {css: {webkitFilter: "2px"}},'-=0.125')
+      .to($('.event'), 0, {css: {webkitFilter: "none"}},'-=0.075')
+      .to($('.event'), 0.4, {css: {fontSize: "34px", top: "10.5px"}}, '+=1.2')
+      .to($('.strap'), 0.2, {autoAlpha: 1}, '-=0.2');
   },
   render: function() {
     return (
@@ -43,3 +37,4 @@ var LowerThird = React.createClass({
     );
   }
 });
+
