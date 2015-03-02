@@ -39,6 +39,10 @@ var App = {
   },
 
   findDataById: function(id){
+    var win = (id.substr(0,4) == "win-");
+    if(win)
+      id = id.substr(4);
+
     for(var i in Data){
       //check we have data
       if(Data[i] === undefined)
@@ -51,7 +55,12 @@ var App = {
       //foreach person
       for(var o in Data[i]){
         if(Data[i][o] !== undefined && Data[i][o].uid == id)
-          return Data[i][o];
+          var dat = Data[i][o];
+          if(win)
+            dat.elect = true;
+          else 
+            dat.elect = false;
+          return dat;
       }
     }
   },

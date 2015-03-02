@@ -39,6 +39,10 @@ var App = {
   },
 
   findDataById: function(id){
+    var win = (id.substr(0,4) == "win-");
+    if(win)
+      id = id.substr(4);
+
     for(var i in Data){
       //check we have data
       if(Data[i] === undefined)
@@ -51,7 +55,12 @@ var App = {
       //foreach person
       for(var o in Data[i]){
         if(Data[i][o] !== undefined && Data[i][o].uid == id)
-          return Data[i][o];
+          var dat = Data[i][o];
+          if(win)
+            dat.elect = true;
+          else 
+            dat.elect = false;
+          return dat;
       }
     }
   },
@@ -292,7 +301,7 @@ var LowerThird = React.createClass({displayName: "LowerThird",
     return (
       React.createElement("div", {className: "lowerThird"}, 
         React.createElement("h3", {className: "event"},  this.props.data.eventName.toUpperCase(), " ", React.createElement("strong", null, "2015")), 
-        React.createElement("h1", {className: "strap"},  this.props.data.name.toUpperCase(), " - ",  this.props.data.position.toUpperCase() )
+        React.createElement("h1", {className: "strap"},  this.props.data.name.toUpperCase(), " - ",  this.props.data.position.toUpperCase() + (this.props.data.elect?" ELECT":"") )
       )
     );
   }
