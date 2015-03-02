@@ -13,7 +13,7 @@ Data['sabbs'] = [
   {
     "uid"             : "sabbs-vpdrs",
     "name"            : "Bethan Dovey",
-    "position"        : "VP (Democracy, Resources & Sustainability)",
+    "position"        : "VP (Democracy & Resources)",
   },
   {
     "uid"             : "sabbs-vpe",
