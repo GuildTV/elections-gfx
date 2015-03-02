@@ -490,7 +490,7 @@ var SingleProfileNode = React.createClass({displayName: "SingleProfileNode",
         React.createElement(SingleProfileName, {name: this.props.data.name}), 
         React.createElement(SingleProfilePosition, {position: this.props.data.position}), 
         
-        React.createElement(SingleProfilePicture, {cname: this.props.manifesto, img: this.props.data.img, alt: this.props.data.name}), 
+        React.createElement(SingleProfilePicture, {cname: this.props.manifesto, name: this.props.data.name, pid: this.props.data.pid, uid: this.props.data.uid}), 
 
         React.createElement(SingleProfileManifesto, {manifesto: this.props.data.manifestoPoints})
       ) 
@@ -499,11 +499,13 @@ var SingleProfileNode = React.createClass({displayName: "SingleProfileNode",
 });
 var SingleProfilePicture = React.createClass({displayName: "SingleProfilePicture",
   render: function() {
+    var imageUrl = 'public/img/roles/' + this.props.pid + '/' + this.props.uid + '.png';
+    
     return (
       React.createElement("div", {className:  this.props.cname}, 
-        React.createElement("img", {src:  this.props.img, alt:  this.props.alt})
+        React.createElement("img", {src: imageUrl, alt:  this.props.alt})
       )
-    )
+    );
   }
 });
 var SingleProfilePosition = React.createClass({displayName: "SingleProfilePosition",

@@ -28,7 +28,7 @@ var SingleProfileNode = React.createClass({
         <SingleProfileName name={this.props.data.name} />
         <SingleProfilePosition position={this.props.data.position} />
         
-        <SingleProfilePicture cname={this.props.manifesto} img={this.props.data.img} alt={this.props.data.name} />
+        <SingleProfilePicture cname={this.props.manifesto} name={this.props.data.name} pid={this.props.data.pid} uid={this.props.data.uid} />
 
         <SingleProfileManifesto manifesto={this.props.data.manifestoPoints} />
       </div> 
