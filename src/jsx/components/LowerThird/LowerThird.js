@@ -37,8 +37,8 @@ var LowerThird = React.createClass({
   render: function() {
     return (
       <div className='lowerThird'>
-        <h3 className='event'>{ this.props.data.eventName } <strong>2015</strong></h3>
-        <h1 className='strap'>{ this.props.data.name } - { this.props.data.position }</h1>
+        <h3 className='event'>{ this.props.data.eventName.toUpperCase() } <strong>2015</strong></h3>
+        <h1 className='strap'>{ this.props.data.name.toUpperCase() } - { this.props.data.position.toUpperCase() }</h1>
       </div>
     );
   }
