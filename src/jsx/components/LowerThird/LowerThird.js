@@ -18,7 +18,7 @@ var LowerThird = React.createClass({
 
     var tl = new TimelineLite();
 
-    tl.to($('.lowerThird'), 0.25, {css: {bottom: "20vh"}}, 0.5);
+    tl.to($('.lowerThird'), 0.25, {css: {bottom: "10vh"}}, 0.5);
     tl.to($('.lowerThird'), 0.1, {css: {padding: "1.5vh 1vw"}});
 
     tl.to($('.lowerThird'), 0.75, {css: {width: "80vw"}})
