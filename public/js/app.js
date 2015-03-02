@@ -1,7 +1,7 @@
 var App = {
   widgets: [],
   loadedWidgets: [],
-  eventName: "Presidential Debate", // Move this later
+  eventName: "Elections Update", // Move this later
 
   setup: function() {
   },
@@ -18,7 +18,7 @@ var App = {
 
   updateWidget: function(widget, id){
     var data = App.findDataById(id);
-    if(data === undefined)
+    if(data === undefined)  
       return;
 
     App.widgets[widget].update(data);
@@ -82,29 +82,12 @@ function remove() {
 function update(str) {
   // document.getElementById("temp").innerHTML="update: " + str.length;
   window.templateData = (new DOMParser()).parseFromString(str,"text/xml");
-  init();
-  addNext();
+  // init();
+  // addNext();
 }
 // CALL 1-1 INVOKE STRING
 function invoke(str) {
-  data = JSON.parse(str);
-
-  widget = str.widget;
-  uid = str.uid;
-  state = str.state;
-
-  if (state == "load") {
-    App.loadWidget(widget, uid)
-  }
-
-  else if (state == "update") {
-    App.loadWidget(widget, uid)
-  }
-
-  else if (state = "stop") {
-    App.loadWidget(widget)
-  }
-  //eval(str);
+  eval(str);
 }
 // CALL 1-1 INVOKE "otherFunction('testing');"
 function otherFunction(str) {
@@ -202,7 +185,7 @@ App.widgets['LowerThird'] = {
   render: function(data) {
     data['eventName'] = App.eventName;
     React.render(React.createElement(LowerThird, {data: data}), $(".lowerThirdContainer")[0]);
-  },
+  }, 
 
   update: function(data){
 
@@ -285,7 +268,7 @@ var LowerThird = React.createClass({displayName: "LowerThird",
     tl.to($('.lowerThird'), 0.25, {css: {bottom: "20vh"}}, 0.5);
     tl.to($('.lowerThird'), 0.1, {css: {padding: "1.5vh 1vw"}});
 
-    tl.to($('.lowerThird'), 0.75, {css: {width: "60vw"}})
+    tl.to($('.lowerThird'), 0.75, {css: {width: "80vw"}})
       .to($('.event'), 0.25, {css: {width: "100%", opacity: "1"}}, '-=0.5')
       .to($('strong'), 0.25, {css: {width: "100%", opacity: "1"}}, '-=1.25')
       .to($('.event'), 0.5, {css: {fontSize: "28px"}})

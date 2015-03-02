@@ -40,14 +40,19 @@ Data['president'] = [
 
 Data['talent'] = [
   {
-    "uid"             : "talent-host",
-    "name"            : "Wadim Wesolek",
-    "position"        : "Chair",
+    "uid"             : "talent-update",
+    "name"            : "Suna Yokes & Tom Harvey",
+    "position"        : "Presenters",
   },
   {
-    "uid"             : "talent-jane",
-    "name"            : "Jane Doe",
-    "position"        : "Roving Presentor",
+    "uid"             : "talent-joearmer",
+    "name"            : "Joe Armer",
+    "position"        : "Vice-President Education",
+  },
+  {
+    "uid"             : "talent-jack",
+    "name"            : "Jack Lock-Stevens",
+    "position"        : "Vice-President Education",
   }
 ];
 

@@ -21,7 +21,7 @@ var LowerThird = React.createClass({displayName: "LowerThird",
     tl.to($('.lowerThird'), 0.25, {css: {bottom: "20vh"}}, 0.5);
     tl.to($('.lowerThird'), 0.1, {css: {padding: "1.5vh 1vw"}});
 
-    tl.to($('.lowerThird'), 0.75, {css: {width: "60vw"}})
+    tl.to($('.lowerThird'), 0.75, {css: {width: "80vw"}})
       .to($('.event'), 0.25, {css: {width: "100%", opacity: "1"}}, '-=0.5')
       .to($('strong'), 0.25, {css: {width: "100%", opacity: "1"}}, '-=1.25')
       .to($('.event'), 0.5, {css: {fontSize: "28px"}})

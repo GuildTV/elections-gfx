@@ -1,7 +1,7 @@
 var App = {
   widgets: [],
   loadedWidgets: [],
-  eventName: "Presidential Debate", // Move this later
+  eventName: "Elections Update", // Move this later
 
   setup: function() {
   },
@@ -18,7 +18,7 @@ var App = {
 
   updateWidget: function(widget, id){
     var data = App.findDataById(id);
-    if(data === undefined)
+    if(data === undefined)  
       return;
 
     App.widgets[widget].update(data);

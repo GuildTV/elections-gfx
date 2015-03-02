@@ -33,29 +33,12 @@ function remove() {
 function update(str) {
   // document.getElementById("temp").innerHTML="update: " + str.length;
   window.templateData = (new DOMParser()).parseFromString(str,"text/xml");
-  init();
-  addNext();
+  // init();
+  // addNext();
 }
 // CALL 1-1 INVOKE STRING
 function invoke(str) {
-  data = JSON.parse(str);
-
-  widget = str.widget;
-  uid = str.uid;
-  state = str.state;
-
-  if (state == "load") {
-    App.loadWidget(widget, uid)
-  }
-
-  else if (state == "update") {
-    App.loadWidget(widget, uid)
-  }
-
-  else if (state = "stop") {
-    App.loadWidget(widget)
-  }
-  //eval(str);
+  eval(str);
 }
 // CALL 1-1 INVOKE "otherFunction('testing');"
 function otherFunction(str) {
