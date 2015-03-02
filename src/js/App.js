@@ -7,7 +7,7 @@ var App = {
   },
 
   setEventName: function(eventName) {
-    App.eventName = eventName
+    App.eventName = eventName;
   },
 
   loadWidget: function(widget, id) {
