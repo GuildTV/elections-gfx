@@ -6628,6 +6628,7 @@ h6 {
   margin-bottom: 0.5em;
 }
 .singleProfile .singleProfileList .singleProfileNode img {
+  background-color: #333333;
   min-height: 200px;
 }
 .singleProfile .singleProfileList .incoming {

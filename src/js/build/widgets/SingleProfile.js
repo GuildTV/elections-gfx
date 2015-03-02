@@ -1,6 +1,6 @@
 App.widgets['SingleProfile'] = {
   render: function(data) {
-    React.render(<SingleProfile data={data} />, $(".sideBar")[0]);
+    React.render(React.createElement(SingleProfile, {data: data}), $(".sideBar")[0]);
   },
 
   update: function(data){
@@ -13,6 +13,5 @@ App.widgets['SingleProfile'] = {
 
     // SingleProfileList.animateOut();
     React.unmountComponentAtNode($(".sideBar")[0]);
-
   }
 };

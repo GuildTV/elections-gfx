@@ -6,6 +6,11 @@
 function play(str) {
   // document.getElementById("temp").innerHTML="play2";
   window.templateData = (new DOMParser()).parseFromString(str,"text/xml");
+
+  // widget = $(window.templateData).find('#widget #text').attr('value');
+  // uid = $(window.templateData).find('#uid #text').attr('value');
+
+  // App.loadWidget(widget, uid)
   // init();
 }
 // CALL 1-1 STOP
@@ -33,7 +38,24 @@ function update(str) {
 }
 // CALL 1-1 INVOKE STRING
 function invoke(str) {
-  eval(str);
+  data = JSON.parse(str);
+
+  widget = str.widget;
+  uid = str.uid;
+  state = str.state;
+
+  if (state == "load") {
+    App.loadWidget(widget, uid)
+  }
+
+  else if (state == "update") {
+    App.loadWidget(widget, uid)
+  }
+
+  else if (state = "stop") {
+    App.loadWidget(widget)
+  }
+  //eval(str);
 }
 // CALL 1-1 INVOKE "otherFunction('testing');"
 function otherFunction(str) {

@@ -1,3 +1,5 @@
+var ReactTransitionGroup = React.addons.TransitionGroup;
+
 var SingleProfileList = React.createClass({
   getInitialState: function() {
     return {
@@ -24,6 +26,11 @@ var SingleProfileList = React.createClass({
     this.setState({ 
       currentNode: this.props.data.uid
     });
+  },
+  componentWillLeave: function(done) {
+    this.el = this.getDOMNode();
+    this.$el = $(this.el);
+    console.log("SingleProfileList");
   },
   componentWillUnmount: function() {
     TweenLite.killTweensOf(this);

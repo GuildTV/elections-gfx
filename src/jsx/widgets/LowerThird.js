@@ -9,9 +9,9 @@ App.widgets['LowerThird'] = {
   },
 
   stop: function(callback) {
+    LowerThird.animateOut();
+
     if(callback !== undefined)
       callback();
-
-    React.unmountComponentAtNode($(".lowerThirdContainer")[0]);
-  }
+  },
 };

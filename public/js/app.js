@@ -1,4 +1,3 @@
-/** @jsx React.DOM */
 var App = {
   widgets: [],
   loadedWidgets: [],
@@ -56,6 +55,11 @@ var App = {
 function play(str) {
   // document.getElementById("temp").innerHTML="play2";
   window.templateData = (new DOMParser()).parseFromString(str,"text/xml");
+
+  // widget = $(window.templateData).find('#widget #text').attr('value');
+  // uid = $(window.templateData).find('#uid #text').attr('value');
+
+  // App.loadWidget(widget, uid)
   // init();
 }
 // CALL 1-1 STOP
@@ -83,7 +87,24 @@ function update(str) {
 }
 // CALL 1-1 INVOKE STRING
 function invoke(str) {
-  eval(str);
+  data = JSON.parse(str);
+
+  widget = str.widget;
+  uid = str.uid;
+  state = str.state;
+
+  if (state == "load") {
+    App.loadWidget(widget, uid)
+  }
+
+  else if (state == "update") {
+    App.loadWidget(widget, uid)
+  }
+
+  else if (state = "stop") {
+    App.loadWidget(widget)
+  }
+  //eval(str);
 }
 // CALL 1-1 INVOKE "otherFunction('testing');"
 function otherFunction(str) {
@@ -95,23 +116,23 @@ function fake(){
   update("<templateData><componentData id=\"f0\"><data id=\"text\" value=\"Rob Sumner\" /></componentData><componentData id=\"f1\"><data id=\"text\" value=\"Is better than Julian\" /></componentData><componentData id=\"f2\"><data id=\"text\" value=\"#4455a5\" /></componentData><componentData id=\"f3\"><data id=\"text\" value=\"rollIn\" /></componentData><componentData id=\"f4\"><data id=\"text\" value=\"rollOut\" /></componentData></templateData>");
 }
 
-var MultiProfile = React.createClass({
+var MultiProfile = React.createClass({displayName: "MultiProfile",
   render: function() {
     var divClass = 'multiProfile ' + this.props.state.MultiProfile + ' col-md-8 col-md-offset-2'
     var imageDivClass = 'image ' + this.props.data.pid + ' text-center';
 
     return (
-      <div className={ divClass } data-id={ this.props.data.uid }>
-        <h1 className='text-center'>{ this.props.data.name }</h1>
-        <h3 className='text-center'>{ this.props.data.position }</h3>
-        <div className={ imageDivClass }>
-          <img src={ this.props.data.img } alt={ this.props.data.name } />
-        </div>
-      </div> 
+      React.createElement("div", {className: divClass, "data-id":  this.props.data.uid}, 
+        React.createElement("h1", {className: "text-center"},  this.props.data.name), 
+        React.createElement("h3", {className: "text-center"},  this.props.data.position), 
+        React.createElement("div", {className: imageDivClass }, 
+          React.createElement("img", {src:  this.props.data.img, alt:  this.props.data.name})
+        )
+      ) 
     );
   }
 });
-var MultiProfileList = React.createClass({
+var MultiProfileList = React.createClass({displayName: "MultiProfileList",
   getInitialState: function() {
     return {people: []};
   },
@@ -135,13 +156,13 @@ var MultiProfileList = React.createClass({
   render: function() {
     var peopleNodes = this.state.people.map(function (person) {
       return (
-        <MultiProfile key={person.uid} state={person.state} data={person} />
+        React.createElement(MultiProfile, {key: person.uid, state: person.state, data: person})
       );
     });
     return (
-      <div className='multiProfileContainer col-md-12'>
-        { peopleNodes }
-      </div>
+      React.createElement("div", {className: "multiProfileContainer col-md-12"}, 
+        peopleNodes 
+      )
     );
   },
   animateIncomingNodeIn: function() {
@@ -180,7 +201,7 @@ var MultiProfileList = React.createClass({
 App.widgets['LowerThird'] = {
   render: function(data) {
     data['eventName'] = App.eventName;
-    React.render(<LowerThird data={data} />, $(".lowerThirdContainer")[0]);
+    React.render(React.createElement(LowerThird, {data: data}), $(".lowerThirdContainer")[0]);
   },
 
   update: function(data){
@@ -188,15 +209,15 @@ App.widgets['LowerThird'] = {
   },
 
   stop: function(callback) {
+    LowerThird.animateOut();
+
     if(callback !== undefined)
       callback();
-
-    React.unmountComponentAtNode($(".lowerThirdContainer")[0]);
-  }
+  },
 };
 App.widgets['MultiProfile'] = {
   render: function(data) {
-    React.render(<MultiProfileList data={data} />, $(".sideBar")[0]);
+    React.render(React.createElement(MultiProfileList, {data: data}), $(".sideBar")[0]);
   },
 
   update: function(data){
@@ -212,7 +233,7 @@ App.widgets['MultiProfile'] = {
 };
 App.widgets['SingleProfile'] = {
   render: function(data) {
-    React.render(<SingleProfile data={data} />, $(".sideBar")[0]);
+    React.render(React.createElement(SingleProfile, {data: data}), $(".sideBar")[0]);
   },
 
   update: function(data){
@@ -225,7 +246,6 @@ App.widgets['SingleProfile'] = {
 
     // SingleProfileList.animateOut();
     React.unmountComponentAtNode($(".sideBar")[0]);
-
   }
 };
 // App.widgets['topBar'] = {
@@ -242,7 +262,20 @@ App.widgets['SingleProfile'] = {
 //       callback();
 //   }
 // };
-var LowerThird = React.createClass({
+var LowerThird = React.createClass({displayName: "LowerThird",
+  statics: {
+    animateOut: function() {
+      var tl = new TimelineLite();
+
+    tl.to($('.event'), 0, {css: {width: "0%", opacity: "0"}})
+      .to($('.strap'), 0, {css: {width: "0%", opacity: "0"}})
+      .to($('.lowerThird'), 0.25, {css: {width: "0.5vh", padding: "0"}})
+      .to($('.lowerThird'), 0.25, {css: {bottom: "-10%"}, onComplete: this.kill}, "=0.5");
+    },
+    kill: function() {
+      React.unmountComponentAtNode($(".lowerThirdContainer")[0])
+    },
+  },
   componentDidMount: function() {
     this.el = this.getDOMNode();
     this.$el = $(this.el);
@@ -253,14 +286,13 @@ var LowerThird = React.createClass({
     tl.to($('.lowerThird'), 0.1, {css: {padding: "1.5vh 1vw"}});
 
     tl.to($('.lowerThird'), 0.75, {css: {width: "60vw"}})
-      .to($('.event'), 0.75, {css: {width: "100%", opacity: "1"}}, '-=0.5')
-      .to($('strong'), 0.75, {css: {width: "100%", opacity: "1"}}, '-=1.25')
-      .to($('.event'), 0.75, {css: {fontSize: "28px"}})
+      .to($('.event'), 0.25, {css: {width: "100%", opacity: "1"}}, '-=0.5')
+      .to($('strong'), 0.25, {css: {width: "100%", opacity: "1"}}, '-=1.25')
+      .to($('.event'), 0.5, {css: {fontSize: "28px"}})
       .to($('.strap'), 0, {css: {width: "100%"}})
-      .to($('.strap'), 0.75, {css: {opacity: "1"}});
+      .to($('.strap'), 0.5, {css: {opacity: "1"}});
   },
   componentWillUnmount: function() {
-
     var tl = new TimelineLite();
 
     tl.to($('.lowerThird'), 0.25, {autoAlpha: 0}, 0.5);
@@ -268,47 +300,49 @@ var LowerThird = React.createClass({
   },
   render: function() {
     return (
-      <div className='lowerThird'>
-        <h3 className='event'>{ this.props.data.eventName } <strong>2015</strong></h3>
-        <h1 className='strap'>{ this.props.data.name } - { this.props.data.position }</h1>
-      </div>
+      React.createElement("div", {className: "lowerThird"}, 
+        React.createElement("h3", {className: "event"},  this.props.data.eventName, " ", React.createElement("strong", null, "2015")), 
+        React.createElement("h1", {className: "strap"},  this.props.data.name, " - ",  this.props.data.position)
+      )
     );
   }
 });
-var LowerThirdEvent = React.createClass({
+var LowerThirdEvent = React.createClass({displayName: "LowerThirdEvent",
   componentDidMount: function() {
     var tl = new TimelineLite();
 
     tl.to($('.event'), 0.5, {autoAlpha:1}, 8);
   },
   render: function() {
-    return <h3 className="event">{ this.props.eventName } <strong>2015</strong></h3>;
+    return React.createElement("h3", {className: "event"},  this.props.eventName, " ", React.createElement("strong", null, "2015"));
   }
 });
-var LowerThirdStrap = React.createClass({
+var LowerThirdStrap = React.createClass({displayName: "LowerThirdStrap",
   componentDidMount: function() {
     var tl = new TimelineLite();
 
     tl.to($('.strap'), 0.5, {autoAlpha:1});
   },
   render: function() {
-    return <h1 className="strap">{ this.props.name } - { this.props.position }</h1>;
+    return React.createElement("h1", {className: "strap"},  this.props.name, " - ",  this.props.position);
   }
 });
 var ReactTransitionGroup = React.addons.TransitionGroup;
 
-var SingleProfile = React.createClass({
+var SingleProfile = React.createClass({displayName: "SingleProfile",
   render: function() {
     return (
-      <div>
-        <ReactTransitionGroup  transitionName="test" className="singleProfile" component="div">
-          <SingleProfileList data={this.props.data} />
-        </ReactTransitionGroup>
-      </div>
+      React.createElement("div", null, 
+        React.createElement(ReactTransitionGroup, {transitionName: "test", className: "singleProfile", component: "div"}, 
+          React.createElement(SingleProfileList, {data: this.props.data})
+        )
+      )
     );
   }
 });
-var SingleProfileList = React.createClass({
+var ReactTransitionGroup = React.addons.TransitionGroup;
+
+var SingleProfileList = React.createClass({displayName: "SingleProfileList",
   getInitialState: function() {
     return {
       people: [],
@@ -335,6 +369,11 @@ var SingleProfileList = React.createClass({
       currentNode: this.props.data.uid
     });
   },
+  componentWillLeave: function(done) {
+    this.el = this.getDOMNode();
+    this.$el = $(this.el);
+    console.log("SingleProfileList");
+  },
   componentWillUnmount: function() {
     TweenLite.killTweensOf(this);
   },
@@ -346,13 +385,13 @@ var SingleProfileList = React.createClass({
   render: function() {
     var peopleNodes = this.state.people.map(function (person) {
         return (
-            <SingleProfileNode key={person.uid} data={person} />
+            React.createElement(SingleProfileNode, {key: person.uid, data: person})
         );
     });
     return (
-      <ReactTransitionGroup  transitionName="singleProfileList" className='singleProfileList col-md-12' component='div'>
-        {peopleNodes}
-      </ReactTransitionGroup>
+      React.createElement(ReactTransitionGroup, {transitionName: "singleProfileList", className: "singleProfileList col-md-12", component: "div"}, 
+        peopleNodes
+      )
     );
   }
 });
@@ -392,7 +431,7 @@ var SingleProfileList = React.createClass({
     //   incoming.addClass('incoming').removeClass('outgoing');
     //   console.log("outgoing to incoming")
 
-var SingleProfileManifesto = React.createClass({
+var SingleProfileManifesto = React.createClass({displayName: "SingleProfileManifesto",
   componentDidMount: function() {
     var tl = new TimelineLite();
 
@@ -401,25 +440,25 @@ var SingleProfileManifesto = React.createClass({
   },
   render: function() {
     return (
-      <div className='manifesto'>
-        <h2 className='text-center'>Manifesto</h2>
-        <ul>
-          <li><h3 className='one'>{ this.props.manifesto.one }</h3></li>
-          <li><h3 className='two'>{ this.props.manifesto.two }</h3></li>
-          <li><h3 className='three'>{ this.props.manifesto.three }</h3></li>
-        </ul>
-      </div>
+      React.createElement("div", {className: "manifesto"}, 
+        React.createElement("h2", {className: "text-center"}, "Manifesto"), 
+        React.createElement("ul", null, 
+          React.createElement("li", null, React.createElement("h3", {className: "one"},  this.props.manifesto.one)), 
+          React.createElement("li", null, React.createElement("h3", {className: "two"},  this.props.manifesto.two)), 
+          React.createElement("li", null, React.createElement("h3", {className: "three"},  this.props.manifesto.three))
+        )
+      )
     )
   }
 });
-var SingleProfileName = React.createClass({
+var SingleProfileName = React.createClass({displayName: "SingleProfileName",
   render: function() {
     return (
-      <h1 className='text-center'>{ this.props.name }</h1>
+      React.createElement("h1", {className: "text-center"},  this.props.name)
     )
   }
 });
-var SingleProfileNode = React.createClass({
+var SingleProfileNode = React.createClass({displayName: "SingleProfileNode",
   componentDidMount: function() {
     this.el = this.getDOMNode();
     this.$el = $(this.el);
@@ -445,30 +484,30 @@ var SingleProfileNode = React.createClass({
     var DivClass = 'singleProfileNode col-md-10 col-md-offset-1 ' + this.props.data.state['SingleProfile'];
 
     return (
-      <div className={DivClass} data-id={ this.props.data.uid }>
-        <SingleProfileName name={this.props.data.name} />
-        <SingleProfilePosition position={this.props.data.position} />
+      React.createElement("div", {className: DivClass, "data-id":  this.props.data.uid}, 
+        React.createElement(SingleProfileName, {name: this.props.data.name}), 
+        React.createElement(SingleProfilePosition, {position: this.props.data.position}), 
         
-        <SingleProfilePicture cname={this.props.manifesto} img={this.props.data.img} alt={this.props.data.name} />
+        React.createElement(SingleProfilePicture, {cname: this.props.manifesto, img: this.props.data.img, alt: this.props.data.name}), 
 
-        <SingleProfileManifesto manifesto={this.props.data.manifestoPoints} />
-      </div> 
+        React.createElement(SingleProfileManifesto, {manifesto: this.props.data.manifestoPoints})
+      ) 
     );
   }
 });
-var SingleProfilePicture = React.createClass({
+var SingleProfilePicture = React.createClass({displayName: "SingleProfilePicture",
   render: function() {
     return (
-      <div className={ this.props.cname }>
-        <img src={ this.props.img } alt={ this.props.alt } />
-      </div>
+      React.createElement("div", {className:  this.props.cname}, 
+        React.createElement("img", {src:  this.props.img, alt:  this.props.alt})
+      )
     )
   }
 });
-var SingleProfilePosition = React.createClass({
+var SingleProfilePosition = React.createClass({displayName: "SingleProfilePosition",
   render: function() {
     return (
-      <h2 className='text-center'>{ this.props.position }</h2>
+      React.createElement("h2", {className: "text-center"},  this.props.position)
     )
   }
 });

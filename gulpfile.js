@@ -8,11 +8,20 @@ var plugins = require("gulp-load-plugins")({
   pattern: ['gulp-*', 'gulp.*'],
   replaceString: /\bgulp[\-.]/
 });
+
+var react = require('gulp-react')
+
  // Concatenate & Minify JS
-gulp.task('scripts', function() {
+gulp.task('scripts', ['jsx'], function() {
   return gulp.src(src + 'js/**/*.js')
     .pipe(plugins.concat('app.js'))
     .pipe(gulp.dest(dest + 'js'));
+});
+
+gulp.task('jsx', function() {
+  return gulp.src(src + 'jsx/**/*.js')
+    .pipe(react({harmony: true}))
+    .pipe(gulp.dest(src + 'js/build'));
 });
 
 gulp.task('data', function() {
@@ -30,7 +39,7 @@ gulp.task('less', function() {
  // Watch for changes in files
 gulp.task('watch', function() {
   // Watch .js files
-  gulp.watch(src + 'js/**/*.js', ['scripts']);
+  gulp.watch(src + '*/**/*.js', ['scripts']);
   // Watch .js files
   gulp.watch(src + 'data/**/*.js', ['data']);
   // Watch .scss files
