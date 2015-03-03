@@ -3,7 +3,7 @@ var Twitter = React.createClass({
     animateOut: function() {
       var tl = new TimelineLite();
 
-      // onComplete: this.kill
+      tl.to($('.twitter'), 0.3, {autoAlpha: 0, onComplete: this.kill});
     },
     kill: function() {
       React.unmountComponentAtNode($(".twitterContainer")[0])
@@ -17,12 +17,12 @@ var Twitter = React.createClass({
 
     tl.to($(".twitter_logo"), 0.25, {left:"10vw", top: "5vw"})
       .to($(".twitter_logo"), 0.25, {width:"5%", left: 0, top: "5px"}, "+=0.75")
-      .to($(".text"), 0.5, {autoAlpha: 1, ease: Power2.easeInOut}, "-=0.25")
-      .to($(".info"), 0.5, {autoAlpha: 1, ease: Power2.easeInOut}, "-=0.5")
-      .to($(".twitter_img"), 0.5, {autoAlpha: 1, ease: Power2.easeInOut}, "-=0.5")
-      .to($(".profile_pic"), 0.5, {autoAlpha: 1, ease: Power2.easeInOut}, "-=0.5")
-      .to($(".username"), 0.5, {autoAlpha: 1, ease: Power2.easeInOut}, "-=0.5")
-      .to($(".time_ago"), 0.5, {autoAlpha: 1, ease: Power2.easeInOut}, "-=0.5");
+      .to($(".text"), 0.5, {autoAlpha: 1}, "-=0.25")
+      .to($(".info"), 0.5, {autoAlpha: 1}, "-=0.5")
+      .to($(".twitter_img"), 0.5, {autoAlpha: 1}, "-=0.5")
+      .to($(".profile_pic"), 0.5, {autoAlpha: 1}, "-=0.5")
+      .to($(".username"), 0.5, {autoAlpha: 1}, "-=0.5")
+      .to($(".time_ago"), 0.5, {autoAlpha: 1}, "-=0.5");
   },
   render: function() {
     time_ago = this.timeSince(this.props.data.created_at)
