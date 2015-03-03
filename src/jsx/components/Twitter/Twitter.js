@@ -16,7 +16,7 @@ var Twitter = React.createClass({
     tl.to($(".twitter"), 0, {top: centrePoint});
 
     tl.to($(".twitter_logo"), 0.25, {left:"10vw", top: "5vw"})
-      .to($(".twitter_logo"), 0.25, {width:"5%", left: 0, top: 0}, "+=0.75")
+      .to($(".twitter_logo"), 0.25, {width:"5%", left: 0, top: "5px"}, "+=0.75")
       .to($(".text"), 0.5, {autoAlpha: 1, ease: Power2.easeInOut}, "-=0.25")
       .to($(".info"), 0.5, {autoAlpha: 1, ease: Power2.easeInOut}, "-=0.5")
       .to($(".twitter_img"), 0.5, {autoAlpha: 1, ease: Power2.easeInOut}, "-=0.5")

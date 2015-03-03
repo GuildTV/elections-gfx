@@ -25,9 +25,6 @@ var LowerThird = React.createClass({
       .to($('.event'), 0.4, {css: {fontSize: "34px", top: "10.5px"}}, '+=1.2')
       .to($('.strap'), 0.2, {autoAlpha: 1}, '-=0.2');
   },
-  componentDidMount: function() {
-
-  },
   render: function() {
     return (
       <div className='lowerThird'>

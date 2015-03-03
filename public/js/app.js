@@ -311,9 +311,6 @@ var LowerThird = React.createClass({displayName: "LowerThird",
       .to($('.event'), 0.4, {css: {fontSize: "34px", top: "10.5px"}}, '+=1.2')
       .to($('.strap'), 0.2, {autoAlpha: 1}, '-=0.2');
   },
-  componentDidMount: function() {
-
-  },
   render: function() {
     return (
       React.createElement("div", {className: "lowerThird"}, 
@@ -531,14 +528,6 @@ var SingleProfilePosition = React.createClass({displayName: "SingleProfilePositi
     )
   }
 });
-var TopBar = React.createClass({displayName: "TopBar",
-  render: function() {
-    return (
-      React.createElement("div", null
-      )
-    );
-  }
-});
 var Twitter = React.createClass({displayName: "Twitter",
   statics: {
     animateOut: function() {
@@ -557,7 +546,7 @@ var Twitter = React.createClass({displayName: "Twitter",
     tl.to($(".twitter"), 0, {top: centrePoint});
 
     tl.to($(".twitter_logo"), 0.25, {left:"10vw", top: "5vw"})
-      .to($(".twitter_logo"), 0.25, {width:"5%", left: 0, top: 0}, "+=0.75")
+      .to($(".twitter_logo"), 0.25, {width:"5%", left: 0, top: "5px"}, "+=0.75")
       .to($(".text"), 0.5, {autoAlpha: 1, ease: Power2.easeInOut}, "-=0.25")
       .to($(".info"), 0.5, {autoAlpha: 1, ease: Power2.easeInOut}, "-=0.5")
       .to($(".twitter_img"), 0.5, {autoAlpha: 1, ease: Power2.easeInOut}, "-=0.5")
@@ -606,3 +595,12 @@ var Twitter = React.createClass({displayName: "Twitter",
   }
 });
 
+
+var TopBar = React.createClass({displayName: "TopBar",
+  render: function() {
+    return (
+      React.createElement("div", null
+      )
+    );
+  }
+});
