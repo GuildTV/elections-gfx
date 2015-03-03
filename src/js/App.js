@@ -2,12 +2,18 @@ var App = {
   widgets: [],
   loadedWidgets: [],
   eventName: "Guild Elections",
+  socket: "",
 
   setup: function() {
   },
 
   setEventName: function(eventName) {
+    console.log(eventName);
     App.eventName = eventName;
+  },
+
+  connectToWebsocket: function(ip, autoRender) {
+    App.socket = io.connect('http://' + ip);
   },
 
   loadWidget: function(widget, id) {
