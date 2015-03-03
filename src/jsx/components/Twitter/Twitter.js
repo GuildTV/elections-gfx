@@ -25,14 +25,15 @@ var Twitter = React.createClass({
       .to($(".time_ago"), 0.5, {autoAlpha: 1}, "-=0.5");
   },
   render: function() {
-    time_ago = this.timeSince(this.props.data.created_at)
+    var time_ago = this.timeSince(this.props.data.created_at);
+    var media = (this.props.data.entities.media !== undefined && this.props.data.entities.media.length > 0 ?<img className='twitter_img' src={ this.props.data.entities.media[0].media_url } />:"");
 
     return (
       <div className='twitter'>
         <img className='twitter_logo' src="public/img/twitter_white.png" />
         <h3 className='text'>{ this.props.data.text }</h3>
-        <img className='twitter_img' src={ this.props.data.img } />
-        <h3 className='info'><img className='profile_pic' src={ this.props.data.profile_pic } /><span className='username'>@{ this.props.data.username },</span> <span className='time_ago'>{ time_ago } ago</span></h3>
+        { media }
+        <h3 className='info'><img className='profile_pic' src={ this.props.data.user.profile_image_url } /><span className='username'>@{ this.props.data.user.screen_name } ({ this.props.data.user.name }),</span> <span className='time_ago'>{ time_ago } ago</span></h3>
       </div>
     );
   },

@@ -4,9 +4,6 @@ var App = {
   eventName: "Guild Elections",
   socket: "",
 
-  setup: function() {
-  },
-
   setEventName: function(eventName) {
     console.log(eventName);
     App.eventName = eventName;
@@ -14,6 +11,16 @@ var App = {
 
   connectToWebsocket: function(ip, autoRender) {
     App.socket = io.connect('http://' + ip);
+    
+    App.socket.on('tweet.use', function (data) {
+      console.log(data);
+      App.loadWidget('Twitter', data);
+    });
+
+    App.socket.on('tweet.stop', function (data) {
+      console.log(data);
+      App.loadWidget('Twitter', data);
+    });
   },
 
   loadWidget: function(widget, id) {
