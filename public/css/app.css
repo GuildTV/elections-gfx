@@ -6653,7 +6653,57 @@ h6 {
   background-color: #4a4a4a;
   min-height: 200px;
 }
+.singleProfile .singleProfileList .singleProfileNode .manifesto ul li {
+  text-align: left;
+}
 .singleProfile .singleProfileList .incoming {
   position: absolute;
   bottom: -125%;
+}
+.twitterContainer {
+  height: 100vh;
+  width: 100vw;
+}
+.twitterContainer .twitter {
+  height: auto;
+  width: 40vw;
+  position: absolute;
+  left: 30vw;
+  top: 0;
+}
+.twitterContainer .twitter_logo {
+  height: auto;
+  width: 20vw;
+  position: absolute;
+  left: -50vw;
+}
+.twitterContainer .text {
+  height: auto;
+  width: 35vw;
+  position: relative;
+  left: 2.5vw;
+  opacity: 0;
+}
+.twitterContainer .twitter_img {
+  height: 424px;
+  width: 576px;
+  position: relative;
+  left: 3.75vw;
+  top: 1vw;
+  opacity: 0;
+  border-radius: 5px;
+}
+.twitterContainer .info {
+  margin-top: 2vw;
+  margin-left: 2.5vw;
+  opacity: 0;
+}
+.twitterContainer .profile_pic {
+  height: auto;
+  width: 2.5vw;
+  opacity: 0;
+  border-radius: 5px;
+}
+.twitterContainer .username {
+  margin-left: 0.5vw;
 }

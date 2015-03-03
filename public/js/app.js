@@ -268,25 +268,38 @@ App.widgets['SingleProfile'] = {
 //       callback();
 //   }
 // };
+App.widgets['Twitter'] = {
+  render: function(data) {
+    React.render(React.createElement(Twitter, {data: data}), $(".twitterContainer")[0]);
+  },
+
+  update: function(data){
+
+  },
+
+  stop: function(callback) {
+    Twitter.animateOut();
+
+    if(callback !== undefined)
+      callback();
+  }
+};
 var LowerThird = React.createClass({displayName: "LowerThird",
   statics: {
     animateOut: function() {
       var tl = new TimelineLite();
 
-    tl.to($('.event'), 0.3, {autoAlpha: 0})
-      .to($('.strap'), 0.3, {autoAlpha: 0}, '-=0.3')
-      .to($('.lowerThird'), 0.3, {css: {width: "0.5.vw"}}, '-=0.3')
-      
-    tl.to($('.lowerThird'), 0.3, {css: {bottom: "-20%"}, onComplete: this.kill});
+      tl.to($('.event'), 0.3, {autoAlpha: 0})
+        .to($('.strap'), 0.3, {autoAlpha: 0}, '-=0.3')
+        .to($('.lowerThird'), 0.3, {css: {width: "0.5.vw"}}, '-=0.3')
+        
+      tl.to($('.lowerThird'), 0.3, {css: {bottom: "-20%"}, onComplete: this.kill});
     },
     kill: function() {
       React.unmountComponentAtNode($(".lowerThirdContainer")[0])
     },
   },
   componentDidMount: function() {
-    this.el = this.getDOMNode();
-    this.$el = $(this.el);
-
     var tl = new TimelineLite();
 
     tl.to($('.lowerThird'), 0.5, {css: {bottom: "4.76vh"}}, 0.5);
@@ -297,6 +310,9 @@ var LowerThird = React.createClass({displayName: "LowerThird",
       .to($('.event'), 0, {css: {webkitFilter: "none"}},'-=0.075')
       .to($('.event'), 0.4, {css: {fontSize: "34px", top: "10.5px"}}, '+=1.2')
       .to($('.strap'), 0.2, {autoAlpha: 1}, '-=0.2');
+  },
+  componentDidMount: function() {
+
   },
   render: function() {
     return (
@@ -515,3 +531,78 @@ var SingleProfilePosition = React.createClass({displayName: "SingleProfilePositi
     )
   }
 });
+var TopBar = React.createClass({displayName: "TopBar",
+  render: function() {
+    return (
+      React.createElement("div", null
+      )
+    );
+  }
+});
+var Twitter = React.createClass({displayName: "Twitter",
+  statics: {
+    animateOut: function() {
+      var tl = new TimelineLite();
+
+      // onComplete: this.kill
+    },
+    kill: function() {
+      React.unmountComponentAtNode($(".twitterContainer")[0])
+    },
+  },
+  componentDidMount: function() {
+    var tl = new TimelineLite(),
+        centrePoint = ( $(window).height() - $(".twitter").outerHeight() )/2
+
+    tl.to($(".twitter"), 0, {top: centrePoint});
+
+    tl.to($(".twitter_logo"), 0.25, {left:"10vw", top: "5vw"})
+      .to($(".twitter_logo"), 0.25, {width:"5%", left: 0, top: 0}, "+=0.75")
+      .to($(".text"), 0.5, {autoAlpha: 1, ease: Power2.easeInOut}, "-=0.25")
+      .to($(".info"), 0.5, {autoAlpha: 1, ease: Power2.easeInOut}, "-=0.5")
+      .to($(".twitter_img"), 0.5, {autoAlpha: 1, ease: Power2.easeInOut}, "-=0.5")
+      .to($(".profile_pic"), 0.5, {autoAlpha: 1, ease: Power2.easeInOut}, "-=0.5")
+      .to($(".username"), 0.5, {autoAlpha: 1, ease: Power2.easeInOut}, "-=0.5")
+      .to($(".time_ago"), 0.5, {autoAlpha: 1, ease: Power2.easeInOut}, "-=0.5");
+  },
+  render: function() {
+    time_ago = this.timeSince(this.props.data.created_at)
+
+    return (
+      React.createElement("div", {className: "twitter"}, 
+        React.createElement("img", {className: "twitter_logo", src: "public/img/twitter_white.png"}), 
+        React.createElement("h3", {className: "text"},  this.props.data.text), 
+        React.createElement("img", {className: "twitter_img", src:  this.props.data.img}), 
+        React.createElement("h3", {className: "info"}, React.createElement("img", {className: "profile_pic", src:  this.props.data.profile_pic}), React.createElement("span", {className: "username"}, "@",  this.props.data.username, ","), " ", React.createElement("span", {className: "time_ago"}, time_ago, " ago"))
+      )
+    );
+  },
+  timeSince: function(date) {
+    tdate = new Date(date)
+    var seconds = Math.floor((new Date() - tdate) / 1000);
+
+    var interval = Math.floor(seconds / 31536000);
+
+    if (interval > 1) {
+        return interval + " years";
+    }
+    interval = Math.floor(seconds / 2592000);
+    if (interval > 1) {
+        return interval + " months";
+    }
+    interval = Math.floor(seconds / 86400);
+    if (interval > 1) {
+        return interval + " days";
+    }
+    interval = Math.floor(seconds / 3600);
+    if (interval > 1) {
+        return interval + " hours";
+    }
+    interval = Math.floor(seconds / 60);
+    if (interval > 1) {
+        return interval + " minutes";
+    }
+    return Math.floor(seconds) + " seconds";
+  }
+});
+
