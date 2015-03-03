@@ -15,7 +15,7 @@ var Twitter = React.createClass({
 
     tl.to($(".twitter"), 0, {top: centrePoint});
 
-    tl.to($(".twitter_logo"), 0.25, {left:"10vw", top: "5vw"})
+    tl.to($(".twitter_logo"), 0.25, {left:"10vw"})
       .to($(".twitter_logo"), 0.25, {width:"5%", left: 0, top: "5px"}, "+=0.75")
       .to($(".text"), 0.5, {autoAlpha: 1}, "-=0.25")
       .to($(".info"), 0.5, {autoAlpha: 1}, "-=0.5")
@@ -23,6 +23,26 @@ var Twitter = React.createClass({
       .to($(".profile_pic"), 0.5, {autoAlpha: 1}, "-=0.5")
       .to($(".username"), 0.5, {autoAlpha: 1}, "-=0.5")
       .to($(".time_ago"), 0.5, {autoAlpha: 1}, "-=0.5");
+  },
+  componentWillReceiveProps: function(nextProps) {
+    var tl = new TimelineLite();
+
+    tl.to($(".twitter_logo"), 0.25, {width:"50%", left:"10vw"})
+      .to($(".text"), 0.5, {autoAlpha: 0}, "-=0.25")
+      .to($(".info"), 0.5, {autoAlpha: 0}, "-=0.5")
+      .to($(".twitter_img"), 0.5, {autoAlpha: 0}, "-=0.5")
+      .to($(".profile_pic"), 0.5, {autoAlpha: 0}, "-=0.5")
+      .to($(".username"), 0.5, {autoAlpha: 0}, "-=0.5")
+      .to($(".time_ago"), 0.5, {autoAlpha: 0}, "-=0.5")
+      .to($(".twitter"), 0, {top: ( $(window).height() - $(".twitter").outerHeight() )/2})
+      .to($(".twitter_logo"), 0.25, {width:"5%", left: 0, top: "5px"}, "+=0.75")
+      .to($(".text"), 0.5, {autoAlpha: 1}, "-=0.25")
+      .to($(".info"), 0.5, {autoAlpha: 1}, "-=0.5")
+      .to($(".twitter_img"), 0.5, {autoAlpha: 1}, "-=0.5")
+      .to($(".profile_pic"), 0.5, {autoAlpha: 1}, "-=0.5")
+      .to($(".username"), 0.5, {autoAlpha: 1}, "-=0.5")
+      .to($(".time_ago"), 0.5, {autoAlpha: 1}, "-=0.5");
+
   },
   render: function() {
     var time_ago = this.timeSince(this.props.data.created_at);

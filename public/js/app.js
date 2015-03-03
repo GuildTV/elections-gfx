@@ -132,6 +132,88 @@ function fake(){
   update("<templateData><componentData id=\"f0\"><data id=\"text\" value=\"Rob Sumner\" /></componentData><componentData id=\"f1\"><data id=\"text\" value=\"Is better than Julian\" /></componentData><componentData id=\"f2\"><data id=\"text\" value=\"#4455a5\" /></componentData><componentData id=\"f3\"><data id=\"text\" value=\"rollIn\" /></componentData><componentData id=\"f4\"><data id=\"text\" value=\"rollOut\" /></componentData></templateData>");
 }
 
+var MultiProfile = React.createClass({displayName: "MultiProfile",
+  render: function() {
+    var divClass = 'multiProfile ' + this.props.state.MultiProfile + ' col-md-8 col-md-offset-2'
+    var imageDivClass = 'image ' + this.props.data.pid + ' text-center';
+
+    return (
+      React.createElement("div", {className: divClass, "data-id":  this.props.data.uid}, 
+        React.createElement("h1", {className: "text-center"},  this.props.data.name), 
+        React.createElement("h3", {className: "text-center"},  this.props.data.position), 
+        React.createElement("div", {className: imageDivClass }, 
+          React.createElement("img", {src:  this.props.data.img, alt:  this.props.data.name})
+        )
+      ) 
+    );
+  }
+});
+var MultiProfileList = React.createClass({displayName: "MultiProfileList",
+  getInitialState: function() {
+    return {people: []};
+  },
+  componentDidMount: function() {
+    var multiProfileContainer = $('.multiProfileContainer'),
+        tl = new TimelineLite();
+
+    TweenLite.set(multiProfileContainer, {autoAlpha:0});
+    tl.to(multiProfileContainer, 0.5, {autoAlpha:1});
+
+    this.animateIncomingNodeIn();
+  },
+  componentWillMount: function() {
+    if (this.props.data['state'] === undefined)
+      this.props.data['state'] = {};
+
+    this.props.data.state['MultiProfile'] = "incoming";
+
+    this.state.people.push(this.props.data)
+  },
+  render: function() {
+    var peopleNodes = this.state.people.map(function (person) {
+      return (
+        React.createElement(MultiProfile, {key: person.uid, state: person.state, data: person})
+      );
+    });
+    return (
+      React.createElement("div", {className: "multiProfileContainer col-md-12"}, 
+        peopleNodes 
+      )
+    );
+  },
+  animateIncomingNodeIn: function() {
+    var incoming = $('.incoming:first'),
+        centrePoint = ( $(window).height() - incoming.outerHeight() )/2,
+        tl = new TimelineLite({onComplete: this.cycleNodes()});
+
+    tl.to(incoming, 1, {bottom:centrePoint});
+  },
+  animateCurrentNodeOut: function() {
+    var current = $('.current'),
+    tl = new TimelineLite({onComplete: this.animateIncomingNodeIn()});
+
+    tl.to(current, 1, {top:150});
+  },
+  cycleNodes: function(incoming) {
+    var incoming  = $('.incoming:first'),
+        current   = $('.current:first'),
+        outgoing  = $('.outgoing:first');
+
+    if (incoming.length > 0)
+      App.findDataById(incoming.attr('data-id')).state['MultiProfile'] = "current";
+      incoming.addClass('current').removeClass('incoming');
+    
+    if (current.length > 0)
+      App.findDataById(current.attr('data-id')).state['MultiProfile'] = "outgoing";
+      incoming.addClass('outgoing').removeClass('current');
+
+    if (outgoing.length > 0)
+      App.findDataById(outgoing.attr('data-id')).state['MultiProfile'] = "incoming";
+      incoming.addClass('incoming').removeClass('current');
+
+  }
+});
+
 App.widgets['LowerThird'] = {
   render: function(data) {
     data['eventName'] = App.eventName;
@@ -215,88 +297,6 @@ App.widgets['Twitter'] = {
       callback();
   }
 };
-var MultiProfile = React.createClass({displayName: "MultiProfile",
-  render: function() {
-    var divClass = 'multiProfile ' + this.props.state.MultiProfile + ' col-md-8 col-md-offset-2'
-    var imageDivClass = 'image ' + this.props.data.pid + ' text-center';
-
-    return (
-      React.createElement("div", {className: divClass, "data-id":  this.props.data.uid}, 
-        React.createElement("h1", {className: "text-center"},  this.props.data.name), 
-        React.createElement("h3", {className: "text-center"},  this.props.data.position), 
-        React.createElement("div", {className: imageDivClass }, 
-          React.createElement("img", {src:  this.props.data.img, alt:  this.props.data.name})
-        )
-      ) 
-    );
-  }
-});
-var MultiProfileList = React.createClass({displayName: "MultiProfileList",
-  getInitialState: function() {
-    return {people: []};
-  },
-  componentDidMount: function() {
-    var multiProfileContainer = $('.multiProfileContainer'),
-        tl = new TimelineLite();
-
-    TweenLite.set(multiProfileContainer, {autoAlpha:0});
-    tl.to(multiProfileContainer, 0.5, {autoAlpha:1});
-
-    this.animateIncomingNodeIn();
-  },
-  componentWillMount: function() {
-    if (this.props.data['state'] === undefined)
-      this.props.data['state'] = {};
-
-    this.props.data.state['MultiProfile'] = "incoming";
-
-    this.state.people.push(this.props.data)
-  },
-  render: function() {
-    var peopleNodes = this.state.people.map(function (person) {
-      return (
-        React.createElement(MultiProfile, {key: person.uid, state: person.state, data: person})
-      );
-    });
-    return (
-      React.createElement("div", {className: "multiProfileContainer col-md-12"}, 
-        peopleNodes 
-      )
-    );
-  },
-  animateIncomingNodeIn: function() {
-    var incoming = $('.incoming:first'),
-        centrePoint = ( $(window).height() - incoming.outerHeight() )/2,
-        tl = new TimelineLite({onComplete: this.cycleNodes()});
-
-    tl.to(incoming, 1, {bottom:centrePoint});
-  },
-  animateCurrentNodeOut: function() {
-    var current = $('.current'),
-    tl = new TimelineLite({onComplete: this.animateIncomingNodeIn()});
-
-    tl.to(current, 1, {top:150});
-  },
-  cycleNodes: function(incoming) {
-    var incoming  = $('.incoming:first'),
-        current   = $('.current:first'),
-        outgoing  = $('.outgoing:first');
-
-    if (incoming.length > 0)
-      App.findDataById(incoming.attr('data-id')).state['MultiProfile'] = "current";
-      incoming.addClass('current').removeClass('incoming');
-    
-    if (current.length > 0)
-      App.findDataById(current.attr('data-id')).state['MultiProfile'] = "outgoing";
-      incoming.addClass('outgoing').removeClass('current');
-
-    if (outgoing.length > 0)
-      App.findDataById(outgoing.attr('data-id')).state['MultiProfile'] = "incoming";
-      incoming.addClass('incoming').removeClass('current');
-
-  }
-});
-
 var LowerThird = React.createClass({displayName: "LowerThird",
   statics: {
     animateOut: function() {
@@ -541,14 +541,6 @@ var SingleProfilePosition = React.createClass({displayName: "SingleProfilePositi
     )
   }
 });
-var TopBar = React.createClass({displayName: "TopBar",
-  render: function() {
-    return (
-      React.createElement("div", null
-      )
-    );
-  }
-});
 var Twitter = React.createClass({displayName: "Twitter",
   statics: {
     animateOut: function() {
@@ -566,7 +558,7 @@ var Twitter = React.createClass({displayName: "Twitter",
 
     tl.to($(".twitter"), 0, {top: centrePoint});
 
-    tl.to($(".twitter_logo"), 0.25, {left:"10vw", top: "5vw"})
+    tl.to($(".twitter_logo"), 0.25, {left:"10vw"})
       .to($(".twitter_logo"), 0.25, {width:"5%", left: 0, top: "5px"}, "+=0.75")
       .to($(".text"), 0.5, {autoAlpha: 1}, "-=0.25")
       .to($(".info"), 0.5, {autoAlpha: 1}, "-=0.5")
@@ -574,6 +566,26 @@ var Twitter = React.createClass({displayName: "Twitter",
       .to($(".profile_pic"), 0.5, {autoAlpha: 1}, "-=0.5")
       .to($(".username"), 0.5, {autoAlpha: 1}, "-=0.5")
       .to($(".time_ago"), 0.5, {autoAlpha: 1}, "-=0.5");
+  },
+  componentWillReceiveProps: function(nextProps) {
+    var tl = new TimelineLite();
+
+    tl.to($(".twitter_logo"), 0.25, {width:"50%", left:"10vw"})
+      .to($(".text"), 0.5, {autoAlpha: 0}, "-=0.25")
+      .to($(".info"), 0.5, {autoAlpha: 0}, "-=0.5")
+      .to($(".twitter_img"), 0.5, {autoAlpha: 0}, "-=0.5")
+      .to($(".profile_pic"), 0.5, {autoAlpha: 0}, "-=0.5")
+      .to($(".username"), 0.5, {autoAlpha: 0}, "-=0.5")
+      .to($(".time_ago"), 0.5, {autoAlpha: 0}, "-=0.5")
+      .to($(".twitter"), 0, {top: ( $(window).height() - $(".twitter").outerHeight() )/2})
+      .to($(".twitter_logo"), 0.25, {width:"5%", left: 0, top: "5px"}, "+=0.75")
+      .to($(".text"), 0.5, {autoAlpha: 1}, "-=0.25")
+      .to($(".info"), 0.5, {autoAlpha: 1}, "-=0.5")
+      .to($(".twitter_img"), 0.5, {autoAlpha: 1}, "-=0.5")
+      .to($(".profile_pic"), 0.5, {autoAlpha: 1}, "-=0.5")
+      .to($(".username"), 0.5, {autoAlpha: 1}, "-=0.5")
+      .to($(".time_ago"), 0.5, {autoAlpha: 1}, "-=0.5");
+
   },
   render: function() {
     var time_ago = this.timeSince(this.props.data.created_at);
@@ -617,3 +629,12 @@ var Twitter = React.createClass({displayName: "Twitter",
   }
 });
 
+
+var TopBar = React.createClass({displayName: "TopBar",
+  render: function() {
+    return (
+      React.createElement("div", null
+      )
+    );
+  }
+});

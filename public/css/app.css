@@ -6676,6 +6676,8 @@ h6 {
   width: 20vw;
   position: absolute;
   left: -50vw;
+  top: 5vw;
+  z-index: 2015;
 }
 .twitterContainer .text {
   height: auto;
@@ -6683,6 +6685,7 @@ h6 {
   position: relative;
   left: 2.5vw;
   opacity: 0;
+  z-index: -1;
 }
 .twitterContainer .twitter_img {
   height: 424px;
@@ -6691,17 +6694,20 @@ h6 {
   left: 3.75vw;
   top: 1vw;
   opacity: 0;
+  z-index: -1;
   border-radius: 5px;
 }
 .twitterContainer .info {
   margin-top: 2vw;
   margin-left: 2.5vw;
   opacity: 0;
+  z-index: -1;
 }
 .twitterContainer .profile_pic {
   height: auto;
   width: 2.5vw;
   opacity: 0;
+  z-index: -1;
   border-radius: 5px;
 }
 .twitterContainer .username {
