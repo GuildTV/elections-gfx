@@ -39,7 +39,7 @@ var App = {
   },
 
   findDataById: function(id){
-    var win = (id.substr(0,4) == "win-");
+    var win = typeof(id) === "string" && (id.substr(0,4) == "win-");
     if(win)
       id = id.substr(4);
 
