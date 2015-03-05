@@ -23,12 +23,12 @@ var App = {
     });
   },
 
-  loadWidget: function(widget, id) {
+  loadWidget: function(widget, id, params) {
     var data = App.findDataById(id);
     if(data === undefined)
       data = id;
 
-    App.widgets[widget].render(data);
+    App.widgets[widget].render(data, params);
 
     App.loadedWidgets.push(widget);
   },
@@ -232,11 +232,11 @@ App.widgets['LowerThird'] = {
   },
 };
 App.widgets['MultiProfile'] = {
-  render: function(data) {
+  render: function(data, title) {
     if(data.length <= 0)
       return;
     
-    React.render(React.createElement(MultiProfileList, {data: data}), $(".main")[0]);
+    React.render(React.createElement(MultiProfileList, {data: data, title: title}), $(".multiProfileContainer")[0]);
   },
 
   update: function(data){
@@ -359,22 +359,23 @@ var LowerThirdStrap = React.createClass({displayName: "LowerThirdStrap",
 });
 var MultiProfile = React.createClass({displayName: "MultiProfile",
   render: function() {
-    var divClass = 'multiProfile col-md-3 center-block '
+    var divClass = 'multiProfile col-md-2 center-block '
     var imageDivClass = 'image ' + this.props.data.pid + ' text-center';
+    var imageUrl = 'public/img/roles/' + this.props.data.pid + '/' + this.props.data.uid + '.png';
 
     return (
       React.createElement("div", {className:  divClass, "data-id":  this.props.data.uid}, 
-        React.createElement("h1", {className: "text-center"},  this.props.data.name), 
         React.createElement("div", {className:  imageDivClass }, 
-          React.createElement("img", {src:  this.props.data.img, alt:  this.props.data.name})
-        )
+          React.createElement("img", {src:  imageUrl, alt:  this.props.data.name})
+        ), 
+        React.createElement("h1", {className: "text-center"},  this.props.data.name)
       ) 
     );
   }
 });
 var MultiProfileList = React.createClass({displayName: "MultiProfileList",
   getInitialState: function() {
-    return {people: [], roleName:"Unknown" };
+    return {people: [], roleName:"Selection of Candidates" };
   },
   animateIncomingNodeIn: function() {
     var incoming = $('.incoming:first'),
@@ -390,18 +391,29 @@ var MultiProfileList = React.createClass({displayName: "MultiProfileList",
     tl.to(current, 1, {top:150});
   },
   componentDidMount: function() {
-    var multiProfileContainer = $('.multiProfileContainer'),
+    var multiProfileOuter = $('.multiProfileOuter'),
         tl = new TimelineLite();
 
-    TweenLite.set(multiProfileContainer, {autoAlpha:0});
-    tl.to(multiProfileContainer, 0.5, {autoAlpha:1});
+    //align all the stuff
+    var peopleDiv = multiProfileOuter.find('.people');
+    var available = multiProfileOuter.innerHeight() - multiProfileOuter.find('.title').outerHeight();
+    available -= peopleDiv.outerHeight();
+    available /= 2;
+    peopleDiv.css('margin', available+'px 0');
+
+
+    TweenLite.set(multiProfileOuter, {autoAlpha:0});
+    tl.to(multiProfileOuter, 0.5, {autoAlpha:1});
 
     this.animateIncomingNodeIn();
   },
   componentWillMount: function() {
+    this.state.roleName = this.props.title;
+
     for(var i in this.props.data){
       this.state.people.push(this.props.data[i]);
     }
+    this.state.people.push(this.props.data[0]);
     this.state.people.push(this.props.data[0]);
     this.state.people.push(this.props.data[0]);
   },
@@ -412,9 +424,9 @@ var MultiProfileList = React.createClass({displayName: "MultiProfileList",
       );
     });
     return (
-      React.createElement("div", {className: "multiProfileContainer col-md-10 col-md-offset-1"}, 
+      React.createElement("div", {className: "multiProfileOuter col-md-10 col-md-offset-1"}, 
       React.createElement("h1", {className: "title"},  this.state.roleName), 
-        React.createElement("div", {id: "people", className: "col-lg-12"}, 
+        React.createElement("div", {className: "people col-lg-12"}, 
            peopleNodes 
         )
       )

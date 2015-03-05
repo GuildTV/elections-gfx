@@ -1,9 +1,9 @@
 App.widgets['MultiProfile'] = {
-  render: function(data) {
+  render: function(data, title) {
     if(data.length <= 0)
       return;
     
-    React.render(<MultiProfileList data={data} />, $(".main")[0]);
+    React.render(<MultiProfileList data={data} title={title} />, $(".multiProfileContainer")[0]);
   },
 
   update: function(data){

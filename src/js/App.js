@@ -23,12 +23,12 @@ var App = {
     });
   },
 
-  loadWidget: function(widget, id) {
+  loadWidget: function(widget, id, params) {
     var data = App.findDataById(id);
     if(data === undefined)
       data = id;
 
-    App.widgets[widget].render(data);
+    App.widgets[widget].render(data, params);
 
     App.loadedWidgets.push(widget);
   },

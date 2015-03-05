@@ -1,6 +1,6 @@
 var MultiProfileList = React.createClass({
   getInitialState: function() {
-    return {people: [], roleName:"Unknown" };
+    return {people: [], roleName:"Selection of Candidates" };
   },
   animateIncomingNodeIn: function() {
     var incoming = $('.incoming:first'),
@@ -16,18 +16,29 @@ var MultiProfileList = React.createClass({
     tl.to(current, 1, {top:150});
   },
   componentDidMount: function() {
-    var multiProfileContainer = $('.multiProfileContainer'),
+    var multiProfileOuter = $('.multiProfileOuter'),
         tl = new TimelineLite();
 
-    TweenLite.set(multiProfileContainer, {autoAlpha:0});
-    tl.to(multiProfileContainer, 0.5, {autoAlpha:1});
+    //align all the stuff
+    var peopleDiv = multiProfileOuter.find('.people');
+    var available = multiProfileOuter.innerHeight() - multiProfileOuter.find('.title').outerHeight();
+    available -= peopleDiv.outerHeight();
+    available /= 2;
+    peopleDiv.css('margin', available+'px 0');
+
+
+    TweenLite.set(multiProfileOuter, {autoAlpha:0});
+    tl.to(multiProfileOuter, 0.5, {autoAlpha:1});
 
     this.animateIncomingNodeIn();
   },
   componentWillMount: function() {
+    this.state.roleName = this.props.title;
+
     for(var i in this.props.data){
       this.state.people.push(this.props.data[i]);
     }
+    this.state.people.push(this.props.data[0]);
     this.state.people.push(this.props.data[0]);
     this.state.people.push(this.props.data[0]);
   },
@@ -38,9 +49,9 @@ var MultiProfileList = React.createClass({
       );
     });
     return (
-      <div className='multiProfileContainer col-md-10 col-md-offset-1'>
+      <div className='multiProfileOuter col-md-10 col-md-offset-1'>
       <h1 className='title'>{ this.state.roleName }</h1>
-        <div id="people" className="col-lg-12">
+        <div className="people col-lg-12">
           { peopleNodes }
         </div>
       </div>
