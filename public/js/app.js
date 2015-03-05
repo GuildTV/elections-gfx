@@ -138,10 +138,10 @@ var MultiProfile = React.createClass({displayName: "MultiProfile",
     var imageDivClass = 'image ' + this.props.data.pid + ' text-center';
 
     return (
-      React.createElement("div", {className: divClass, "data-id":  this.props.data.uid}, 
+      React.createElement("div", {className:  divClass, "data-id":  this.props.data.uid}, 
         React.createElement("h1", {className: "text-center"},  this.props.data.name), 
         React.createElement("h3", {className: "text-center"},  this.props.data.position), 
-        React.createElement("div", {className: imageDivClass }, 
+        React.createElement("div", {className:  imageDivClass }, 
           React.createElement("img", {src:  this.props.data.img, alt:  this.props.data.name})
         )
       ) 
@@ -177,7 +177,7 @@ var MultiProfileList = React.createClass({displayName: "MultiProfileList",
     });
     return (
       React.createElement("div", {className: "multiProfileContainer col-md-12"}, 
-        peopleNodes 
+         peopleNodes 
       )
     );
   },
@@ -236,7 +236,7 @@ App.widgets['MultiProfile'] = {
     if(data.length <= 0)
       return;
     
-    React.render(React.createElement(MultiProfileList, {data: data}), $(".sideBar")[0]);
+    React.render(React.createElement(MultiProfileList, {data: data}), $(".main")[0]);
   },
 
   update: function(data){
@@ -247,7 +247,7 @@ App.widgets['MultiProfile'] = {
     if(callback !== undefined)
       callback();
 
-    React.unmountComponentAtNode($(".sideBar")[0]);
+    React.unmountComponentAtNode($(".main")[0]);
   }
 };
 App.widgets['SingleProfile'] = {
@@ -359,6 +359,7 @@ var LowerThirdStrap = React.createClass({displayName: "LowerThirdStrap",
 });
 var MultiProfile = React.createClass({displayName: "MultiProfile",
   render: function() {
+<<<<<<< HEAD
     var divClass = 'multiProfile ' + this.props.state.MultiProfile + ' col-md-8 col-md-offset-2'
     var imageDivClass = 'image ' + this.props.data.pid + ' text-center';
 
@@ -367,6 +368,15 @@ var MultiProfile = React.createClass({displayName: "MultiProfile",
         React.createElement("h1", {className: "text-center"},  this.props.data.name), 
         React.createElement("h3", {className: "text-center"},  this.props.data.position), 
         React.createElement("div", {className: imageDivClass }, 
+=======
+    var divClass = 'multiProfile col-md-3 center-block '
+    var imageDivClass = 'image ' + this.props.data.pid + ' text-center';
+
+    return (
+      React.createElement("div", {className:  divClass, "data-id":  this.props.data.uid}, 
+        React.createElement("h1", {className: "text-center"},  this.props.data.name), 
+        React.createElement("div", {className:  imageDivClass }, 
+>>>>>>> multiprofile stuff
           React.createElement("img", {src:  this.props.data.img, alt:  this.props.data.name})
         )
       ) 
@@ -375,7 +385,24 @@ var MultiProfile = React.createClass({displayName: "MultiProfile",
 });
 var MultiProfileList = React.createClass({displayName: "MultiProfileList",
   getInitialState: function() {
+<<<<<<< HEAD
     return {people: []};
+=======
+    return {people: [], roleName:"Unknown" };
+  },
+  animateIncomingNodeIn: function() {
+    var incoming = $('.incoming:first'),
+        centrePoint = ( $(window).height() - incoming.outerHeight() )/2,
+        tl = new TimelineLite({});
+
+    tl.to(incoming, 1, {bottom:centrePoint});
+  },
+  animateCurrentNodeOut: function() {
+    var current = $('.current'),
+    tl = new TimelineLite({onComplete: this.animateIncomingNodeIn()});
+
+    tl.to(current, 1, {top:150});
+>>>>>>> multiprofile stuff
   },
   componentDidMount: function() {
     var multiProfileContainer = $('.multiProfileContainer'),
@@ -387,16 +414,25 @@ var MultiProfileList = React.createClass({displayName: "MultiProfileList",
     this.animateIncomingNodeIn();
   },
   componentWillMount: function() {
+<<<<<<< HEAD
     if (this.props.data['state'] === undefined)
       this.props.data['state'] = {};
 
     this.props.data.state['MultiProfile'] = "incoming";
 
     this.state.people.push(this.props.data)
+=======
+    for(var i in this.props.data){
+      this.state.people.push(this.props.data[i]);
+    }
+    this.state.people.push(this.props.data[0]);
+    this.state.people.push(this.props.data[0]);
+>>>>>>> multiprofile stuff
   },
   render: function() {
     var peopleNodes = this.state.people.map(function (person) {
       return (
+<<<<<<< HEAD
         React.createElement(MultiProfile, {key: person.uid, state: person.state, data: person})
       );
     });
@@ -437,6 +473,21 @@ var MultiProfileList = React.createClass({displayName: "MultiProfileList",
       incoming.addClass('incoming').removeClass('current');
 
   }
+=======
+        React.createElement(MultiProfile, {key: person.uid+Math.random(), data: person})
+      );
+    });
+    return (
+      React.createElement("div", {className: "multiProfileContainer col-md-10 col-md-offset-1"}, 
+        React.createElement("h1", {className: "title"},  this.state.roleName), 
+        React.createElement("div", {id: "people", className: "col-lg-12"}, 
+           peopleNodes 
+        )
+      )
+    );
+  },
+  
+>>>>>>> multiprofile stuff
 });
 
 var ReactTransitionGroup = React.addons.TransitionGroup;
@@ -613,7 +664,7 @@ var SingleProfilePicture = React.createClass({displayName: "SingleProfilePicture
     
     return (
       React.createElement("div", {className:  this.props.cname}, 
-        React.createElement("img", {src: imageUrl, alt:  this.props.alt})
+        React.createElement("img", {src:  imageUrl, alt:  this.props.alt})
       )
     );
   }
@@ -629,7 +680,10 @@ var TopBar = React.createClass({displayName: "TopBar",
   render: function() {
     return (
       React.createElement("div", null
+<<<<<<< HEAD
       
+=======
+>>>>>>> multiprofile stuff
       )
     );
   }
@@ -687,11 +741,17 @@ var Twitter = React.createClass({displayName: "Twitter",
     return (
       React.createElement("div", {className: "twitter"}, 
         React.createElement("img", {className: "twitter_logo", src: "public/img/twitter_white.png"}), 
+<<<<<<< HEAD
         React.createElement("div", {className: "tweet"}, 
           React.createElement("h3", {className: "text"},  this.props.data.text), 
             media, 
           React.createElement("h3", {className: "info"}, React.createElement("img", {className: "profile_pic", src:  this.props.data.user.profile_image_url}), React.createElement("span", {className: "username"}, "@",  this.props.data.user.screen_name, " (",  this.props.data.user.name, "),"), " ", React.createElement("span", {className: "time_ago"}, time_ago, " ago"))
         )
+=======
+        React.createElement("h3", {className: "text"},  this.props.data.text), 
+         media, 
+        React.createElement("h3", {className: "info"}, React.createElement("img", {className: "profile_pic", src:  this.props.data.user.profile_image_url}), React.createElement("span", {className: "username"}, "@",  this.props.data.user.screen_name, " (",  this.props.data.user.name, "),"), " ", React.createElement("span", {className: "time_ago"},  time_ago, " ago"))
+>>>>>>> multiprofile stuff
       )
     );
   },

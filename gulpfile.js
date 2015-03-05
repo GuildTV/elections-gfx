@@ -1,5 +1,6 @@
 // Include gulp
-var gulp = require('gulp');
+var gulp = require('gulp'),
+  util     = require('gulp-util');
  // Define base folders
 var src = 'src/';
 var dest = 'public/';
@@ -32,7 +33,7 @@ gulp.task('data', function() {
  // Compile CSS from less files
 gulp.task('less', function() {
     return gulp.src(src + 'less/app.less')
-      .pipe(plugins.less())
+      .pipe(plugins.less().on('error', util.log))
       .pipe(gulp.dest(dest + 'css'));
 });
 

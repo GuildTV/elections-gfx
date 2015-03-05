@@ -3,7 +3,7 @@ App.widgets['MultiProfile'] = {
     if(data.length <= 0)
       return;
     
-    React.render(<MultiProfileList data={data} />, $(".sideBar")[0]);
+    React.render(<MultiProfileList data={data} />, $(".main")[0]);
   },
 
   update: function(data){
@@ -14,6 +14,6 @@ App.widgets['MultiProfile'] = {
     if(callback !== undefined)
       callback();
 
-    React.unmountComponentAtNode($(".sideBar")[0]);
+    React.unmountComponentAtNode($(".main")[0]);
   }
 };

@@ -6714,3 +6714,13 @@ h6 {
 .twitterContainer .username {
   margin-left: 0.5vw;
 }
+.multiProfileContainer {
+  padding: 5vh 0;
+}
+.multiProfileContainer .title {
+  text-align: center;
+  font-size: 70px;
+}
+.multiProfileContainer .multiProfile {
+  margin: 50px 65px;
+}
