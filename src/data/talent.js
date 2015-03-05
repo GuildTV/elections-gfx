@@ -1,22 +1,20 @@
 Data['talent'] = [
   {
-    "uid"             : "talent-update",
-    "name"            : "Suna Yokes & Tom Harvey",
-    "position"        : "Presenters",
-  },
-  {
     "uid"             : "talent-host",
-    "name"            : "Claire Lynch",
+    "first"           : "Claire",
+    "last"            : "Lynch",
     "position"        : "Host",
   },
   {
     "uid"             : "talent-roving",
-    "name"            : "Chloe Rayner",
+    "first"           : "Chloe",
+    "last"            : "Rayner",
     "position"        : "Roving Reporter",
   },
   {
     "uid"             : "talent-anal",
-    "name"            : "Joe McDowell & XX",
-    "position"        : "Analysts",
+    "first"           : "Jack Lockyer-Stevens & Lizzie Sharpe",
+    "last"            : "",
+    "position"        : "Political Commentators",
   },
 ];

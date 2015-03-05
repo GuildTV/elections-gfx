@@ -2,56 +2,60 @@ var Data = [];
 Data['sabbs'] = [
   {
     "uid"             : "sabbs-pres",
-    "name"            : "Poppy Wilkinson",
+    "first"           : "Poppy",
+    "last"            : "Wilkinson",
     "position"        : "President",
   },
   {
     "uid"             : "sabbs-vpad",
-    "name"            : "Wadim Wesolek",
+    "first"           : "Wadim",
+    "last"            : "Wesolek",
     "position"        : "VP (Activities & Development)",
   },
   {
     "uid"             : "sabbs-vpdrs",
-    "name"            : "Bethan Dovey",
+    "first"           : "Bethan",
+    "last"            : "Dovey",
     "position"        : "VP (Democracy & Resources)",
   },
   {
     "uid"             : "sabbs-vpe",
-    "name"            : "Joe Armer",
+    "first"           : "Joe",
+    "last"            : "Armer",
     "position"        : "VP (Education)",
   },
   {
     "uid"             : "sabbs-vps",
-    "name"            : "Molly Browne",
+    "first"           : "Molly",
+    "last"            : "Browne",
     "position"        : "VP (Sport)",
   },
   {
     "uid"             : "sabbs-vpw",
-    "name"            : "Frankie Greenwell",
+    "first"           : "Frankie",
+    "last"            : "Greenwell",
     "position"        : "VP (Welfare)",
   },
 ];
 
 Data['talent'] = [
   {
-    "uid"             : "talent-update",
-    "name"            : "Suna Yokes & Tom Harvey",
-    "position"        : "Presenters",
-  },
-  {
     "uid"             : "talent-host",
-    "name"            : "Claire Lynch",
+    "first"           : "Claire",
+    "last"            : "Lynch",
     "position"        : "Host",
   },
   {
     "uid"             : "talent-roving",
-    "name"            : "Chloe Rayner",
+    "first"           : "Chloe",
+    "last"            : "Rayner",
     "position"        : "Roving Reporter",
   },
   {
     "uid"             : "talent-anal",
-    "name"            : "Joe McDowell & XX",
-    "position"        : "Analysts",
+    "first"           : "Jack Lockyer-Stevens & Lizzie Sharpe",
+    "last"            : "",
+    "position"        : "Political Commentators",
   },
 ];
 
@@ -69,8 +73,10 @@ Data['ado'] = [
   {
     "uid"             : "ado-ben",
     "pid"             : "ado",
-    "name"            : "Ben Chapman",
-    "position"        : "Activities & Development Officer Candidate",
+    "first"           : "Ben",
+    "last"            : "Chapman",
+    "position"        : "Activities & Development Officer",
+    "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Introduce 'Society Of The Week'",
       "two"           : "Sponsorship and Networking",
@@ -80,8 +86,10 @@ Data['ado'] = [
   {
     "uid"             : "ado-george",
     "pid"             : "ado",
-    "name"            : "George Hughes",
-    "position"        : "Activities & Development Officer Candidate",
+    "first"            : "George",
+    "last"            : "Hughes",
+    "position"        : "Activities & Development Officer",
+    "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Breaking Barriers for Committee Members",
       "two"           : "Student Recognition",
@@ -91,13 +99,18 @@ Data['ado'] = [
   {
     "uid"             : "ado-natalia",
     "pid"             : "ado",
-    "name"            : "Natalia Organova",
+    "first"            : "Natalia",
+    "last"            : "Organova",
+    "position"        : "Activities & Development Officer",
+    "candidate"       : true,
   },
   {
     "uid"             : "ado-alex",
     "pid"             : "ado",
-    "name"            : "Alexander Moore",
-    "position"        : "Activities & Development Officer Candidate",
+    "first"            : "Alexander",
+    "last"            : "Moore",
+    "position"        : "Activities & Development Officer",
+    "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Better Publicity for Student Groups",
       "two"           : "Quicker and Easier Admin",
@@ -110,8 +123,10 @@ Data['president'] = [
   {
     "uid"             : "pres-jack",
     "pid"             : "pres",
-    "name"            : "Jack 'is Back' Mably",
-    "position"        : "Presidential Candidate",
+    "first"            : "Jack",
+    "last"            : "Mably",
+    "position"        : "Presidential",
+    "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Bigger, Better & Varied On Campus Events",
       "two"           : "Helping You Grab a Grad Job",
@@ -121,8 +136,10 @@ Data['president'] = [
   {
     "uid"             : "pres-ed",
     "pid"             : "pres",
-    "name"            : "Edward Sainsbury",
-    "position"        : "Presidential Candidate",
+    "first"            : "Edward",
+    "last"            : "Sainsbury",
+    "position"        : "Presidential",
+    "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Extend 24 Hour Library",
       "two"           : "Secure Sponsorship For More Campus Events",
@@ -131,8 +148,10 @@ Data['president'] = [
   },  {
     "uid"             : "pres-suleiman",
     "pid"             : "pres",
-    "name"            : "Suleiman Saidu Suleiman",
-    "position"        : "Presidential Candidate",
+    "first"            : "Suleiman",
+    "last"            : "Suleiman",
+    "position"        : "Presidential",
+    "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "To provide a more conducive learning environment for all students",
       "two"           : "To provide more learning support especially for the international students.",

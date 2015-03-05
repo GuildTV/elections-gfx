@@ -22,13 +22,13 @@ var SingleProfileNode = React.createClass({
   },
   render: function() {
     var DivClass = 'singleProfileNode col-md-10 col-md-offset-1 ' + this.props.data.state['SingleProfile'];
-
+    var isCandidate =  (this.props.data.candidate !== undefined && this.props.data.candidate == true)
     return (
       <div className={DivClass} data-id={ this.props.data.uid }>
-        <SingleProfileName name={this.props.data.name} />
-        <SingleProfilePosition position={this.props.data.position} />
+        <SingleProfileName first={this.props.data.first} last={this.props.data.last}  />
+        <SingleProfilePosition position={this.props.data.position} isCandidate={ isCandidate } />
         
-        <SingleProfilePicture cname={this.props.manifesto} name={this.props.data.name} pid={this.props.data.pid} uid={this.props.data.uid} />
+        <SingleProfilePicture cname={this.props.manifesto} pid={this.props.data.pid} uid={this.props.data.uid} />
 
         <SingleProfileManifesto manifesto={this.props.data.manifestoPoints} />
       </div> 

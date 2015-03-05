@@ -53,38 +53,3 @@ var SingleProfileList = React.createClass({
     );
   }
 });
-
-
-
-  // animateIncomingNodeIn: function() {
-  //   var incoming = $('.incoming:first'),
-  //       centrePoint = ( $(window).height() - incoming.outerHeight() )/2,
-  //       tl = new TimelineLite({onComplete: this.cycleNodes});
-
-  //   tl.to(incoming, 1, {bottom:centrePoint});
-  // },
-  // animateCurrentNodeOut: function() {
-  //   var current = $('.current'),
-  //   tl = new TimelineLite({onComplete: this.animateIncomingNodeIn()});
-
-  //   tl.to(current, 1, {top:150});
-  // },
-  // cycleNodes: function(incoming) {
-  //   var incoming  = $('.incoming:first'),
-  //       current   = $('.current:first'),
-  //       outgoing  = $('.outgoing:first');
-
-  //   if (incoming.length > 0)
-  //     App.findDataById(incoming.attr('data-id')).state['SingleProfile'] = "current";
-  //     incoming.addClass('current').removeClass('incoming');
-  //     console.log("incoming to current")
-    
-    // if (current.length > 0)
-    //   App.findDataById(current.attr('data-id')).state['SingleProfile'] = "outgoing";
-    //   incoming.addClass('outgoing').removeClass('current');
-    //   console.log("current to outgoing")
-
-    // if (outgoing.length > 0)
-    //   App.findDataById(outgoing.attr('data-id')).state['SingleProfile'] = "incoming";
-    //   incoming.addClass('incoming').removeClass('outgoing');
-    //   console.log("outgoing to incoming")

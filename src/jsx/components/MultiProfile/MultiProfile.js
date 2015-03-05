@@ -6,8 +6,9 @@ var MultiProfile = React.createClass({
 
     return (
       <div className={ divClass } data-id={ this.props.data.uid }>
+        <h1 className='text-center'>{ this.props.data.first.toUpperCase() } <strong>{ this.props.data.last.toUpperCase() }</strong></h1>
         <div className={ imageDivClass }>
-          <img src={ imageUrl } alt={ this.props.data.name } />
+          <img src={ this.props.data.img } />
         </div>
         <h1 className='text-center'>{ this.props.data.name }</h1>
       </div> 

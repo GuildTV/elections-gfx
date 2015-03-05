@@ -2,8 +2,10 @@ Data['president'] = [
   {
     "uid"             : "pres-jack",
     "pid"             : "pres",
-    "name"            : "Jack 'is Back' Mably",
-    "position"        : "Presidential Candidate",
+    "first"            : "Jack",
+    "last"            : "Mably",
+    "position"        : "Presidential",
+    "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Bigger, Better & Varied On Campus Events",
       "two"           : "Helping You Grab a Grad Job",
@@ -13,8 +15,10 @@ Data['president'] = [
   {
     "uid"             : "pres-ed",
     "pid"             : "pres",
-    "name"            : "Edward Sainsbury",
-    "position"        : "Presidential Candidate",
+    "first"            : "Edward",
+    "last"            : "Sainsbury",
+    "position"        : "Presidential",
+    "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Extend 24 Hour Library",
       "two"           : "Secure Sponsorship For More Campus Events",
@@ -23,8 +27,10 @@ Data['president'] = [
   },  {
     "uid"             : "pres-suleiman",
     "pid"             : "pres",
-    "name"            : "Suleiman Saidu Suleiman",
-    "position"        : "Presidential Candidate",
+    "first"            : "Suleiman",
+    "last"            : "Suleiman",
+    "position"        : "Presidential",
+    "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "To provide a more conducive learning environment for all students",
       "two"           : "To provide more learning support especially for the international students.",

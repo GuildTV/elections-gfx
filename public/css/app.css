@@ -6572,7 +6572,7 @@ body {
   src: url(../fonts/Roboto-Black.ttf);
 }
 body {
-  font-family: "RobotoCondensed";
+  font-family: "Roboto-Bold";
 }
 h1,
 h2,
@@ -6631,34 +6631,29 @@ h6 {
   color: #4a4a4a;
   font-weight: bold;
 }
-.singleProfile .singleProfileList {
+.singleProfileContainer {
   position: absolute;
-  height: 100vh;
-  opacity: 0;
-  background-color: rgba(51, 51, 51, 0.25);
-  color: #f0f0f0;
+  height: 100vw;
 }
-.singleProfile .singleProfileList .singleProfileNode {
+.singleProfileContainer .singleProfile {
   position: absolute;
+  bottom: -125%;
   height: auto;
   opacity: 0;
   text-align: center;
+  font-family: "RobotoCondensed";
 }
-.singleProfile .singleProfileList .singleProfileNode h1,
-.singleProfile .singleProfileList .singleProfileNode h2,
-.singleProfile .singleProfileList .singleProfileNode img {
+.singleProfileContainer .singleProfile h1,
+.singleProfileContainer .singleProfile h2,
+.singleProfileContainer .singleProfile img {
   margin-bottom: 0.5em;
 }
-.singleProfile .singleProfileList .singleProfileNode img {
-  background-color: #4a4a4a;
+.singleProfileContainer .singleProfile img {
+  background-color: rgba(74, 74, 74, 0.9);
   min-height: 200px;
 }
-.singleProfile .singleProfileList .singleProfileNode .manifesto ul li {
+.singleProfileContainer .singleProfile ul li {
   text-align: left;
-}
-.singleProfile .singleProfileList .incoming {
-  position: absolute;
-  bottom: -125%;
 }
 .twitterContainer {
   height: 100vh;

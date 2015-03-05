@@ -1,37 +1,26 @@
-.singleProfile {
-  .singleProfileList{
+.singleProfileContainer {
+  position: absolute;
+  height: 100vw;
+
+  .singleProfile {
     position: absolute;
-    height: 100vh;
+    bottom: -125%;
+    height: auto;
     opacity: 0;
-    
-    background-color: @primary-colour;
-    color: @primary-text-colour;
+    text-align: center;
+    font-family: "RobotoCondensed";
 
-    .singleProfileNode {
-      position: absolute;
-      height: auto;
-      opacity: 0;
-      text-align: center;
-
-      h1, h2, img {
-        margin-bottom: 0.5em;
-      }
-      img {
-        background-color: @lower-third-primary-font-colour; 
-        min-height: 200px;
-      }
-      .manifesto{
-        ul{
-          li{
-            text-align: left;
-          }
-        }
-      }
+    h1, h2, img {
+      margin-bottom: 0.5em;
     }
-
-    .incoming {
-      position: absolute;
-      bottom: -125%;
+    img {
+      background-color: @grey-alpha-bg; 
+      min-height: 200px;
+    }
+    ul {
+      li {
+        text-align: left;
+      }
     }
   }
 }

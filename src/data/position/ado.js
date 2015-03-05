@@ -2,8 +2,10 @@ Data['ado'] = [
   {
     "uid"             : "ado-ben",
     "pid"             : "ado",
-    "name"            : "Ben Chapman",
-    "position"        : "Activities & Development Officer Candidate",
+    "first"           : "Ben",
+    "last"            : "Chapman",
+    "position"        : "Activities & Development Officer",
+    "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Introduce 'Society Of The Week'",
       "two"           : "Sponsorship and Networking",
@@ -13,8 +15,10 @@ Data['ado'] = [
   {
     "uid"             : "ado-george",
     "pid"             : "ado",
-    "name"            : "George Hughes",
-    "position"        : "Activities & Development Officer Candidate",
+    "first"            : "George",
+    "last"            : "Hughes",
+    "position"        : "Activities & Development Officer",
+    "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Breaking Barriers for Committee Members",
       "two"           : "Student Recognition",
@@ -24,13 +28,18 @@ Data['ado'] = [
   {
     "uid"             : "ado-natalia",
     "pid"             : "ado",
-    "name"            : "Natalia Organova",
+    "first"            : "Natalia",
+    "last"            : "Organova",
+    "position"        : "Activities & Development Officer",
+    "candidate"       : true,
   },
   {
     "uid"             : "ado-alex",
     "pid"             : "ado",
-    "name"            : "Alexander Moore",
-    "position"        : "Activities & Development Officer Candidate",
+    "first"            : "Alexander",
+    "last"            : "Moore",
+    "position"        : "Activities & Development Officer",
+    "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Better Publicity for Student Groups",
       "two"           : "Quicker and Easier Admin",

@@ -8,7 +8,7 @@ var SingleProfileManifesto = React.createClass({
   render: function() {
     return (
       <div className='manifesto'>
-        <h2 className='text-center'>Manifesto</h2>
+        <h2 className='text-center'>MANIFESTO</h2>
         <ul>
           <li><h3 className='one'>{ this.props.manifesto.one }</h3></li>
           <li><h3 className='two'>{ this.props.manifesto.two }</h3></li>

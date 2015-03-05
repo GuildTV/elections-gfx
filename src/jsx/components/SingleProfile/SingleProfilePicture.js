@@ -4,7 +4,7 @@ var SingleProfilePicture = React.createClass({
     
     return (
       <div className={ this.props.cname }>
-        <img src={ imageUrl } alt={ this.props.alt } />
+        <img src={ imageUrl } />
       </div>
     );
   }

@@ -1,32 +1,38 @@
 Data['sabbs'] = [
   {
     "uid"             : "sabbs-pres",
-    "name"            : "Poppy Wilkinson",
+    "first"           : "Poppy",
+    "last"            : "Wilkinson",
     "position"        : "President",
   },
   {
     "uid"             : "sabbs-vpad",
-    "name"            : "Wadim Wesolek",
+    "first"           : "Wadim",
+    "last"            : "Wesolek",
     "position"        : "VP (Activities & Development)",
   },
   {
     "uid"             : "sabbs-vpdrs",
-    "name"            : "Bethan Dovey",
+    "first"           : "Bethan",
+    "last"            : "Dovey",
     "position"        : "VP (Democracy & Resources)",
   },
   {
     "uid"             : "sabbs-vpe",
-    "name"            : "Joe Armer",
+    "first"           : "Joe",
+    "last"            : "Armer",
     "position"        : "VP (Education)",
   },
   {
     "uid"             : "sabbs-vps",
-    "name"            : "Molly Browne",
+    "first"           : "Molly",
+    "last"            : "Browne",
     "position"        : "VP (Sport)",
   },
   {
     "uid"             : "sabbs-vpw",
-    "name"            : "Frankie Greenwell",
+    "first"           : "Frankie",
+    "last"            : "Greenwell",
     "position"        : "VP (Welfare)",
   },
 ];
