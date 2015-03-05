@@ -1,6 +1,21 @@
 var MultiProfile = React.createClass({
   render: function() {
-    var divClass = 'multiProfile col-md-2 center-block '
+    var divClass = 'multiProfile ';
+    switch(this.props.peopleCount){
+      case 6:
+      case 5:
+        divClass += "col-md-2 ";
+        break;
+      case 4:
+        divClass += "col-md-3 ";
+        break;
+      case 3:
+      case 2:
+      case 1:
+        divClass += "col-md-4 ";
+        break;
+    }
+
     var imageDivClass = 'image ' + this.props.data.pid + ' text-center';
     var imageUrl = 'public/img/roles/' + this.props.data.pid + '/' + this.props.data.uid + '.png';
 

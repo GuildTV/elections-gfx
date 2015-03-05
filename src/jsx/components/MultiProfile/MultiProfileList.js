@@ -21,11 +21,28 @@ var MultiProfileList = React.createClass({
 
     //align all the stuff
     var peopleDiv = multiProfileOuter.find('.people');
+    var people = peopleDiv.find('.multiProfile');
+    peopleDiv.find('img').each(function(i,v){
+      v = $(v);
+      v.css('height', v.outerWidth()+"px");
+    });
+
     var available = multiProfileOuter.innerHeight() - multiProfileOuter.find('.title').outerHeight();
     available -= peopleDiv.outerHeight();
     available /= 2;
     peopleDiv.css('margin', available+'px 0');
 
+    switch(people.length){
+      case 5:
+        $(people[0]).addClass('col-md-offset-1');
+        break;
+      case 2:
+        $(people[0]).addClass('col-md-offset-2');
+        break;
+      case 1:
+        $(people[0]).addClass('col-md-offset-4');
+        break;
+    }
 
     TweenLite.set(multiProfileOuter, {autoAlpha:0});
     tl.to(multiProfileOuter, 0.5, {autoAlpha:1});
@@ -38,14 +55,12 @@ var MultiProfileList = React.createClass({
     for(var i in this.props.data){
       this.state.people.push(this.props.data[i]);
     }
-    this.state.people.push(this.props.data[0]);
-    this.state.people.push(this.props.data[0]);
-    this.state.people.push(this.props.data[0]);
   },
   render: function() {
+    var peopleCount = this.state.people.length;
     var peopleNodes = this.state.people.map(function (person) {
       return (
-        <MultiProfile key={person.uid+Math.random()} state={person.state} data={person} />
+        <MultiProfile key={person.uid+Math.random()} state={person.state} data={person} peopleCount={peopleCount} />
       );
     });
     return (

@@ -359,7 +359,22 @@ var LowerThirdStrap = React.createClass({displayName: "LowerThirdStrap",
 });
 var MultiProfile = React.createClass({displayName: "MultiProfile",
   render: function() {
-    var divClass = 'multiProfile col-md-2 center-block '
+    var divClass = 'multiProfile ';
+    switch(this.props.peopleCount){
+      case 6:
+      case 5:
+        divClass += "col-md-2 ";
+        break;
+      case 4:
+        divClass += "col-md-3 ";
+        break;
+      case 3:
+      case 2:
+      case 1:
+        divClass += "col-md-4 ";
+        break;
+    }
+
     var imageDivClass = 'image ' + this.props.data.pid + ' text-center';
     var imageUrl = 'public/img/roles/' + this.props.data.pid + '/' + this.props.data.uid + '.png';
 
@@ -397,11 +412,28 @@ var MultiProfileList = React.createClass({displayName: "MultiProfileList",
 
     //align all the stuff
     var peopleDiv = multiProfileOuter.find('.people');
+    var people = peopleDiv.find('.multiProfile');
+    peopleDiv.find('img').each(function(i,v){
+      v = $(v);
+      v.css('height', v.outerWidth()+"px");
+    });
+
     var available = multiProfileOuter.innerHeight() - multiProfileOuter.find('.title').outerHeight();
     available -= peopleDiv.outerHeight();
     available /= 2;
     peopleDiv.css('margin', available+'px 0');
 
+    switch(people.length){
+      case 5:
+        $(people[0]).addClass('col-md-offset-1');
+        break;
+      case 2:
+        $(people[0]).addClass('col-md-offset-2');
+        break;
+      case 1:
+        $(people[0]).addClass('col-md-offset-4');
+        break;
+    }
 
     TweenLite.set(multiProfileOuter, {autoAlpha:0});
     tl.to(multiProfileOuter, 0.5, {autoAlpha:1});
@@ -414,14 +446,12 @@ var MultiProfileList = React.createClass({displayName: "MultiProfileList",
     for(var i in this.props.data){
       this.state.people.push(this.props.data[i]);
     }
-    this.state.people.push(this.props.data[0]);
-    this.state.people.push(this.props.data[0]);
-    this.state.people.push(this.props.data[0]);
   },
   render: function() {
+    var peopleCount = this.state.people.length;
     var peopleNodes = this.state.people.map(function (person) {
       return (
-        React.createElement(MultiProfile, {key: person.uid+Math.random(), state: person.state, data: person})
+        React.createElement(MultiProfile, {key: person.uid+Math.random(), state: person.state, data: person, peopleCount: peopleCount})
       );
     });
     return (
