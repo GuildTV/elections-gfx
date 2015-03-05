@@ -51,9 +51,11 @@ var Twitter = React.createClass({
     return (
       <div className='twitter'>
         <img className='twitter_logo' src="public/img/twitter_white.png" />
-        <h3 className='text'>{ this.props.data.text }</h3>
-        { media }
-        <h3 className='info'><img className='profile_pic' src={ this.props.data.user.profile_image_url } /><span className='username'>@{ this.props.data.user.screen_name } ({ this.props.data.user.name }),</span> <span className='time_ago'>{ time_ago } ago</span></h3>
+        <div className='tweet'>
+          <h3 className='text'>{ this.props.data.text }</h3>
+            { media }
+          <h3 className='info'><img className='profile_pic' src={ this.props.data.user.profile_image_url } /><span className='username'>@{ this.props.data.user.screen_name } ({ this.props.data.user.name }),</span> <span className='time_ago'>{ time_ago } ago</span></h3>
+        </div>
       </div>
     );
   },

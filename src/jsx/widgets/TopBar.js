@@ -1,14 +1,16 @@
-// App.widgets['topBar'] = {
-//   render: function(data) {
-//     $(".topBarContainer").html(App.templates.topBar(data));
-//   },
+App.widgets['TopBar'] = {
+  render: function(data) {
+    React.render(<TopBar/>, $(".topBar")[0]);
+  },
 
-//   update: function(data){
+  update: function(data){
 
-//   },
+  },
 
-//   stop: function(callback) {
-//     if(callback !== undefined)
-//       callback();
-//   }
-// };
+  stop: function(callback) {
+    TopBar.animateOut();
+
+    if(callback !== undefined)
+      callback();
+  }
+};
