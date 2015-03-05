@@ -10,38 +10,41 @@ var Twitter = React.createClass({
     },
   },
   componentDidMount: function() {
-    var tl = new TimelineLite(),
-        centrePoint = ( $(window).height() - $(".twitter").outerHeight() )/2
+    var td = $('.twitter'),
+        tl = new TimelineLite(),
+        centrePoint = ( $(window).height() - td.outerHeight() )/2;
 
-    tl.to($(".twitter"), 0, {top: centrePoint});
 
-    tl.to($(".twitter_logo"), 0.25, {left:"10vw"})
-      .to($(".twitter_logo"), 0.25, {width:"5%", left: 0, top: "5px"}, "+=0.75")
-      .to($(".text"), 0.5, {autoAlpha: 1}, "-=0.25")
-      .to($(".info"), 0.5, {autoAlpha: 1}, "-=0.5")
-      .to($(".twitter_img"), 0.5, {autoAlpha: 1}, "-=0.5")
-      .to($(".profile_pic"), 0.5, {autoAlpha: 1}, "-=0.5")
-      .to($(".username"), 0.5, {autoAlpha: 1}, "-=0.5")
-      .to($(".time_ago"), 0.5, {autoAlpha: 1}, "-=0.5");
+    tl.to(td, 0, {top: centrePoint});
+
+    tl.to(td.find(".twitter_logo"), 0.25, {left:"10vw"})
+      .to(td.find(".twitter_logo"), 0.25, {width:"5%", left: 0, top: "5px"}, "+=0.75")
+      .to(td.find(".text"), 0.5, {autoAlpha: 1}, "-=0.25")
+      .to(td.find(".info"), 0.5, {autoAlpha: 1}, "-=0.5")
+      .to(td.find(".twitter_img"), 0.5, {autoAlpha: 1}, "-=0.5")
+      .to(td.find(".profile_pic"), 0.5, {autoAlpha: 1}, "-=0.5")
+      .to(td.find(".username"), 0.5, {autoAlpha: 1}, "-=0.5")
+      .to(td.find(".time_ago"), 0.5, {autoAlpha: 1}, "-=0.5");
   },
   componentWillReceiveProps: function(nextProps) {
-    var tl = new TimelineLite();
+    var td = $('.twitter'),
+        tl = new TimelineLite();
 
-    tl.to($(".twitter_logo"), 0.25, {width:"50%", left:"10vw"})
-      .to($(".text"), 0.5, {autoAlpha: 0}, "-=0.25")
-      .to($(".info"), 0.5, {autoAlpha: 0}, "-=0.5")
-      .to($(".twitter_img"), 0.5, {autoAlpha: 0}, "-=0.5")
-      .to($(".profile_pic"), 0.5, {autoAlpha: 0}, "-=0.5")
-      .to($(".username"), 0.5, {autoAlpha: 0}, "-=0.5")
-      .to($(".time_ago"), 0.5, {autoAlpha: 0}, "-=0.5")
-      .to($(".twitter"), 0, {top: ( $(window).height() - $(".twitter").outerHeight() )/2})
-      .to($(".twitter_logo"), 0.25, {width:"5%", left: 0, top: "5px"}, "+=0.75")
-      .to($(".text"), 0.5, {autoAlpha: 1}, "-=0.25")
-      .to($(".info"), 0.5, {autoAlpha: 1}, "-=0.5")
-      .to($(".twitter_img"), 0.5, {autoAlpha: 1}, "-=0.5")
-      .to($(".profile_pic"), 0.5, {autoAlpha: 1}, "-=0.5")
-      .to($(".username"), 0.5, {autoAlpha: 1}, "-=0.5")
-      .to($(".time_ago"), 0.5, {autoAlpha: 1}, "-=0.5");
+    tl.to(td.find(".twitter_logo"), 0.25, {width:"50%", left:"10vw"})
+      .to(td.find(".text"), 0.5, {autoAlpha: 0}, "-=0.25")
+      .to(td.find(".info"), 0.5, {autoAlpha: 0}, "-=0.5")
+      .to(td.find(".twitter_img"), 0.5, {autoAlpha: 0}, "-=0.5")
+      .to(td.find(".profile_pic"), 0.5, {autoAlpha: 0}, "-=0.5")
+      .to(td.find(".username"), 0.5, {autoAlpha: 0}, "-=0.5")
+      .to(td.find(".time_ago"), 0.5, {autoAlpha: 0}, "-=0.5")
+      .to(td, 0, {top: ( $(window).height() - td.outerHeight() )/2})
+      .to(td.find(".twitter_logo"), 0.25, {width:"5%", left: 0, top: "5px"}, "+=0.75")
+      .to(td.find(".text"), 0.5, {autoAlpha: 1}, "-=0.25")
+      .to(td.find(".info"), 0.5, {autoAlpha: 1}, "-=0.5")
+      .to(td.find(".twitter_img"), 0.5, {autoAlpha: 1}, "-=0.5")
+      .to(td.find(".profile_pic"), 0.5, {autoAlpha: 1}, "-=0.5")
+      .to(td.find(".username"), 0.5, {autoAlpha: 1}, "-=0.5")
+      .to(td.find(".time_ago"), 0.5, {autoAlpha: 1}, "-=0.5");
 
   },
   render: function() {

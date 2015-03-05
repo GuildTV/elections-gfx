@@ -1109,7 +1109,7 @@ img {
 .img-thumbnail {
   padding: 4px;
   line-height: 1.42857143;
-  background-color: #ffffff;
+  background-color: rgba(115, 158, 201, 0.9);
   border: 1px solid #dddddd;
   border-radius: 4px;
   -webkit-transition: all 0.2s ease-in-out;
@@ -4857,7 +4857,7 @@ a.badge:focus {
   padding: 4px;
   margin-bottom: 20px;
   line-height: 1.42857143;
-  background-color: #ffffff;
+  background-color: rgba(115, 158, 201, 0.9);
   border: 1px solid #dddddd;
   border-radius: 4px;
   -webkit-transition: border 0.2s ease-in-out;
@@ -6649,7 +6649,7 @@ h6 {
   margin-bottom: 0.5em;
 }
 .singleProfileContainer .singleProfile img {
-  background-color: rgba(74, 74, 74, 0.9);
+  background-color: rgba(204, 204, 204, 0.9);
   min-height: 200px;
 }
 .singleProfileContainer .singleProfile ul li {
@@ -6722,6 +6722,7 @@ h6 {
 .multiProfileContainer .multiProfileOuter {
   padding: 5vh 0;
   height: 100vh;
+  color: #f0f0f0;
 }
 .multiProfileContainer .multiProfileOuter .title {
   text-align: center;
@@ -6731,7 +6732,20 @@ h6 {
   padding: 20px 25px;
 }
 .multiProfileContainer .multiProfileOuter .multiProfile img {
+  background-color: rgba(115, 158, 201, 0.9);
+  background: -webkit-gradient(linear, left top, right bottom, from(rgba(60, 107, 154, 0.9)), to(rgba(115, 158, 201, 0.9)));
+  border: 3px solid rgba(115, 158, 201, 0.9);
+  border-image: -webkit-linear-gradient(left top, rgba(115, 158, 201, 0.9) 0%, rgba(60, 107, 154, 0.9) 100%);
+  border-image-slice: 1;
   width: 100%;
+  z-index: 10000;
+}
+.multiProfileContainer .multiProfileOuter .multiProfile h1 {
+  text-align: left;
+  position: relative;
+  top: -100px;
+  z-index: -1;
+  margin: 5px 10px;
 }
 .multiProfileContainer .multiProfileOuter .multiProfile.col-md-4 {
   padding: 20px 80px;

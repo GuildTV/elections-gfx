@@ -236,7 +236,7 @@ App.widgets['MultiProfile'] = {
     if(data.length <= 0)
       return;
     
-    React.render(React.createElement(MultiProfileList, {data: data, title: title}), $(".multiProfileContainer")[0]);
+    React.render(React.createElement(MultiProfileList, {people: data, title: title}), $(".multiProfileContainer")[0]);
   },
 
   update: function(data){
@@ -380,11 +380,10 @@ var MultiProfile = React.createClass({displayName: "MultiProfile",
 
     return (
       React.createElement("div", {className:  divClass, "data-id":  this.props.data.uid}, 
-        React.createElement("h1", {className: "text-center"},  this.props.data.first.toUpperCase(), " ", React.createElement("strong", null,  this.props.data.last.toUpperCase() )), 
         React.createElement("div", {className:  imageDivClass }, 
-          React.createElement("img", {src:  this.props.data.img})
+          React.createElement("img", {src:  imageUrl })
         ), 
-        React.createElement("h1", {className: "text-center"},  this.props.data.name)
+        React.createElement("h1", {className: "text-center"},  this.props.data.first.toUpperCase(), React.createElement("br", null), React.createElement("strong", null,  this.props.data.last.toUpperCase() ))
       ) 
     );
   }
@@ -435,34 +434,70 @@ var MultiProfileList = React.createClass({displayName: "MultiProfileList",
         break;
     }
 
-    TweenLite.set(multiProfileOuter, {autoAlpha:0});
-    tl.to(multiProfileOuter, 0.5, {autoAlpha:1});
+    var o = multiProfileOuter;
 
-    this.animateIncomingNodeIn();
+    TweenLite.set(o, {autoAlpha:0});
+    tl.to(o, 0.5, {autoAlpha:1})
+      .to(o.find('h1'), 0.6, {top: "0px"}, "-=0.5");
+
+    // this.animateIncomingNodeIn();
   },
-  componentWillMount: function() {
-    this.state.roleName = this.props.title;
+  componentWillReceiveProps: function(nextProps) {
+    var o = $('.multiProfileOuter'),
+        tl = new TimelineLite();
 
-    for(var i in this.props.data){
-      this.state.people.push(this.props.data[i]);
-    }
+    tl.to(o, 0.5, {autoAlpha: 0})
+      .to(o, 0.5, {autoAlpha: 1});
+
+  },
+  componentDidUpdate: function() {
+    // setTimeout(this.componentDidMount, 400);
   },
   render: function() {
-    var peopleCount = this.state.people.length;
-    var peopleNodes = this.state.people.map(function (person) {
-      return (
-        React.createElement(MultiProfile, {key: person.uid+Math.random(), state: person.state, data: person, peopleCount: peopleCount})
-      );
-    });
+    var peopleCount = this.props.people.length;
+    var peopleNodes = this.props.people.map(function (person) {
+      return this.renderThumbnail(person, peopleCount);
+    }, this);
     return (
       React.createElement("div", {className: "multiProfileOuter col-md-10 col-md-offset-1"}, 
-      React.createElement("h1", {className: "title"},  this.state.roleName), 
+      React.createElement("h1", {className: "title"},  this.props.title.toUpperCase() ), 
         React.createElement("div", {className: "people col-lg-12"}, 
            peopleNodes 
         )
       )
     );
   },
+
+  renderThumbnail: function(person, peopleCount){
+    var divClass = 'multiProfile ';
+    switch(peopleCount){
+      case 6:
+      case 5:
+        divClass += "col-md-2 ";
+        break;
+      case 4:
+        divClass += "col-md-3 ";
+        break;
+      case 3:
+      case 2:
+      case 1:
+        divClass += "col-md-4 ";
+        break;
+    }
+
+    var imageDivClass = 'image ' + person.pid + ' text-center';
+    var imageUrl = 'public/img/roles/' + person.pid + '/' + person.uid + '.png';
+
+    return (
+      React.createElement("div", {className:  divClass, "data-id":  person.uid}, 
+        React.createElement("div", {className:  imageDivClass }, 
+          React.createElement("img", {src:  imageUrl })
+        ), 
+        React.createElement("h1", {className: "text-center"},  person.first.toUpperCase(), React.createElement("br", null), React.createElement("strong", null,  person.last.toUpperCase() ))
+      ) 
+    );
+  }, 
+
   cycleNodes: function(incoming) {
     var incoming  = $('.incoming:first'),
         current   = $('.current:first'),
@@ -692,38 +727,41 @@ var Twitter = React.createClass({displayName: "Twitter",
     },
   },
   componentDidMount: function() {
-    var tl = new TimelineLite(),
-        centrePoint = ( $(window).height() - $(".twitter").outerHeight() )/2
+    var td = $('.twitter'),
+        tl = new TimelineLite(),
+        centrePoint = ( $(window).height() - td.outerHeight() )/2;
 
-    tl.to($(".twitter"), 0, {top: centrePoint});
 
-    tl.to($(".twitter_logo"), 0.25, {left:"10vw"})
-      .to($(".twitter_logo"), 0.25, {width:"5%", left: 0, top: "5px"}, "+=0.75")
-      .to($(".text"), 0.5, {autoAlpha: 1}, "-=0.25")
-      .to($(".info"), 0.5, {autoAlpha: 1}, "-=0.5")
-      .to($(".twitter_img"), 0.5, {autoAlpha: 1}, "-=0.5")
-      .to($(".profile_pic"), 0.5, {autoAlpha: 1}, "-=0.5")
-      .to($(".username"), 0.5, {autoAlpha: 1}, "-=0.5")
-      .to($(".time_ago"), 0.5, {autoAlpha: 1}, "-=0.5");
+    tl.to(td, 0, {top: centrePoint});
+
+    tl.to(td.find(".twitter_logo"), 0.25, {left:"10vw"})
+      .to(td.find(".twitter_logo"), 0.25, {width:"5%", left: 0, top: "5px"}, "+=0.75")
+      .to(td.find(".text"), 0.5, {autoAlpha: 1}, "-=0.25")
+      .to(td.find(".info"), 0.5, {autoAlpha: 1}, "-=0.5")
+      .to(td.find(".twitter_img"), 0.5, {autoAlpha: 1}, "-=0.5")
+      .to(td.find(".profile_pic"), 0.5, {autoAlpha: 1}, "-=0.5")
+      .to(td.find(".username"), 0.5, {autoAlpha: 1}, "-=0.5")
+      .to(td.find(".time_ago"), 0.5, {autoAlpha: 1}, "-=0.5");
   },
   componentWillReceiveProps: function(nextProps) {
-    var tl = new TimelineLite();
+    var td = $('.twitter'),
+        tl = new TimelineLite();
 
-    tl.to($(".twitter_logo"), 0.25, {width:"50%", left:"10vw"})
-      .to($(".text"), 0.5, {autoAlpha: 0}, "-=0.25")
-      .to($(".info"), 0.5, {autoAlpha: 0}, "-=0.5")
-      .to($(".twitter_img"), 0.5, {autoAlpha: 0}, "-=0.5")
-      .to($(".profile_pic"), 0.5, {autoAlpha: 0}, "-=0.5")
-      .to($(".username"), 0.5, {autoAlpha: 0}, "-=0.5")
-      .to($(".time_ago"), 0.5, {autoAlpha: 0}, "-=0.5")
-      .to($(".twitter"), 0, {top: ( $(window).height() - $(".twitter").outerHeight() )/2})
-      .to($(".twitter_logo"), 0.25, {width:"5%", left: 0, top: "5px"}, "+=0.75")
-      .to($(".text"), 0.5, {autoAlpha: 1}, "-=0.25")
-      .to($(".info"), 0.5, {autoAlpha: 1}, "-=0.5")
-      .to($(".twitter_img"), 0.5, {autoAlpha: 1}, "-=0.5")
-      .to($(".profile_pic"), 0.5, {autoAlpha: 1}, "-=0.5")
-      .to($(".username"), 0.5, {autoAlpha: 1}, "-=0.5")
-      .to($(".time_ago"), 0.5, {autoAlpha: 1}, "-=0.5");
+    tl.to(td.find(".twitter_logo"), 0.25, {width:"50%", left:"10vw"})
+      .to(td.find(".text"), 0.5, {autoAlpha: 0}, "-=0.25")
+      .to(td.find(".info"), 0.5, {autoAlpha: 0}, "-=0.5")
+      .to(td.find(".twitter_img"), 0.5, {autoAlpha: 0}, "-=0.5")
+      .to(td.find(".profile_pic"), 0.5, {autoAlpha: 0}, "-=0.5")
+      .to(td.find(".username"), 0.5, {autoAlpha: 0}, "-=0.5")
+      .to(td.find(".time_ago"), 0.5, {autoAlpha: 0}, "-=0.5")
+      .to(td, 0, {top: ( $(window).height() - td.outerHeight() )/2})
+      .to(td.find(".twitter_logo"), 0.25, {width:"5%", left: 0, top: "5px"}, "+=0.75")
+      .to(td.find(".text"), 0.5, {autoAlpha: 1}, "-=0.25")
+      .to(td.find(".info"), 0.5, {autoAlpha: 1}, "-=0.5")
+      .to(td.find(".twitter_img"), 0.5, {autoAlpha: 1}, "-=0.5")
+      .to(td.find(".profile_pic"), 0.5, {autoAlpha: 1}, "-=0.5")
+      .to(td.find(".username"), 0.5, {autoAlpha: 1}, "-=0.5")
+      .to(td.find(".time_ago"), 0.5, {autoAlpha: 1}, "-=0.5");
 
   },
   render: function() {

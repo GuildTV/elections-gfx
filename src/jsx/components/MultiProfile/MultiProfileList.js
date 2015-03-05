@@ -44,34 +44,70 @@ var MultiProfileList = React.createClass({
         break;
     }
 
-    TweenLite.set(multiProfileOuter, {autoAlpha:0});
-    tl.to(multiProfileOuter, 0.5, {autoAlpha:1});
+    var o = multiProfileOuter;
 
-    this.animateIncomingNodeIn();
+    TweenLite.set(o, {autoAlpha:0});
+    tl.to(o, 0.5, {autoAlpha:1})
+      .to(o.find('h1'), 0.6, {top: "0px"}, "-=0.5");
+
+    // this.animateIncomingNodeIn();
   },
-  componentWillMount: function() {
-    this.state.roleName = this.props.title;
+  componentWillReceiveProps: function(nextProps) {
+    var o = $('.multiProfileOuter'),
+        tl = new TimelineLite();
 
-    for(var i in this.props.data){
-      this.state.people.push(this.props.data[i]);
-    }
+    tl.to(o, 0.5, {autoAlpha: 0})
+      .to(o, 0.5, {autoAlpha: 1});
+
+  },
+  componentDidUpdate: function() {
+    // setTimeout(this.componentDidMount, 400);
   },
   render: function() {
-    var peopleCount = this.state.people.length;
-    var peopleNodes = this.state.people.map(function (person) {
-      return (
-        <MultiProfile key={person.uid+Math.random()} state={person.state} data={person} peopleCount={peopleCount} />
-      );
-    });
+    var peopleCount = this.props.people.length;
+    var peopleNodes = this.props.people.map(function (person) {
+      return this.renderThumbnail(person, peopleCount);
+    }, this);
     return (
       <div className='multiProfileOuter col-md-10 col-md-offset-1'>
-      <h1 className='title'>{ this.state.roleName }</h1>
+      <h1 className='title'>{ this.props.title.toUpperCase() }</h1>
         <div className="people col-lg-12">
           { peopleNodes }
         </div>
       </div>
     );
   },
+
+  renderThumbnail: function(person, peopleCount){
+    var divClass = 'multiProfile ';
+    switch(peopleCount){
+      case 6:
+      case 5:
+        divClass += "col-md-2 ";
+        break;
+      case 4:
+        divClass += "col-md-3 ";
+        break;
+      case 3:
+      case 2:
+      case 1:
+        divClass += "col-md-4 ";
+        break;
+    }
+
+    var imageDivClass = 'image ' + person.pid + ' text-center';
+    var imageUrl = 'public/img/roles/' + person.pid + '/' + person.uid + '.png';
+
+    return (
+      <div className={ divClass } data-id={ person.uid }>
+        <div className={ imageDivClass }>
+          <img src={ imageUrl } />
+        </div>
+        <h1 className='text-center'>{ person.first.toUpperCase() }<br/><strong>{ person.last.toUpperCase() }</strong></h1>
+      </div> 
+    );
+  }, 
+
   cycleNodes: function(incoming) {
     var incoming  = $('.incoming:first'),
         current   = $('.current:first'),

@@ -3,7 +3,7 @@ App.widgets['MultiProfile'] = {
     if(data.length <= 0)
       return;
     
-    React.render(<MultiProfileList data={data} title={title} />, $(".multiProfileContainer")[0]);
+    React.render(<MultiProfileList people={data} title={title} />, $(".multiProfileContainer")[0]);
   },
 
   update: function(data){

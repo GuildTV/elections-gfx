@@ -8,6 +8,7 @@
   .multiProfileOuter {
     padding: 5vh 0;
     height: 100vh;
+    color: @primary-text-colour;
 
     .title {
       text-align: center;
@@ -18,7 +19,27 @@
       padding: 20px 25px;
 
       img {
+        background-color: @thumbnail-bg; 
+        background: -webkit-gradient(linear, left top, right bottom, from(@thumbnail-bg-dark), to(@thumbnail-bg));
+
+        border: 3px solid @thumbnail-bg;
+        border-image: -webkit-linear-gradient(left top, @thumbnail-bg 0%, @thumbnail-bg-dark 100%);
+        border-image-slice: 1;
+
         width: 100%;
+        z-index: 10000;
+      }
+
+      h1 {
+        text-align: left;
+        position: relative;
+        top: -100px;
+        z-index: -1;
+        margin: 5px 10px;
+
+        strong {
+          @font-face: "Roboto-Black";
+        }
       }
     } 
 
