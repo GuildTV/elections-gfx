@@ -1,6 +1,19 @@
 var MultiProfileList = React.createClass({
   getInitialState: function() {
-    return {people: []};
+    return {people: [], roleName:"Unknown" };
+  },
+  animateIncomingNodeIn: function() {
+    var incoming = $('.incoming:first'),
+        centrePoint = ( $(window).height() - incoming.outerHeight() )/2,
+        tl = new TimelineLite({});
+
+    tl.to(incoming, 1, {bottom:centrePoint});
+  },
+  animateCurrentNodeOut: function() {
+    var current = $('.current'),
+    tl = new TimelineLite({onComplete: this.animateIncomingNodeIn()});
+
+    tl.to(current, 1, {top:150});
   },
   componentDidMount: function() {
     var multiProfileContainer = $('.multiProfileContainer'),
@@ -12,37 +25,26 @@ var MultiProfileList = React.createClass({
     this.animateIncomingNodeIn();
   },
   componentWillMount: function() {
-    if (this.props.data['state'] === undefined)
-      this.props.data['state'] = {};
-
-    this.props.data.state['MultiProfile'] = "incoming";
-
-    this.state.people.push(this.props.data)
+    for(var i in this.props.data){
+      this.state.people.push(this.props.data[i]);
+    }
+    this.state.people.push(this.props.data[0]);
+    this.state.people.push(this.props.data[0]);
   },
   render: function() {
     var peopleNodes = this.state.people.map(function (person) {
       return (
-        <MultiProfile key={person.uid} state={person.state} data={person} />
+        <MultiProfile key={person.uid+Math.random()} state={person.state} data={person} />
       );
     });
     return (
-      <div className='multiProfileContainer col-md-12'>
-        { peopleNodes }
+      <div className='multiProfileContainer col-md-10 col-md-offset-1'>
+      <h1 className='title'>{ this.state.roleName }</h1>
+        <div id="people" className="col-lg-12">
+          { peopleNodes }
+        </div>
       </div>
     );
-  },
-  animateIncomingNodeIn: function() {
-    var incoming = $('.incoming:first'),
-        centrePoint = ( $(window).height() - incoming.outerHeight() )/2,
-        tl = new TimelineLite({onComplete: this.cycleNodes()});
-
-    tl.to(incoming, 1, {bottom:centrePoint});
-  },
-  animateCurrentNodeOut: function() {
-    var current = $('.current'),
-    tl = new TimelineLite({onComplete: this.animateIncomingNodeIn()});
-
-    tl.to(current, 1, {top:150});
   },
   cycleNodes: function(incoming) {
     var incoming  = $('.incoming:first'),
