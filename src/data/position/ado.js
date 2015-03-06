@@ -15,7 +15,7 @@ Data['ado'] = [
   {
     "uid"             : "ado-george",
     "pid"             : "ado",
-    "first"            : "George",
+    "first"           : "George",
     "last"            : "Hughes",
     "position"        : "Activities & Development Officer",
     "candidate"       : true,
@@ -36,7 +36,7 @@ Data['ado'] = [
   {
     "uid"             : "ado-alex",
     "pid"             : "ado",
-    "first"            : "Alexander",
+    "first"           : "Alexander",
     "last"            : "Moore",
     "position"        : "Activities & Development Officer",
     "candidate"       : true,

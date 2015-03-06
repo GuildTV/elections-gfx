@@ -86,7 +86,7 @@ Data['ado'] = [
   {
     "uid"             : "ado-george",
     "pid"             : "ado",
-    "first"            : "George",
+    "first"           : "George",
     "last"            : "Hughes",
     "position"        : "Activities & Development Officer",
     "candidate"       : true,
@@ -107,7 +107,7 @@ Data['ado'] = [
   {
     "uid"             : "ado-alex",
     "pid"             : "ado",
-    "first"            : "Alexander",
+    "first"           : "Alexander",
     "last"            : "Moore",
     "position"        : "Activities & Development Officer",
     "candidate"       : true,
@@ -118,6 +118,257 @@ Data['ado'] = [
     }
   },
 ];
+
+Data['arafo'] = [
+  {
+    "uid"             : "arafo-maaria",
+    "pid"             : "arafo",
+    "first"           : "Ross",
+    "last"            : "Strong",
+    "position"        : "Anti-Racism, Anti Fascism Officer",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "Defeat Racism & Fascism on Campus",
+      "two"           : "Embrace Diversity & Multiclturalism",
+      "three"         : "Promoting Equality & Tolerance",
+    }
+  },
+  {
+    "uid"             : "arafo-katie",
+    "pid"             : "arafo",
+    "first"           : "Katie",
+    "last"            : "Webb",
+    "position"        : "Anti-Racism, Anti Fascism Officer",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "Eradication Intolerance",
+      "two"           : "Educating About Diversity",
+      "three"         : "Ensuring Saftey",
+    }
+  }
+];
+
+Data['cao'] = [
+  {
+    "uid"             : "cao-lewis",
+    "pid"             : "cao",
+    "first"           : "Lewis",
+    "last"            : "Addlington-Lee",
+    "position"        : "Community Action Officer",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "Work With Mind to Improve Support & Welfare for All Students & Staff",
+      "two"           : "Create an Online Resourse Identifying Community Projects Near Students in Birmingham",
+      "three"         : "Support the Student Movement in their Fight for Free & Accesible Education for All",
+    }
+  }
+];
+
+Data['dso'] = [
+  {
+    "uid"             : "dso-hayley",
+    "pid"             : "dso",
+    "first"           : "Hayley",
+    "last"            : "Graham",
+    "position"        : "Disabled Students' Officer",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "To Incease Awareness of Disability Support Services & Network Available",
+      "two"           : "To Continue the Campain Against Cuts to Disabled Students Allowance and Other Vital Funds",
+      "three"         : "To Help Disable Studnts on Campus Make the Most of Life at Birmingham",
+    }
+  }
+];
+
+Data['eeo'] = [
+  {
+    "uid"             : "eeo-samuel",
+    "pid"             : "eeo",
+    "first"           : "Samuel",
+    "last"            : "Benson",
+    "position"        : "Ethical & Environmental Officer",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "Establish a Community Garden",
+      "two"           : "Solar Panels on Campus",
+      "three"         : "Campain for a More Eco-Efficient Selly Oak",
+    }
+  },
+  {
+    "uid"             : "eeo-james",
+    "pid"             : "eeo",
+    "first"           : "James",
+    "last"            : "Honke",
+    "position"        : "Ethical & Environmental Officer",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "Tackle Discrimination on Campus",
+      "two"           : "Divest from Fossil Fuels",
+      "three"         : "Fight for Living Wages & Free Education",
+    }
+  }
+];
+
+Data['emso'] = [
+  {
+    "uid"             : "emso-mohamed",
+    "pid"             : "emso",
+    "first"           : "Mohamed",
+    "last"            : "Hussain",
+    "position"        : "Ethnic Minority Students’ Officer",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "Active Anti-Racist Campaigns on Campus & in the Community",
+      "two"           : "Tackle the Attainment Gap: Diversify the Curriculum & Cahallenge Eurocentricity",
+      "three"         : "Divers and inclusive Events & Projects for BME Students’",
+    }
+  },
+  {
+    "uid"             : "emso-hannah",
+    "pid"             : "emso",
+    "first"           : "Hannah",
+    "last"            : "Sharron",
+    "position"        : "Ethnic Minority Students’ Officer",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "Representative",
+      "two"           : "Accountable",
+      "three"         : "Proactive",
+    }
+  }
+];
+
+Data['eo'] = [
+  {
+    "uid"             : "eo-joulie",
+    "pid"             : "eo",
+    "first"           : "Panagiota",
+    "last"            : "Axelithioti",
+    "position"        : "Education Officer",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "More Study Spaces that stay open longer",
+      "two"           : "Fair Exams/Assignments & More Study Support",
+      "three"         : "Better Student Experience for Home & International Students",
+    }
+  },
+  {
+    "uid"             : "eo-izzy",
+    "pid"             : "eo",
+    "first"           : "Isabella",
+    "last"            : "Lenga",
+    "position"        : "Education Officer",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "Schedule Refresh",
+      "two"           : "Study Spaces",
+      "three"         : "Student Reps",
+    }
+  },
+  {
+    "uid"             : "eo-afroze",
+    "pid"             : "eo",
+    "first"           : "Afroze",
+    "last"            : "Zaidi-Jivraj",
+    "position"        : "Education Officer",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "Closing The Attainment Gap",
+      "two"           : "Free Education",
+      "three"         : "Supporting Parent & Carers",
+    }
+  },
+];
+
+Data['hso'] = [
+  {
+    "uid"             : "hso-mohamed",
+    "pid"             : "hso",
+    "first"           : "Mohamed",
+    "last"            : "Hussain",
+    "position"        : "Ethnic Minority Students’ Officer",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "Easier Access to Travel",
+      "two"           : "Encourage Recording of Lecture",
+      "three"         : "Increase Accessibility of Guild Council",
+    }
+  }
+  ];
+
+Data['hso'] = [
+  {
+    "uid"             : "hso-adam",
+    "pid"             : "hso",
+    "first"           : "Adam",
+    "last"            : "Elmi",
+    "position"        : "Ethnic Minority Students’ Officer",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "Easier Access to Travel",
+      "two"           : "Encourage Recording of Lecture",
+      "three"         : "Increase Accessibility of Guild Council",
+    }
+  }
+  ];
+
+Data['iso'] = [
+  {
+    "uid"             : "iso-nivedita",
+    "pid"             : "iso",
+    "first"           : "Nivedita",
+    "last"            : "Kulkarni",
+    "position"        : "International Students' Officer",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "Improving the Services for International Students",
+      "two"           : "Including More Cultural Events",
+      "three"         : "Easier Ways to Voice Your Opinions",
+    }
+  },
+  {
+    "uid"             : "iso-khadijeh",
+    "pid"             : "iso",
+    "first"           : "Khadijeh",
+    "last"            : "Rahmani",
+    "position"        : "International Students' Officer",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "Represent International Students and Bring to the Table their Issues",
+      "two"           : "Assist the Needs of International Students, Both Social & Academic",
+      "three"         : "Make Sure their Voices are Heard in UoB",
+    }
+  },
+  {
+    "uid"             : "iso-abdul",
+    "pid"             : "iso",
+    "first"           : "Abdulmutalib",
+    "last"            : "Shittu",
+    "position"        : "International Students' Officer",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "Better Student Integration",
+      "two"           : "Greater Awareness of International Students' Day",
+      "three"         : "Better Information for Arriving/Present International Students",
+    }
+  }
+];
+
+Data['lgbtqo'] = [
+  {
+    "uid"             : "lgbtqo-chavonne",
+    "pid"             : "lgbtqo",
+    "first"           : "Chavonne",
+    "last"            : "Brown",
+    "position"        : "Ethnic Minority Students’ Officer",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "Raise the Profile of the LGBTQ Association",
+      "two"           : "Raise Awareness of Those Groups Withing the Association that are Least Publically Understood",
+      "three"         : "Promote Better Relations and Links with Liberation Associations",
+    }
+  }
+  ];
 
 Data['president'] = [
   {
@@ -159,4 +410,214 @@ Data['president'] = [
     }
   },
 
+];
+
+Data['rro'] = [
+  {
+    "uid"             : "rro-ahmet",
+    "pid"             : "rro",
+    "first"           : "Ahmet",
+    "last"            : "Aslim",
+    "position"        : "Representation & Resources Officer",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "Transparency: Know What Your Guild is Doing",
+      "two"           : "Democracy: More Polls and Student Meetings to Encourage Student Involvement in the Guild",
+      "three"         : "Activities: More Trips Abroad, Games and Karaoke Nights",
+    }
+  },
+  {
+    "uid"             : "rro-ian",
+    "pid"             : "rro",
+    "first"           : "Ian",
+    "last"            : "Kafka",
+    "position"        : "Representation & Resources Officer",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "Communication: Improve Channels Between Students & Officers",
+      "two"           : "Continuity: Ensure Effective Funcionality with New Systems Coming in to Force",
+      "three"         : "Cash: Expand & Change Joe's Card to be Better at Saving you Money",
+    }
+  },
+  {
+    "uid"             : "rro-daisy",
+    "pid"             : "rro",
+    "first"           : "Daisy",
+    "last"            : "Lindlar",
+    "position"        : "Representation & Resources Officer",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "Make Gradball YOUR Gradball",
+      "two"           : "Engage International Students",
+      "three"         : "Reforem Guild Elections",
+    }
+  },
+  {
+    "uid"             : "rro-mohammed",
+    "pid"             : "rro",
+    "first"           : "Mohammed",
+    "last"            : "Mumit",
+    "position"        : "Representation & Resources Officer",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "Sustainable Living",
+      "two"           : "Uniting Networks",
+      "three"         : "Defend Democracy",
+    }
+  },
+  {
+    "uid"             : "rro-laurence",
+    "pid"             : "rro",
+    "first"           : "Laurence",
+    "last"            : "Thompson",
+    "position"        : "Representation & Resources Officer",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "Meal Plan in the Guild",
+      "two"           : "A New Commercial Outlet, Chosen by Studetns",
+      "three"         : "Guild Finances: Transparency and Control",
+    }
+  },
+];
+
+Data['so'] = [
+  {
+    "uid"             : "so-remy",
+    "pid"             : "so",
+    "first"           : "Remy",
+    "last"            : "Claustres",
+    "position"        : "Sports Officer",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "Big Scrowds for Big Games",
+      "two"           : "Free Health and Fitness Classes",
+      "three"         : "Intra Mural for All",
+    }
+  },
+  {
+    "uid"             : "so-evie",
+    "pid"             : "so",
+    "first"           : "Evangeline",
+    "last"            : "Harrison",
+    "position"        : "Sports Officer",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "Sports Centre Awarebess",
+      "two"           : "'Best of Brum' Series",
+      "three"         : "Shake It Up",
+    }
+  },
+  {
+    "uid"             : "so-luana",
+    "pid"             : "so",
+    "first"           : "Luana",
+    "last"            : "Jordan",
+    "position"        : "Sports Officer",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "Organise a Varsity Competiion Against Another Local University",
+      "two"           : "Promote Sporting Events to Increase Attendance, Support & Recognition for All UoB Terms",
+      "three"         : "Increase Awareness of Health and Fitness on Campus",
+    }
+  },
+  {
+    "uid"             : "so-becki",
+    "pid"             : "so",
+    "first"           : "Rebecca",
+    "last"            : "McWhinnie",
+    "position"        : "Sports Officer",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "Something for Everyone",
+      "two"           : "Someone for Everyone",
+      "three"         : "Somwhere for Everyone",
+    }
+  },
+  {
+    "uid"             : "so-tom",
+    "pid"             : "so",
+    "first"           : "Thomas",
+    "last"            : "Mills",
+    "position"        : "Sports Officer",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "Taking You From Hall Team Legend to Club Level Athlete",
+      "two"           : "Sporting Skills to Pay the Bills",
+      "three"         : "Take Your Marks and Get for the New Sports Centre",
+    }
+  },
+  {
+    "uid"             : "so-allan",
+    "pid"             : "so",
+    "first"           : "Allan",
+    "last"            : "Stewart",
+    "position"        : "Sports Officer",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "Nutrition Matters",
+      "two"           : "Sporting You",
+      "three"         : "Active Campus",
+    }
+  },
+];
+
+Data['sso'] = [
+  {
+    "uid"             : "sso-ellie",
+    "pid"             : "sso",
+    "first"           : "Eleanor",
+    "last"            : "Keiller",
+    "position"        : "Ethnic Minority Students’ Officer",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "Improved Transport Links",
+      "two"           : "Sufficient Study Resources",
+      "three"         : "Regular Guild Services",
+    }
+  }
+  ];
+
+Data['welfare'] = [
+  {
+    "uid"             : "welfare-ross",
+    "pid"             : "welfare",
+    "first"           : "Ross",
+    "last"            : "Strong",
+    "position"        : "Welfare Officer",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "Mental Health Campaigning",
+      "two"           : "Sexual Health Testing on Campus",
+      "three"         : "Empowering Liberation Groups",
+    }
+  }
+];
+
+Data['womens'] = [
+  {
+    "uid"             : "womens-alex",
+    "pid"             : "womens",
+    "first"           : "Alexandra",
+    "last"            : "Binnie",
+    "position"        : "International Students' Officer",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "Ensure Zero Tolerance Towards Incidents of Sexual Harassment on Campus, & Increase Visibility of Related Campaigns",
+      "two"           : "Look to Extend Inclusivity of Trans Indivituals Across Campus",
+      "three"         : "Work More Closely With Other Liberation Associations to Organise Events to Raise Awareness of Women's Issues",
+    }
+  },
+  {
+    "uid"             : "womens-zoe",
+    "pid"             : "womens",
+    "first"           : "Zoe",
+    "last"            : "Salanitro",
+    "position"        : "International Students' Officer",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "Improve Welfare Support for Women and Non-Binary Students",
+      "two"           : "Encourage Intersectional Feminism Through Working Wither Other Liberation Associations & Officers",
+      "three"         : "Campaign Agaings Cuts for Free, Liberatory Education",
+    }
+  }
 ];

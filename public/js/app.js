@@ -137,10 +137,10 @@ var MultiProfile = React.createClass({displayName: "MultiProfile",
     var imageDivClass = 'image ' + this.props.data.pid + ' text-center';
 
     return (
-      React.createElement("div", {className: divClass, "data-id":  this.props.data.uid}, 
+      React.createElement("div", {className:  divClass, "data-id":  this.props.data.uid}, 
         React.createElement("h1", {className: "text-center"},  this.props.data.name), 
         React.createElement("h3", {className: "text-center"},  this.props.data.position), 
-        React.createElement("div", {className: imageDivClass }, 
+        React.createElement("div", {className:  imageDivClass }, 
           React.createElement("img", {src:  this.props.data.img, alt:  this.props.data.name})
         )
       ) 
@@ -176,7 +176,7 @@ var MultiProfileList = React.createClass({displayName: "MultiProfileList",
     });
     return (
       React.createElement("div", {className: "multiProfileContainer col-md-12"}, 
-        peopleNodes 
+         peopleNodes 
       )
     );
   },
@@ -360,17 +360,31 @@ var LowerThirdStrap = React.createClass({displayName: "LowerThirdStrap",
 });
 var MultiProfile = React.createClass({displayName: "MultiProfile",
   render: function() {
-    var divClass = 'multiProfile col-md-2 center-block '
+    var divClass = 'multiProfile ';
+    switch(this.props.peopleCount){
+      case 6:
+      case 5:
+        divClass += "col-md-2 ";
+        break;
+      case 4:
+        divClass += "col-md-3 ";
+        break;
+      case 3:
+      case 2:
+      case 1:
+        divClass += "col-md-4 ";
+        break;
+    }
+
     var imageDivClass = 'image ' + this.props.data.pid + ' text-center';
     var imageUrl = 'public/img/roles/' + this.props.data.pid + '/' + this.props.data.uid + '.png';
 
     return (
-      React.createElement("div", {className: divClass, "data-id":  this.props.data.uid}, 
-        React.createElement("h1", {className: "text-center"},  this.props.data.first.toUpperCase(), " ", React.createElement("strong", null,  this.props.data.last.toUpperCase() )), 
-        React.createElement("div", {className: imageDivClass }, 
-          React.createElement("img", {src:  this.props.data.img})
+      React.createElement("div", {className:  divClass, "data-id":  this.props.data.uid}, 
+        React.createElement("div", {className:  imageDivClass }, 
+          React.createElement("img", {src:  imageUrl })
         ), 
-        React.createElement("h1", {className: "text-center"},  this.props.data.name)
+        React.createElement("h1", {className: "text-center"},  this.props.data.first.toUpperCase(), React.createElement("br", null), React.createElement("strong", null,  this.props.data.last.toUpperCase() ))
       ) 
     );
   }
@@ -427,7 +441,7 @@ var MultiProfileList = React.createClass({displayName: "MultiProfileList",
       React.createElement("div", {className: "multiProfileOuter", key: this.props.title}, 
         React.createElement("h1", {className: "title"},  this.props.title.toUpperCase() ), 
         React.createElement("div", {className: "people col-md-10 col-md-offset-1"}, 
-          peopleNodes 
+           peopleNodes 
         )
       )
     );
@@ -454,9 +468,9 @@ var MultiProfileList = React.createClass({displayName: "MultiProfileList",
     var imageUrl = 'public/img/roles/' + person.pid + '/' + person.uid + '.png';
 
     return (
-      React.createElement("div", {className: divClass, "data-id":  person.uid, key:  person.uid}, 
-        React.createElement("div", {className: imageDivClass }, 
-          React.createElement("img", {src: imageUrl })
+      React.createElement("div", {className:  divClass, "data-id":  person.uid, key:  person.uid}, 
+        React.createElement("div", {className:  imageDivClass }, 
+          React.createElement("img", {src:  imageUrl })
         ), 
         React.createElement("h1", {className: "text-center"},  person.first.toUpperCase(), React.createElement("br", null), React.createElement("strong", null,  person.last.toUpperCase() ))
       ) 
@@ -524,7 +538,7 @@ var SingleProfile = React.createClass({displayName: "SingleProfile",
           React.createElement("h1", {className: "text-center"},  this.props.data.first.toUpperCase(), " ",  this.props.data.last.toUpperCase() ), 
           React.createElement("h2", {className: "text-center"},  this.props.data.position.toUpperCase(), " ",  isCandidate.toUpperCase() ), 
 
-          React.createElement("img", {src: imageUrl }), 
+          React.createElement("img", {src:  imageUrl }), 
 
           React.createElement("h2", {className: "text-center"}, "MANIFESTO"), 
           React.createElement("ul", null, 
@@ -647,7 +661,7 @@ var SingleProfileNode = React.createClass({displayName: "SingleProfileNode",
     return (
       React.createElement("div", {className: DivClass, "data-id":  this.props.data.uid}, 
         React.createElement(SingleProfileName, {first: this.props.data.first, last: this.props.data.last}), 
-        React.createElement(SingleProfilePosition, {position: this.props.data.position, isCandidate: isCandidate }), 
+        React.createElement(SingleProfilePosition, {position: this.props.data.position, isCandidate:  isCandidate }), 
         
         React.createElement(SingleProfilePicture, {cname: this.props.manifesto, pid: this.props.data.pid, uid: this.props.data.uid}), 
 
@@ -662,7 +676,7 @@ var SingleProfilePicture = React.createClass({displayName: "SingleProfilePicture
     
     return (
       React.createElement("div", {className:  this.props.cname}, 
-        React.createElement("img", {src: imageUrl })
+        React.createElement("img", {src:  imageUrl })
       )
     );
   }
@@ -795,8 +809,8 @@ var Twitter = React.createClass({displayName: "Twitter",
         React.createElement("img", {className: "twitter_logo", src: "public/img/twitter_white.png"}), 
         React.createElement("div", {className: "tweet"}, 
           React.createElement("h3", {className: "text"},  this.props.data.text), 
-            media, 
-          React.createElement("h3", {className: "info"}, React.createElement("img", {className: "profile_pic", src:  this.props.data.user.profile_image_url}), React.createElement("span", {className: "username"}, "@",  this.props.data.user.screen_name, " (",  this.props.data.user.name, "),"), " ", React.createElement("span", {className: "time_ago"}, time_ago, " ago"))
+             media, 
+          React.createElement("h3", {className: "info"}, React.createElement("img", {className: "profile_pic", src:  this.props.data.user.profile_image_url}), React.createElement("span", {className: "username"}, "@",  this.props.data.user.screen_name, " (",  this.props.data.user.name, "),"), " ", React.createElement("span", {className: "time_ago"},  time_ago, " ago"))
         )
       )
     );
