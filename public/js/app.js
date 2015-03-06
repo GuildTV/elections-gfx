@@ -239,9 +239,7 @@ App.widgets['MultiProfile'] = {
     if($(".multiProfileContainer > *").length == 0)
       React.render(React.createElement(MultiProfileWrap, null), $(".multiProfileContainer")[0]);
 
-
     React.render(React.createElement(MultiProfileWrap, {people: data, title: title}), $(".multiProfileContainer")[0]);
-    //React.render(<MultiProfileWrap />, $(".multiProfileContainer")[0]);
   },
 
   update: function(data){
@@ -252,7 +250,7 @@ App.widgets['MultiProfile'] = {
     if(callback !== undefined)
       callback();
 
-    React.unmountComponentAtNode($(".main")[0]);
+    React.render(React.createElement(MultiProfileWrap, null), $(".multiProfileContainer")[0]);
   }
 };
 App.widgets['SingleProfile'] = {
