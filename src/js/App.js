@@ -17,9 +17,8 @@ var App = {
       App.loadWidget('Twitter', data);
     });
 
-    App.socket.on('tweet.stop', function (data) {
-      console.log(data);
-      App.loadWidget('Twitter', data);
+    App.socket.on('tweet.stop', function () {
+      App.stopWidget('Twitter');
     });
   },
 

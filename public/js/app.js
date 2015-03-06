@@ -17,9 +17,8 @@ var App = {
       App.loadWidget('Twitter', data);
     });
 
-    App.socket.on('tweet.stop', function (data) {
-      console.log(data);
-      App.loadWidget('Twitter', data);
+    App.socket.on('tweet.stop', function () {
+      App.stopWidget('Twitter');
     });
   },
 
@@ -138,10 +137,10 @@ var MultiProfile = React.createClass({displayName: "MultiProfile",
     var imageDivClass = 'image ' + this.props.data.pid + ' text-center';
 
     return (
-      React.createElement("div", {className:  divClass, "data-id":  this.props.data.uid}, 
+      React.createElement("div", {className: divClass, "data-id":  this.props.data.uid}, 
         React.createElement("h1", {className: "text-center"},  this.props.data.name), 
         React.createElement("h3", {className: "text-center"},  this.props.data.position), 
-        React.createElement("div", {className:  imageDivClass }, 
+        React.createElement("div", {className: imageDivClass }, 
           React.createElement("img", {src:  this.props.data.img, alt:  this.props.data.name})
         )
       ) 
@@ -177,7 +176,7 @@ var MultiProfileList = React.createClass({displayName: "MultiProfileList",
     });
     return (
       React.createElement("div", {className: "multiProfileContainer col-md-12"}, 
-         peopleNodes 
+        peopleNodes 
       )
     );
   },
@@ -263,16 +262,15 @@ App.widgets['SingleProfile'] = {
   },
 
   stop: function(callback) {
+    SingleProfile.animateOut();
+
     if(callback !== undefined)
       callback();
-
-    // SingleProfileList.animateOut();
-    React.unmountComponentAtNode($(".sideBar")[0]);
   }
 };
 App.widgets['TopBar'] = {
   render: function(data) {
-    React.render(React.createElement(TopBar, null), $(".topBar")[0]);
+    React.render(React.createElement(TopBar, null), $(".topBarContainer ")[0]);
   },
 
   update: function(data){
@@ -362,31 +360,17 @@ var LowerThirdStrap = React.createClass({displayName: "LowerThirdStrap",
 });
 var MultiProfile = React.createClass({displayName: "MultiProfile",
   render: function() {
-    var divClass = 'multiProfile ';
-    switch(this.props.peopleCount){
-      case 6:
-      case 5:
-        divClass += "col-md-2 ";
-        break;
-      case 4:
-        divClass += "col-md-3 ";
-        break;
-      case 3:
-      case 2:
-      case 1:
-        divClass += "col-md-4 ";
-        break;
-    }
-
+    var divClass = 'multiProfile col-md-2 center-block '
     var imageDivClass = 'image ' + this.props.data.pid + ' text-center';
     var imageUrl = 'public/img/roles/' + this.props.data.pid + '/' + this.props.data.uid + '.png';
 
     return (
-      React.createElement("div", {className:  divClass, "data-id":  this.props.data.uid}, 
-        React.createElement("div", {className:  imageDivClass }, 
-          React.createElement("img", {src:  imageUrl })
+      React.createElement("div", {className: divClass, "data-id":  this.props.data.uid}, 
+        React.createElement("h1", {className: "text-center"},  this.props.data.first.toUpperCase(), " ", React.createElement("strong", null,  this.props.data.last.toUpperCase() )), 
+        React.createElement("div", {className: imageDivClass }, 
+          React.createElement("img", {src:  this.props.data.img})
         ), 
-        React.createElement("h1", {className: "text-center"},  this.props.data.first.toUpperCase(), React.createElement("br", null), React.createElement("strong", null,  this.props.data.last.toUpperCase() ))
+        React.createElement("h1", {className: "text-center"},  this.props.data.name)
       ) 
     );
   }
@@ -443,7 +427,7 @@ var MultiProfileList = React.createClass({displayName: "MultiProfileList",
       React.createElement("div", {className: "multiProfileOuter", key: this.props.title}, 
         React.createElement("h1", {className: "title"},  this.props.title.toUpperCase() ), 
         React.createElement("div", {className: "people col-md-10 col-md-offset-1"}, 
-           peopleNodes 
+          peopleNodes 
         )
       )
     );
@@ -470,9 +454,9 @@ var MultiProfileList = React.createClass({displayName: "MultiProfileList",
     var imageUrl = 'public/img/roles/' + person.pid + '/' + person.uid + '.png';
 
     return (
-      React.createElement("div", {className:  divClass, "data-id":  person.uid, key:  person.uid}, 
-        React.createElement("div", {className:  imageDivClass }, 
-          React.createElement("img", {src:  imageUrl })
+      React.createElement("div", {className: divClass, "data-id":  person.uid, key:  person.uid}, 
+        React.createElement("div", {className: imageDivClass }, 
+          React.createElement("img", {src: imageUrl })
         ), 
         React.createElement("h1", {className: "text-center"},  person.first.toUpperCase(), React.createElement("br", null), React.createElement("strong", null,  person.last.toUpperCase() ))
       ) 
@@ -510,11 +494,7 @@ var SingleProfile = React.createClass({displayName: "SingleProfile",
     animateOut: function() {
       var tl = new TimelineLite();
 
-      tl.to($('.event'), 0.3, {autoAlpha: 0})
-        .to($('.strap'), 0.3, {autoAlpha: 0}, '-=0.3')
-        .to($('.lowerThird'), 0.3, {css: {width: "0.5.vw"}}, '-=0.3')
-        
-      tl.to($('.lowerThird'), 0.3, {css: {top: "-20%"}, onComplete: this.kill});
+      tl.to($('.singleProfile'), 1, {bottom:"75%", autoAlpha:0, onComplete: this.kill});
     },
     kill: function() {
       React.unmountComponentAtNode($(".sideBar")[0])
@@ -522,28 +502,29 @@ var SingleProfile = React.createClass({displayName: "SingleProfile",
   },
   componentDidMount: function() {
     var tl = new TimelineLite(),
-        centrePoint = ( $(window).height() - $('.singleProfile').outerHeight() )/2;
+        centrePoint = -( $(window).height() - $('.singleProfile').outerHeight() )/2;
 
-    console.log(centrePoint);
-
-    tl.to($('.singleProfile'), 1, {bottom:centrePoint, autoAlpha:1});
-
+    tl.to($('.singleProfile'), 1, {bottom: centrePoint, autoAlpha:1});
   },
   componentWillReceiveProps: function(nextProps) {
     var tl = new TimelineLite();
 
+    tl.to($('.singleProfile'), 1, {bottom:"75%", autoAlpha:0})
+      .to($('.singleProfile'), 0, {bottom:"-125%", autoAlpha:0})
+      .to($('.singleProfile'), 1, {bottom: -( $(window).height() - $('.singleProfile').outerHeight() )/2, autoAlpha:1});
+
   },
   render: function() {
-    var isCandidate =  (this.props.data.candidate !== undefined && this.props.data.candidate == true ? "candidate":"")
+    var isCandidate =  (this.props.data.candidate !== undefined && this.props.data.candidate == true ? "candidate":"");
     var imageUrl = 'public/img/roles/' + this.props.data.pid + '/' + this.props.data.uid + '.png';
 
     return (
-      React.createElement("div", {className: "singleProfileContainer"}, 
+      React.createElement("div", {className: "singleProfileContainer col-md-12"}, 
         React.createElement("div", {className: "singleProfile col-md-10 col-md-offset-1"}, 
           React.createElement("h1", {className: "text-center"},  this.props.data.first.toUpperCase(), " ",  this.props.data.last.toUpperCase() ), 
           React.createElement("h2", {className: "text-center"},  this.props.data.position.toUpperCase(), " ",  isCandidate.toUpperCase() ), 
 
-          React.createElement("img", {src:  imageUrl }), 
+          React.createElement("img", {src: imageUrl }), 
 
           React.createElement("h2", {className: "text-center"}, "MANIFESTO"), 
           React.createElement("ul", null, 
@@ -666,7 +647,7 @@ var SingleProfileNode = React.createClass({displayName: "SingleProfileNode",
     return (
       React.createElement("div", {className: DivClass, "data-id":  this.props.data.uid}, 
         React.createElement(SingleProfileName, {first: this.props.data.first, last: this.props.data.last}), 
-        React.createElement(SingleProfilePosition, {position: this.props.data.position, isCandidate:  isCandidate }), 
+        React.createElement(SingleProfilePosition, {position: this.props.data.position, isCandidate: isCandidate }), 
         
         React.createElement(SingleProfilePicture, {cname: this.props.manifesto, pid: this.props.data.pid, uid: this.props.data.uid}), 
 
@@ -681,7 +662,7 @@ var SingleProfilePicture = React.createClass({displayName: "SingleProfilePicture
     
     return (
       React.createElement("div", {className:  this.props.cname}, 
-        React.createElement("img", {src:  imageUrl })
+        React.createElement("img", {src: imageUrl })
       )
     );
   }
@@ -693,11 +674,65 @@ var SingleProfilePosition = React.createClass({displayName: "SingleProfilePositi
     )
   }
 });
-var TopBar = React.createClass({displayName: "TopBar",
+var Time = React.createClass({displayName: "Time",
+  updateClock: function() {
+    var currentTime = new Date ( );
+    var currentHours = currentTime.getHours ( );
+    var currentMinutes = currentTime.getMinutes ( );
+    var currentSeconds = currentTime.getSeconds ( );
+
+    // Pad the minutes and seconds with leading zeros, if required
+    currentMinutes = ( currentMinutes < 10 ? "0" : "" ) + currentMinutes;
+    currentSeconds = ( currentSeconds < 10 ? "0" : "" ) + currentSeconds;
+
+    // Choose either "AM" or "PM" as appropriate
+    var timeOfDay = ( currentHours < 12 ) ? "AM" : "PM";
+
+    // Compose the string for display
+    var currentTimeString = currentHours + ":" + currentMinutes;          
+    
+    this.setState({time: currentTimeString});
+          
+  },
+  getInitialState: function() {
+    return {time: ""};
+  },
+  componentDidMount: function() {
+    this.updateClock()
+    setInterval(this.updateClock, 1000);
+  },
   render: function() {
     return (
-      React.createElement("div", null
-      
+      React.createElement("div", {className: "time col-md-4"}, 
+         this.state.time
+      )
+    );
+  }
+})
+var TopBar = React.createClass({displayName: "TopBar",
+  statics: {
+    animateOut: function() {
+      var tl = new TimelineLite();
+
+      tl.to($('.singleProfile'), 1, {bottom:"75%", autoAlpha:0, onComplete: this.kill});
+    },
+    kill: function() {
+      React.unmountComponentAtNode($(".topBarContainer")[0])
+    },
+  },
+  componentDidMount: function() {
+    var tl = new TimelineLite(),
+        centrePoint = -( $(window).height() - $('.singleProfile').outerHeight() )/2;
+
+    tl.to($('.singleProfile'), 1, {bottom: centrePoint, autoAlpha:1});
+  },
+  componentWillReceiveProps: function(nextProps) {
+    var tl = new TimelineLite();
+  },
+  render: function() {
+    return (
+      React.createElement("div", {className: "topBar col-md-14"}, 
+        React.createElement(Time, null)
       )
     );
   }
@@ -760,8 +795,8 @@ var Twitter = React.createClass({displayName: "Twitter",
         React.createElement("img", {className: "twitter_logo", src: "public/img/twitter_white.png"}), 
         React.createElement("div", {className: "tweet"}, 
           React.createElement("h3", {className: "text"},  this.props.data.text), 
-             media, 
-          React.createElement("h3", {className: "info"}, React.createElement("img", {className: "profile_pic", src:  this.props.data.user.profile_image_url}), React.createElement("span", {className: "username"}, "@",  this.props.data.user.screen_name, " (",  this.props.data.user.name, "),"), " ", React.createElement("span", {className: "time_ago"},  time_ago, " ago"))
+            media, 
+          React.createElement("h3", {className: "info"}, React.createElement("img", {className: "profile_pic", src:  this.props.data.user.profile_image_url}), React.createElement("span", {className: "username"}, "@",  this.props.data.user.screen_name, " (",  this.props.data.user.name, "),"), " ", React.createElement("span", {className: "time_ago"}, time_ago, " ago"))
         )
       )
     );

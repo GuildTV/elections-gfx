@@ -3,12 +3,17 @@
   height: 100vw;
 
   .singleProfile {
-    position: absolute;
     bottom: -125%;
     height: auto;
     opacity: 0;
     text-align: center;
     font-family: "RobotoCondensed";
+
+    background-color: @heavy-grey-alpha-bg;
+    color: @primary-text-colour;
+
+    padding: 5vh;
+    border-radius: 0.25vh 0;
 
     h1, h2, img {
       margin-bottom: 0.5em;
@@ -16,6 +21,7 @@
     img {
       background-color: @grey-alpha-bg; 
       min-height: 200px;
+      border-radius: 0.25vh;
     }
     ul {
       li {

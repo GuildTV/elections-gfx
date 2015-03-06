@@ -1,6 +1,6 @@
 App.widgets['TopBar'] = {
   render: function(data) {
-    React.render(<TopBar/>, $(".topBar")[0]);
+    React.render(<TopBar />, $(".topBarContainer ")[0]);
   },
 
   update: function(data){

@@ -8,10 +8,9 @@ App.widgets['SingleProfile'] = {
   },
 
   stop: function(callback) {
+    SingleProfile.animateOut();
+
     if(callback !== undefined)
       callback();
-
-    // SingleProfileList.animateOut();
-    React.unmountComponentAtNode($(".sideBar")[0]);
   }
 };

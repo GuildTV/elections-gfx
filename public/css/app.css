@@ -6636,12 +6636,15 @@ h6 {
   height: 100vw;
 }
 .singleProfileContainer .singleProfile {
-  position: absolute;
   bottom: -125%;
   height: auto;
   opacity: 0;
   text-align: center;
   font-family: "RobotoCondensed";
+  background-color: rgba(74, 74, 74, 0.5);
+  color: #f0f0f0;
+  padding: 5vh;
+  border-radius: 0.25vh 0;
 }
 .singleProfileContainer .singleProfile h1,
 .singleProfileContainer .singleProfile h2,
@@ -6651,6 +6654,7 @@ h6 {
 .singleProfileContainer .singleProfile img {
   background-color: rgba(204, 204, 204, 0.9);
   min-height: 200px;
+  border-radius: 0.25vh;
 }
 .singleProfileContainer .singleProfile ul li {
   text-align: left;
