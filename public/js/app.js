@@ -236,7 +236,12 @@ App.widgets['MultiProfile'] = {
     if(data.length <= 0)
       return;
     
-    React.render(React.createElement(MultiProfileList, {people: data, title: title}), $(".multiProfileContainer")[0]);
+    if($(".multiProfileContainer > *").length == 0)
+      React.render(React.createElement(MultiProfileWrap, null), $(".multiProfileContainer")[0]);
+
+
+    React.render(React.createElement(MultiProfileWrap, {people: data, title: title}), $(".multiProfileContainer")[0]);
+    //React.render(<MultiProfileWrap />, $(".multiProfileContainer")[0]);
   },
 
   update: function(data){
@@ -388,86 +393,64 @@ var MultiProfile = React.createClass({displayName: "MultiProfile",
     );
   }
 });
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+
 var MultiProfileList = React.createClass({displayName: "MultiProfileList",
-  getInitialState: function() {
-    return {people: [], roleName:"Selection of Candidates" };
-  },
-  animateIncomingNodeIn: function() {
-    var incoming = $('.incoming:first'),
-        centrePoint = ( $(window).height() - incoming.outerHeight() )/2,
-        tl = new TimelineLite({});
-
-    tl.to(incoming, 1, {bottom:centrePoint});
-  },
-  animateCurrentNodeOut: function() {
-    var current = $('.current'),
-    tl = new TimelineLite({onComplete: this.animateIncomingNodeIn()});
-
-    tl.to(current, 1, {top:150});
-  },
   componentDidMount: function() {
-    var multiProfileOuter = $('.multiProfileOuter'),
-        tl = new TimelineLite();
+    var tl = new TimelineLite();
+    var node = $(this.getDOMNode());
 
     //align all the stuff
-    var peopleDiv = multiProfileOuter.find('.people');
+    var peopleDiv = node.find('.people');
     var people = peopleDiv.find('.multiProfile');
-    peopleDiv.find('img').each(function(i,v){
-      v = $(v);
-      v.css('height', v.outerWidth()+"px");
-    });
 
-    var available = multiProfileOuter.innerHeight() - multiProfileOuter.find('.title').outerHeight();
-    available -= peopleDiv.outerHeight();
-    available /= 2;
-    peopleDiv.css('margin', available+'px 0');
+    // var available = node.height() - node.find('.title').outerHeight();
+    // available -= peopleDiv.outerHeight();
+    // available /= 2;
+    // peopleDiv.css('margin', available+'px 0');
 
     switch(people.length){
       case 5:
         $(people[0]).addClass('col-md-offset-1');
+        peopleDiv.addClass('ppl-6-5');
+        break;
+      case 6:
+        peopleDiv.addClass('ppl-6-5');
         break;
       case 2:
         $(people[0]).addClass('col-md-offset-2');
+        peopleDiv.addClass('ppl-4-3-2-1');
         break;
       case 1:
         $(people[0]).addClass('col-md-offset-4');
+        peopleDiv.addClass('ppl-4-3-2-1');
+        break;
+      case 3:
+      case 4:
+        peopleDiv.addClass('ppl-4-3-2-1');
         break;
     }
 
-    var o = multiProfileOuter;
+    var o = node;
 
-    TweenLite.set(o, {autoAlpha:0});
-    tl.to(o, 0.5, {autoAlpha:1})
-      .to(o.find('h1'), 0.6, {top: "0px"}, "-=0.5");
-
-    // this.animateIncomingNodeIn();
+    tl.to(o.find('h1'), 0.6, {top: "0px"}, "+=0.5");
   },
-  componentWillReceiveProps: function(nextProps) {
-    var o = $('.multiProfileOuter'),
-        tl = new TimelineLite();
 
-    tl.to(o, 0.5, {autoAlpha: 0})
-      .to(o, 0.5, {autoAlpha: 1});
-
-  },
-  componentDidUpdate: function() {
-    // setTimeout(this.componentDidMount, 400);
-  },
-  render: function() {
+  render: function() {    
     var peopleCount = this.props.people.length;
     var peopleNodes = this.props.people.map(function (person) {
       return this.renderThumbnail(person, peopleCount);
     }, this);
     return (
-      React.createElement("div", {className: "multiProfileOuter col-md-10 col-md-offset-1"}, 
-      React.createElement("h1", {className: "title"},  this.props.title.toUpperCase() ), 
-        React.createElement("div", {className: "people col-lg-12"}, 
+      React.createElement("div", {className: "multiProfileOuter", key: this.props.title}, 
+        React.createElement("h1", {className: "title"},  this.props.title.toUpperCase() ), 
+        React.createElement("div", {className: "people col-md-10 col-md-offset-1"}, 
            peopleNodes 
         )
       )
     );
   },
-
+      
   renderThumbnail: function(person, peopleCount){
     var divClass = 'multiProfile ';
     switch(peopleCount){
@@ -489,34 +472,40 @@ var MultiProfileList = React.createClass({displayName: "MultiProfileList",
     var imageUrl = 'public/img/roles/' + person.pid + '/' + person.uid + '.png';
 
     return (
-      React.createElement("div", {className:  divClass, "data-id":  person.uid}, 
+      React.createElement("div", {className:  divClass, "data-id":  person.uid, key:  person.uid}, 
         React.createElement("div", {className:  imageDivClass }, 
           React.createElement("img", {src:  imageUrl })
         ), 
         React.createElement("h1", {className: "text-center"},  person.first.toUpperCase(), React.createElement("br", null), React.createElement("strong", null,  person.last.toUpperCase() ))
       ) 
     );
-  }, 
-
-  cycleNodes: function(incoming) {
-    var incoming  = $('.incoming:first'),
-        current   = $('.current:first'),
-        outgoing  = $('.outgoing:first');
-
-    if (incoming.length > 0)
-      App.findDataById(incoming.attr('data-id')).state['MultiProfile'] = "current";
-      incoming.addClass('current').removeClass('incoming');
-    
-    if (current.length > 0)
-      App.findDataById(current.attr('data-id')).state['MultiProfile'] = "outgoing";
-      incoming.addClass('outgoing').removeClass('current');
-
-    if (outgoing.length > 0)
-      App.findDataById(outgoing.attr('data-id')).state['MultiProfile'] = "incoming";
-      incoming.addClass('incoming').removeClass('current');
-
   }
 });
+
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+
+var MultiProfileWrap = React.createClass({displayName: "MultiProfileWrap",
+  render: function() {
+    if(this.props.people === undefined || this.props.title === undefined)
+      return (
+        React.createElement("div", {className: "multiProfileOuter"}, 
+          React.createElement(ReactCSSTransitionGroup, {transitionName: "fade"}, 
+            React.createElement("div", {className: "multiProfileNode", key: "blank"})
+          )
+        )
+      );
+
+    return (
+      React.createElement("div", {className: "multiProfileOuter"}, 
+        React.createElement(ReactCSSTransitionGroup, {transitionName: "fade"}, 
+          React.createElement("div", {className: "multiProfileNode", key: this.props.title}, 
+            React.createElement(MultiProfileList, {people: this.props.people, title: this.props.title})
+          )
+        )
+      )
+    );
+  }
+});          
 
 var SingleProfile = React.createClass({displayName: "SingleProfile",
   statics: {

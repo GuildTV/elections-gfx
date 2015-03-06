@@ -6720,9 +6720,36 @@ h6 {
   left: 0px;
 }
 .multiProfileContainer .multiProfileOuter {
-  padding: 5vh 0;
   height: 100vh;
+  padding: 5vh 0;
   color: #f0f0f0;
+}
+.multiProfileContainer .multiProfileOuter .multiProfileNode {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  transition: opacity 0.5s ease-in;
+}
+.multiProfileContainer .multiProfileOuter .multiProfileNode.fade-enter {
+  transition-delay: 0.5s;
+  opacity: 0;
+}
+.multiProfileContainer .multiProfileOuter .multiProfileNode.fade-enter-active,
+.multiProfileContainer .multiProfileOuter .multiProfileNode.fade-leave {
+  opacity: 1;
+}
+.multiProfileContainer .multiProfileOuter .multiProfileNode.fade-leave-active {
+  opacity: 0;
+}
+.multiProfileContainer .multiProfileOuter .people.ppl-6-5 {
+  margin-top: 227.5px;
+  margin-bottom: 227.5px;
+}
+.multiProfileContainer .multiProfileOuter .people.ppl-4-3-2-1 {
+  margin-top: 202px;
+  margin-bottom: 202px;
 }
 .multiProfileContainer .multiProfileOuter .title {
   text-align: center;
@@ -6749,4 +6776,13 @@ h6 {
 }
 .multiProfileContainer .multiProfileOuter .multiProfile.col-md-4 {
   padding: 20px 80px;
+}
+.multiProfileContainer .multiProfileOuter .multiProfile.col-md-3 img,
+.multiProfileContainer .multiProfileOuter .multiProfile.col-md-4 img {
+  width: 363px;
+  height: 363px;
+}
+.multiProfileContainer .multiProfileOuter .multiProfile.col-md-2 img {
+  width: 212px;
+  height: 212px;
 }
