@@ -4,7 +4,7 @@ Data['womens'] = [
     "pid"             : "womens",
     "first"           : "Alexandra",
     "last"            : "Binnie",
-    "position"        : "International Students' Officer",
+    "position"        : "Womens's Officer",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Ensure Zero Tolerance Towards Incidents of Sexual Harassment on Campus, & Increase Visibility of Related Campaigns",
@@ -17,7 +17,7 @@ Data['womens'] = [
     "pid"             : "womens",
     "first"           : "Zoe",
     "last"            : "Salanitro",
-    "position"        : "International Students' Officer",
+    "position"        : "Womens's Officer",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Improve Welfare Support for Women and Non-Binary Students",

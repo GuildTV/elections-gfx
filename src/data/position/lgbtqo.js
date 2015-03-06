@@ -4,7 +4,7 @@ Data['lgbtqo'] = [
     "pid"             : "lgbtqo",
     "first"           : "Chavonne",
     "last"            : "Brown",
-    "position"        : "Ethnic Minority Students’ Officer",
+    "position"        : "Lesbian, Gay, Bisexual, Trans and Queer Students’ Officer",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Raise the Profile of the LGBTQ Association",
@@ -12,4 +12,4 @@ Data['lgbtqo'] = [
       "three"         : "Promote Better Relations and Links with Liberation Associations",
     }
   }
-  ];
+];

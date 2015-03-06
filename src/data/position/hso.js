@@ -4,7 +4,7 @@ Data['hso'] = [
     "pid"             : "hso",
     "first"           : "Adam",
     "last"            : "Elmi",
-    "position"        : "Ethnic Minority Students’ Officer",
+    "position"        : "Home Students’ Officer",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Easier Access to Travel",

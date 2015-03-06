@@ -6652,7 +6652,11 @@ h6 {
   margin-bottom: 0.5em;
 }
 .singleProfileContainer .singleProfile img {
-  background-color: rgba(204, 204, 204, 0.9);
+  background-color: rgba(115, 158, 201, 0.9);
+  background: -webkit-gradient(linear, left top, right bottom, from(rgba(60, 107, 154, 0.9)), to(rgba(115, 158, 201, 0.9)));
+  border: 3px solid rgba(115, 158, 201, 0.9);
+  border-image: -webkit-linear-gradient(left top, rgba(115, 158, 201, 0.9) 0%, rgba(60, 107, 154, 0.9) 100%);
+  border-image-slice: 1;
   min-height: 200px;
   border-radius: 0.25vh;
 }

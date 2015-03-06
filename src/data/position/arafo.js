@@ -2,8 +2,8 @@ Data['arafo'] = [
   {
     "uid"             : "arafo-maaria",
     "pid"             : "arafo",
-    "first"           : "Ross",
-    "last"            : "Strong",
+    "first"           : "Maaria",
+    "last"            : "Ashraf",
     "position"        : "Anti-Racism, Anti Fascism Officer",
     "candidate"       : true,
     "manifestoPoints" : {

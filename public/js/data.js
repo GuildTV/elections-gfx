@@ -123,8 +123,8 @@ Data['arafo'] = [
   {
     "uid"             : "arafo-maaria",
     "pid"             : "arafo",
-    "first"           : "Ross",
-    "last"            : "Strong",
+    "first"           : "Maaria",
+    "last"            : "Ashraf",
     "position"        : "Anti-Racism, Anti Fascism Officer",
     "candidate"       : true,
     "manifestoPoints" : {
@@ -280,21 +280,47 @@ Data['eo'] = [
   },
 ];
 
-Data['hso'] = [
+Data['hco'] = [
   {
-    "uid"             : "hso-mohamed",
-    "pid"             : "hso",
-    "first"           : "Mohamed",
-    "last"            : "Hussain",
-    "position"        : "Ethnic Minority Students’ Officer",
+    "uid"             : "hco-jacob",
+    "pid"             : "hco",
+    "first"           : "Jacob",
+    "last"            : "Warner",
+    "position"        : "Housing & Community Officer",
     "candidate"       : true,
     "manifestoPoints" : {
-      "one"           : "Easier Access to Travel",
-      "two"           : "Encourage Recording of Lecture",
-      "three"         : "Increase Accessibility of Guild Council",
+      "one"           : "More Education on Housing Rights",
+      "two"           : "Spare Room Platform",
+      "three"         : "Improve Relatiionship Between Guild & Letting Agencies",
     }
-  }
-  ];
+  },
+  {
+    "uid"             : "hco-roberto",
+    "pid"             : "hco",
+    "first"           : "Roberto",
+    "last"            : "Sorentino",
+    "position"        : "Housing & Community Officer",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "Make Recycling More Accesible",
+      "two"           : "Fight Crime in True Spiderman Fashion",
+      "three"         : "Improve Wi-Fi Across Campus",
+    }
+  },
+  {
+    "uid"             : "hco-ciaran",
+    "pid"             : "hco",
+    "first"           : "Ciaran",
+    "last"            : "Allanson-Campbell",
+    "position"        : "Housing & Community Officer",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "Safer & Easier Househunting",
+      "two"           : "Reacing Out to Future Students",
+      "three"         : "Better & Safer Taxis",
+    }
+  },
+];
 
 Data['hso'] = [
   {
@@ -302,7 +328,7 @@ Data['hso'] = [
     "pid"             : "hso",
     "first"           : "Adam",
     "last"            : "Elmi",
-    "position"        : "Ethnic Minority Students’ Officer",
+    "position"        : "Home Students’ Officer",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Easier Access to Travel",
@@ -360,7 +386,7 @@ Data['lgbtqo'] = [
     "pid"             : "lgbtqo",
     "first"           : "Chavonne",
     "last"            : "Brown",
-    "position"        : "Ethnic Minority Students’ Officer",
+    "position"        : "Lesbian, Gay, Bisexual, Trans and Queer Students’ Officer",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Raise the Profile of the LGBTQ Association",
@@ -368,7 +394,7 @@ Data['lgbtqo'] = [
       "three"         : "Promote Better Relations and Links with Liberation Associations",
     }
   }
-  ];
+];
 
 Data['president'] = [
   {
@@ -567,7 +593,7 @@ Data['sso'] = [
     "pid"             : "sso",
     "first"           : "Eleanor",
     "last"            : "Keiller",
-    "position"        : "Ethnic Minority Students’ Officer",
+    "position"        : "Satellite Sites Officer",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Improved Transport Links",
@@ -599,7 +625,7 @@ Data['womens'] = [
     "pid"             : "womens",
     "first"           : "Alexandra",
     "last"            : "Binnie",
-    "position"        : "International Students' Officer",
+    "position"        : "Womens's Officer",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Ensure Zero Tolerance Towards Incidents of Sexual Harassment on Campus, & Increase Visibility of Related Campaigns",
@@ -612,7 +638,7 @@ Data['womens'] = [
     "pid"             : "womens",
     "first"           : "Zoe",
     "last"            : "Salanitro",
-    "position"        : "International Students' Officer",
+    "position"        : "Womens's Officer",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Improve Welfare Support for Women and Non-Binary Students",

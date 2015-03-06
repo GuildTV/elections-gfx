@@ -4,7 +4,7 @@ Data['sso'] = [
     "pid"             : "sso",
     "first"           : "Eleanor",
     "last"            : "Keiller",
-    "position"        : "Ethnic Minority Students’ Officer",
+    "position"        : "Satellite Sites Officer",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Improved Transport Links",

@@ -19,7 +19,13 @@
       margin-bottom: 0.5em;
     }
     img {
-      background-color: @grey-alpha-bg; 
+      background-color: @thumbnail-bg; 
+      background: -webkit-gradient(linear, left top, right bottom, from(@thumbnail-bg-dark), to(@thumbnail-bg));
+
+      border: 3px solid @thumbnail-bg;
+      border-image: -webkit-linear-gradient(left top, @thumbnail-bg 0%, @thumbnail-bg-dark 100%);
+      border-image-slice: 1;
+
       min-height: 200px;
       border-radius: 0.25vh;
     }
