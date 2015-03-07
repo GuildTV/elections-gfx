@@ -6675,8 +6675,23 @@ h6 {
   width: 40vw;
   position: absolute;
   left: 30vw;
-  top: 0;
+  top: 50%;
+  transform: translateY(-50%);
   color: #ffffff;
+}
+.twitterContainer .twitterNode {
+  transition: opacity 0.5s ease-in;
+}
+.twitterContainer .twitterNode.fade-enter {
+  transition-delay: 0.5s;
+  opacity: 0;
+}
+.twitterContainer .twitterNode.fade-enter-active,
+.twitterContainer .twitterNode.fade-leave {
+  opacity: 1;
+}
+.twitterContainer .twitterNode.fade-leave-active {
+  opacity: 0;
 }
 .twitterContainer .twitter_logo {
   height: auto;

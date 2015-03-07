@@ -1,4 +1,4 @@
-var Twitter = React.createClass({
+  var Twitter = React.createClass({
   statics: {
     animateOut: function() {
       var tl = new TimelineLite();
@@ -11,11 +11,8 @@ var Twitter = React.createClass({
   },
   componentDidMount: function() {
     var td = $('.twitter'),
-        tl = new TimelineLite(),
-        centrePoint = ( $(window).height() - td.outerHeight() )/2;
+        tl = new TimelineLite();
 
-
-    tl.to(td, 0, {top: centrePoint});
 
     tl.to(td.find(".twitter_logo"), 0.25, {left:"10vw"})
       .to(td.find(".twitter_logo"), 0.25, {width:"5%", left: 0, top: "5px"}, "+=0.75")
@@ -37,7 +34,6 @@ var Twitter = React.createClass({
       .to(td.find(".profile_pic"), 0.5, {autoAlpha: 0}, "-=0.5")
       .to(td.find(".username"), 0.5, {autoAlpha: 0}, "-=0.5")
       .to(td.find(".time_ago"), 0.5, {autoAlpha: 0}, "-=0.5")
-      .to(td, 0, {top: ( $(window).height() - td.outerHeight() )/2})
       .to(td.find(".twitter_logo"), 0.25, {width:"5%", left: 0, top: "5px"}, "+=0.75")
       .to(td.find(".text"), 0.5, {autoAlpha: 1}, "-=0.25")
       .to(td.find(".info"), 0.5, {autoAlpha: 1}, "-=0.5")

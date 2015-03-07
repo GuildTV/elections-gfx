@@ -1,6 +1,6 @@
 App.widgets['Twitter'] = {
   render: function(data) {
-    React.render(<Twitter data={data} />, $(".twitterContainer")[0]);
+    React.render(<TwitterWrap data={data} />, $(".twitterContainer")[0]);
   },
 
   update: function(data){

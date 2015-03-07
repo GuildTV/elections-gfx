@@ -286,7 +286,7 @@ App.widgets['TopBar'] = {
 };
 App.widgets['Twitter'] = {
   render: function(data) {
-    React.render(React.createElement(Twitter, {data: data}), $(".twitterContainer")[0]);
+    React.render(React.createElement(TwitterWrap, {data: data}), $(".twitterContainer")[0]);
   },
 
   update: function(data){
@@ -751,7 +751,7 @@ var TopBar = React.createClass({displayName: "TopBar",
     );
   }
 });
-var Twitter = React.createClass({displayName: "Twitter",
+  var Twitter = React.createClass({displayName: "Twitter",
   statics: {
     animateOut: function() {
       var tl = new TimelineLite();
@@ -764,11 +764,8 @@ var Twitter = React.createClass({displayName: "Twitter",
   },
   componentDidMount: function() {
     var td = $('.twitter'),
-        tl = new TimelineLite(),
-        centrePoint = ( $(window).height() - td.outerHeight() )/2;
+        tl = new TimelineLite();
 
-
-    tl.to(td, 0, {top: centrePoint});
 
     tl.to(td.find(".twitter_logo"), 0.25, {left:"10vw"})
       .to(td.find(".twitter_logo"), 0.25, {width:"5%", left: 0, top: "5px"}, "+=0.75")
@@ -790,7 +787,6 @@ var Twitter = React.createClass({displayName: "Twitter",
       .to(td.find(".profile_pic"), 0.5, {autoAlpha: 0}, "-=0.5")
       .to(td.find(".username"), 0.5, {autoAlpha: 0}, "-=0.5")
       .to(td.find(".time_ago"), 0.5, {autoAlpha: 0}, "-=0.5")
-      .to(td, 0, {top: ( $(window).height() - td.outerHeight() )/2})
       .to(td.find(".twitter_logo"), 0.25, {width:"5%", left: 0, top: "5px"}, "+=0.75")
       .to(td.find(".text"), 0.5, {autoAlpha: 1}, "-=0.25")
       .to(td.find(".info"), 0.5, {autoAlpha: 1}, "-=0.5")
@@ -844,3 +840,117 @@ var Twitter = React.createClass({displayName: "Twitter",
   }
 });
 
+
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+
+var MultiProfileList = React.createClass({displayName: "MultiProfileList",
+  componentDidMount: function() {
+    var tl = new TimelineLite();
+    var node = $(this.getDOMNode());
+
+    //align all the stuff
+    var peopleDiv = node.find('.people');
+    var people = peopleDiv.find('.multiProfile');
+
+    // var available = node.height() - node.find('.title').outerHeight();
+    // available -= peopleDiv.outerHeight();
+    // available /= 2;
+    // peopleDiv.css('margin', available+'px 0');
+
+    switch(people.length){
+      case 5:
+        $(people[0]).addClass('col-md-offset-1');
+        peopleDiv.addClass('ppl-6-5');
+        break;
+      case 6:
+        peopleDiv.addClass('ppl-6-5');
+        break;
+      case 2:
+        $(people[0]).addClass('col-md-offset-2');
+        peopleDiv.addClass('ppl-4-3-2-1');
+        break;
+      case 1:
+        $(people[0]).addClass('col-md-offset-4');
+        peopleDiv.addClass('ppl-4-3-2-1');
+        break;
+      case 3:
+      case 4:
+        peopleDiv.addClass('ppl-4-3-2-1');
+        break;
+    }
+
+    var o = node;
+
+    tl.to(o.find('h1'), 0.6, {top: "0px"}, "+=0.5");
+  },
+
+  render: function() {    
+    var peopleCount = this.props.people.length;
+    var peopleNodes = this.props.people.map(function (person) {
+      return this.renderThumbnail(person, peopleCount);
+    }, this);
+    return (
+      React.createElement("div", {className: "multiProfileOuter", key: this.props.title}, 
+        React.createElement("h1", {className: "title"},  this.props.title.toUpperCase() ), 
+        React.createElement("div", {className: "people col-md-10 col-md-offset-1"}, 
+           peopleNodes 
+        )
+      )
+    );
+  },
+      
+  renderThumbnail: function(person, peopleCount){
+    var divClass = 'multiProfile ';
+    switch(peopleCount){
+      case 6:
+      case 5:
+        divClass += "col-md-2 ";
+        break;
+      case 4:
+        divClass += "col-md-3 ";
+        break;
+      case 3:
+      case 2:
+      case 1:
+        divClass += "col-md-4 ";
+        break;
+    }
+
+    var imageDivClass = 'image ' + person.pid + ' text-center';
+    var imageUrl = 'public/img/roles/' + person.pid + '/' + person.uid + '.png';
+
+    return (
+      React.createElement("div", {className:  divClass, "data-id":  person.uid, key:  person.uid}, 
+        React.createElement("div", {className:  imageDivClass }, 
+          React.createElement("img", {src:  imageUrl })
+        ), 
+        React.createElement("h1", {className: "text-center"},  person.first.toUpperCase(), React.createElement("br", null), React.createElement("strong", null,  person.last.toUpperCase() ))
+      ) 
+    );
+  }
+});
+
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+
+var TwitterWrap = React.createClass({displayName: "TwitterWrap",
+  render: function() {
+    if(this.props.data === undefined )
+      return (
+        React.createElement("div", {className: "twitterOuter"}, 
+          React.createElement(ReactCSSTransitionGroup, {transitionName: "fade"}, 
+            React.createElement("div", {className: "twitterNode", key: "blank"})
+          )
+        )
+      );
+
+    return (
+      React.createElement("div", {className: "twitterOuter"}, 
+        React.createElement(ReactCSSTransitionGroup, {transitionName: "fade"}, 
+          React.createElement("div", {className: "twitterNode", key: this.props.data.id}, 
+            React.createElement(Twitter, {data: this.props.data})
+          )
+        )
+      )
+    );
+  }
+});          

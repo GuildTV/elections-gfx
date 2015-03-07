@@ -11,9 +11,27 @@
 
     position: absolute;
     left: 30vw;
-    top: 0;
+    top: 50%;
+    transform: translateY(-50%);
 
     color: @white;
+
+
+  }
+
+  .twitterNode {
+    transition: opacity 0.5s ease-in;
+
+    &.fade-enter {
+      transition-delay: 0.5s;
+      opacity: 0;
+    }
+    &.fade-enter-active, &.fade-leave {
+      opacity: 1;
+    }
+    &.fade-leave-active {
+      opacity: 0;
+    }
   }
 
   .twitter_logo {
