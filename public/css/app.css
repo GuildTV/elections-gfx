@@ -6939,6 +6939,11 @@ h6 {
 }
 .multiProfileContainer .multiProfileOuter {
   height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  opacity: 0;
   padding: 5vh 0;
   color: #f0f0f0;
 }
@@ -6949,17 +6954,6 @@ h6 {
   top: 0px;
   left: 0px;
   transition: opacity 0.5s ease-in;
-}
-.multiProfileContainer .multiProfileOuter .multiProfileNode.fade-enter {
-  transition-delay: 0.5s;
-  opacity: 0;
-}
-.multiProfileContainer .multiProfileOuter .multiProfileNode.fade-enter-active,
-.multiProfileContainer .multiProfileOuter .multiProfileNode.fade-leave {
-  opacity: 1;
-}
-.multiProfileContainer .multiProfileOuter .multiProfileNode.fade-leave-active {
-  opacity: 0;
 }
 .multiProfileContainer .multiProfileOuter .people.ppl-6-5 {
   margin-top: 227.5px;

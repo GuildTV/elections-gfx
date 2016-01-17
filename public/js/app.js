@@ -156,26 +156,29 @@ App.widgets['LowerThird'] = {
   },
 };
 App.widgets['MultiProfile'] = {
-  render: function(data, title) {
-    if(data.length <= 0)
-      return;
-    
-    if($(".multiProfileContainer > *").length == 0)
-      ReactDOM.render(React.createElement(MultiProfileWrap, null), $(".multiProfileContainer")[0]);
+  wrapper: null,
 
-    ReactDOM.render(React.createElement(MultiProfileWrap, {people: data, title: title}), $(".multiProfileContainer")[0]);
-  },
+  render: function(people, title) {
+    console.log("RENDER", title, people)
+    var self = App.widgets['MultiProfile'];
+    if(!self.wrapper)
+      self.wrapper = ReactDOM.render(React.createElement(MultiProfileWrapper, null), $(".multiProfileContainer")[0]);
 
-  update: function(data){
+    self.wrapper.changeData(title, people);
+  }, 
 
+  update: function(people, title){
+    return App.widgets['MultiProfile'].render(people, title);
   },
 
   stop: function(callback) {
+    return App.widgets['MultiProfile'].render(false, false);
+
+    //TODO - delay the callback
+
     if(callback !== undefined)
       callback();
-
-    ReactDOM.render(React.createElement(MultiProfileWrap, null), $(".multiProfileContainer")[0]);
-  }
+  },
 };
 App.widgets['SingleProfile'] = {
   wrapper: null,
@@ -319,58 +322,54 @@ var LowerThirdWrapper = React.createClass({displayName: "LowerThirdWrapper",
     );
   }
 });
-var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
-
 var MultiProfileList = React.createClass({displayName: "MultiProfileList",
-  componentDidMount: function() {
-    var tl = new TimelineLite();
-    var node = $(this.getDOMNode());
-
-    //align all the stuff
-    var peopleDiv = node.find('.people');
-    var people = peopleDiv.find('.multiProfile');
-
-    // var available = node.height() - node.find('.title').outerHeight();
-    // available -= peopleDiv.outerHeight();
-    // available /= 2;
-    // peopleDiv.css('margin', available+'px 0');
-
-    switch(people.length){
-      case 5:
-        $(people[0]).addClass('col-md-offset-1');
-        peopleDiv.addClass('ppl-6-5');
-        break;
-      case 6:
-        peopleDiv.addClass('ppl-6-5');
-        break;
-      case 2:
-        $(people[0]).addClass('col-md-offset-2');
-        peopleDiv.addClass('ppl-4-3-2-1');
-        break;
-      case 1:
-        $(people[0]).addClass('col-md-offset-4');
-        peopleDiv.addClass('ppl-4-3-2-1');
-        break;
-      case 3:
-      case 4:
-        peopleDiv.addClass('ppl-4-3-2-1');
-        break;
-    }
-
-    var o = node;
-
-    tl.to(o.find('h1'), 0.6, {top: "0px"}, "+=0.5");
+  componentDidMount: function(){
+    console.log("MP mounted");
+  },
+  componentWillUnmount: function(){
+    console.log("MP unmounted");
   },
 
-  render: function() {    
-    var peopleCount = this.props.people.length;
-    var peopleNodes = this.props.people.map(function (person) {
-      return this.renderThumbnail(person, peopleCount);
+  componentWillEnter: function(callback){
+    return this.componentWillAppear(callback);
+  },
+
+  componentWillAppear: function(callback) {
+    console.log("MP animating");
+
+    var tl = new TimelineLite();
+
+    tl.to(this.refs.outer, 0.5, {autoAlpha: 1}, "+=0.5")
+      .to($(this.refs.outer).find('h1'), 0.6, {top: "0px", onComplete: callback}, "-=0.5");
+  },
+
+  componentWillLeave: function(callback){
+    console.log("MP leaving");
+
+    var tl = new TimelineLite();
+
+    tl.to(this.refs.outer, 0.5, {autoAlpha: 0, onComplete: callback});
+  },
+
+  render: function() { 
+    console.log(this.props)
+    if(!this.props.title || !this.props.people){
+      return React.createElement("div", null);
+    }
+
+    var people = this.props.people;
+
+    people[0].isFirst = true;
+    var peopleNodes = people.map(function (person) {
+      return this.renderThumbnail(person, people.length);
     }, this);
+
+    var peopleClass = people.length<=4?"ppl-4-3-2-1":"ppl-6-5";
+
     return (
-      React.createElement("div", {className: "multiProfileOuter", key: this.props.title}, 
+      React.createElement("div", {className: "multiProfileOuter", ref: "outer"}, 
         React.createElement("h1", {className: "title"},  this.props.title.toUpperCase() ), 
-        React.createElement("div", {className: "people col-md-10 col-md-offset-1"}, 
+        React.createElement("div", {className: "people col-md-10 col-md-offset-1 "+peopleClass}, 
           peopleNodes 
         )
       )
@@ -394,6 +393,20 @@ var MultiProfileList = React.createClass({displayName: "MultiProfileList",
         break;
     }
 
+    if(person.isFirst){
+      switch(peopleCount){
+        case 5:
+          divClass += " col-md-offset-1 ";
+          break;
+        case 2:
+          divClass += " col-md-offset-2 ";
+          break;
+        case 1:
+          divClass += " col-md-offset-4 ";
+          break;
+      }
+    }
+
     var imageDivClass = 'image ' + person.pid + ' text-center';
     var imageUrl = 'public/img/roles/' + person.pid + '/' + person.uid + '.png';
 
@@ -408,31 +421,63 @@ var MultiProfileList = React.createClass({displayName: "MultiProfileList",
   }
 });
 
-var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+var MultiProfileWrapper = React.createClass({displayName: "MultiProfileWrapper",
+  getInitialState: function(){
+    return {
+      title: false,
+      people: false
+    };
+  },
 
-var MultiProfileWrap = React.createClass({displayName: "MultiProfileWrap",
-  render: function() {
-    if(this.props.people === undefined || this.props.title === undefined)
-      return (
-        React.createElement("div", {className: "multiProfileOuter"}, 
-          React.createElement(ReactCSSTransitionGroup, {transitionName: "fade"}, 
-            React.createElement("div", {className: "multiProfileNode", key: "blank"})
-          )
-        )
-      );
+  changeData: function(title, people){
+    if(title && this.state.title && title != this.state.title)
+      return;
+
+    this.setState({ data: newData });
+  },
+
+  render: function(){
+    var list = this.state.title?(React.createElement(MultiProfileList, {key: this.state.title, people: this.state.people, title: this.state.title})):(React.createElement("div", null));
 
     return (
-      React.createElement("div", {className: "multiProfileOuter"}, 
-        React.createElement(ReactCSSTransitionGroup, {transitionName: "fade"}, 
-          React.createElement("div", {className: "multiProfileNode", key: this.props.title}, 
-            React.createElement(MultiProfileList, {people: this.props.people, title: this.props.title})
-          )
+      React.createElement("div", null, 
+        React.createElement(ReactTransitionGroup, null, 
+          list 
         )
       )
     );
   }
-});          
+});
+var MultiProfileWrapper = React.createClass({displayName: "MultiProfileWrapper",
+  getInitialState: function(){
+    return {
+      title: false,
+      people: false
+    };
+  },
 
+  changeData: function(title, people){
+    if(title && this.state.title && title == this.state.title)
+      return;
+
+    this.setState({ 
+      title: title,
+      people: people
+    });
+  },
+
+  render: function(){
+    var list = this.state.title?(React.createElement(MultiProfileList, {key: this.state.title, people: this.state.people, title: this.state.title})):(React.createElement("div", null));
+
+    return (
+      React.createElement("div", null, 
+        React.createElement(ReactTransitionGroup, null, 
+          list 
+        )
+      )
+    );
+  }
+});
 var ReactTransitionGroup = React.addons.TransitionGroup;
 
 var SingleProfile = React.createClass({displayName: "SingleProfile",

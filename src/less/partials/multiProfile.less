@@ -7,7 +7,13 @@
 
   .multiProfileOuter {
     height: 100vh;
+    width: 100vw;
 
+    position: absolute;
+    top: 0px;
+    left: 0px;
+
+    opacity: 0;
     padding: 5vh 0;
     color: @primary-text-colour;
 
@@ -20,17 +26,6 @@
       left: 0px;
 
       transition: opacity 0.5s ease-in;
-
-      &.fade-enter {
-        transition-delay: 0.5s;
-        opacity: 0;
-      }
-      &.fade-enter-active, &.fade-leave {
-        opacity: 1;
-      }
-      &.fade-leave-active {
-        opacity: 0;
-      }
     }
 
     .people {

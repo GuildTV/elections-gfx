@@ -1,55 +1,51 @@
-var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
-
 var MultiProfileList = React.createClass({
-  componentDidMount: function() {
-    var tl = new TimelineLite();
-    var node = $(this.getDOMNode());
-
-    //align all the stuff
-    var peopleDiv = node.find('.people');
-    var people = peopleDiv.find('.multiProfile');
-
-    // var available = node.height() - node.find('.title').outerHeight();
-    // available -= peopleDiv.outerHeight();
-    // available /= 2;
-    // peopleDiv.css('margin', available+'px 0');
-
-    switch(people.length){
-      case 5:
-        $(people[0]).addClass('col-md-offset-1');
-        peopleDiv.addClass('ppl-6-5');
-        break;
-      case 6:
-        peopleDiv.addClass('ppl-6-5');
-        break;
-      case 2:
-        $(people[0]).addClass('col-md-offset-2');
-        peopleDiv.addClass('ppl-4-3-2-1');
-        break;
-      case 1:
-        $(people[0]).addClass('col-md-offset-4');
-        peopleDiv.addClass('ppl-4-3-2-1');
-        break;
-      case 3:
-      case 4:
-        peopleDiv.addClass('ppl-4-3-2-1');
-        break;
-    }
-
-    var o = node;
-
-    tl.to(o.find('h1'), 0.6, {top: "0px"}, "+=0.5");
+  componentDidMount: function(){
+    console.log("MP mounted");
+  },
+  componentWillUnmount: function(){
+    console.log("MP unmounted");
   },
 
-  render: function() {    
-    var peopleCount = this.props.people.length;
-    var peopleNodes = this.props.people.map(function (person) {
-      return this.renderThumbnail(person, peopleCount);
+  componentWillEnter: function(callback){
+    return this.componentWillAppear(callback);
+  },
+
+  componentWillAppear: function(callback) {
+    console.log("MP animating");
+
+    var tl = new TimelineLite();
+
+    tl.to(this.refs.outer, 0.5, {autoAlpha: 1}, "+=0.5")
+      .to($(this.refs.outer).find('h1'), 0.6, {top: "0px", onComplete: callback}, "-=0.5");
+  },
+
+  componentWillLeave: function(callback){
+    console.log("MP leaving");
+
+    var tl = new TimelineLite();
+
+    tl.to(this.refs.outer, 0.5, {autoAlpha: 0, onComplete: callback});
+  },
+
+  render: function() { 
+    console.log(this.props)
+    if(!this.props.title || !this.props.people){
+      return <div></div>;
+    }
+
+    var people = this.props.people;
+
+    people[0].isFirst = true;
+    var peopleNodes = people.map(function (person) {
+      return this.renderThumbnail(person, people.length);
     }, this);
+
+    var peopleClass = people.length<=4?"ppl-4-3-2-1":"ppl-6-5";
+
     return (
-      <div className='multiProfileOuter' key={this.props.title}>
+      <div className='multiProfileOuter' ref="outer">
         <h1 className='title'>{ this.props.title.toUpperCase() }</h1>
-        <div className="people col-md-10 col-md-offset-1">
+        <div className={"people col-md-10 col-md-offset-1 "+peopleClass}>
           { peopleNodes }
         </div>
       </div>
@@ -71,6 +67,20 @@ var MultiProfileList = React.createClass({
       case 1:
         divClass += "col-md-4 ";
         break;
+    }
+
+    if(person.isFirst){
+      switch(peopleCount){
+        case 5:
+          divClass += " col-md-offset-1 ";
+          break;
+        case 2:
+          divClass += " col-md-offset-2 ";
+          break;
+        case 1:
+          divClass += " col-md-offset-4 ";
+          break;
+      }
     }
 
     var imageDivClass = 'image ' + person.pid + ' text-center';
