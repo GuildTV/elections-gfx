@@ -2,14 +2,20 @@ var App = {
   widgets: [],
   loadedWidgets: [],
   eventName: "Guild Elections",
-  socket: "",
+  socket: false,
 
   setEventName: function(eventName) {
     console.log(eventName);
     App.eventName = eventName;
   },
 
-  connectToWebsocket: function(ip, autoRender) {
+  connectToWebsocket: function(ip) {
+    if(App.socket)
+      return;
+
+    if(ip === undefined)
+      ip = "192.168.26.105:4054";
+    
     App.socket = io.connect('http://' + ip);
     
     App.socket.on('tweet.use', function (data) {
@@ -20,6 +26,16 @@ var App = {
     App.socket.on('tweet.stop', function () {
       App.stopWidget('Twitter');
     });
+  },
+
+  disconnectWebsocket: function(){
+    if(!App.socket)
+      return;
+
+    App.stopWidget('Twitter');
+
+    App.socket.disconnect();
+    App.socket = false;
   },
 
   loadWidget: function(widget, id, params) {
