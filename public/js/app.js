@@ -178,21 +178,30 @@ App.widgets['MultiProfile'] = {
   }
 };
 App.widgets['SingleProfile'] = {
+  wrapper: null,
+
   render: function(data) {
-    ReactDOM.render(React.createElement(SingleProfile, {data: data}), $(".sideBar")[0]);
+    var self = App.widgets['SingleProfile'];
+    if(!self.wrapper)
+      self.wrapper = ReactDOM.render(React.createElement(SingleProfileWrapper, null), $(".sideBar")[0]);
+
+    self.wrapper.changeData(data);
   },
 
   update: function(data){
-
+    return App.widgets['SingleProfile'].render(data);
   },
 
   stop: function(callback) {
-    SingleProfile.animateOut();
+    return App.widgets['SingleProfile'].render(false);
+
+    //TODO - delay the callback
 
     if(callback !== undefined)
       callback();
   }
 };
+
 App.widgets['TopBar'] = {
   render: function(data) {
     ReactDOM.render(React.createElement(TopBar, null), $(".topBarContainer ")[0]);
@@ -309,7 +318,6 @@ var LowerThirdWrapper = React.createClass({displayName: "LowerThirdWrapper",
       )
     );
   }
-
 });
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
@@ -425,38 +433,48 @@ var MultiProfileWrap = React.createClass({displayName: "MultiProfileWrap",
   }
 });          
 
+var ReactTransitionGroup = React.addons.TransitionGroup;
+
 var SingleProfile = React.createClass({displayName: "SingleProfile",
-  statics: {
-    animateOut: function() {
-      var tl = new TimelineLite();
-
-      tl.to($('.singleProfile'), 1, {bottom:"75%", autoAlpha:0, onComplete: this.kill});
-    },
-    kill: function() {
-      React.unmountComponentAtNode($(".sideBar")[0])
-    },
+  componentDidMount: function(){
+    console.log("SP mounted");
   },
-  componentDidMount: function() {
-    var tl = new TimelineLite(),
-        centrePoint = -( $(window).height() - $('.singleProfile').outerHeight() )/2;
-
-    tl.to($('.singleProfile'), 1, {bottom: centrePoint, autoAlpha:1});
+  componentWillUnmount: function(){
+    console.log("SP unmounted");
   },
-  componentWillReceiveProps: function(nextProps) {
+
+  componentWillEnter: function(callback){
+    return this.componentWillAppear(callback);
+  },
+
+  componentWillAppear: function(callback) {
+    console.log("SP animating");
+
+    var tl = new TimelineLite();
+    var centrePoint = -( $(window).height() - $(this.refs.profile).outerHeight() )/2;
+
+    tl.to(this.refs.profile, 1, {bottom: centrePoint, autoAlpha:1, onComplete: callback});
+  },
+
+  componentWillLeave: function(callback){
+    console.log("SP leaving");
+
     var tl = new TimelineLite();
 
-    tl.to($('.singleProfile'), 1, {bottom:"75%", autoAlpha:0})
-      .to($('.singleProfile'), 0, {bottom:"-125%", autoAlpha:0})
-      .to($('.singleProfile'), 1, {bottom: -( $(window).height() - $('.singleProfile').outerHeight() )/2, autoAlpha:1});
-
+    tl.to(this.refs.profile, 1, {bottom:"75%", autoAlpha:0, onComplete: callback});
   },
+
   render: function() {
+    if(!this.props.data){
+      return React.createElement("div", null);
+    }
+
     var isCandidate =  (this.props.data.candidate !== undefined && this.props.data.candidate == true ? "candidate":"");
     var imageUrl = 'public/img/roles/' + this.props.data.pid + '/' + this.props.data.uid + '.png';
 
     return (
       React.createElement("div", {className: "singleProfileContainer col-md-12"}, 
-        React.createElement("div", {className: "singleProfile col-md-10 col-md-offset-1"}, 
+        React.createElement("div", {className: "singleProfile col-md-10 col-md-offset-1", ref: "profile"}, 
           React.createElement("h1", {className: "text-center"},  this.props.data.first.toUpperCase(), " ",  this.props.data.last.toUpperCase() ), 
           React.createElement("h2", {className: "text-center"},  this.props.data.position.toUpperCase(), " ",  isCandidate.toUpperCase() ), 
 
@@ -468,6 +486,36 @@ var SingleProfile = React.createClass({displayName: "SingleProfile",
             React.createElement("li", null, React.createElement("h3", {className: "two"},  this.props.data.manifestoPoints.two)), 
             React.createElement("li", null, React.createElement("h3", {className: "three"},  this.props.data.manifestoPoints.three))
           )
+        )
+      )
+    );
+  }
+});
+
+var SingleProfileWrapper = React.createClass({displayName: "SingleProfileWrapper",
+  getInitialState: function(){
+    return {
+      data: false
+    };
+  },
+
+  changeData: function(newData){
+    if(newData && this.state.data && newData.uid == this.state.data.uid)
+      return;
+
+    if(newData && !newData.uid)
+      return;
+
+    this.setState({ data: newData });
+  },
+
+  render: function(){
+    var profile = this.state.data?(React.createElement(SingleProfile, {key: this.state.data.uid, data: this.state.data})):(React.createElement("div", null));
+
+    return (
+      React.createElement("div", null, 
+        React.createElement(ReactTransitionGroup, null, 
+          profile 
         )
       )
     );

@@ -1,14 +1,22 @@
 App.widgets['SingleProfile'] = {
+  wrapper: null,
+
   render: function(data) {
-    ReactDOM.render(<SingleProfile data={data} />, $(".sideBar")[0]);
+    var self = App.widgets['SingleProfile'];
+    if(!self.wrapper)
+      self.wrapper = ReactDOM.render(<SingleProfileWrapper />, $(".sideBar")[0]);
+
+    self.wrapper.changeData(data);
   },
 
   update: function(data){
-
+    return App.widgets['SingleProfile'].render(data);
   },
 
   stop: function(callback) {
-    SingleProfile.animateOut();
+    return App.widgets['SingleProfile'].render(false);
+
+    //TODO - delay the callback
 
     if(callback !== undefined)
       callback();
