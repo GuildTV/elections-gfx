@@ -44,9 +44,9 @@ var App = {
     App.widgets[widget].stop(callback);
   },
 
-  changeWidget: function(currentWidget, nextWidget, id) {
+  changeWidget: function(currentWidget, nextWidget, id, params) {
     App.stopWidget(currentWidget, function(){
-      App.loadWidget(nextWidget, id);
+      App.loadWidget(nextWidget, id, params);
     });
   },
 

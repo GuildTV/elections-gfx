@@ -4,9 +4,9 @@ App.widgets['MultiProfile'] = {
       return;
     
     if($(".multiProfileContainer > *").length == 0)
-      React.render(<MultiProfileWrap />, $(".multiProfileContainer")[0]);
+      ReactDOM.render(<MultiProfileWrap />, $(".multiProfileContainer")[0]);
 
-    React.render(<MultiProfileWrap people={data} title={title} />, $(".multiProfileContainer")[0]);
+    ReactDOM.render(<MultiProfileWrap people={data} title={title} />, $(".multiProfileContainer")[0]);
   },
 
   update: function(data){
@@ -17,6 +17,6 @@ App.widgets['MultiProfile'] = {
     if(callback !== undefined)
       callback();
 
-    React.render(<MultiProfileWrap />, $(".multiProfileContainer")[0]);
+    ReactDOM.render(<MultiProfileWrap />, $(".multiProfileContainer")[0]);
   }
 };
