@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="public/css/app.css" />
+
+  </head>
+
+  <body style="background:url('public/img/test-bg.png') no-repeat center center fixed; background-size: cover; position: absolute; float: left; top: 0px; left: 0px; width: 1920px; height: 1080px;">
+    <div id="blue-bg"></div>
+    <div class="temp" style="position: absolute; top: 0; z-index: 9999;">
+      <button onclick="App.loadWidget('SingleProfile', 'pres-ed');">Load Single Profile</button>
+      <button onclick="App.updateWidget('SingleProfile', 'pres-jack');">Update Single Profile</button>
+      <button onclick="App.stopWidget('SingleProfile');">Remove Single Profile</button>
+      
+      <br><br>
+
+      <button onclick="App.loadWidget('SingleProfile', 'pres-jack');">Load Single Profile</button>
+      <button onclick="App.changeWidget('SingleProfile', 'MultiProfile', 'pres');">Change From Single Profile to Multi Profile</button>
+
+      <br><br>
+
+      <button onclick="App.loadWidget('MultiProfile', 'president', 'Presidential Candidates');">Multi Profile - Pres</button>
+      <button onclick="App.loadWidget('MultiProfile', 'rro', 'Resources &amp; Something Candidates');">Multi Profile - RRO</button>
+      <button onclick="App.stopWidget('MultiProfile');">Remove Multi Profile</button>
+
+
+      <br><br>
+
+      <button onclick="App.loadWidget('LowerThird', 'talent-host');">Lower Third - Host</button>
+      <button onclick="App.updateWidget('LowerThird', 'talent-anal');">Lower Third - Analyst</button>
+      <button onclick="App.stopWidget('LowerThird');">Stop Lower Third</button>
+
+      <br><br>
+
+      <button onclick="App.loadWidget('topBar');">Load Top Bar</button>
+      <button onclick="App.stopWidget('topBar');">Stop Top Bar</button>
+
+      <br><br>
+
+      <button onclick="App.connectToWebsocket();">Connect Twitter</button>
+      <button onclick="App.disconnectWebsocket();">Disconnect Twitter</button>
+      <button onclick="App.stopWidget('Twitter');">Force Clear tweet</button>
+    </div>
+
+    <div class="main">
+      <div class="topBarContainer container">
+      </div> <!-- / .topBarContainer -->
+
+      <div class="sideBarContainer col-md-3 col-md-offset-9">
+        <div class="sideBar row">
+        </div> <!-- / .sideBar -->
+      </div> <!-- / .sideBarContainer -->
+
+      <div class="lowerThirdContainer">
+      </div><!-- / .lowerThirdContainer-->
+      
+      <div class="twitterContainer">
+      </div><!-- / .twitterContainer -->
+
+      <div class="multiProfileContainer">
+      </div><!-- / .multiProfileContainer -->
+
+    </div> <!-- / .main -->
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="public/lib/jquery/jquery.js"></script>
+    <script type="text/javascript" src="public/lib/gsap/TweenMax.js"></script>
+    <script type="text/javascript" src="public/lib/react/react-with-addons.js"></script>
+    <script type="text/javascript" src="public/lib/react/react-dom.js"></script>
+    <script type="text/javascript" src="public/lib/gsap-react-plugin/gsap-react-plugin.js"></script>
+    <script type="text/javascript" src="public/lib/bootstrap/bootstrap.js"></script>
+    <script type="text/javascript" src="public/lib/socket.io-client/socket.io.js"></script>
+    <script type="text/javascript" src="public/js/data.js"></script>
+    <script type="text/javascript" src="public/js/app.js"></script>
+    <script type="text/javascript">
+    window.ISDEV = true;
+    </script>
+
+  </body>
+</html>

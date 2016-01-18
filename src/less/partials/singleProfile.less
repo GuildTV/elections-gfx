@@ -1,0 +1,38 @@
+.singleProfileContainer {
+  position: absolute;
+  height: 100vw;
+
+  .singleProfile {
+    bottom: -125%;
+    height: auto;
+    opacity: 0;
+    text-align: center;
+    font-family: "RobotoCondensed";
+
+    background-color: @heavy-grey-alpha-bg;
+    color: @primary-text-colour;
+
+    padding: 5vh;
+    border-radius: 0.25vh 0;
+
+    h1, h2, img {
+      margin-bottom: 0.5em;
+    }
+    img {
+      background-color: @thumbnail-bg; 
+      background: -webkit-gradient(linear, left top, right bottom, from(@thumbnail-bg-dark), to(@thumbnail-bg));
+
+      border: 3px solid @thumbnail-bg;
+      border-image: -webkit-linear-gradient(left top, @thumbnail-bg 0%, @thumbnail-bg-dark 100%);
+      border-image-slice: 1;
+
+      min-height: 200px;
+      border-radius: 0.25vh;
+    }
+    ul {
+      li {
+        text-align: left;
+      }
+    }
+  }
+}

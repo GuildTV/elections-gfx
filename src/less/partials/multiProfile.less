@@ -1,0 +1,89 @@
+.multiProfileContainer {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+
+  .multiProfileOuter {
+    height: 100vh;
+    width: 100vw;
+
+    position: absolute;
+    top: 0px;
+    left: 0px;
+
+    opacity: 0;
+    padding: 5vh 0;
+    color: @primary-text-colour;
+
+    .multiProfileNode {
+      height: 100vh;
+      width: 100vw;
+
+      position: absolute;
+      top: 0px;
+      left: 0px;
+
+      transition: opacity 0.5s ease-in;
+    }
+
+    .people {
+      &.ppl-6-5{
+        margin-top: 227.5px;
+        margin-bottom: 227.5px;
+      }
+      &.ppl-4-3-2-1{
+        margin-top: 202px;
+        margin-bottom: 202px;
+      }
+    }
+
+    .title {
+      text-align: center;
+      font-size: 70px;
+    }
+
+    .multiProfile {
+      padding: 20px 25px;
+
+      img {
+        background-color: @thumbnail-bg; 
+        background: -webkit-gradient(linear, left top, right bottom, from(@thumbnail-bg-dark), to(@thumbnail-bg));
+
+        border: 3px solid @thumbnail-bg;
+        border-image: -webkit-linear-gradient(left top, @thumbnail-bg 0%, @thumbnail-bg-dark 100%);
+        border-image-slice: 1;
+
+        width: 100%;
+        z-index: 10000;
+      }
+
+      h1 {
+        text-align: left;
+        position: relative;
+        top: -100px;
+        z-index: -1;
+        margin: 5px 10px;
+
+        strong {
+          @font-face: "Roboto-Black";
+        }
+      }
+    } 
+
+    .multiProfile.col-md-4 {
+      padding: 20px 80px;
+    }
+
+    .multiProfile.col-md-3 img, .multiProfile.col-md-4 img {
+      width: 363px;
+      height: 363px;
+    }
+    .multiProfile.col-md-2 img {
+      width: 212px;
+      height: 212px;
+    }
+
+  }
+}

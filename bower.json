@@ -1,0 +1,41 @@
+{
+  "name": "elections-2016",
+  "version": "0.0.0",
+  "homepage": "https://github.com/guildtv/caspar-graphics",
+  "authors": [
+    "Robert Sumner <robfsumner@gmail.com>",
+    "Julian Waller <git@julusian.co.uk>"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "jquery": "~2.1.3",
+    "bootstrap": "~3.3.2",
+    "handlebars": "~2.0.0",
+    "gsap": "~1.15.1",
+    "socket.io-client": "~1.3.4"
+  },
+  "install": {
+    "path": "public/lib",
+    "sources": {
+      "gsap": [
+        "bower_components/gsap/src/uncompressed/TimelineLite.js",
+        "bower_components/gsap/src/uncompressed/TweenLite.js"
+      ],
+      "react": [
+        "bower_components/react/react.js",
+        "bower_components/react/JSXTransformer.js",
+        "bower_components/react/react-with-addons.js"
+      ],
+      "socket.io-client": [
+        "bower_components/socket.io-client/socket.io.js"
+      ]
+    }
+  }
+}
