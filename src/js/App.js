@@ -93,4 +93,15 @@ var App = {
       }
     }
   },
+
+  showHideBlue: function(show){
+    if(!window.ISDEV)
+      return;
+
+    if(show){
+      $('#blue-bg').css("display", "block");
+    } else {
+      $('#blue-bg').css("display", "none");
+    }
+  }
 };

@@ -93,6 +93,17 @@ var App = {
       }
     }
   },
+
+  showHideBlue: function(show){
+    if(!window.ISDEV)
+      return;
+
+    if(show){
+      $('#blue-bg').css("display", "block");
+    } else {
+      $('#blue-bg').css("display", "none");
+    }
+  }
 };
 
 /*
@@ -238,20 +249,28 @@ App.widgets['TopBar'] = {
   }
 };
 App.widgets['Twitter'] = {
+  wrapper: null,
+
   render: function(data) {
-    ReactDOM.render(React.createElement(TwitterWrap, {data: data}), $(".twitterContainer")[0]);
-  },
+    var self = App.widgets['Twitter'];
+    if(!self.wrapper)
+      self.wrapper = ReactDOM.render(React.createElement(TwitterWrap, null), $(".twitterContainer")[0]);
+
+    self.wrapper.changeData(data);
+  }, 
 
   update: function(data){
-
+    return App.widgets['Twitter'].render(data);
   },
 
   stop: function(callback) {
-    Twitter.animateOut();
+    return App.widgets['Twitter'].render(false);
+
+    //TODO - delay the callback
 
     if(callback !== undefined)
       callback();
-  }
+  },
 };
 var ReactTransitionGroup = React.addons.TransitionGroup;
 
@@ -485,6 +504,8 @@ var MultiProfileWrapper = React.createClass({displayName: "MultiProfileWrapper",
   render: function(){
     var list = this.state.title?(React.createElement(MultiProfileList, {key: this.state.title, people: this.state.people, title: this.state.title})):(React.createElement("div", null));
 
+    App.showHideBlue(!!this.state.data);
+    
     return (
       React.createElement("div", null, 
         React.createElement(ReactTransitionGroup, null, 
@@ -645,66 +666,109 @@ var TopBar = React.createClass({displayName: "TopBar",
     );
   }
 });
-  var Twitter = React.createClass({displayName: "Twitter",
-  statics: {
-    animateOut: function() {
-      var tl = new TimelineLite();
-
-      tl.to($('.twitter'), 0.3, {autoAlpha: 0, onComplete: this.kill});
-    },
-    kill: function() {
-      React.unmountComponentAtNode($(".twitterContainer")[0])
-    },
+var Twitter = React.createClass({displayName: "Twitter",
+  componentDidMount: function(){
+    console.log("Tweet mounted");
   },
-  componentDidMount: function() {
-    var td = $('.twitter'),
+  componentWillUnmount: function(){
+    console.log("Tweet unmounted");
+  },
+  componentWillAppear: function(callback) {
+    console.log("Tweet animating");
+
+    var td = $(this.refs.tweet),
         tl = new TimelineLite();
 
+    // ensure the image position is centered
+    if(td.find('.twitter_img').length > 0){
+      var img = new Image();
+      img.onload = function(){
+        var imageMargin = ((td.find('.tweet').width() - td.find('.twitter_img_landscape').width())/2)+"px";
+        td.find('.twitter_img_landscape').css('left', imageMargin);
+      };
+      img.src = td.find('.twitter_img')[0].src;
+    }
 
-    tl.to(td.find(".twitter_logo"), 0.25, {left:"10vw"})
-      .to(td.find(".twitter_logo"), 0.25, {width:"5%", left: 0, top: "5px"}, "+=0.75")
+    // ensure the tweet is centered
+    var globalLeft = ((1920 - td.width())/2)+"px";
+    td.css('left', globalLeft);
+
+    // ensure the twitter logo is vertically centered
+    var iconLargeTopPos = (td.find('.tweet').height()/2)+"px";
+    td.find('.twitter_logo').css('top', iconLargeTopPos);
+
+    var iconLargeLeftPos = (td.find('.tweet').width()/2)+"px";
+    //var iconLeftPos = (td.find('.tweet').width()/2)+"px";//td.find('.tweet').offset().left+"px";
+
+    tl.to(td.find(".twitter_logo"), 0.25, {left: iconLargeLeftPos})// left: "32.5vw"
+      .to(td.find(".twitter_logo"), 0.25, {width:"172.8px", left: "86.4px", top: "86.4px"}, "+=0.75") //width: "9vw"
       .to(td.find(".text"), 0.5, {autoAlpha: 1}, "-=0.25")
       .to(td.find(".info"), 0.5, {autoAlpha: 1}, "-=0.5")
       .to(td.find(".twitter_img"), 0.5, {autoAlpha: 1}, "-=0.5")
       .to(td.find(".profile_pic"), 0.5, {autoAlpha: 1}, "-=0.5")
       .to(td.find(".username"), 0.5, {autoAlpha: 1}, "-=0.5")
-      .to(td.find(".time_ago"), 0.5, {autoAlpha: 1}, "-=0.5");
+      .to(td.find(".time_ago"), 0.5, {autoAlpha: 1, onComplete: callback}, "-=0.5");
   },
-  componentWillReceiveProps: function(nextProps) {
-    var td = $('.twitter'),
+
+  //TODO - replace this. needs to be called on changing tweet, instead of other animation
+  componentWillEnter: function(callback) {
+    console.log("Tweet changing");
+    var td = $(this.refs.tweet),
         tl = new TimelineLite();
 
-    tl.to(td.find(".twitter_logo"), 0.25, {width:"50%", left:"10vw"})
+    // some dimensions/positions wont match the animation above
+    /*tl.to(td.find(".twitter_logo"), 0.25, {width:"50%", left:"10vw"})
       .to(td.find(".text"), 0.5, {autoAlpha: 0}, "-=0.25")
       .to(td.find(".info"), 0.5, {autoAlpha: 0}, "-=0.5")
       .to(td.find(".twitter_img"), 0.5, {autoAlpha: 0}, "-=0.5")
       .to(td.find(".profile_pic"), 0.5, {autoAlpha: 0}, "-=0.5")
       .to(td.find(".username"), 0.5, {autoAlpha: 0}, "-=0.5")
       .to(td.find(".time_ago"), 0.5, {autoAlpha: 0}, "-=0.5")
-      .to(td.find(".twitter_logo"), 0.25, {width:"5%", left: 0, top: "5px"}, "+=0.75")
+      .to(td.find(".twitter_logo"), 0.25, {width:"9vw", left: 0, top: "5px"}, "+=0.75")
       .to(td.find(".text"), 0.5, {autoAlpha: 1}, "-=0.25")
       .to(td.find(".info"), 0.5, {autoAlpha: 1}, "-=0.5")
       .to(td.find(".twitter_img"), 0.5, {autoAlpha: 1}, "-=0.5")
       .to(td.find(".profile_pic"), 0.5, {autoAlpha: 1}, "-=0.5")
       .to(td.find(".username"), 0.5, {autoAlpha: 1}, "-=0.5")
-      .to(td.find(".time_ago"), 0.5, {autoAlpha: 1}, "-=0.5");
+      .to(td.find(".time_ago"), 0.5, {autoAlpha: 1, onComplete: callback}, "-=0.5");*/
 
+      return this.componentWillAppear(callback);
   },
+
+
+  componentWillLeave: function(callback){
+    console.log("LT leaving");
+
+    var tl = new TimelineLite();
+
+    //TODO - reverse in animation
+    tl.to(this.refs.tweet, 0.3, {autoAlpha: 0, onComplete: callback});
+  },
+
   render: function() {
     var time_ago = this.timeSince(this.props.data.created_at);
-    var media = (this.props.data.entities.media !== undefined && this.props.data.entities.media.length > 0 ?React.createElement("img", {className: "twitter_img", src:  this.props.data.entities.media[0].media_url}):"");
+    var media = (this.props.data.entities.media !== undefined && this.props.data.entities.media.length > 0 ?React.createElement("img", {className: "twitter_img_landscape twitter_img", src:  this.props.data.entities.media[0].media_url}):"");
+
+    var profile_pic = this.props.data.user.profile_image_url.replace("_normal", "");
 
     return (
-      React.createElement("div", {className: "twitter"}, 
-        React.createElement("img", {className: "twitter_logo", src: "public/img/twitter_white.png"}), 
-        React.createElement("div", {className: "tweet"}, 
-          React.createElement("h3", {className: "text"},  this.props.data.text), 
-            media, 
-          React.createElement("h3", {className: "info"}, React.createElement("img", {className: "profile_pic", src:  this.props.data.user.profile_image_url}), React.createElement("span", {className: "username"}, "@",  this.props.data.user.screen_name, " (",  this.props.data.user.name, "),"), " ", React.createElement("span", {className: "time_ago"}, time_ago, " ago"))
+      React.createElement("div", {className: "tweetOuter"}, 
+        React.createElement("div", {className: "twitter", ref: "tweet"}, 
+          React.createElement("img", {className: "twitter_logo", src: "public/img/twitter_white.png"}), 
+          React.createElement("div", {className: "tweet"}, 
+            React.createElement("h3", {className: "text"},  this.props.data.text), 
+              media, 
+            React.createElement("h3", {className: "info"}, 
+              React.createElement("div", {className: "profile_pic", style: { backgroundImage: 'url('+profile_pic+')'}}), 
+              React.createElement("span", {className: "username"}, "@",  this.props.data.user.screen_name, " (",  this.props.data.user.name, "),"), 
+              React.createElement("span", {className: "time_ago"}, time_ago, " ago")
+            )
+          )
         )
       )
     );
   },
+
   timeSince: function(date) {
     tdate = new Date(date)
     var seconds = Math.floor((new Date() - tdate) / 1000);
@@ -735,27 +799,36 @@ var TopBar = React.createClass({displayName: "TopBar",
 });
 
 
-var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+var ReactTransitionGroup = React.addons.TransitionGroup;
 
 var TwitterWrap = React.createClass({displayName: "TwitterWrap",
-  render: function() {
-    if(this.props.data === undefined )
-      return (
-        React.createElement("div", {className: "twitterOuter"}, 
-          React.createElement(ReactCSSTransitionGroup, {transitionName: "fade"}, 
-            React.createElement("div", {className: "twitterNode", key: "blank"})
-          )
-        )
-      );
+  getInitialState: function(){
+    return {
+      data: false
+    };
+  },
+
+  changeData: function(newData){
+    if(newData && this.state.data && newData.id == this.state.data.id)
+      return;
+
+    if(newData && !newData.id)
+      return;
+
+    this.setState({ data: newData });
+  },
+
+  render: function(){
+    var tweet = this.state.data?(React.createElement(Twitter, {key: this.state.data.id, data: this.state.data})):(React.createElement("div", null));
+
+    App.showHideBlue(!!this.state.data);
 
     return (
-      React.createElement("div", {className: "twitterOuter"}, 
-        React.createElement(ReactCSSTransitionGroup, {transitionName: "fade"}, 
-          React.createElement("div", {className: "twitterNode", key: this.props.data.id}, 
-            React.createElement(Twitter, {data: this.props.data})
-          )
+      React.createElement("div", null, 
+        React.createElement(ReactTransitionGroup, null, 
+          tweet 
         )
       )
     );
   }
-});          
+});

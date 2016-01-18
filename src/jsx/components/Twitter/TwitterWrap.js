@@ -1,24 +1,33 @@
-var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+var ReactTransitionGroup = React.addons.TransitionGroup;
 
 var TwitterWrap = React.createClass({
-  render: function() {
-    if(this.props.data === undefined )
-      return (
-        <div className="twitterOuter">
-          <ReactCSSTransitionGroup transitionName="fade">
-            <div className="twitterNode" key="blank" />
-          </ReactCSSTransitionGroup>
-        </div>
-      );
+  getInitialState: function(){
+    return {
+      data: false
+    };
+  },
+
+  changeData: function(newData){
+    if(newData && this.state.data && newData.id == this.state.data.id)
+      return;
+
+    if(newData && !newData.id)
+      return;
+
+    this.setState({ data: newData });
+  },
+
+  render: function(){
+    var tweet = this.state.data?(<Twitter key={this.state.data.id} data={this.state.data} />):(<div></div>);
+
+    App.showHideBlue(!!this.state.data);
 
     return (
-      <div className="twitterOuter">
-        <ReactCSSTransitionGroup transitionName="fade">
-          <div className="twitterNode" key={this.props.data.id}>
-            <Twitter data={this.props.data} />
-          </div>
-        </ReactCSSTransitionGroup>
+      <div>
+        <ReactTransitionGroup>
+          { tweet }
+        </ReactTransitionGroup>
       </div>
     );
   }
-});          
+});

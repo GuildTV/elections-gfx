@@ -8,6 +8,7 @@
   </head>
 
   <body style="background:url('public/img/test-bg.png') no-repeat center center fixed; background-size: cover; position: absolute; float: left; top: 0px; left: 0px; width: 1920px; height: 1080px;">
+    <div id="blue-bg"></div>
     <div class="temp" style="position: absolute; top: 0; z-index: 9999;">
       <button onclick="App.loadWidget('SingleProfile', 'pres-ed');">Load Single Profile</button>
       <button onclick="App.updateWidget('SingleProfile', 'pres-jack');">Update Single Profile</button>
@@ -73,6 +74,9 @@
     <script type="text/javascript" src="public/lib/socket.io-client/socket.io.js"></script>
     <script type="text/javascript" src="public/js/data.js"></script>
     <script type="text/javascript" src="public/js/app.js"></script>
+    <script type="text/javascript">
+    window.ISDEV = true;
+    </script>
 
   </body>
 </html>

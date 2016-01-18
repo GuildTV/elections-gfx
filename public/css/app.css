@@ -6865,48 +6865,50 @@ h6 {
   top: 0px;
   left: 0px;
 }
+.twitterContainer h3 {
+  font-size: 4em;
+}
+.twitterContainer h3.info {
+  font-size: 3.5em;
+}
+.twitterContainer .tweetOuter {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+}
 .twitterContainer .twitter {
   height: auto;
-  width: 40vw;
+  max-width: 90vw;
   position: absolute;
-  left: 30vw;
-  top: 50%;
+  left: 5vw;
+  top: 50vh;
   transform: translateY(-50%);
   color: #ffffff;
 }
 .twitterContainer .twitterNode {
   transition: opacity 0.5s ease-in;
 }
-.twitterContainer .twitterNode.fade-enter {
-  transition-delay: 0.5s;
-  opacity: 0;
-}
-.twitterContainer .twitterNode.fade-enter-active,
-.twitterContainer .twitterNode.fade-leave {
-  opacity: 1;
-}
-.twitterContainer .twitterNode.fade-leave-active {
-  opacity: 0;
-}
 .twitterContainer .twitter_logo {
   height: auto;
-  width: 20vw;
+  width: 35vw;
   position: absolute;
   left: -50vw;
-  top: 5vw;
-  z-index: 2015;
+  top: -7vw;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
 }
 .twitterContainer .text {
   height: auto;
-  width: 35vw;
+  max-width: 80vw;
   position: relative;
-  left: 2.5vw;
+  margin-left: 10vw;
   opacity: 0;
   z-index: -1;
 }
-.twitterContainer .twitter_img {
-  height: 424px;
-  width: 576px;
+.twitterContainer .twitter_img_landscape {
+  height: 28vw;
   position: relative;
   left: 3.75vw;
   top: 1vw;
@@ -6915,20 +6917,24 @@ h6 {
   border-radius: 5px;
 }
 .twitterContainer .info {
-  margin-top: 2vw;
-  margin-left: 2.5vw;
+  margin-top: 4vw;
+  margin-left: 10vw;
   opacity: 0;
   z-index: -1;
 }
 .twitterContainer .profile_pic {
-  height: auto;
-  width: 2.5vw;
+  height: 8vw;
+  width: 8vw;
   opacity: 0;
   z-index: -1;
-  border-radius: 5px;
+  border-radius: 20px;
+  display: inline-block;
+  background-position: center;
+  background-size: cover;
+  vertical-align: middle;
 }
 .twitterContainer .username {
-  margin-left: 0.5vw;
+  margin-left: 2vw;
 }
 .multiProfileContainer {
   height: 100vh;
@@ -6997,4 +7003,15 @@ h6 {
 .multiProfileContainer .multiProfileOuter .multiProfile.col-md-2 img {
   width: 212px;
   height: 212px;
+}
+#blue-bg {
+  background: url('../img/blue.png') no-repeat center center fixed;
+  background-size: cover;
+  position: absolute;
+  float: left;
+  top: 0px;
+  left: 0px;
+  width: 1920px;
+  height: 1080px;
+  display: none;
 }

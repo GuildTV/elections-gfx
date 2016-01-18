@@ -5,61 +5,67 @@
   top: 0px;
   left: 0px;
 
+  h3 {
+    font-size: 4em;
+  }
+  h3.info {
+    font-size: 3.5em;
+  }
+
+  .tweetOuter {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+  }
+
   .twitter {
     height: auto;
-    width: 40vw;
+    max-width: 90vw;
 
     position: absolute;
-    left: 30vw;
-    top: 50%;
+    left: 5vw;
+    top: 50vh;
     transform: translateY(-50%);
 
     color: @white;
-
 
   }
 
   .twitterNode {
     transition: opacity 0.5s ease-in;
-
-    &.fade-enter {
-      transition-delay: 0.5s;
-      opacity: 0;
-    }
-    &.fade-enter-active, &.fade-leave {
-      opacity: 1;
-    }
-    &.fade-leave-active {
-      opacity: 0;
-    }
   }
 
   .twitter_logo {
     height: auto;
-    width: 20vw;
+    width: 35vw;
 
     position: absolute;
     left: -50vw;
-    top: 5vw;
+    top: -7vw;
     
-    z-index: 2015;
+    z-index: 9999;
+
+    transform: translate(-50%, -50%);
   }
 
   .text {
     height: auto;
-    width: 35vw;
+    max-width: 80vw;
 
     position: relative;
-    left: 2.5vw;
+    margin-left: 10vw;
 
     opacity: 0;
 
     z-index: -1;
   }
 
-  .twitter_img {
-    height: 424px;
-    width: 576px;
+  .twitter_img_landscape {
+    //height: 424px;
+    //width: 576px;
+    height: 28vw;
     
     position: relative;
     left: 3.75vw;
@@ -70,11 +76,12 @@
     z-index: -1;
 
     border-radius: 5px;
+
   }
 
   .info {
-    margin-top: 2vw;
-    margin-left: 2.5vw;
+    margin-top: 4vw;
+    margin-left: 10vw;
 
     opacity: 0;
 
@@ -82,18 +89,24 @@
   }
 
   .profile_pic {
-    height: auto;
-    width: 2.5vw;
+    height: 8vw;
+    width: 8vw;
 
     opacity: 0;
 
     z-index: -1;
 
-    border-radius: 5px;
+    border-radius: 20px;
+    display: inline-block;
+
+    background-position: center;
+    background-size: cover;
+
+    vertical-align: middle;
   }
 
   .username {
-    margin-left: 0.5vw;
+    margin-left: 2vw;
   }
 
 }
