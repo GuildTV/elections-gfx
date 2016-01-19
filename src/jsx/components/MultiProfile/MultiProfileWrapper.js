@@ -18,9 +18,7 @@ var MultiProfileWrapper = React.createClass({
 
   render: function(){
     var list = this.state.title?(<MultiProfileList key={this.state.title} people={this.state.people} title={this.state.title}/>):(<div></div>);
-
-    App.showHideBlue(!!this.state.data);
-    
+  
     return (
       <div>
         <ReactTransitionGroup>

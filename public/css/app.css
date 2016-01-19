@@ -6959,13 +6959,22 @@ h6 {
   top: 0px;
   left: 0px;
 }
+.multiProfileContainer .title {
+  text-align: center;
+  font-size: 40px;
+  color: white;
+  font-family: "HelveticaNeue";
+  display: block;
+  width: 100vw;
+  position: absolute;
+  bottom: 156px;
+}
 .multiProfileContainer .multiProfileOuter {
   height: 100vh;
   width: 100vw;
   position: absolute;
   top: 0px;
   left: 0px;
-  opacity: 0;
   padding: 5vh 0;
   color: #f0f0f0;
 }
@@ -6977,48 +6986,46 @@ h6 {
   left: 0px;
   transition: opacity 0.5s ease-in;
 }
+.multiProfileContainer .multiProfileOuter .people {
+  text-align: center;
+}
 .multiProfileContainer .multiProfileOuter .people.ppl-6-5 {
   margin-top: 227.5px;
   margin-bottom: 227.5px;
 }
 .multiProfileContainer .multiProfileOuter .people.ppl-4-3-2-1 {
-  margin-top: 202px;
-  margin-bottom: 202px;
+  margin-top: 190px;
+  margin-bottom: 190px;
 }
-.multiProfileContainer .multiProfileOuter .title {
-  text-align: center;
-  font-size: 70px;
+.multiProfileContainer .multiProfileOuter .people.ppl-4-3-2-1 img {
+  width: 315px;
+  height: 315px;
 }
 .multiProfileContainer .multiProfileOuter .multiProfile {
-  padding: 20px 25px;
+  padding: 0;
+  margin: 0px 50px;
+  display: inline-block;
 }
 .multiProfileContainer .multiProfileOuter .multiProfile img {
-  background-color: rgba(115, 158, 201, 0.9);
-  background: -webkit-gradient(linear, left top, right bottom, from(rgba(60, 107, 154, 0.9)), to(rgba(115, 158, 201, 0.9)));
-  border: 3px solid rgba(115, 158, 201, 0.9);
-  border-image: -webkit-linear-gradient(left top, rgba(115, 158, 201, 0.9) 0%, rgba(60, 107, 154, 0.9) 100%);
+  background: #262626;
+  border: 7px solid #262626;
+  border-image: -webkit-linear-gradient(left, #262626 40%, #787878 110%);
   border-image-slice: 1;
   width: 100%;
   z-index: 10000;
 }
 .multiProfileContainer .multiProfileOuter .multiProfile h1 {
-  text-align: left;
   position: relative;
-  top: -100px;
+  top: -120px;
   z-index: -1;
-  margin: 5px 10px;
+  font-family: "HelveticaNeue";
+  font-size: 61px;
+  line-height: 0.9;
+  text-align: center;
+  color: #262626;
 }
 .multiProfileContainer .multiProfileOuter .multiProfile.col-md-4 {
   padding: 20px 80px;
-}
-.multiProfileContainer .multiProfileOuter .multiProfile.col-md-3 img,
-.multiProfileContainer .multiProfileOuter .multiProfile.col-md-4 img {
-  width: 363px;
-  height: 363px;
-}
-.multiProfileContainer .multiProfileOuter .multiProfile.col-md-2 img {
-  width: 212px;
-  height: 212px;
 }
 #blue-bg {
   background: url('../img/blue.png') no-repeat center center fixed;

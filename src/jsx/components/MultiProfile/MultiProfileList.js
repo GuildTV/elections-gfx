@@ -15,8 +15,8 @@ var MultiProfileList = React.createClass({
 
     var tl = new TimelineLite();
 
-    tl.to(this.refs.outer, 0.5, {autoAlpha: 1}, "+=0.5")
-      .to($(this.refs.outer).find('h1'), 0.6, {top: "0px", onComplete: callback}, "-=0.5");
+    //tl.to(this.refs.outer, 0.5, {autoAlpha: 1}, "+=0.5")
+    tl.to($(this.refs.outer).find('h1'), 0.6, {top: "0px", onComplete: callback}, "-=0.5");
   },
 
   componentWillLeave: function(callback){
@@ -43,11 +43,13 @@ var MultiProfileList = React.createClass({
     var peopleClass = people.length<=4?"ppl-4-3-2-1":"ppl-6-5";
 
     return (
+      <div>
       <div className='multiProfileOuter' ref="outer">
-        <h1 className='title'>{ this.props.title.toUpperCase() }</h1>
-        <div className={"people col-md-10 col-md-offset-1 "+peopleClass}>
+        <div className={"people col-md-10 col-md-offset-1 "+peopleClass+" count"+people.length}>
           { peopleNodes }
         </div>
+      </div>
+      <h1 className='title'>{ this.props.title.toUpperCase() }</h1>
       </div>
     );
   },
@@ -65,7 +67,7 @@ var MultiProfileList = React.createClass({
       case 3:
       case 2:
       case 1:
-        divClass += "col-md-4 ";
+        // divClass += "col-md-4 ";
         break;
     }
 
@@ -91,7 +93,10 @@ var MultiProfileList = React.createClass({
         <div className={ imageDivClass }>
           <img src={ imageUrl } />
         </div>
-        <h1 className='text-center'>{ person.first.toUpperCase() }<br/><strong>{ person.last.toUpperCase() }</strong></h1>
+        <h1 className='text-center'>
+          { person.first.toUpperCase() }<br/>
+          <strong>{ person.last.toUpperCase() }</strong>
+        </h1>
       </div> 
     );
   }

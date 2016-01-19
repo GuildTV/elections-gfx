@@ -374,8 +374,8 @@ var MultiProfileList = React.createClass({displayName: "MultiProfileList",
 
     var tl = new TimelineLite();
 
-    tl.to(this.refs.outer, 0.5, {autoAlpha: 1}, "+=0.5")
-      .to($(this.refs.outer).find('h1'), 0.6, {top: "0px", onComplete: callback}, "-=0.5");
+    //tl.to(this.refs.outer, 0.5, {autoAlpha: 1}, "+=0.5")
+    tl.to($(this.refs.outer).find('h1'), 0.6, {top: "0px", onComplete: callback}, "-=0.5");
   },
 
   componentWillLeave: function(callback){
@@ -402,11 +402,13 @@ var MultiProfileList = React.createClass({displayName: "MultiProfileList",
     var peopleClass = people.length<=4?"ppl-4-3-2-1":"ppl-6-5";
 
     return (
+      React.createElement("div", null, 
       React.createElement("div", {className: "multiProfileOuter", ref: "outer"}, 
-        React.createElement("h1", {className: "title"},  this.props.title.toUpperCase() ), 
-        React.createElement("div", {className: "people col-md-10 col-md-offset-1 "+peopleClass}, 
+        React.createElement("div", {className: "people col-md-10 col-md-offset-1 "+peopleClass+" count"+people.length}, 
           peopleNodes 
         )
+      ), 
+      React.createElement("h1", {className: "title"},  this.props.title.toUpperCase() )
       )
     );
   },
@@ -424,7 +426,7 @@ var MultiProfileList = React.createClass({displayName: "MultiProfileList",
       case 3:
       case 2:
       case 1:
-        divClass += "col-md-4 ";
+        // divClass += "col-md-4 ";
         break;
     }
 
@@ -450,7 +452,10 @@ var MultiProfileList = React.createClass({displayName: "MultiProfileList",
         React.createElement("div", {className: imageDivClass }, 
           React.createElement("img", {src: imageUrl })
         ), 
-        React.createElement("h1", {className: "text-center"},  person.first.toUpperCase(), React.createElement("br", null), React.createElement("strong", null,  person.last.toUpperCase() ))
+        React.createElement("h1", {className: "text-center"}, 
+           person.first.toUpperCase(), React.createElement("br", null), 
+          React.createElement("strong", null,  person.last.toUpperCase() )
+        )
       ) 
     );
   }
@@ -503,9 +508,7 @@ var MultiProfileWrapper = React.createClass({displayName: "MultiProfileWrapper",
 
   render: function(){
     var list = this.state.title?(React.createElement(MultiProfileList, {key: this.state.title, people: this.state.people, title: this.state.title})):(React.createElement("div", null));
-
-    App.showHideBlue(!!this.state.data);
-    
+  
     return (
       React.createElement("div", null, 
         React.createElement(ReactTransitionGroup, null, 
