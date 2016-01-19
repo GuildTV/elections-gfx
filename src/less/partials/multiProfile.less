@@ -52,16 +52,34 @@
         margin-top: 190px;
         margin-bottom: 190px;
 
-        img {
+        .multiProfile {
           width: 315px;
           height: 315px;
         }
       }
+
+      &.count4 .multiProfile{
+        margin: 0px 45px;
+      }
+      &.count3 .multiProfile{
+        margin: 0px 50px;
+      }
+      &.count2 .multiProfile{
+        margin: 0px 120px;
+      }
+
+      :first-child {
+        margin-left: 0 !important;
+      }
+      :last-child {
+        margin-right: 0 !important;
+      }
     }
 
     .multiProfile {
+
+
       padding: 0;
-      margin: 0px 50px;
 
       display: inline-block;
 
@@ -87,6 +105,9 @@
         line-height: 0.9;
         text-align: center;
         color: #262626;
+
+        //TODO - scale text instead
+        overflow: hidden;
 
         strong {
           @font-face: "HelveticaNeue-Bold";

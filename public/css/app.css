@@ -6997,13 +6997,27 @@ h6 {
   margin-top: 190px;
   margin-bottom: 190px;
 }
-.multiProfileContainer .multiProfileOuter .people.ppl-4-3-2-1 img {
+.multiProfileContainer .multiProfileOuter .people.ppl-4-3-2-1 .multiProfile {
   width: 315px;
   height: 315px;
 }
+.multiProfileContainer .multiProfileOuter .people.count4 .multiProfile {
+  margin: 0px 45px;
+}
+.multiProfileContainer .multiProfileOuter .people.count3 .multiProfile {
+  margin: 0px 50px;
+}
+.multiProfileContainer .multiProfileOuter .people.count2 .multiProfile {
+  margin: 0px 120px;
+}
+.multiProfileContainer .multiProfileOuter .people :first-child {
+  margin-left: 0 !important;
+}
+.multiProfileContainer .multiProfileOuter .people :last-child {
+  margin-right: 0 !important;
+}
 .multiProfileContainer .multiProfileOuter .multiProfile {
   padding: 0;
-  margin: 0px 50px;
   display: inline-block;
 }
 .multiProfileContainer .multiProfileOuter .multiProfile img {
@@ -7023,6 +7037,7 @@ h6 {
   line-height: 0.9;
   text-align: center;
   color: #262626;
+  overflow: hidden;
 }
 .multiProfileContainer .multiProfileOuter .multiProfile.col-md-4 {
   padding: 20px 80px;

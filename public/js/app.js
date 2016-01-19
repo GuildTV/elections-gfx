@@ -404,7 +404,7 @@ var MultiProfileList = React.createClass({displayName: "MultiProfileList",
     return (
       React.createElement("div", null, 
       React.createElement("div", {className: "multiProfileOuter", ref: "outer"}, 
-        React.createElement("div", {className: "people col-md-10 col-md-offset-1 "+peopleClass+" count"+people.length}, 
+        React.createElement("div", {className: "people col-md-12 "+peopleClass+" count"+people.length}, 
           peopleNodes 
         )
       ), 
@@ -420,26 +420,12 @@ var MultiProfileList = React.createClass({displayName: "MultiProfileList",
       case 5:
         divClass += "col-md-2 ";
         break;
-      case 4:
-        divClass += "col-md-3 ";
-        break;
-      case 3:
-      case 2:
-      case 1:
-        // divClass += "col-md-4 ";
-        break;
     }
 
     if(person.isFirst){
       switch(peopleCount){
         case 5:
           divClass += " col-md-offset-1 ";
-          break;
-        case 2:
-          divClass += " col-md-offset-2 ";
-          break;
-        case 1:
-          divClass += " col-md-offset-4 ";
           break;
       }
     }
