@@ -21,8 +21,6 @@
     color: white;
     background: #272727;
 
-    box-shadow: 10px 0px 50px #272727;
-
     transition: left 0.75s;
 
     .inner {
@@ -33,8 +31,14 @@
       padding: 92px 28px;
 
       .bold {
-      font-family: "HelveticaNeue-Bold";
+        font-family: "HelveticaNeue-Bold";
       }
+    }
+
+    &.blur {
+      -webkit-filter: url("#textBlur");
+      filter: url("../coming-up.html#textBlur");
+      box-shadow: 10px 0px 50px #272727;
     }
 
     &.hidden {

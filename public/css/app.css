@@ -7047,7 +7047,6 @@ h6 {
   height: 255px;
   color: white;
   background: #272727;
-  box-shadow: 10px 0px 50px #272727;
   transition: left 0.75s;
 }
 .coming-up .content .inner {
@@ -7058,6 +7057,11 @@ h6 {
 }
 .coming-up .content .inner .bold {
   font-family: "HelveticaNeue-Bold";
+}
+.coming-up .content.blur {
+  -webkit-filter: url("#textBlur");
+  filter: url("../coming-up.html#textBlur");
+  box-shadow: 10px 0px 50px #272727;
 }
 .coming-up .content.hidden {
   display: block !important;
