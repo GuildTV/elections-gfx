@@ -1,0 +1,46 @@
+.coming-up {
+  position: absolute;
+  top: 933px;
+  left: 544px;
+  width: 1279px;
+  height: 115px;
+
+  //box-shadow: inset 0 0 10px #000000;
+  overflow: hidden;
+
+  //background: green;
+
+  .content {
+    position: absolute;
+    left: 0px;
+    top: -70px;
+
+    width: 1279px;
+    height: 255px;
+
+    color: white;
+    background: #272727;
+
+    box-shadow: 10px 0px 50px #272727;
+
+    transition: left 0.75s;
+
+    .inner {
+      box-shadow: inset 2px 2px 8px #000;
+
+      font-family: "HelveticaNeue";
+      font-size: 50px;
+      padding: 92px 28px;
+
+      .bold {
+      font-family: "HelveticaNeue-Bold";
+      }
+    }
+
+    &.hidden {
+      display: block !important;
+      left: -1500px;
+    }
+  }
+
+}

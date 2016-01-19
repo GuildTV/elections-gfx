@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="public/css/app.css" />
+
+  </head>
+
+  <body style="background:url('public/img/template/coming-up-empty.png') no-repeat center center fixed; background-size: cover; position: absolute; float: left; top: 0px; left: 0px; width: 1920px; height: 1080px;">
+    <div class="coming-up">
+    </div> <!-- / .main -->
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="public/lib/jquery/jquery.js"></script>
+    <script type="text/javascript">
+      function showNext(){
+        if($('.content.hidden').length > 0){
+          $($('.content.hidden')[0]).removeClass("hidden");
+        }
+      }
+
+      function loadData(xmlData){
+        window.advss = xmlData;
+        var templateData = xmlData.childNodes[0];
+
+        $('.coming-up').empty();
+
+        for(var i=0; i< templateData.childNodes.length; i++){
+          var row = templateData.childNodes[i];
+          var item = row.childNodes[0]
+          var value = item.getAttribute('value')
+
+          $('.coming-up').append(
+            $('<div>').addClass('content hidden').append(
+              $('<div>').addClass('inner').append(
+                $('<span>').addClass('bold').html("COMING UP:")
+              ).append(" "+value)
+            )
+          );
+        }
+
+      }
+
+      <!--
+        // the out video animation should be able to deal with hiding the data, before destroying it
+      -->
+
+      // CALL 1-1 PLAY
+      function play(str) {
+        showNext();
+      }
+      // CALL 1-1 STOP
+      function stop(str) {
+        $('.content').css('display', 'none !important');
+      }
+      // CALL 1-1 NEXT
+      function next() {
+        showNext();
+      }
+      // CALL 1-1 REMOVE
+      function remove() {
+        $('.content').css('display', 'none !important');
+      }
+      // CALL 1-1 UPDATE STRING
+      function update(str) {
+        var templateData = (new DOMParser()).parseFromString(str,"text/xml");
+        loadData(templateData)
+      }
+      // CALL 1-1 INVOKE STRING
+      function invoke(str) {
+        eval(str);
+      }
+      // CALL 1-1 INVOKE "otherFunction('testing');"
+      function otherFunction(str) {
+      }
+
+      //temporary to fake data (for testing in browser)
+      function fake(){
+        update("<templateData><componentData id=\"f0\"><data id=\"text\" value=\"9PM PART-TIME OFFICERS\" /></componentData><componentData id=\"f1\"><data id=\"text\" value=\"10PM FULL-TIME OFFICERS\" /></componentData><componentData id=\"f2\"><data id=\"text\" value=\"11PM TIME FOR BED\" /></componentData></templateData>");
+      }
+
+    </script>
+
+  </body>
+</html>

@@ -6766,6 +6766,22 @@ body {
   font-family: "Roboto-Black";
   src: url(../fonts/Roboto-Black.ttf);
 }
+@font-face {
+  font-family: "RobotoCondensed-Bold";
+  src: url(../fonts/RobotoCondensed-Bold.ttf);
+}
+@font-face {
+  font-family: "HelveticaNeue";
+  src: url(../fonts/HelveticaNeue.ttf);
+}
+@font-face {
+  font-family: "HelveticaNeue-Bold";
+  src: url(../fonts/HelveticaNeue-Bold.ttf);
+}
+@font-face {
+  font-family: "HelveticaNeue-Light";
+  src: url(../fonts/HelveticaNeue-Light.ttf);
+}
 body {
   font-family: "Roboto-Bold";
 }
@@ -7014,4 +7030,36 @@ h6 {
   width: 1920px;
   height: 1080px;
   display: none;
+}
+.coming-up {
+  position: absolute;
+  top: 933px;
+  left: 544px;
+  width: 1279px;
+  height: 115px;
+  overflow: hidden;
+}
+.coming-up .content {
+  position: absolute;
+  left: 0px;
+  top: -70px;
+  width: 1279px;
+  height: 255px;
+  color: white;
+  background: #272727;
+  box-shadow: 10px 0px 50px #272727;
+  transition: left 0.75s;
+}
+.coming-up .content .inner {
+  box-shadow: inset 2px 2px 8px #000;
+  font-family: "HelveticaNeue";
+  font-size: 50px;
+  padding: 92px 28px;
+}
+.coming-up .content .inner .bold {
+  font-family: "HelveticaNeue-Bold";
+}
+.coming-up .content.hidden {
+  display: block !important;
+  left: -1500px;
 }
