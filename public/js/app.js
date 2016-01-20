@@ -394,9 +394,8 @@ var MultiProfileList = React.createClass({displayName: "MultiProfileList",
 
     var people = this.props.people;
 
-    people[0].isFirst = true;
     var peopleNodes = people.map(function (person) {
-      return this.renderThumbnail(person, people.length);
+      return this.renderThumbnail(person);
     }, this);
 
     var peopleClass = people.length<=4?"ppl-4-3-2-1":"ppl-6-5";
@@ -413,28 +412,12 @@ var MultiProfileList = React.createClass({displayName: "MultiProfileList",
     );
   },
       
-  renderThumbnail: function(person, peopleCount){
-    var divClass = 'multiProfile ';
-    switch(peopleCount){
-      case 6:
-      case 5:
-        divClass += "col-md-2 ";
-        break;
-    }
-
-    if(person.isFirst){
-      switch(peopleCount){
-        case 5:
-          divClass += " col-md-offset-1 ";
-          break;
-      }
-    }
-
+  renderThumbnail: function(person){
     var imageDivClass = 'image ' + person.pid + ' text-center';
     var imageUrl = 'public/img/roles/' + person.pid + '/' + person.uid + '.png';
 
     return (
-      React.createElement("div", {className: divClass, "data-id":  person.uid, key:  person.uid}, 
+      React.createElement("div", {className: "multiProfile", "data-id":  person.uid, key:  person.uid}, 
         React.createElement("div", {className: imageDivClass }, 
           React.createElement("img", {src: imageUrl })
         ), 
