@@ -5,6 +5,7 @@ Data['rro'] = [
     "first"           : "Ahmet",
     "last"            : "Aslim",
     "position"        : "Representation & Resources Officer",
+    "position_short"  : "RRO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Transparency: Know What Your Guild is Doing",
@@ -18,6 +19,7 @@ Data['rro'] = [
     "first"           : "Ian",
     "last"            : "Kafka",
     "position"        : "Representation & Resources Officer",
+    "position_short"  : "RRO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Communication: Improve Channels Between Students & Officers",
@@ -31,6 +33,7 @@ Data['rro'] = [
     "first"           : "Daisy",
     "last"            : "Lindlar",
     "position"        : "Representation & Resources Officer",
+    "position_short"  : "RRO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Make Gradball YOUR Gradball",
@@ -44,6 +47,7 @@ Data['rro'] = [
     "first"           : "Mohammed",
     "last"            : "Mumit",
     "position"        : "Representation & Resources Officer",
+    "position_short"  : "RRO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Sustainable Living",
@@ -57,6 +61,7 @@ Data['rro'] = [
     "first"           : "Laurence",
     "last"            : "Thompson",
     "position"        : "Representation & Resources Officer",
+    "position_short"  : "RRO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Meal Plan in the Guild",

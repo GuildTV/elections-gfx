@@ -5,6 +5,7 @@ Data['welfare'] = [
     "first"           : "Ross",
     "last"            : "Strong",
     "position"        : "Welfare Officer",
+    "position_short"  : "WO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Mental Health Campaigning",

@@ -5,6 +5,7 @@ Data['ado'] = [
     "first"           : "Ben",
     "last"            : "Chapman",
     "position"        : "Activities & Development Officer",
+    "position_short"  : "ADO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Introduce 'Society Of The Week'",
@@ -18,6 +19,7 @@ Data['ado'] = [
     "first"           : "George",
     "last"            : "Hughes",
     "position"        : "Activities & Development Officer",
+    "position_short"  : "ADO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Breaking Barriers for Committee Members",
@@ -28,9 +30,10 @@ Data['ado'] = [
   {
     "uid"             : "ado-natalia",
     "pid"             : "ado",
-    "first"            : "Natalia",
+    "first"           : "Natalia",
     "last"            : "Organova",
     "position"        : "Activities & Development Officer",
+    "position_short"  : "ADO",
     "candidate"       : true,
   },
   {
@@ -39,6 +42,7 @@ Data['ado'] = [
     "first"           : "Alexander",
     "last"            : "Moore",
     "position"        : "Activities & Development Officer",
+    "position_short"  : "ADO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Better Publicity for Student Groups",

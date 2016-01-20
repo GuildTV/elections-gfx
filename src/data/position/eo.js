@@ -5,6 +5,7 @@ Data['eo'] = [
     "first"           : "Panagiota",
     "last"            : "Axelithioti",
     "position"        : "Education Officer",
+    "position_short"  : "EO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "More Study Spaces that stay open longer",
@@ -18,6 +19,7 @@ Data['eo'] = [
     "first"           : "Isabella",
     "last"            : "Lenga",
     "position"        : "Education Officer",
+    "position_short"  : "EO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Schedule Refresh",
@@ -31,6 +33,7 @@ Data['eo'] = [
     "first"           : "Afroze",
     "last"            : "Zaidi-Jivraj",
     "position"        : "Education Officer",
+    "position_short"  : "EO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Closing The Attainment Gap",

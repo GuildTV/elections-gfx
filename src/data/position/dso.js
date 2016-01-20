@@ -5,6 +5,7 @@ Data['dso'] = [
     "first"           : "Hayley",
     "last"            : "Graham",
     "position"        : "Disabled Students' Officer",
+    "position_short"  : "DSO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "To Incease Awareness of Disability Support Services & Network Available",

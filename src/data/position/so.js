@@ -5,6 +5,7 @@ Data['so'] = [
     "first"           : "Remy",
     "last"            : "Claustres",
     "position"        : "Sports Officer",
+    "position_short"  : "SO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Big Scrowds for Big Games",
@@ -18,6 +19,7 @@ Data['so'] = [
     "first"           : "Evangeline",
     "last"            : "Harrison",
     "position"        : "Sports Officer",
+    "position_short"  : "SO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Sports Centre Awarebess",
@@ -31,6 +33,7 @@ Data['so'] = [
     "first"           : "Luana",
     "last"            : "Jordan",
     "position"        : "Sports Officer",
+    "position_short"  : "SO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Organise a Varsity Competiion Against Another Local University",
@@ -44,6 +47,7 @@ Data['so'] = [
     "first"           : "Rebecca",
     "last"            : "McWhinnie",
     "position"        : "Sports Officer",
+    "position_short"  : "SO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Something for Everyone",
@@ -57,6 +61,7 @@ Data['so'] = [
     "first"           : "Thomas",
     "last"            : "Mills",
     "position"        : "Sports Officer",
+    "position_short"  : "SO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Taking You From Hall Team Legend to Club Level Athlete",
@@ -70,6 +75,7 @@ Data['so'] = [
     "first"           : "Allan",
     "last"            : "Stewart",
     "position"        : "Sports Officer",
+    "position_short"  : "SO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Nutrition Matters",

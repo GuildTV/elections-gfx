@@ -5,6 +5,7 @@ Data['womens'] = [
     "first"           : "Alexandra",
     "last"            : "Binnie",
     "position"        : "Womens's Officer",
+    "position_short"  : "WO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Ensure Zero Tolerance Towards Incidents of Sexual Harassment on Campus, & Increase Visibility of Related Campaigns",
@@ -18,6 +19,7 @@ Data['womens'] = [
     "first"           : "Zoe",
     "last"            : "Salanitro",
     "position"        : "Womens's Officer",
+    "position_short"  : "WO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Improve Welfare Support for Women and Non-Binary Students",

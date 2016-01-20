@@ -5,6 +5,7 @@ Data['cao'] = [
     "first"           : "Lewis",
     "last"            : "Addlington-Lee",
     "position"        : "Community Action Officer",
+    "position_short"  : "CAO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Work With Mind to Improve Support & Welfare for All Students & Staff",

@@ -5,6 +5,7 @@ Data['eeo'] = [
     "first"           : "Samuel",
     "last"            : "Benson",
     "position"        : "Ethical & Environmental Officer",
+    "position_short"  : "EEO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Establish a Community Garden",
@@ -18,6 +19,7 @@ Data['eeo'] = [
     "first"           : "James",
     "last"            : "Honke",
     "position"        : "Ethical & Environmental Officer",
+    "position_short"  : "EEO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Tackle Discrimination on Campus",

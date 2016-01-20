@@ -5,6 +5,7 @@ Data['iso'] = [
     "first"           : "Nivedita",
     "last"            : "Kulkarni",
     "position"        : "International Students' Officer",
+    "position_short"  : "ISO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Improving the Services for International Students",
@@ -18,6 +19,7 @@ Data['iso'] = [
     "first"           : "Khadijeh",
     "last"            : "Rahmani",
     "position"        : "International Students' Officer",
+    "position_short"  : "ISO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Represent International Students and Bring to the Table their Issues",
@@ -31,6 +33,7 @@ Data['iso'] = [
     "first"           : "Abdulmutalib",
     "last"            : "Shittu",
     "position"        : "International Students' Officer",
+    "position_short"  : "ISO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Better Student Integration",

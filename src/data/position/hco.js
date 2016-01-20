@@ -5,6 +5,7 @@ Data['hco'] = [
     "first"           : "Jacob",
     "last"            : "Warner",
     "position"        : "Housing & Community Officer",
+    "position_short"  : "HCO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "More Education on Housing Rights",
@@ -18,6 +19,7 @@ Data['hco'] = [
     "first"           : "Roberto",
     "last"            : "Sorentino",
     "position"        : "Housing & Community Officer",
+    "position_short"  : "HCO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Make Recycling More Accesible",
@@ -31,6 +33,7 @@ Data['hco'] = [
     "first"           : "Ciaran",
     "last"            : "Allanson-Campbell",
     "position"        : "Housing & Community Officer",
+    "position_short"  : "HCO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Safer & Easier Househunting",

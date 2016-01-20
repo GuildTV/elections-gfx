@@ -4,7 +4,17 @@ var template = Handlebars.compile(source);
 var container = $('.multiProfileContainer');
 
 function play(){
-  var people = findDataById("president");
+  var ids = [
+    'pres-jack', 
+    'pres-jack', 
+    'pres-jack', 
+    'pres-jack', 
+    'pres-jack', 
+    'pres-jack', 
+    'pres-jack'
+  ];
+
+  var people = $.map(ids, findDataById);
   people = people.map(function(person){
     person.first = person.first.toUpperCase();
     person.last = person.last.toUpperCase();
@@ -14,7 +24,6 @@ function play(){
   });
 
   var data = {
-    title: "NTOESG".toUpperCase(),
     people: people
   };
 

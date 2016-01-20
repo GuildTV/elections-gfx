@@ -6959,6 +6959,9 @@ h6 {
   top: 0px;
   left: 0px;
 }
+.multiProfileContainer.winners {
+  margin-top: 25px;
+}
 .multiProfileContainer .title {
   text-align: center;
   font-size: 40px;
@@ -6987,9 +6990,13 @@ h6 {
 }
 .multiProfileContainer .multiProfileOuter .people.count7 .multiProfile,
 .multiProfileContainer .multiProfileOuter .people.count8 .multiProfile {
-  width: 260px;
+  width: 400px;
   height: 370px;
-  margin: 0px 85px 35px;
+  margin: 0px 15px 35px;
+}
+.multiProfileContainer .multiProfileOuter .people.count7 .multiProfile .image,
+.multiProfileContainer .multiProfileOuter .people.count8 .multiProfile .image {
+  width: 260px;
 }
 .multiProfileContainer .multiProfileOuter .people.count7 .multiProfile h1,
 .multiProfileContainer .multiProfileOuter .people.count8 .multiProfile h1 {
@@ -7001,8 +7008,11 @@ h6 {
   margin-bottom: 230px;
 }
 .multiProfileContainer .multiProfileOuter .people.count6 .multiProfile {
+  width: 270px;
+  margin: 0px 15px;
+}
+.multiProfileContainer .multiProfileOuter .people.count6 .multiProfile .image {
   width: 230px;
-  margin: 0px 35px;
 }
 .multiProfileContainer .multiProfileOuter .people.count6 .multiProfile h1 {
   line-height: 1.1;
@@ -7013,21 +7023,27 @@ h6 {
   margin-bottom: 215px;
 }
 .multiProfileContainer .multiProfileOuter .people.count5 .multiProfile {
+  width: 291px;
+  margin: 0px 15px;
+}
+.multiProfileContainer .multiProfileOuter .people.count5 .multiProfile .image {
   width: 265px;
-  margin: 0px 28px;
 }
 .multiProfileContainer .multiProfileOuter .people.count5 .multiProfile h1 {
   line-height: 1;
   font-size: 50px;
 }
 .multiProfileContainer .multiProfileOuter .people.count4 .multiProfile {
-  margin: 0px 45px;
+  margin: 0px 15px;
+  width: 375px;
 }
 .multiProfileContainer .multiProfileOuter .people.count3 .multiProfile {
-  margin: 0px 50px;
+  margin: 0px 15px;
+  width: 385px;
 }
 .multiProfileContainer .multiProfileOuter .people.count2 .multiProfile {
-  margin: 0px 120px;
+  margin: 0px 20px;
+  width: 515px;
 }
 .multiProfileContainer .multiProfileOuter .people.count1,
 .multiProfileContainer .multiProfileOuter .people.count2,
@@ -7036,15 +7052,18 @@ h6 {
   margin-top: 190px;
   margin-bottom: 190px;
 }
-.multiProfileContainer .multiProfileOuter .people.count1 .multiProfile,
-.multiProfileContainer .multiProfileOuter .people.count2 .multiProfile,
-.multiProfileContainer .multiProfileOuter .people.count3 .multiProfile,
-.multiProfileContainer .multiProfileOuter .people.count4 .multiProfile {
+.multiProfileContainer .multiProfileOuter .people.count1 .image,
+.multiProfileContainer .multiProfileOuter .people.count2 .image,
+.multiProfileContainer .multiProfileOuter .people.count3 .image,
+.multiProfileContainer .multiProfileOuter .people.count4 .image {
   width: 315px;
 }
 .multiProfileContainer .multiProfileOuter .multiProfile {
   padding: 0;
   display: inline-block;
+}
+.multiProfileContainer .multiProfileOuter .multiProfile .image {
+  margin: auto;
 }
 .multiProfileContainer .multiProfileOuter .multiProfile img {
   background: #262626;
@@ -7064,6 +7083,7 @@ h6 {
   text-align: center;
   color: #262626;
   overflow: hidden;
+  opacity: 0;
 }
 #blue-bg {
   background: url('../img/blue.png') no-repeat center center fixed;

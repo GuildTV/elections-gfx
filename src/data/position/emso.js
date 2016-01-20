@@ -5,6 +5,7 @@ Data['emso'] = [
     "first"           : "Mohamed",
     "last"            : "Hussain",
     "position"        : "Ethnic Minority Students’ Officer",
+    "position_short"  : "EMSO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Active Anti-Racist Campaigns on Campus & in the Community",
@@ -18,6 +19,7 @@ Data['emso'] = [
     "first"           : "Hannah",
     "last"            : "Sharron",
     "position"        : "Ethnic Minority Students’ Officer",
+    "position_short"  : "EMSO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Representative",

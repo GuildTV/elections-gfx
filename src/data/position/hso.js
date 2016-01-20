@@ -5,6 +5,7 @@ Data['hso'] = [
     "first"           : "Adam",
     "last"            : "Elmi",
     "position"        : "Home Students’ Officer",
+    "position_short"  : "HSO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Easier Access to Travel",

@@ -5,6 +5,7 @@ Data['arafo'] = [
     "first"           : "Maaria",
     "last"            : "Ashraf",
     "position"        : "Anti-Racism, Anti Fascism Officer",
+    "position_short"  : "ARAFO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Defeat Racism & Fascism on Campus",
@@ -18,6 +19,7 @@ Data['arafo'] = [
     "first"           : "Katie",
     "last"            : "Webb",
     "position"        : "Anti-Racism, Anti Fascism Officer",
+    "position_short"  : "ARAFO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Eradication Intolerance",

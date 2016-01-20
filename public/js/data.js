@@ -104,6 +104,7 @@ Data['ado'] = [
     "first"           : "Ben",
     "last"            : "Chapman",
     "position"        : "Activities & Development Officer",
+    "position_short"  : "ADO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Introduce 'Society Of The Week'",
@@ -117,6 +118,7 @@ Data['ado'] = [
     "first"           : "George",
     "last"            : "Hughes",
     "position"        : "Activities & Development Officer",
+    "position_short"  : "ADO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Breaking Barriers for Committee Members",
@@ -127,9 +129,10 @@ Data['ado'] = [
   {
     "uid"             : "ado-natalia",
     "pid"             : "ado",
-    "first"            : "Natalia",
+    "first"           : "Natalia",
     "last"            : "Organova",
     "position"        : "Activities & Development Officer",
+    "position_short"  : "ADO",
     "candidate"       : true,
   },
   {
@@ -138,6 +141,7 @@ Data['ado'] = [
     "first"           : "Alexander",
     "last"            : "Moore",
     "position"        : "Activities & Development Officer",
+    "position_short"  : "ADO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Better Publicity for Student Groups",
@@ -154,6 +158,7 @@ Data['arafo'] = [
     "first"           : "Maaria",
     "last"            : "Ashraf",
     "position"        : "Anti-Racism, Anti Fascism Officer",
+    "position_short"  : "ARAFO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Defeat Racism & Fascism on Campus",
@@ -167,6 +172,7 @@ Data['arafo'] = [
     "first"           : "Katie",
     "last"            : "Webb",
     "position"        : "Anti-Racism, Anti Fascism Officer",
+    "position_short"  : "ARAFO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Eradication Intolerance",
@@ -183,6 +189,7 @@ Data['cao'] = [
     "first"           : "Lewis",
     "last"            : "Addlington-Lee",
     "position"        : "Community Action Officer",
+    "position_short"  : "CAO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Work With Mind to Improve Support & Welfare for All Students & Staff",
@@ -199,6 +206,7 @@ Data['dso'] = [
     "first"           : "Hayley",
     "last"            : "Graham",
     "position"        : "Disabled Students' Officer",
+    "position_short"  : "DSO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "To Incease Awareness of Disability Support Services & Network Available",
@@ -215,6 +223,7 @@ Data['eeo'] = [
     "first"           : "Samuel",
     "last"            : "Benson",
     "position"        : "Ethical & Environmental Officer",
+    "position_short"  : "EEO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Establish a Community Garden",
@@ -228,6 +237,7 @@ Data['eeo'] = [
     "first"           : "James",
     "last"            : "Honke",
     "position"        : "Ethical & Environmental Officer",
+    "position_short"  : "EEO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Tackle Discrimination on Campus",
@@ -244,6 +254,7 @@ Data['emso'] = [
     "first"           : "Mohamed",
     "last"            : "Hussain",
     "position"        : "Ethnic Minority Students’ Officer",
+    "position_short"  : "EMSO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Active Anti-Racist Campaigns on Campus & in the Community",
@@ -257,6 +268,7 @@ Data['emso'] = [
     "first"           : "Hannah",
     "last"            : "Sharron",
     "position"        : "Ethnic Minority Students’ Officer",
+    "position_short"  : "EMSO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Representative",
@@ -273,6 +285,7 @@ Data['eo'] = [
     "first"           : "Panagiota",
     "last"            : "Axelithioti",
     "position"        : "Education Officer",
+    "position_short"  : "EO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "More Study Spaces that stay open longer",
@@ -286,6 +299,7 @@ Data['eo'] = [
     "first"           : "Isabella",
     "last"            : "Lenga",
     "position"        : "Education Officer",
+    "position_short"  : "EO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Schedule Refresh",
@@ -299,6 +313,7 @@ Data['eo'] = [
     "first"           : "Afroze",
     "last"            : "Zaidi-Jivraj",
     "position"        : "Education Officer",
+    "position_short"  : "EO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Closing The Attainment Gap",
@@ -315,6 +330,7 @@ Data['hco'] = [
     "first"           : "Jacob",
     "last"            : "Warner",
     "position"        : "Housing & Community Officer",
+    "position_short"  : "HCO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "More Education on Housing Rights",
@@ -328,6 +344,7 @@ Data['hco'] = [
     "first"           : "Roberto",
     "last"            : "Sorentino",
     "position"        : "Housing & Community Officer",
+    "position_short"  : "HCO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Make Recycling More Accesible",
@@ -341,6 +358,7 @@ Data['hco'] = [
     "first"           : "Ciaran",
     "last"            : "Allanson-Campbell",
     "position"        : "Housing & Community Officer",
+    "position_short"  : "HCO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Safer & Easier Househunting",
@@ -357,6 +375,7 @@ Data['hso'] = [
     "first"           : "Adam",
     "last"            : "Elmi",
     "position"        : "Home Students’ Officer",
+    "position_short"  : "HSO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Easier Access to Travel",
@@ -373,6 +392,7 @@ Data['iso'] = [
     "first"           : "Nivedita",
     "last"            : "Kulkarni",
     "position"        : "International Students' Officer",
+    "position_short"  : "ISO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Improving the Services for International Students",
@@ -386,6 +406,7 @@ Data['iso'] = [
     "first"           : "Khadijeh",
     "last"            : "Rahmani",
     "position"        : "International Students' Officer",
+    "position_short"  : "ISO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Represent International Students and Bring to the Table their Issues",
@@ -399,6 +420,7 @@ Data['iso'] = [
     "first"           : "Abdulmutalib",
     "last"            : "Shittu",
     "position"        : "International Students' Officer",
+    "position_short"  : "ISO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Better Student Integration",
@@ -415,6 +437,7 @@ Data['lgbtqo'] = [
     "first"           : "Chavonne",
     "last"            : "Brown",
     "position"        : "Lesbian, Gay, Bisexual, Trans and Queer Students’ Officer",
+    "position_short"  : "LGBTQO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Raise the Profile of the LGBTQ Association",
@@ -428,9 +451,10 @@ Data['president'] = [
   {
     "uid"             : "pres-jack",
     "pid"             : "pres",
-    "first"            : "Jack",
+    "first"           : "Jack",
     "last"            : "Mably",
     "position"        : "Presidential",
+    "position_short"  : "President",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Bigger, Better & Varied On Campus Events",
@@ -441,21 +465,24 @@ Data['president'] = [
   {
     "uid"             : "pres-ed",
     "pid"             : "pres",
-    "first"            : "Edward",
+    "first"           : "Edward",
     "last"            : "Sainsbury",
     "position"        : "Presidential",
+    "position_short"  : "President",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Extend 24 Hour Library",
       "two"           : "Secure Sponsorship For More Campus Events",
       "three"         : "Stronger Ties with Alumni",
     }
-  },  {
+  },  
+  {
     "uid"             : "pres-suleiman",
     "pid"             : "pres",
-    "first"            : "Suleiman",
+    "first"           : "Suleiman",
     "last"            : "Suleiman",
     "position"        : "Presidential",
+    "position_short"  : "President",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "To provide a more conducive learning environment for all students",
@@ -473,6 +500,7 @@ Data['rro'] = [
     "first"           : "Ahmet",
     "last"            : "Aslim",
     "position"        : "Representation & Resources Officer",
+    "position_short"  : "RRO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Transparency: Know What Your Guild is Doing",
@@ -486,6 +514,7 @@ Data['rro'] = [
     "first"           : "Ian",
     "last"            : "Kafka",
     "position"        : "Representation & Resources Officer",
+    "position_short"  : "RRO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Communication: Improve Channels Between Students & Officers",
@@ -499,6 +528,7 @@ Data['rro'] = [
     "first"           : "Daisy",
     "last"            : "Lindlar",
     "position"        : "Representation & Resources Officer",
+    "position_short"  : "RRO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Make Gradball YOUR Gradball",
@@ -512,6 +542,7 @@ Data['rro'] = [
     "first"           : "Mohammed",
     "last"            : "Mumit",
     "position"        : "Representation & Resources Officer",
+    "position_short"  : "RRO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Sustainable Living",
@@ -525,6 +556,7 @@ Data['rro'] = [
     "first"           : "Laurence",
     "last"            : "Thompson",
     "position"        : "Representation & Resources Officer",
+    "position_short"  : "RRO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Meal Plan in the Guild",
@@ -541,6 +573,7 @@ Data['so'] = [
     "first"           : "Remy",
     "last"            : "Claustres",
     "position"        : "Sports Officer",
+    "position_short"  : "SO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Big Scrowds for Big Games",
@@ -554,6 +587,7 @@ Data['so'] = [
     "first"           : "Evangeline",
     "last"            : "Harrison",
     "position"        : "Sports Officer",
+    "position_short"  : "SO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Sports Centre Awarebess",
@@ -567,6 +601,7 @@ Data['so'] = [
     "first"           : "Luana",
     "last"            : "Jordan",
     "position"        : "Sports Officer",
+    "position_short"  : "SO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Organise a Varsity Competiion Against Another Local University",
@@ -580,6 +615,7 @@ Data['so'] = [
     "first"           : "Rebecca",
     "last"            : "McWhinnie",
     "position"        : "Sports Officer",
+    "position_short"  : "SO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Something for Everyone",
@@ -593,6 +629,7 @@ Data['so'] = [
     "first"           : "Thomas",
     "last"            : "Mills",
     "position"        : "Sports Officer",
+    "position_short"  : "SO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Taking You From Hall Team Legend to Club Level Athlete",
@@ -606,6 +643,7 @@ Data['so'] = [
     "first"           : "Allan",
     "last"            : "Stewart",
     "position"        : "Sports Officer",
+    "position_short"  : "SO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Nutrition Matters",
@@ -622,6 +660,7 @@ Data['sso'] = [
     "first"           : "Eleanor",
     "last"            : "Keiller",
     "position"        : "Satellite Sites Officer",
+    "position_short"  : "SSO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Improved Transport Links",
@@ -638,6 +677,7 @@ Data['welfare'] = [
     "first"           : "Ross",
     "last"            : "Strong",
     "position"        : "Welfare Officer",
+    "position_short"  : "WO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Mental Health Campaigning",
@@ -654,6 +694,7 @@ Data['womens'] = [
     "first"           : "Alexandra",
     "last"            : "Binnie",
     "position"        : "Womens's Officer",
+    "position_short"  : "WO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Ensure Zero Tolerance Towards Incidents of Sexual Harassment on Campus, & Increase Visibility of Related Campaigns",
@@ -667,6 +708,7 @@ Data['womens'] = [
     "first"           : "Zoe",
     "last"            : "Salanitro",
     "position"        : "Womens's Officer",
+    "position_short"  : "WO",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Improve Welfare Support for Women and Non-Binary Students",
