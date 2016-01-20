@@ -28,30 +28,9 @@
 
     //opacity: 0;
     padding: 5vh 0;
-    color: @primary-text-colour;
-
-    .multiProfileNode {
-      height: 100vh;
-      width: 100vw;
-
-      position: absolute;
-      top: 0px;
-      left: 0px;
-
-      transition: opacity 0.5s ease-in;
-    }
 
     .people {
       text-align: center;
-
-      &.ppl-4-3-2-1{
-        margin-top: 190px;
-        margin-bottom: 190px;
-
-        .multiProfile {
-          width: 315px;
-        }
-      }
 
       &.count7, &.count8 {
         margin-top: 20px;
@@ -110,18 +89,18 @@
       &.count2 .multiProfile{
         margin: 0px 120px;
       }
+      
+      &.count1, &.count2, &.count3, &.count4{
+        margin-top: 190px;
+        margin-bottom: 190px;
 
-      :first-child {
-        //margin-left: 0 !important;
-      }
-      :last-child {
-        //margin-right: 0 !important;
+        .multiProfile {
+          width: 315px;
+        }
       }
     }
 
     .multiProfile {
-
-
       padding: 0;
 
       display: inline-block;

@@ -398,12 +398,10 @@ var MultiProfileList = React.createClass({displayName: "MultiProfileList",
       return this.renderThumbnail(person);
     }, this);
 
-    var peopleClass = people.length<=4?"ppl-4-3-2-1":"ppl-6-5";
-
     return (
       React.createElement("div", null, 
       React.createElement("div", {className: "multiProfileOuter", ref: "outer"}, 
-        React.createElement("div", {className: "people col-md-12 "+peopleClass+" count"+people.length}, 
+        React.createElement("div", {className: "people col-md-12 count"+people.length}, 
           peopleNodes 
         )
       ), 

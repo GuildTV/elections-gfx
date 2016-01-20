@@ -6976,25 +6976,9 @@ h6 {
   top: 0px;
   left: 0px;
   padding: 5vh 0;
-  color: #f0f0f0;
-}
-.multiProfileContainer .multiProfileOuter .multiProfileNode {
-  height: 100vh;
-  width: 100vw;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  transition: opacity 0.5s ease-in;
 }
 .multiProfileContainer .multiProfileOuter .people {
   text-align: center;
-}
-.multiProfileContainer .multiProfileOuter .people.ppl-4-3-2-1 {
-  margin-top: 190px;
-  margin-bottom: 190px;
-}
-.multiProfileContainer .multiProfileOuter .people.ppl-4-3-2-1 .multiProfile {
-  width: 315px;
 }
 .multiProfileContainer .multiProfileOuter .people.count7,
 .multiProfileContainer .multiProfileOuter .people.count8 {
@@ -7044,6 +7028,19 @@ h6 {
 }
 .multiProfileContainer .multiProfileOuter .people.count2 .multiProfile {
   margin: 0px 120px;
+}
+.multiProfileContainer .multiProfileOuter .people.count1,
+.multiProfileContainer .multiProfileOuter .people.count2,
+.multiProfileContainer .multiProfileOuter .people.count3,
+.multiProfileContainer .multiProfileOuter .people.count4 {
+  margin-top: 190px;
+  margin-bottom: 190px;
+}
+.multiProfileContainer .multiProfileOuter .people.count1 .multiProfile,
+.multiProfileContainer .multiProfileOuter .people.count2 .multiProfile,
+.multiProfileContainer .multiProfileOuter .people.count3 .multiProfile,
+.multiProfileContainer .multiProfileOuter .people.count4 .multiProfile {
+  width: 315px;
 }
 .multiProfileContainer .multiProfileOuter .multiProfile {
   padding: 0;
