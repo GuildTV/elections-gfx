@@ -1,5 +1,19 @@
 Data['ado'] = [
   {
+    "uid"             : "ado-ron",
+    "pid"             : "ado",
+    "first"           : "RON",
+    "last"            : "",
+    "position"        : "Activities & Development Officer",
+    "position_short"  : "ADO",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "",
+      "two"           : "",
+      "three"         : "",
+    }
+  },
+  {
     "uid"             : "ado-ben",
     "pid"             : "ado",
     "first"           : "Ben",

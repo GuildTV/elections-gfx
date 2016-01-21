@@ -99,6 +99,20 @@ Data['tweets'] = [
 ]
 Data['ado'] = [
   {
+    "uid"             : "ado-ron",
+    "pid"             : "ado",
+    "first"           : "RON",
+    "last"            : "",
+    "position"        : "Activities & Development Officer",
+    "position_short"  : "ADO",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "",
+      "two"           : "",
+      "three"         : "",
+    }
+  },
+  {
     "uid"             : "ado-ben",
     "pid"             : "ado",
     "first"           : "Ben",
@@ -153,6 +167,20 @@ Data['ado'] = [
 
 Data['arafo'] = [
   {
+    "uid"             : "arafo-ron",
+    "pid"             : "arafo",
+    "first"           : "RON",
+    "last"            : "",
+    "position"        : "Anti-Racism, Anti Fascism Officer",
+    "position_short"  : "ARAFO",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "",
+      "two"           : "",
+      "three"         : "",
+    }
+  },
+  {
     "uid"             : "arafo-maaria",
     "pid"             : "arafo",
     "first"           : "Maaria",
@@ -184,6 +212,20 @@ Data['arafo'] = [
 
 Data['cao'] = [
   {
+    "uid"             : "cao-ron",
+    "pid"             : "cao",
+    "first"           : "RON",
+    "last"            : "",
+    "position"        : "Community Action Officer",
+    "position_short"  : "CAO",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "",
+      "two"           : "",
+      "three"         : "",
+    }
+  },
+  {
     "uid"             : "cao-lewis",
     "pid"             : "cao",
     "first"           : "Lewis",
@@ -201,6 +243,20 @@ Data['cao'] = [
 
 Data['dso'] = [
   {
+    "uid"             : "dso-ron",
+    "pid"             : "dso",
+    "first"           : "RON",
+    "last"            : "",
+    "position"        : "Disabled Students' Officer",
+    "position_short"  : "DSO",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "",
+      "two"           : "",
+      "three"         : "",
+    }
+  },
+  {
     "uid"             : "dso-hayley",
     "pid"             : "dso",
     "first"           : "Hayley",
@@ -217,6 +273,20 @@ Data['dso'] = [
 ];
 
 Data['eeo'] = [
+  {
+    "uid"             : "eeo-ron",
+    "pid"             : "eeo",
+    "first"           : "RON",
+    "last"            : "",
+    "position"        : "Ethical & Environmental Officer",
+    "position_short"  : "EEO",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "",
+      "two"           : "",
+      "three"         : "",
+    }
+  },
   {
     "uid"             : "eeo-samuel",
     "pid"             : "eeo",
@@ -249,6 +319,20 @@ Data['eeo'] = [
 
 Data['emso'] = [
   {
+    "uid"             : "emso-ron",
+    "pid"             : "emso",
+    "first"           : "RON",
+    "last"            : "",
+    "position"        : "Ethnic Minority Students’ Officer",
+    "position_short"  : "EMSO",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "",
+      "two"           : "",
+      "three"         : "",
+    }
+  },
+  {
     "uid"             : "emso-mohamed",
     "pid"             : "emso",
     "first"           : "Mohamed",
@@ -279,6 +363,20 @@ Data['emso'] = [
 ];
 
 Data['eo'] = [
+  {
+    "uid"             : "eo-ron",
+    "pid"             : "eo",
+    "first"           : "RON",
+    "last"            : "",
+    "position"        : "Education Officer",
+    "position_short"  : "EO",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "",
+      "two"           : "",
+      "three"         : "",
+    }
+  },
   {
     "uid"             : "eo-joulie",
     "pid"             : "eo",
@@ -325,6 +423,20 @@ Data['eo'] = [
 
 Data['hco'] = [
   {
+    "uid"             : "hco-ron",
+    "pid"             : "hco",
+    "first"           : "RON",
+    "last"            : "",
+    "position"        : "Housing & Community Officer",
+    "position_short"  : "HCO",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "",
+      "two"           : "",
+      "three"         : "",
+    }
+  },
+  {
     "uid"             : "hco-jacob",
     "pid"             : "hco",
     "first"           : "Jacob",
@@ -370,6 +482,20 @@ Data['hco'] = [
 
 Data['hso'] = [
   {
+    "uid"             : "hso-ron",
+    "pid"             : "hso",
+    "first"           : "RON",
+    "last"            : "",
+    "position"        : "Home Students’ Officer",
+    "position_short"  : "HSO",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "",
+      "two"           : "",
+      "three"         : "",
+    }
+  },
+  {
     "uid"             : "hso-adam",
     "pid"             : "hso",
     "first"           : "Adam",
@@ -386,6 +512,20 @@ Data['hso'] = [
   ];
 
 Data['iso'] = [
+  {
+    "uid"             : "iso-ron",
+    "pid"             : "iso",
+    "first"           : "RON",
+    "last"            : "",
+    "position"        : "International Students' Officer",
+    "position_short"  : "ISO",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "",
+      "two"           : "",
+      "three"         : "",
+    }
+  },
   {
     "uid"             : "iso-nivedita",
     "pid"             : "iso",
@@ -432,6 +572,20 @@ Data['iso'] = [
 
 Data['lgbtqo'] = [
   {
+    "uid"             : "lgbtqo-ron",
+    "pid"             : "lgbtqo",
+    "first"           : "RON",
+    "last"            : "",
+    "position"        : "Lesbian, Gay, Bisexual, Trans and Queer Students’ Officer",
+    "position_short"  : "LGBTQO",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "",
+      "two"           : "",
+      "three"         : "",
+    }
+  },
+  {
     "uid"             : "lgbtqo-chavonne",
     "pid"             : "lgbtqo",
     "first"           : "Chavonne",
@@ -448,6 +602,20 @@ Data['lgbtqo'] = [
 ];
 
 Data['president'] = [
+  {
+    "uid"             : "pres-ron",
+    "pid"             : "pres",
+    "first"           : "RON",
+    "last"            : "",
+    "position"        : "Presidential",
+    "position_short"  : "President",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "",
+      "two"           : "",
+      "three"         : "",
+    }
+  },
   {
     "uid"             : "pres-jack",
     "pid"             : "pres",
@@ -494,6 +662,20 @@ Data['president'] = [
 ];
 
 Data['rro'] = [
+  {
+    "uid"             : "rro-ron",
+    "pid"             : "rro",
+    "first"           : "RON",
+    "last"            : "",
+    "position"        : "Representation & Resources Officer",
+    "position_short"  : "RRO",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "",
+      "two"           : "",
+      "three"         : "",
+    }
+  },
   {
     "uid"             : "rro-ahmet",
     "pid"             : "rro",
@@ -567,6 +749,20 @@ Data['rro'] = [
 ];
 
 Data['so'] = [
+  {
+    "uid"             : "so-ron",
+    "pid"             : "so",
+    "first"           : "RON",
+    "last"            : "",
+    "position"        : "Sports Officer",
+    "position_short"  : "SO",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "",
+      "two"           : "",
+      "three"         : "",
+    }
+  },
   {
     "uid"             : "so-remy",
     "pid"             : "so",
@@ -655,6 +851,20 @@ Data['so'] = [
 
 Data['sso'] = [
   {
+    "uid"             : "sso-ron",
+    "pid"             : "sso",
+    "first"           : "RON",
+    "last"            : "",
+    "position"        : "Satellite Sites Officer",
+    "position_short"  : "SSO",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "",
+      "two"           : "",
+      "three"         : "",
+    }
+  },
+  {
     "uid"             : "sso-ellie",
     "pid"             : "sso",
     "first"           : "Eleanor",
@@ -672,6 +882,20 @@ Data['sso'] = [
 
 Data['welfare'] = [
   {
+    "uid"             : "welfare-ron",
+    "pid"             : "welfare",
+    "first"           : "RON",
+    "last"            : "",
+    "position"        : "Welfare Officer",
+    "position_short"  : "WO",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "",
+      "two"           : "",
+      "three"         : "",
+    }
+  },
+  {
     "uid"             : "welfare-ross",
     "pid"             : "welfare",
     "first"           : "Ross",
@@ -688,6 +912,20 @@ Data['welfare'] = [
 ];
 
 Data['womens'] = [
+  {
+    "uid"             : "womens-ron",
+    "pid"             : "womens",
+    "first"           : "RON",
+    "last"            : "",
+    "position"        : "Womens's Officer",
+    "position_short"  : "WO",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "",
+      "two"           : "",
+      "three"         : "",
+    }
+  },
   {
     "uid"             : "womens-alex",
     "pid"             : "womens",

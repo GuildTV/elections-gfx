@@ -1,5 +1,19 @@
 Data['welfare'] = [
   {
+    "uid"             : "welfare-ron",
+    "pid"             : "welfare",
+    "first"           : "RON",
+    "last"            : "",
+    "position"        : "Welfare Officer",
+    "position_short"  : "WO",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "",
+      "two"           : "",
+      "three"         : "",
+    }
+  },
+  {
     "uid"             : "welfare-ross",
     "pid"             : "welfare",
     "first"           : "Ross",

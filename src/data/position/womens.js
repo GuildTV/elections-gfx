@@ -1,5 +1,19 @@
 Data['womens'] = [
   {
+    "uid"             : "womens-ron",
+    "pid"             : "womens",
+    "first"           : "RON",
+    "last"            : "",
+    "position"        : "Womens's Officer",
+    "position_short"  : "WO",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "",
+      "two"           : "",
+      "three"         : "",
+    }
+  },
+  {
     "uid"             : "womens-alex",
     "pid"             : "womens",
     "first"           : "Alexandra",

@@ -1,5 +1,19 @@
 Data['lgbtqo'] = [
   {
+    "uid"             : "lgbtqo-ron",
+    "pid"             : "lgbtqo",
+    "first"           : "RON",
+    "last"            : "",
+    "position"        : "Lesbian, Gay, Bisexual, Trans and Queer Students’ Officer",
+    "position_short"  : "LGBTQO",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "",
+      "two"           : "",
+      "three"         : "",
+    }
+  },
+  {
     "uid"             : "lgbtqo-chavonne",
     "pid"             : "lgbtqo",
     "first"           : "Chavonne",

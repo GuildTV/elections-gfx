@@ -1,5 +1,19 @@
 Data['eeo'] = [
   {
+    "uid"             : "eeo-ron",
+    "pid"             : "eeo",
+    "first"           : "RON",
+    "last"            : "",
+    "position"        : "Ethical & Environmental Officer",
+    "position_short"  : "EEO",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "",
+      "two"           : "",
+      "three"         : "",
+    }
+  },
+  {
     "uid"             : "eeo-samuel",
     "pid"             : "eeo",
     "first"           : "Samuel",

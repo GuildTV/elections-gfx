@@ -1,5 +1,19 @@
 Data['president'] = [
   {
+    "uid"             : "pres-ron",
+    "pid"             : "pres",
+    "first"           : "RON",
+    "last"            : "",
+    "position"        : "Presidential",
+    "position_short"  : "President",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "",
+      "two"           : "",
+      "three"         : "",
+    }
+  },
+  {
     "uid"             : "pres-jack",
     "pid"             : "pres",
     "first"           : "Jack",

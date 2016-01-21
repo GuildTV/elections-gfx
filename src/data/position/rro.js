@@ -1,5 +1,19 @@
 Data['rro'] = [
   {
+    "uid"             : "rro-ron",
+    "pid"             : "rro",
+    "first"           : "RON",
+    "last"            : "",
+    "position"        : "Representation & Resources Officer",
+    "position_short"  : "RRO",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "",
+      "two"           : "",
+      "three"         : "",
+    }
+  },
+  {
     "uid"             : "rro-ahmet",
     "pid"             : "rro",
     "first"           : "Ahmet",

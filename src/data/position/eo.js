@@ -1,5 +1,19 @@
 Data['eo'] = [
   {
+    "uid"             : "eo-ron",
+    "pid"             : "eo",
+    "first"           : "RON",
+    "last"            : "",
+    "position"        : "Education Officer",
+    "position_short"  : "EO",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "",
+      "two"           : "",
+      "three"         : "",
+    }
+  },
+  {
     "uid"             : "eo-joulie",
     "pid"             : "eo",
     "first"           : "Panagiota",

@@ -1,5 +1,19 @@
 Data['cao'] = [
   {
+    "uid"             : "cao-ron",
+    "pid"             : "cao",
+    "first"           : "RON",
+    "last"            : "",
+    "position"        : "Community Action Officer",
+    "position_short"  : "CAO",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "",
+      "two"           : "",
+      "three"         : "",
+    }
+  },
+  {
     "uid"             : "cao-lewis",
     "pid"             : "cao",
     "first"           : "Lewis",

@@ -1,5 +1,19 @@
 Data['iso'] = [
   {
+    "uid"             : "iso-ron",
+    "pid"             : "iso",
+    "first"           : "RON",
+    "last"            : "",
+    "position"        : "International Students' Officer",
+    "position_short"  : "ISO",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "",
+      "two"           : "",
+      "three"         : "",
+    }
+  },
+  {
     "uid"             : "iso-nivedita",
     "pid"             : "iso",
     "first"           : "Nivedita",

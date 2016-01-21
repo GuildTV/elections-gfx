@@ -1,5 +1,19 @@
 Data['hco'] = [
   {
+    "uid"             : "hco-ron",
+    "pid"             : "hco",
+    "first"           : "RON",
+    "last"            : "",
+    "position"        : "Housing & Community Officer",
+    "position_short"  : "HCO",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "",
+      "two"           : "",
+      "three"         : "",
+    }
+  },
+  {
     "uid"             : "hco-jacob",
     "pid"             : "hco",
     "first"           : "Jacob",

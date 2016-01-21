@@ -1,5 +1,19 @@
 Data['emso'] = [
   {
+    "uid"             : "emso-ron",
+    "pid"             : "emso",
+    "first"           : "RON",
+    "last"            : "",
+    "position"        : "Ethnic Minority Students’ Officer",
+    "position_short"  : "EMSO",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "",
+      "two"           : "",
+      "three"         : "",
+    }
+  },
+  {
     "uid"             : "emso-mohamed",
     "pid"             : "emso",
     "first"           : "Mohamed",

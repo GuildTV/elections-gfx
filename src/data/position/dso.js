@@ -1,5 +1,19 @@
 Data['dso'] = [
   {
+    "uid"             : "dso-ron",
+    "pid"             : "dso",
+    "first"           : "RON",
+    "last"            : "",
+    "position"        : "Disabled Students' Officer",
+    "position_short"  : "DSO",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "",
+      "two"           : "",
+      "three"         : "",
+    }
+  },
+  {
     "uid"             : "dso-hayley",
     "pid"             : "dso",
     "first"           : "Hayley",

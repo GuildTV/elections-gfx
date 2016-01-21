@@ -1,5 +1,19 @@
 Data['arafo'] = [
   {
+    "uid"             : "arafo-ron",
+    "pid"             : "arafo",
+    "first"           : "RON",
+    "last"            : "",
+    "position"        : "Anti-Racism, Anti Fascism Officer",
+    "position_short"  : "ARAFO",
+    "candidate"       : true,
+    "manifestoPoints" : {
+      "one"           : "",
+      "two"           : "",
+      "three"         : "",
+    }
+  },
+  {
     "uid"             : "arafo-maaria",
     "pid"             : "arafo",
     "first"           : "Maaria",
