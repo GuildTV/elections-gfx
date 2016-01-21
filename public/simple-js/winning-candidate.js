@@ -18,7 +18,8 @@ function render(id, additionalData){
 
   container.append(template(data));
 
-  setTimeout(animate, 100);
+  //setTimeout(animate, 100);
+  animate();
 }
 
 function stop(){
@@ -37,7 +38,7 @@ function animate(){
   tl.to(imageWrapper, 0.6, { ease: Power1.easeOut, css: { scale:1 } })
     .to(imageText, 0.4, { ease: Power2.easeOut, top: 0 }, '-=0.44');
   
-  tl.to(dataWrapper, 0.36, { ease: Power1.easeOut, css: { x: 0 } }, 0.72)
+  tl.to(dataWrapper, 0.32, { ease: Power1.easeOut, css: { x: 0 } }, 0.72)
     .to(blurData, 0.28, { ease: Power2.easeIn, myVal: 0, onUpdate: animateBlur, onUpdateParams: ["{self}", dataWrapper, blurData] }, '-=0.28');
 }
 

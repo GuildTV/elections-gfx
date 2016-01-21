@@ -53,14 +53,23 @@
     <script type="text/javascript" src="public/simple-js/winning-candidate.js"></script>
     <script type="text/javascript">
 
-      function play(){
-        render("welfare-ross", {
-          votes: "99,999"
-        });
+      function play(str){
+        update(str);
       }
 
-      //DEV ONLY
-      setTimeout(play, 1);
+      function update(str){
+        var data = {};
+        var xml = (new DOMParser()).parseFromString(str,"text/xml");
+        $(xml).find('componentData').each(function(i,v){
+          var node = $(v);
+          var id = node.attr('id');
+          data[id] = node.find('#text').attr('value');
+        });
+
+        render(data.id, data);
+      }
+        //update("<templateData><componentData id=\"id\"><data id=\"text\" value=\"pres-jack\" /></componentData><componentData id=\"votes\"><data id=\"text\" value=\"99,999\" /></templateData>");
+
     </script>
   </body>
 </html>
