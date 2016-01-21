@@ -7151,6 +7151,7 @@ h6 {
   overflow: hidden;
   -webkit-transform: translate(-960px, 0);
   -webkit-filter: url("#motionBlur");
+  width: 930px;
 }
 .winningCandidateContainer .dataSide .text-line {
   margin: 30px;
