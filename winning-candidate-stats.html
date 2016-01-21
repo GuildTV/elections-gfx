@@ -13,6 +13,14 @@
 
     </div> <!-- / .main -->
 
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="filters hidden">
+      <defs>
+        <filter id="motionBlur">
+          <feGaussianBlur id="svg-blur-inner" in="SourceGraphic" stdDeviation="12,0" />
+        </filter>
+      </defs>
+    </svg>
+
     <!-- Scripts -->
     <script type="text/javascript" src="public/lib/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="public/lib/handlebars/handlebars.min.js"></script>
@@ -20,12 +28,14 @@
     <script type="text/javascript" src="public/js/data.js"></script>
     <script id="template" type="text/x-handlebars-template">
     <div class="dataSide stats">
-      <div class="text-line">
-        <span>ELECTED OFFICER</span>
-      </div>
-      <div class="text-line">
-        <span class="strong">VOTES</span>
-        <span>{{ data.votes }}</span>
+      <div class="inner">
+        <div class="text-line">
+          <span>ELECTED OFFICER</span>
+        </div>
+        <div class="text-line">
+          <span class="strong">VOTES</span>
+          <span>{{ data.votes }}</span>
+        </div>
       </div>
     </div>
     <div class="imageSide">

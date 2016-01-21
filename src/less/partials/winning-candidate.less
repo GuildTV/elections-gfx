@@ -15,6 +15,13 @@
       margin-top: 300px;
     }
 
+    .inner {
+      position: absolute;
+      overflow: hidden;
+      -webkit-transform: translate(-960px, 0);
+      -webkit-filter: url("#motionBlur");
+    }
+
     .text-line {
       margin: 30px;
 
@@ -47,6 +54,9 @@
       margin-top: 190px;
       margin-left: 155px;
 
+      -webkit-transform: scale(0.72);
+      -webkit-transform-origin: left;
+
       img {
         background: #262626;
 
@@ -62,8 +72,8 @@
       h1 {
         position: relative;
         top: 0px;
-        //top: -120px;
-        //z-index: -1;
+        top: -150px;
+        z-index: -1;
         //margin: 5px 10px;
 
         font-family: "HelveticaNeue";

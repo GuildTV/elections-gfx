@@ -7146,6 +7146,12 @@ h6 {
 .winningCandidateContainer .dataSide.stats {
   margin-top: 300px;
 }
+.winningCandidateContainer .dataSide .inner {
+  position: absolute;
+  overflow: hidden;
+  -webkit-transform: translate(-960px, 0);
+  -webkit-filter: url("#motionBlur");
+}
 .winningCandidateContainer .dataSide .text-line {
   margin: 30px;
 }
@@ -7170,6 +7176,8 @@ h6 {
 .winningCandidateContainer .imageSide .imageWrapper {
   margin-top: 190px;
   margin-left: 155px;
+  -webkit-transform: scale(0.72);
+  -webkit-transform-origin: left;
 }
 .winningCandidateContainer .imageSide .imageWrapper img {
   background: #262626;
@@ -7183,6 +7191,8 @@ h6 {
 .winningCandidateContainer .imageSide .imageWrapper h1 {
   position: relative;
   top: 0px;
+  top: -150px;
+  z-index: -1;
   font-family: "HelveticaNeue";
   font-size: 71px;
   line-height: 1;
