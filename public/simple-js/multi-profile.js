@@ -5,7 +5,12 @@ var container = $('.multiProfileContainer');
 
 function play(){
   var people = findDataById("president");
-  people = people.map(function(person){
+
+  people = $.grep(people, function(person){
+    return person.first != "RON";
+  });
+
+  people = $.map(people, function(person){
     person.first = person.first.toUpperCase();
     person.last = person.last.toUpperCase();
     person.position_short = person.position_short.toUpperCase();

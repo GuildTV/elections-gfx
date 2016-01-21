@@ -5,8 +5,8 @@ var container = $('.multiProfileContainer');
 
 function play(){
   var ids = [
-    'pres-jack', 
-    'pres-jack', 
+    'pres-ron', 
+    'ado-ron', 
     'pres-jack', 
     'pres-jack', 
     'pres-jack', 
@@ -15,7 +15,7 @@ function play(){
   ];
 
   var people = $.map(ids, findDataById);
-  people = people.map(function(person){
+  people = $.map(people, function(person){
     person.first = person.first.toUpperCase();
     person.last = person.last.toUpperCase();
     person.position_short = person.position_short.toUpperCase();
