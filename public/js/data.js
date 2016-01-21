@@ -27,6 +27,21 @@ function findDataById(id){
     }
   }
 }
+
+function xmlToObject(str){
+  var data = {};
+
+  var xml = (new DOMParser()).parseFromString(str,"text/xml");
+
+  $(xml).find('componentData').each(function(i,v){
+    var node = $(v);
+    var id = node.attr('id');
+
+    data[id] = node.find('#text').attr('value');
+  });
+
+  return data;
+}
 Data['sabbs'] = [
   {
     "uid"             : "sabbs-pres",
