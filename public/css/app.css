@@ -7132,3 +7132,59 @@ h6 {
   display: block !important;
   left: -1500px;
 }
+.winningCandidateContainer {
+  z-index: 200;
+}
+.winningCandidateContainer .dataSide {
+  display: inline-block;
+  width: 960px;
+  height: 100vh;
+  text-align: right;
+  vertical-align: middle;
+  padding-right: 30px;
+}
+.winningCandidateContainer .dataSide.stats {
+  margin-top: 300px;
+}
+.winningCandidateContainer .dataSide .text-line {
+  margin: 30px;
+}
+.winningCandidateContainer .dataSide .text-line span {
+  background: #262626;
+  color: #ffffff;
+  margin: 20px;
+  padding: 9px 20px;
+  line-height: 1.5;
+  font-size: 70px;
+  font-family: "HelveticaNeue";
+}
+.winningCandidateContainer .dataSide .text-line span.strong {
+  font-family: "HelveticaNeue-Bold";
+}
+.winningCandidateContainer .imageSide {
+  display: inline-block;
+  vertical-align: top;
+  width: 900px;
+  height: 100vh;
+}
+.winningCandidateContainer .imageSide .imageWrapper {
+  margin-top: 190px;
+  margin-left: 155px;
+}
+.winningCandidateContainer .imageSide .imageWrapper img {
+  background: #262626;
+  border: 10px solid #262626;
+  border-image: -webkit-linear-gradient(left, #262626 40%, #787878 110%);
+  border-image-slice: 1;
+  width: 420px;
+  height: 420px;
+  z-index: 10000;
+}
+.winningCandidateContainer .imageSide .imageWrapper h1 {
+  position: relative;
+  top: 0px;
+  font-family: "HelveticaNeue";
+  font-size: 71px;
+  line-height: 1;
+  color: #262626;
+}

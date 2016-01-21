@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="public/css/app.css" />
+  </head>
+
+  <body>
+  <div style="background:url('public/img/template/winning-candidate-statsjpg') no-repeat center center fixed; background-size: cover; position: absolute; float: left; top: 0px; left: 0px; width: 100vw; height: 100vh; z-index: -200;"></div>
+    <div class="main">
+      <div class="winningCandidateContainer"></div>
+
+    </div> <!-- / .main -->
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="public/lib/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="public/lib/handlebars/handlebars.min.js"></script>
+    <script type="text/javascript" src="public/lib/gsap/TweenMax.js"></script>
+    <script type="text/javascript" src="public/js/data.js"></script>
+    <script id="template" type="text/x-handlebars-template">
+    <div class="dataSide stats">
+      <div class="text-line">
+        <span>ELECTED OFFICER</span>
+      </div>
+      <div class="text-line">
+        <span class="strong">VOTES</span>
+        <span>{{ data.votes }}</span>
+      </div>
+    </div>
+    <div class="imageSide">
+      <div class='imageWrapper'}>
+        <div class="image">
+          <img src="public/img/roles/{{person.pid}}/{{person.uid}}.png" />
+        </div>
+        <h1>
+          {{ person.first }}<br/>
+          <strong>{{ person.last }}</strong>
+        </h1>
+      </div>
+    </div>
+    </script>
+    <script type="text/javascript" src="public/simple-js/winning-candidate.js"></script>
+    <script type="text/javascript">
+
+      function play(){
+        render("welfare-ross", {
+          votes: "99,999"
+        });
+      }
+
+      //DEV ONLY
+      setTimeout(play, 1);
+    </script>
+  </body>
+</html>

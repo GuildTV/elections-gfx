@@ -1,0 +1,83 @@
+.winningCandidateContainer {
+  z-index: 200;
+
+  .dataSide {
+    display: inline-block;
+
+    width: 960px;
+    height: 100vh;
+
+    text-align: right;
+    vertical-align: middle;
+    padding-right: 30px;
+
+    &.stats {
+      margin-top: 300px;
+    }
+
+    .text-line {
+      margin: 30px;
+
+      span {
+        background: #262626;
+        color: #ffffff;
+
+        margin: 20px;
+        padding: 9px 20px;
+        line-height: 1.5;
+
+        font-size: 70px;
+        font-family: "HelveticaNeue";
+
+        &.strong {
+          font-family: "HelveticaNeue-Bold";
+        }
+      }
+    }
+  }
+
+  .imageSide {
+    display: inline-block;
+    vertical-align: top;
+
+    width: 900px;
+    height: 100vh;
+
+    .imageWrapper {
+      margin-top: 190px;
+      margin-left: 155px;
+
+      img {
+        background: #262626;
+
+        border: 10px solid #262626;
+        border-image: -webkit-linear-gradient(left, #262626 40%, #787878 110%);
+        border-image-slice: 1;
+
+        width: 420px;
+        height: 420px;
+        z-index: 10000;
+      }
+
+      h1 {
+        position: relative;
+        top: 0px;
+        //top: -120px;
+        //z-index: -1;
+        //margin: 5px 10px;
+
+        font-family: "HelveticaNeue";
+        font-size: 71px;
+        line-height: 1;
+        color: #262626;
+
+        //opacity: 0;
+
+        strong {
+          @font-face: "HelveticaNeue-Bold";
+        }
+      }
+    }
+
+  }
+}
