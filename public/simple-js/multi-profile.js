@@ -3,12 +3,22 @@ var template = Handlebars.compile(source);
 
 var container = $('.multiProfileContainer');
 
-function play(){
-  var people = findDataById("president");
+function update(str){
+  var data = xmlToObject(str);
 
-  people = $.grep(people, function(person){
-    return person.first != "RON";
+  var name = data.name?data.name:"";
+  delete data.name;
+
+  people = $.map(data, function(v, i){
+    return findDataById(v);
   });
+
+  //is group of candidates
+  if(name){
+    people = $.grep(people, function(person){
+      return person.first != "RON";
+    });
+  }
 
   people = $.map(people, function(person){
     person.first = person.first.toUpperCase();
@@ -19,7 +29,7 @@ function play(){
   });
 
   var data = {
-    title: "NTOESG".toUpperCase(),
+    title: name.toUpperCase(),
     people: people
   };
 

@@ -41,8 +41,18 @@
     <script type="text/javascript" src="public/simple-js/multi-profile.js"></script>
     <script type="text/javascript">
 
+      function fakeRole(){
+        update("<templateData><componentData id=\"name\"><data id=\"text\" value=\"president\" /></componentData><componentData id=\"d0\"><data id=\"text\" value=\"president\" /></templateData>");
+      }
+
+      function fakeWinners(){
+        update("<templateData><componentData id=\"f0\"><data id=\"text\" value=\"pres-jack\" /></componentData><componentData id=\"d0\"><data id=\"text\" value=\"pres-jack\" /><componentData id=\"f2\"><data id=\"text\" value=\"pres-jack\" /></componentData><componentData id=\"f3\"><data id=\"text\" value=\"pres-jack\" /></componentData><componentData id=\"f4\"><data id=\"text\" value=\"pres-jack\" /></componentData><componentData id=\"f5\"><data id=\"text\" value=\"pres-jack\" /></componentData><componentData id=\"f6\"><data id=\"text\" value=\"pres-jack\" /></componentData></templateData>");
+      }
+
       //DEV ONLY
-      setTimeout(play, 1);
+      // setTimeout(fakeWinners, 1);
+      // setTimeout(fakeRole, 1);
+
     </script>
   </body>
 </html>
