@@ -32,13 +32,14 @@ function xmlToObject(str){
   var data = {};
 
   var xml = (new DOMParser()).parseFromString(str,"text/xml");
+  var components = xml.querySelectorAll('componentData');
 
-  $(xml).find('componentData').each(function(i,v){
-    var node = $(v);
-    var id = node.attr('id');
+  for(var i=0; i < components.length; i++){
+    var node = components[i];
+    var id = node.getAttribute('id');
 
-    data[id] = node.find('#text').attr('value');
-  });
+    data[id] = node.querySelector('#text').getAttribute('value');
+  }
 
   return data;
 }

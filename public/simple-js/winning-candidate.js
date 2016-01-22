@@ -1,24 +1,11 @@
-var source   = $("#template").html();
-var template = Handlebars.compile(source);
 
-var container = $('.winningCandidateContainer');
-
-function render(id, additionalData){
+function render(id, data){
   var person = findDataById(id);
 
-  person.first = person.first.toUpperCase();
-  person.last = person.last.toUpperCase();
-  person.position_short = person.position_short.toUpperCase();
-  person.position = person.position.toUpperCase();
+  document.getElementById('voteCount').innerText = (data.votes+"").toUpperCase();
+  document.getElementById('candidateName').innerHTML = person.first.toUpperCase()+" <br /><strong>"+person.last.toUpperCase()+"</strong>";
+  document.getElementById('candidatePhoto').src = "public/img/roles/"+person.pid+"/"+person.uid+".png";
 
-  var data = {
-    data: additionalData,
-    person: person
-  };
-
-  container.append(template(data));
-
-  //setTimeout(animate, 100);
   animate();
 }
 
@@ -29,9 +16,9 @@ function stop(){
 function animate(){
   var tl = new TimelineLite();
 
-  var imageWrapper = $('.imageWrapper');
-  var imageText = imageWrapper.find('h1');
-  var dataWrapper = $('.dataSide .inner');
+  var imageWrapper = document.querySelector('.imageWrapper');
+  var imageText = imageWrapper.querySelector('h1');
+  var dataWrapper = document.querySelector('.dataSide .inner');
 
   var blurData = { myVal: 10 };
 
