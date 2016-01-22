@@ -9,35 +9,93 @@
   <body>
   <div style="background:url('public/img/template/multi-profile/SampleStill_.jpg') no-repeat center center fixed; background-size: cover; position: absolute; float: left; top: 0px; left: 0px; width: 100vw; height: 100vh;"></div>
     <div class="main">
-      <div class="multiProfileContainer"></div>
+      <div class="multiProfileContainer">
+        <div>
+          <div class='multiProfileOuter'>
+            <div class="people col-md-12 ">
+                <div class='multiProfile'>
+                  <div class="image text-center">
+                    <img />
+                  </div>
+                  <h1 class='text-center'>
+                    {{ first }}<br/>
+                    <strong>{{ last }}</strong>
+                  </h1>
+                </div>
+                <div class='multiProfile'>
+                  <div class="image text-center">
+                    <img />
+                  </div>
+                  <h1 class='text-center'>
+                    {{ first }}<br/>
+                    <strong>{{ last }}</strong>
+                  </h1>
+                </div>
+                <div class='multiProfile'>
+                  <div class="image text-center">
+                    <img />
+                  </div>
+                  <h1 class='text-center'>
+                    {{ first }}<br/>
+                    <strong>{{ last }}</strong>
+                  </h1>
+                </div>
+                <div class='multiProfile'>
+                  <div class="image text-center">
+                    <img />
+                  </div>
+                  <h1 class='text-center'>
+                    {{ first }}<br/>
+                    <strong>{{ last }}</strong>
+                  </h1>
+                </div>
+                <div class='multiProfile'>
+                  <div class="image text-center">
+                    <img />
+                  </div>
+                  <h1 class='text-center'>
+                    {{ first }}<br/>
+                    <strong>{{ last }}</strong>
+                  </h1>
+                </div>
+                <div class='multiProfile'>
+                  <div class="image text-center">
+                    <img />
+                  </div>
+                  <h1 class='text-center'>
+                    {{ first }}<br/>
+                    <strong>{{ last }}</strong>
+                  </h1>
+                </div>
+                <div class='multiProfile'>
+                  <div class="image text-center">
+                    <img />
+                  </div>
+                  <h1 class='text-center'>
+                    {{ first }}<br/>
+                    <strong>{{ last }}</strong>
+                  </h1>
+                </div>
+                <div class='multiProfile'>
+                  <div class="image text-center">
+                    <img />
+                  </div>
+                  <h1 class='text-center'>
+                    {{ first }}<br/>
+                    <strong>{{ last }}</strong>
+                  </h1>
+                </div>
+            </div>
+          </div>
+          <h1 class='title'>{{ title }}</h1>
+        </div>
+      </div>
 
     </div> <!-- / .main -->
 
     <!-- Scripts -->
-    <script type="text/javascript" src="public/lib/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="public/lib/handlebars/handlebars.min.js"></script>
     <script type="text/javascript" src="public/lib/gsap/TweenMax.js"></script>
     <script type="text/javascript" src="public/js/data.js"></script>
-    <script id="template-grid" type="text/x-handlebars-template">
-    <div>
-      <div class='multiProfileOuter'>
-        <div class="people col-md-12 count{{people.length}}">
-          {{#each people}}
-            <div class='multiProfile'}>
-              <div class="image text-center">
-                <img src="public/img/roles/{{pid}}/{{uid}}.png" />
-              </div>
-              <h1 class='text-center'>
-                {{ first }}<br/>
-                <strong>{{ last }}</strong>
-              </h1>
-            </div>
-          {{/each}}
-        </div>
-      </div>
-      <h1 class='title'>{{ title }}</h1>
-    </div>
-    </script>
     <script type="text/javascript" src="public/simple-js/multi-profile.js"></script>
     <script type="text/javascript">
 

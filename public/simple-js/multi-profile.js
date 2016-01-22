@@ -1,49 +1,63 @@
-var source   = $("#template-grid").html();
-var template = Handlebars.compile(source);
-
-var container = $('.multiProfileContainer');
-
 function update(str){
   var data = xmlToObject(str);
 
   var name = data.name?data.name:"";
   delete data.name;
 
-  people = $.map(data, function(v, i){
-    return findDataById(v);
-  });
+  var people = [];
+
+  for(var i in data){
+    people.push(findDataById(data[i]));
+  }
+
+  if(people.length == 1 && people[0][0] !== undefined)
+    people = people[0];
 
   //is group of candidates
   if(name){
-    people = $.grep(people, function(person){
-      return person.first != "RON";
-    });
+    var peopleNew = [];
+    for(var i = 0; i < people.length; i++){
+      var person = people[i];
+
+      if(person.first != "RON")
+        peopleNew.push(person);
+    }
+    people = peopleNew;
   }
 
-  people = $.map(people, function(person){
-    person.first = person.first.toUpperCase();
-    person.last = person.last.toUpperCase();
-    person.position_short = person.position_short.toUpperCase();
+  document.querySelector('h1.title').innerText = name.toUpperCase();
 
-    return person;
-  });
+  var peopleDiv = document.querySelector('.people');
+  peopleDiv.classList.add('count'+people.length);
 
-  var data = {
-    title: name.toUpperCase(),
-    people: people
-  };
+  var profiles = peopleDiv.querySelectorAll('.multiProfile');
+  for(var i = 0; i < profiles.length; i++){
+    var node = profiles[i];
+    var person = people[i];
 
-  container.append(template(data));
+    if(person === undefined){
+      peopleDiv.removeChild(node);
+      continue;
+    }
 
-  setTimeout(animate, 100);
+    window.dfsdf = node;
+    node.querySelector('img').setAttribute('src', "public/img/roles/"+person.pid+"/"+person.uid+".png");
+    node.querySelector('h1').innerHTML = person.first.toUpperCase()+"<br/><strong>"+person.last.toUpperCase()+"</strong>";
+  }
+
+  //setTimeout(animate, 100);
+  animate();
 }
 
 function stop(){
-  container.empty();
+  document.body.style.display = "none";
 }
 
 function animate(){
   var tl = new TimelineLite();
-  tl.to($('.multiProfile').find('h1'), 0.6, {top: "0px"})
-    .to($('.multiProfile').find('h1'), 0.2, {autoAlpha: 1}, '-=0.6');
+
+  var elm = document.querySelectorAll('.multiProfile h1');
+
+  tl.to(elm, 0.6, {top: "0px"})
+    .to(elm, 0.2, {autoAlpha: 1}, '-=0.6');
 }
