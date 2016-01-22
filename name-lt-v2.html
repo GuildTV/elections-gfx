@@ -6,12 +6,14 @@
   </head>
 
   <body>
-    <div style="background:url('public/img/template/name-ltpng') no-repeat center center fixed; background-size: cover; position: absolute; float: left; top: 0px; left: 0px; width: 1920px; height: 1080px;"></div>
-    <div class="lower-third">
-      <div class="content">
-        <div class="inner">
-          <h1>NAME HERE</h1>
-          <h2>ROLE HERE</h2>
+    <div class="lt-wrapper">
+      <div style="background:url('public/img/template/name-lt.png') no-repeat center center fixed; background-size: cover; position: absolute; float: left; top: 0px; left: 0px; width: 1920px; height: 1080px;"></div>
+      <div class="lower-third2">    
+        <div class="content">
+          <div class="inner">
+            <h1></h1>
+            <h2></h2>
+          </div>
         </div>
       </div>
     </div>
@@ -34,34 +36,36 @@
       defs = filters.querySelector("defs"), // the  element inside the SVG
       blur = defs.querySelector("#motionBlur"), // the blur filter
       blurFilter = blur.firstElementChild; // the feGaussianBlur primitive
+      var blurStrength = 10;
 
       function animateBlur(tl, elm, blurData){
-        blurFilter.setAttribute("stdDeviation",(blurData.myVal+0.01)+",0");  
+        blurFilter.setAttribute("stdDeviation","0,"+(blurData.myVal+0.01));  
       }
-
 
       function animate(){
         var tl = new TimelineLite();
 
-        var dataWrapper = document.querySelector('.content');
+        var dataWrapper = document.querySelector('.lt-wrapper');
 
-        var blurData = { myVal: 15 };
+        var blurData = { myVal: blurStrength };
 
-        tl.to(dataWrapper, 0.32, { ease: Power1.easeOut, css: { x: 0 } })
+        tl.to(dataWrapper, 0.32, { ease: Power1.easeOut, css: { y: 0 } })
           .to(blurData, 0.28, { ease: Power2.easeIn, myVal: 0, onUpdate: animateBlur, onUpdateParams: ["{self}", dataWrapper, blurData] }, '-=0.28');
       }
 
       function animateOut(){
         var tl = new TimelineLite();
 
-        var dataWrapper = document.querySelector('.content');
-        dataWrapper.classList.add('outro');
+        var dataWrapper = document.querySelector('.lt-wrapper');
 
-        tl.to(dataWrapper, 0.4, { ease: Power1.easeOut, webkitMaskPositionX: -1499 });
+        var blurData = { myVal: 0 };
+
+        tl.to(dataWrapper, 0.32, { ease: Power1.easeIn, css: { y: 400 } })
+          .to(blurData, 0.28, { ease: Power2.easeOut, myVal: blurStrength, onUpdate: animateBlur, onUpdateParams: ["{self}", dataWrapper, blurData] }, '-=0.28');
       }
 
       function render(data){
-        var outer = document.querySelector('.lower-third');
+        var outer = document.querySelector('.lower-third2');
 
         outer.querySelector('h1').innerText = (data.name+"").toUpperCase();
         outer.querySelector('h2').innerText = (data.role+"").toUpperCase();
@@ -97,7 +101,7 @@
         update("<templateData><componentData id=\"name\"><data id=\"text\" value=\"simon harwood\" /></componentData><componentData id=\"role\"><data id=\"text\" value=\"bbc, director of strategic governance\" /></componentData></templateData>");
       }
 
-      // setTimeout(fake, 1000);
+      setTimeout(fake, 1000);
       // setTimeout(stop, 10000);
 
     </script>
