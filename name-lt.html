@@ -47,7 +47,7 @@
 
         var blurData = { myVal: 15 };
 
-        tl.to(dataWrapper, 0.32, { ease: Power1.easeOut, left: 0 })
+        tl.to(dataWrapper, 0.32, { ease: Power1.easeOut, css: { x: 0 } })
           .to(blurData, 0.28, { ease: Power2.easeIn, myVal: 0, onUpdate: animateBlur, onUpdateParams: ["{self}", dataWrapper, blurData] }, '-=0.28');
       }
 
@@ -55,7 +55,7 @@
         var tl = new TimelineLite();
 
         var dataWrapper = document.querySelector('.content');
-        dataWrapper.classlist.add('outro');
+        dataWrapper.classList.add('outro');
 
         tl.to(dataWrapper, 0.4, { ease: Power1.easeOut, webkitMaskPositionX: -1499 });
       }

@@ -7145,7 +7145,7 @@ h6 {
 }
 .lower-third .content {
   width: 1376px;
-  left: -1500px;
+  -webkit-transform: translate(-1500px, 0);
   transition: none;
   -webkit-filter: url("#motionBlur");
   box-shadow: 10px 0px 50px #272727;
