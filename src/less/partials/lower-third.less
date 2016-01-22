@@ -7,9 +7,15 @@
   hegiht: 1080px;
 
   -webkit-transform: translate(0, 400px);
+  transition: transform 0.45s;
+  transition-timing-function: ease-in-out;
 
   -webkit-filter: url("#motionBlur");
   filter: url("../coming-up.html#motionBlur");
+
+  .lt-wrapper.visible {
+    transform: translate(0, 0);
+  }
 
   .lower-third2 {
     position: absolute;

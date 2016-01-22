@@ -6813,8 +6813,13 @@ h6 {
   width: 1920px;
   hegiht: 1080px;
   -webkit-transform: translate(0, 400px);
+  transition: transform 0.45s;
+  transition-timing-function: ease-in-out;
   -webkit-filter: url("#motionBlur");
   filter: url("../coming-up.html#motionBlur");
+}
+.lt-wrapper.visible {
+  -webkit-transform: translate(0, 0);
 }
 .lt-wrapper .lower-third2 {
   position: absolute;
@@ -6835,7 +6840,7 @@ h6 {
 .lt-wrapper .lower-third2 .content .inner {
   font-family: "HelveticaNeue";
   font-size: 50px;
-  padding: 20px 28px;
+  padding: 20px 28px 0;
 }
 .lt-wrapper .lower-third2 .content h1 {
   font-size: 40px;
