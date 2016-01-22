@@ -6813,7 +6813,7 @@ h6 {
   width: 1920px;
   hegiht: 1080px;
   -webkit-transform: translate(0, 400px);
-  transition: transform 0.45s;
+  transition: -webkit-transform 0.45s;
   transition-timing-function: ease-in-out;
   -webkit-filter: url("#motionBlur");
   filter: url("../coming-up.html#motionBlur");

@@ -7,14 +7,14 @@
   hegiht: 1080px;
 
   -webkit-transform: translate(0, 400px);
-  transition: transform 0.45s;
+  transition: -webkit-transform 0.45s;
   transition-timing-function: ease-in-out;
 
   -webkit-filter: url("#motionBlur");
   filter: url("../coming-up.html#motionBlur");
 
-  .lt-wrapper.visible {
-    transform: translate(0, 0);
+  &.visible {
+    -webkit-transform: translate(0, 0);
   }
 
   .lower-third2 {
@@ -40,7 +40,7 @@
       .inner {
         font-family: "HelveticaNeue";
         font-size: 50px;
-        padding: 20px 28px;
+        padding: 20px 28px 0;
 
       }
 
