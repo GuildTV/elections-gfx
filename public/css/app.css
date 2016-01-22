@@ -7145,13 +7145,10 @@ h6 {
 }
 .lower-third .content {
   width: 1376px;
-  left: -1400px;
-  box-shadow: 10px 0px 50px #272727;
+  left: -1500px;
   transition: none;
-  -webkit-mask-position: 0 0;
-  -webkit-mask-size: 1500px 255px;
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-image: -webkit-linear-gradient(left, #ffffff 1400px, rgba(255, 255, 255, 0) 1500px);
+  -webkit-filter: url("#motionBlur");
+  box-shadow: 10px 0px 50px #272727;
 }
 .lower-third .content .inner {
   padding: 90px 28px;
@@ -7163,6 +7160,12 @@ h6 {
 }
 .lower-third .content h2 {
   font-size: 40px;
+}
+.lower-third .content.outro {
+  -webkit-mask-position: 0 0;
+  -webkit-mask-size: 1500px 255px;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-image: -webkit-linear-gradient(left, #ffffff 1400px, rgba(255, 255, 255, 0) 1500px);
 }
 .winningCandidateContainer {
   z-index: 200;

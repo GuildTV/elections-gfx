@@ -55,6 +55,7 @@
         var tl = new TimelineLite();
 
         var dataWrapper = document.querySelector('.content');
+        dataWrapper.classlist.add('outro');
 
         tl.to(dataWrapper, 0.4, { ease: Power1.easeOut, webkitMaskPositionX: -1499 });
       }
@@ -73,7 +74,7 @@
       -->
 
       function play(str){
-        update(str);
+        //update(str);
       }
 
       function update(str){
@@ -96,8 +97,8 @@
         update("<templateData><componentData id=\"name\"><data id=\"text\" value=\"simon harwood\" /></componentData><componentData id=\"role\"><data id=\"text\" value=\"bbc, director of strategic governance\" /></componentData></templateData>");
       }
 
-      setTimeout(fake, 1000);
-      setTimeout(stop, 10000);
+      // setTimeout(fake, 1000);
+      // setTimeout(stop, 10000);
 
     </script>
 

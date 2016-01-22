@@ -58,7 +58,7 @@
 
   .content {
     width: 1376px;
-    left: -1400px;
+    left: -1500px;
 
     box-shadow: 10px 0px 50px #272727;
 
@@ -70,6 +70,10 @@
       box-shadow: none;
     }
 
+
+    -webkit-filter: url("#motionBlur");
+    box-shadow: 10px 0px 50px #272727;
+
     h1 {
       font-size: 40px;
       font-family: "HelveticaNeue-Bold";
@@ -79,9 +83,11 @@
       font-size: 40px;
     }
 
-    -webkit-mask-position: 0 0;
-    -webkit-mask-size: 1500px 255px;
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-image: -webkit-linear-gradient(left, rgba(255,255,255,1) 1400px,rgba(255,255,255,0) 1500px);
+    &.outro {
+      -webkit-mask-position: 0 0;
+      -webkit-mask-size: 1500px 255px;
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-image: -webkit-linear-gradient(left, rgba(255,255,255,1) 1400px,rgba(255,255,255,0) 1500px);
+    }
   }
 }
