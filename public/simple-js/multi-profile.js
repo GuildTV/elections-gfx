@@ -56,6 +56,8 @@ function stop(){
 function animate(){
   var tl = new TimelineLite();
 
+  document.body.style.display = "block";
+  
   var elm = document.querySelectorAll('.multiProfile h1');
 
   tl.to(elm, 0.6, {top: "0px"})
