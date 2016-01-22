@@ -7096,7 +7096,8 @@ h6 {
   height: 1080px;
   display: none;
 }
-.coming-up {
+.coming-up,
+.lower-third {
   position: absolute;
   top: 933px;
   left: 544px;
@@ -7104,7 +7105,8 @@ h6 {
   height: 115px;
   overflow: hidden;
 }
-.coming-up .content {
+.coming-up .content,
+.lower-third .content {
   position: absolute;
   left: 0px;
   top: -70px;
@@ -7114,23 +7116,53 @@ h6 {
   background: #272727;
   transition: left 0.75s;
 }
-.coming-up .content .inner {
+.coming-up .content .inner,
+.lower-third .content .inner {
   box-shadow: inset 2px 2px 8px #000;
   font-family: "HelveticaNeue";
   font-size: 50px;
   padding: 92px 28px;
 }
-.coming-up .content .inner .bold {
+.coming-up .content .inner .bold,
+.lower-third .content .inner .bold {
   font-family: "HelveticaNeue-Bold";
 }
-.coming-up .content.blur {
+.coming-up .content.blur,
+.lower-third .content.blur {
   -webkit-filter: url("#textBlur");
   filter: url("../coming-up.html#textBlur");
   box-shadow: 10px 0px 50px #272727;
 }
-.coming-up .content.hidden {
+.coming-up .content.hidden,
+.lower-third .content.hidden {
   display: block !important;
   left: -1500px;
+}
+.lower-third {
+  width: 1376px;
+  top: 932px;
+  height: 125px;
+}
+.lower-third .content {
+  width: 1376px;
+  left: -1400px;
+  box-shadow: 10px 0px 50px #272727;
+  transition: none;
+  -webkit-mask-position: 0 0;
+  -webkit-mask-size: 1500px 255px;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-image: -webkit-linear-gradient(left, #ffffff 1400px, rgba(255, 255, 255, 0) 1500px);
+}
+.lower-third .content .inner {
+  padding: 90px 28px;
+  box-shadow: none;
+}
+.lower-third .content h1 {
+  font-size: 40px;
+  font-family: "HelveticaNeue-Bold";
+}
+.lower-third .content h2 {
+  font-size: 40px;
 }
 .winningCandidateContainer {
   z-index: 200;

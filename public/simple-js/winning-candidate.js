@@ -10,7 +10,11 @@ function render(id, data){
 }
 
 function stop(){
-  container.empty();
+  document.querySelector('body').innerHTML = "";
+}
+
+function remove() {
+  document.querySelector('body').innerHTML = "";
 }
 
 function animate(){
