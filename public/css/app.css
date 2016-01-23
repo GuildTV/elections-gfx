@@ -7100,7 +7100,7 @@ h6 {
 }
 .multiProfileContainer .multiProfileOuter .multiProfile .name h1,
 .multiProfileContainer .multiProfileOuter .multiProfile .name h2 {
-  transform-origin: left;
+  -webkit-transform-origin: left;
 }
 #blue-bg {
   background: url('../img/blue.png') no-repeat center center fixed;
