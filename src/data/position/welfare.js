@@ -1,30 +1,33 @@
-Data['welfare'] = [
-  {
-    "uid"             : "welfare-ron",
-    "pid"             : "welfare",
-    "first"           : "RON",
-    "last"            : "",
-    "position"        : "Welfare Officer",
-    "position_short"  : "WO",
-    "candidate"       : true,
-    "manifestoPoints" : {
-      "one"           : "",
-      "two"           : "",
-      "three"         : "",
-    }
+Data['welfare'] = {
+  info: {
+    full: "Welfare Officer",
+    compact:  "Welfare", // sidebar title etc
+    mini: "WO",
+    sidebar_use_officer: false // include officer when showing in sidebar
   },
-  {
-    "uid"             : "welfare-ross",
-    "pid"             : "welfare",
-    "first"           : "Ross",
-    "last"            : "Strong",
-    "position"        : "Welfare Officer",
-    "position_short"  : "WO",
-    "candidate"       : true,
-    "manifestoPoints" : {
-      "one"           : "Mental Health Campaigning",
-      "two"           : "Sexual Health Testing on Campus",
-      "three"         : "Empowering Liberation Groups",
+
+  people: [
+    {
+      "uid"             : "welfare-ross",
+      "pid"             : "welfare",
+      "first"           : "Ross",
+      "last"            : "Strong",
+      "manifestoPoints" : {
+        "one"           : "Mental Health Campaigning",
+        "two"           : "Sexual Health Testing on Campus",
+        "three"         : "Empowering Liberation Groups",
+      }
+    },
+    {
+      "uid"             : "welfare-ron",
+      "pid"             : "welfare",
+      "first"           : "RON",
+      "last"            : "",
+      "manifestoPoints" : {
+        "one"           : "",
+        "two"           : "",
+        "three"         : "",
+      }
     }
-  }
-];
+  ]
+};

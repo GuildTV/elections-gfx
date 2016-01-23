@@ -50,7 +50,7 @@ function update(str){
 
     if(winners){
       node.querySelector('h1').innerText = (person.first.toUpperCase() + " " + person.last.toUpperCase()).trim();
-      node.querySelector('h2').innerText = person.position_short.toUpperCase();
+      node.querySelector('h2').innerText = person.position.mini.toUpperCase();
     } else {
       node.querySelector('h1').innerText = person.first.toUpperCase();
       node.querySelector('h2').innerText = person.last.toUpperCase();

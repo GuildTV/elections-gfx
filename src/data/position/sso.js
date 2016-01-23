@@ -1,30 +1,33 @@
-Data['sso'] = [
-  {
-    "uid"             : "sso-ron",
-    "pid"             : "sso",
-    "first"           : "RON",
-    "last"            : "",
-    "position"        : "Satellite Sites Officer",
-    "position_short"  : "SSO",
-    "candidate"       : true,
-    "manifestoPoints" : {
-      "one"           : "",
-      "two"           : "",
-      "three"         : "",
-    }
+Data['sso'] = {
+  info: {
+    full: "Satellite Sites Officer",
+    compact:  "Satellite Sites", // sidebar title etc
+    mini: "SSO",
+    sidebar_use_officer: false // include officer when showing in sidebar
   },
-  {
-    "uid"             : "sso-ellie",
-    "pid"             : "sso",
-    "first"           : "Eleanor",
-    "last"            : "Keiller",
-    "position"        : "Satellite Sites Officer",
-    "position_short"  : "SSO",
-    "candidate"       : true,
-    "manifestoPoints" : {
-      "one"           : "Improved Transport Links",
-      "two"           : "Sufficient Study Resources",
-      "three"         : "Regular Guild Services",
+
+  people: [
+    {
+      "uid"             : "sso-ellie",
+      "pid"             : "sso",
+      "first"           : "Eleanor",
+      "last"            : "Keiller",
+      "manifestoPoints" : {
+        "one"           : "Improved Transport Links",
+        "two"           : "Sufficient Study Resources",
+        "three"         : "Regular Guild Services",
+      }
+    },
+    {
+      "uid"             : "sso-ron",
+      "pid"             : "sso",
+      "first"           : "RON",
+      "last"            : "",
+      "manifestoPoints" : {
+        "one"           : "",
+        "two"           : "",
+        "three"         : "",
+      }
     }
-  }
-  ];
+  ]
+};

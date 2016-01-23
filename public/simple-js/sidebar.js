@@ -9,7 +9,7 @@ function render(id, data){
     holder.querySelector('img').src = "public/img/roles/"+person.pid+"/"+person.uid+".png";
   }
 
-  holder.querySelector('.position h1').innerText = person.position_short;
+  holder.querySelector('.position h1').innerText = person.position.compact;
   holder.querySelector('.position h2').innerText = data.elect?"elect":"candidate";
 
   holder.querySelector('.name h1').innerText = person.first;
