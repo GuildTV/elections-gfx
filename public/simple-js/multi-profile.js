@@ -40,25 +40,33 @@ function update(str){
       continue;
     }
 
-    window.dfsdf = node;
     node.querySelector('img').setAttribute('src', "public/img/roles/"+person.pid+"/"+person.uid+".png");
-    node.querySelector('h1').innerHTML = person.first.toUpperCase()+"<br/><strong>"+person.last.toUpperCase()+"</strong>";
-  }
 
-  //setTimeout(animate, 100);
-  animate();
+    var h1 = node.querySelector('h1');
+    var h2 = node.querySelector('h2')
+    h1.innerText = person.first.toUpperCase();
+    h2.innerText = person.last.toUpperCase()+"sssssssssss";
+
+    var scale2 = (h2.clientWidth-15)/h2.scrollWidth;
+    var scale1 = (h1.clientWidth-15)/h1.scrollWidth;
+
+    if(scale2 < 1)
+      h2.style.transform = "scale("+scale2+","+scale2+")";
+    if(scale1 < 1)
+      h1.style.transform = "scale("+scale1+","+scale1+")";
+  }
 }
 
 function stop(){
-  document.body.style.display = "none";
+  document.body.style.visibility = "hidden";
 }
 
 function animate(){
   var tl = new TimelineLite();
 
-  document.body.style.display = "block";
-  
-  var elm = document.querySelectorAll('.multiProfile h1');
+  document.body.style.visibility = "visible";
+
+  var elm = document.querySelectorAll('.multiProfile div.name');
 
   tl.to(elm, 0.6, {top: "0px"})
     .to(elm, 0.2, {autoAlpha: 1}, '-=0.6');

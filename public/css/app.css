@@ -7080,17 +7080,27 @@ h6 {
   width: 100%;
   z-index: 10000;
 }
-.multiProfileContainer .multiProfileOuter .multiProfile h1 {
+.multiProfileContainer .multiProfileOuter .multiProfile .name {
   position: relative;
   top: -120px;
   z-index: -1;
-  font-family: "HelveticaNeue";
-  font-size: 61px;
   line-height: 0.9;
   text-align: center;
   color: #262626;
   overflow: hidden;
   opacity: 0;
+}
+.multiProfileContainer .multiProfileOuter .multiProfile .name h1 {
+  font-family: "HelveticaNeue";
+  font-size: 61px;
+}
+.multiProfileContainer .multiProfileOuter .multiProfile .name h2 {
+  font-family: "HelveticaNeue-Bold";
+  font-size: 61px;
+}
+.multiProfileContainer .multiProfileOuter .multiProfile .name h1,
+.multiProfileContainer .multiProfileOuter .multiProfile .name h2 {
+  transform-origin: left;
 }
 #blue-bg {
   background: url('../img/blue.png') no-repeat center center fixed;

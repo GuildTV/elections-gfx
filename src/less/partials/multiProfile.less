@@ -142,14 +142,12 @@
         z-index: 10000;
       }
 
-      h1 {
+      .name {
         position: relative;
         top: -120px;
         z-index: -1;
         //margin: 5px 10px;
 
-        font-family: "HelveticaNeue";
-        font-size: 61px;
         line-height: 0.9;
         text-align: center;
         color: #262626;
@@ -159,8 +157,18 @@
 
         opacity: 0;
 
-        strong {
-          @font-face: "HelveticaNeue-Bold";
+        h1 {
+          font-family: "HelveticaNeue";
+          font-size: 61px;
+        }
+
+        h2 {
+          font-family: "HelveticaNeue-Bold";
+          font-size: 61px;
+        }
+
+        h1, h2 {
+          transform-origin: left;
         }
       }
     }
