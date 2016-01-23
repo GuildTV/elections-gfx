@@ -7261,3 +7261,60 @@ h6 {
   line-height: 1;
   color: #262626;
 }
+.sidebar {
+  width: 455px;
+  height: 930px;
+  position: absolute;
+  top: 55px;
+  left: 1465px;
+  text-transform: uppercase;
+  -webkit-transform: translateX(600px);
+  -webkit-filter: url("#motionBlur");
+}
+.sidebar > div {
+  padding: 20px 30px 0;
+}
+.sidebar .position {
+  height: 110px;
+  color: white;
+  font-family: "HelveticaNeue";
+}
+.sidebar .position h1 {
+  font-size: 34px;
+  font-family: "HelveticaNeue-Bold";
+}
+.sidebar .position h2 {
+  font-size: 36px;
+  font-family: "HelveticaNeue";
+}
+.sidebar .name {
+  height: 130px;
+}
+.sidebar .name h1 {
+  font-size: 40px;
+  font-family: "HelveticaNeue";
+  color: #202020;
+}
+.sidebar .name h2 {
+  font-size: 40px;
+  font-family: "HelveticaNeue-Bold";
+  margin-top: -5px;
+  color: #202020;
+}
+.sidebar .manifesto_heading {
+  height: 75px;
+  font-size: 30px;
+  font-family: "HelveticaNeue";
+  color: white;
+  padding-top: 15px;
+}
+.sidebar .manifesto {
+  padding-right: 50px;
+}
+.sidebar .manifesto p {
+  font-size: 30px;
+  font-family: "HelveticaNeue";
+  line-height: 1.1;
+  margin: 15px 0 40px;
+  color: #202020;
+}
