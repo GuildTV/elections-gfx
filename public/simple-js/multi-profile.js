@@ -43,27 +43,8 @@ function update(str){
     }
 
     node.querySelector('img').setAttribute('src', "public/img/roles/"+person.pid+"/"+person.uid+".png");
-
-    var h1 = node.querySelector('h1');
-    var h2 = node.querySelector('h2')
-    h1.innerText = person.first.toUpperCase();
-    h2.innerText = person.last.toUpperCase();
-
-    var scale2 = (h2.clientWidth)/h2.scrollWidth;
-    var scale1 = (h1.clientWidth)/h1.scrollWidth;
-
-	if(scale2 < smallest)
-		smallest = scale2;
-	if(scale1 < smallest)
-		smallest = scale1;
-  }
-  
-  smallest -= 0.06;
-  
-  var names = document.querySelectorAll('.name');
-  for(var i = 0; i < names.length; i++){
-	names[i].style.webkitTransform = "scale("+smallest+","+smallest+")";
-	names[i].style.width = (names[i].clientWidth/smallest)+"px";
+    node.querySelector('h1').innerText = person.first.toUpperCase();
+    node.querySelector('h2').innerText = person.last.toUpperCase();
   }
 }
 
@@ -75,8 +56,30 @@ function stop(){
   document.body.style.visibility = "hidden";
 }
 
+function letterSpacing(){
+  
+  var profiles = document.querySelectorAll('.multiProfile');
+  for(var i = 0; i < profiles.length; i++){
+    var node = profiles[i];
+	
+    var h1 = node.querySelector('h1');
+    var h2 = node.querySelector('h2')
+	
+	var space1 = (h1.clientWidth-h1.scrollWidth)/(h1.textContent.length-1);
+	var space2 = (h2.clientWidth-h2.scrollWidth)/(h2.textContent.length-1);
+    	
+	if(space1 < 0)
+		h1.style.letterSpacing = space1+"px";
+	if(space2 < 0)
+		h2.style.letterSpacing = space2+"px";
+	
+  }
+}
+
 function animate(){
   var tl = new TimelineLite();
+
+  setTimeout(letterSpacing, 50);
 
   document.body.style.visibility = "visible";
 
