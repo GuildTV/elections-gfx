@@ -22,7 +22,8 @@ function render(id, data){
 }
 
 function stop(){
-  animateOut();
+  //animateOut();
+  document.querySelector('body').innerHTML = "";
 }
 
 function remove() {
