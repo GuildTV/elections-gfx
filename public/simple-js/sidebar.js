@@ -6,6 +6,7 @@ function render(id, data){
 
   if(data.photo){
     holder.classList.add('photo');
+    holder.querySelector('img').src = "public/img/roles/"+person.pid+"/"+person.uid+".png";
   }
 
   holder.querySelector('.position h1').innerText = person.position_short;

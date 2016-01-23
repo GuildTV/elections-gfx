@@ -13,10 +13,36 @@
   -webkit-filter: url("#motionBlur");
 
   &.photo {
-    
+    .name {
+      height: 245px;
+
+      img {
+        width: 250px;
+        float: left;
+        margin-top: -4px;
+        margin-left: -5px;
+      }
+
+      div {
+        padding-top: 85px;
+        position: absolute;
+        padding-left: 200px;
+
+        h1, h2 {
+          font-size: 35px;
+        }
+
+      }
+
+    }
+
+    .manifesto p {
+      margin-bottom: 30px;
+    }
+
   }
 
-  > div {
+  > div, .name div {
     padding: 20px 30px 0;
   }
 
@@ -38,12 +64,17 @@
 
   .name {
     height: 130px;
+    padding: 0;
+
+    div {
+      padding-top: 0;
+    }
 
     h1 {
       font-size: 40px;
       font-family: "HelveticaNeue";
       color: #202020;
-   }
+    }
     h2 {
       font-size: 40px;
       font-family: "HelveticaNeue-Bold";

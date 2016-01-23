@@ -7271,7 +7271,29 @@ h6 {
   -webkit-transform: translateX(600px);
   -webkit-filter: url("#motionBlur");
 }
-.sidebar > div {
+.sidebar.photo .name {
+  height: 245px;
+}
+.sidebar.photo .name img {
+  width: 250px;
+  float: left;
+  margin-top: -4px;
+  margin-left: -5px;
+}
+.sidebar.photo .name div {
+  padding-top: 85px;
+  position: absolute;
+  padding-left: 200px;
+}
+.sidebar.photo .name div h1,
+.sidebar.photo .name div h2 {
+  font-size: 35px;
+}
+.sidebar.photo .manifesto p {
+  margin-bottom: 30px;
+}
+.sidebar > div,
+.sidebar .name div {
   padding: 20px 30px 0;
 }
 .sidebar .position {
@@ -7289,6 +7311,10 @@ h6 {
 }
 .sidebar .name {
   height: 130px;
+  padding: 0;
+}
+.sidebar .name div {
+  padding-top: 0;
 }
 .sidebar .name h1 {
   font-size: 40px;
