@@ -32,6 +32,8 @@ function remove() {
 function animate(){
   var tl = new TimelineLite();
 
+  letterSpacing();
+
   var dataWrapper = document.querySelector('.sidebar');
 
   var blurData = { myVal: blurStrength };
@@ -40,6 +42,15 @@ function animate(){
     .to(blurData, 0.6, { ease: Power2.easeIn, myVal: 0, onUpdate: animateBlur, onUpdateParams: ["{self}", dataWrapper, blurData] }, '-=0.6');
 }
 
+function letterSpacing(){
+  
+  var field = document.querySelector('.sidebar .position h1');
+  
+  var space1 = (field.clientWidth-field.scrollWidth)/(field.textContent.length-1);
+      
+  if(space1 < 0)
+    field.style.letterSpacing = space1+"px";
+}
 
 function animateOut(){
   var tl = new TimelineLite();

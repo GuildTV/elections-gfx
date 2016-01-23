@@ -19,7 +19,7 @@ Data['ado'] = [
     "first"           : "Ben",
     "last"            : "Chapman",
     "position"        : "Activities & Development Officer",
-    "position_short"  : "ADO",
+    "position_short"  : "Activities & Development",
     "candidate"       : true,
     "manifestoPoints" : {
       "one"           : "Introduce 'Society Of The Week'",

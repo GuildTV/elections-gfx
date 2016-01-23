@@ -7300,13 +7300,15 @@ h6 {
   height: 110px;
   color: white;
   font-family: "HelveticaNeue";
+  padding: 20px 15px 0;
 }
 .sidebar .position h1 {
-  font-size: 34px;
+  font-size: 30px;
   font-family: "HelveticaNeue-Bold";
+  white-space: nowrap;
 }
 .sidebar .position h2 {
-  font-size: 36px;
+  font-size: 32px;
   font-family: "HelveticaNeue";
 }
 .sidebar .name {
