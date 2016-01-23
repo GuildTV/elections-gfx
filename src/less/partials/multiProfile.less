@@ -36,6 +36,15 @@
     .people {
       text-align: center;
 
+      &.winners {
+        margin-top: 50px !important;
+
+        h1, h2 {
+          line-height: 1.1 !important;
+          font-size: 42px !important;
+        }       
+      }
+
       &.count7, &.count8 {
         margin-top: 20px;
         margin-bottom: 20px;
@@ -50,7 +59,7 @@
 
           margin: 0px 15px 35px;
 
-          h1 {
+          h1, h2 {
             line-height: 1.1;
             font-size: 50px;
           }
@@ -70,7 +79,7 @@
             width: 230px;
           }
 
-          h1 {
+          h1, h2 {
             line-height: 1.1;
             font-size: 50px;
           }
@@ -90,7 +99,7 @@
             width: 265px;
           }
 
-          h1 {
+          h1, h2 {
             line-height: 1;
             font-size: 50px;
           }
@@ -146,28 +155,23 @@
         position: relative;
         top: -120px;
         z-index: -1;
-        //margin: 5px 10px;
 
         line-height: 0.9;
         text-align: center;
         color: #262626;
 
-        //TODO - scale text instead
-        overflow: hidden;
-
         opacity: 0;
 
         h1 {
           font-family: "HelveticaNeue";
-          font-size: 61px;
         }
 
         h2 {
           font-family: "HelveticaNeue-Bold";
-          font-size: 61px;
         }
 
         h1, h2 {
+          font-size: 61px;
           -webkit-transform-origin: left;
         }
       }

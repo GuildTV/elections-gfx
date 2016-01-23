@@ -1,7 +1,8 @@
 function update(str){
   var data = xmlToObject(str);
 
-  var name = data.name?data.name:"";
+  var winners = !data.name;
+  var name = winners?"":data.name;
   delete data.name;
 
   var people = [];
@@ -30,6 +31,9 @@ function update(str){
   var peopleDiv = document.querySelector('.people');
   peopleDiv.classList.add('count'+people.length);
 
+  if(winners)
+    peopleDiv.classList.add('winners');
+
   var profiles = peopleDiv.querySelectorAll('.multiProfile');
   for(var i = 0; i < profiles.length; i++){
     var node = profiles[i];
@@ -44,17 +48,27 @@ function update(str){
 
     var h1 = node.querySelector('h1');
     var h2 = node.querySelector('h2')
-    h1.innerText = person.first.toUpperCase();
-    h2.innerText = person.last.toUpperCase();
 
-    var scale2 = (h2.clientWidth-15)/h2.scrollWidth;
-    var scale1 = (h1.clientWidth-15)/h1.scrollWidth;
+    if(winners){
+      h1.innerText = (person.first.toUpperCase() + " " + person.last.toUpperCase()).trim();
+      h2.innerText = person.position_short.toUpperCase();
+    } else {
+      h1.innerText = person.first.toUpperCase();
+      h2.innerText = person.last.toUpperCase();
+    }
+
+    var scale2 = (h2.clientWidth)/h2.scrollWidth;
+    var scale1 = (h1.clientWidth)/h1.scrollWidth;
 
     if(scale2 < 1)
       h2.style.webkitTransform = "scale("+scale2+","+scale2+")";
     if(scale1 < 1)
       h1.style.webkitTransform = "scale("+scale1+","+scale1+")";
   }
+}
+
+function play(){
+  animate();
 }
 
 function stop(){
