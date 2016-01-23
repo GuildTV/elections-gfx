@@ -29,6 +29,8 @@ function update(str){
 
   var peopleDiv = document.querySelector('.people');
   peopleDiv.classList.add('count'+people.length);
+  
+  var smallest = 1;
 
   var profiles = peopleDiv.querySelectorAll('.multiProfile');
   for(var i = 0; i < profiles.length; i++){
@@ -47,14 +49,26 @@ function update(str){
     h1.innerText = person.first.toUpperCase();
     h2.innerText = person.last.toUpperCase();
 
-    var scale2 = (h2.clientWidth-15)/h2.scrollWidth;
-    var scale1 = (h1.clientWidth-15)/h1.scrollWidth;
+    var scale2 = (h2.clientWidth)/h2.scrollWidth;
+    var scale1 = (h1.clientWidth)/h1.scrollWidth;
 
-    if(scale2 < 1)
-      h2.style.webkitTransform = "scale("+scale2+","+scale2+")";
-    if(scale1 < 1)
-      h1.style.webkitTransform = "scale("+scale1+","+scale1+")";
+	if(scale2 < smallest)
+		smallest = scale2;
+	if(scale1 < smallest)
+		smallest = scale1;
   }
+  
+  smallest -= 0.06;
+  
+  var names = document.querySelectorAll('.name');
+  for(var i = 0; i < names.length; i++){
+	names[i].style.webkitTransform = "scale("+smallest+","+smallest+")";
+	names[i].style.width = (names[i].clientWidth/smallest)+"px";
+  }
+}
+
+function play(){
+  animate();
 }
 
 function stop(){

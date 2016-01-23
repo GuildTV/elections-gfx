@@ -7006,7 +7006,9 @@ h6 {
   width: 260px;
 }
 .multiProfileContainer .multiProfileOuter .people.count7 .multiProfile h1,
-.multiProfileContainer .multiProfileOuter .people.count8 .multiProfile h1 {
+.multiProfileContainer .multiProfileOuter .people.count8 .multiProfile h1,
+.multiProfileContainer .multiProfileOuter .people.count7 .multiProfile h2,
+.multiProfileContainer .multiProfileOuter .people.count8 .multiProfile h2 {
   line-height: 1.1;
   font-size: 50px;
 }
@@ -7021,7 +7023,8 @@ h6 {
 .multiProfileContainer .multiProfileOuter .people.count6 .multiProfile .image {
   width: 230px;
 }
-.multiProfileContainer .multiProfileOuter .people.count6 .multiProfile h1 {
+.multiProfileContainer .multiProfileOuter .people.count6 .multiProfile h1,
+.multiProfileContainer .multiProfileOuter .people.count6 .multiProfile h2 {
   line-height: 1.1;
   font-size: 50px;
 }
@@ -7036,7 +7039,8 @@ h6 {
 .multiProfileContainer .multiProfileOuter .people.count5 .multiProfile .image {
   width: 265px;
 }
-.multiProfileContainer .multiProfileOuter .people.count5 .multiProfile h1 {
+.multiProfileContainer .multiProfileOuter .people.count5 .multiProfile h1,
+.multiProfileContainer .multiProfileOuter .people.count5 .multiProfile h2 {
   line-height: 1;
   font-size: 50px;
 }
@@ -7089,18 +7093,17 @@ h6 {
   color: #262626;
   overflow: hidden;
   opacity: 0;
+  -webkit-transform-origin: left;
 }
 .multiProfileContainer .multiProfileOuter .multiProfile .name h1 {
   font-family: "HelveticaNeue";
   font-size: 61px;
+  -webkit-transform-origin: bottom left;
 }
 .multiProfileContainer .multiProfileOuter .multiProfile .name h2 {
   font-family: "HelveticaNeue-Bold";
   font-size: 61px;
-}
-.multiProfileContainer .multiProfileOuter .multiProfile .name h1,
-.multiProfileContainer .multiProfileOuter .multiProfile .name h2 {
-  -webkit-transform-origin: left;
+  -webkit-transform-origin: top left;
 }
 #blue-bg {
   background: url('../img/blue.png') no-repeat center center fixed;

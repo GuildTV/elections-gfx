@@ -50,7 +50,7 @@
 
           margin: 0px 15px 35px;
 
-          h1 {
+          h1, h2 {
             line-height: 1.1;
             font-size: 50px;
           }
@@ -70,7 +70,7 @@
             width: 230px;
           }
 
-          h1 {
+          h1, h2 {
             line-height: 1.1;
             font-size: 50px;
           }
@@ -90,7 +90,7 @@
             width: 265px;
           }
 
-          h1 {
+          h1, h2 {
             line-height: 1;
             font-size: 50px;
           }
@@ -156,19 +156,19 @@
         overflow: hidden;
 
         opacity: 0;
+		
+		-webkit-transform-origin: left;
 
         h1 {
           font-family: "HelveticaNeue";
           font-size: 61px;
+          -webkit-transform-origin: bottom left;
         }
 
         h2 {
           font-family: "HelveticaNeue-Bold";
           font-size: 61px;
-        }
-
-        h1, h2 {
-          -webkit-transform-origin: left;
+          -webkit-transform-origin: top left;
         }
       }
     }
