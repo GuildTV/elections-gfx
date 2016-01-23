@@ -6990,6 +6990,14 @@ h6 {
 .multiProfileContainer .multiProfileOuter .people {
   text-align: center;
 }
+.multiProfileContainer .multiProfileOuter .people.winners {
+  margin-top: 50px !important;
+}
+.multiProfileContainer .multiProfileOuter .people.winners h1,
+.multiProfileContainer .multiProfileOuter .people.winners h2 {
+  line-height: 1.1 !important;
+  font-size: 42px !important;
+}
 .multiProfileContainer .multiProfileOuter .people.count7,
 .multiProfileContainer .multiProfileOuter .people.count8 {
   margin-top: 20px;
@@ -7091,7 +7099,6 @@ h6 {
   line-height: 0.9;
   text-align: center;
   color: #262626;
-  overflow: hidden;
   opacity: 0;
   -webkit-transform-origin: left;
 }

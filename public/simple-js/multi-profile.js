@@ -1,7 +1,8 @@
 function update(str){
   var data = xmlToObject(str);
 
-  var name = data.name?data.name:"";
+  var winners = !data.name;
+  var name = winners?"":data.name;
   delete data.name;
 
   var people = [];
@@ -32,6 +33,9 @@ function update(str){
   
   var smallest = 1;
 
+  if(winners)
+    peopleDiv.classList.add('winners');
+
   var profiles = peopleDiv.querySelectorAll('.multiProfile');
   for(var i = 0; i < profiles.length; i++){
     var node = profiles[i];
@@ -43,8 +47,14 @@ function update(str){
     }
 
     node.querySelector('img').setAttribute('src', "public/img/roles/"+person.pid+"/"+person.uid+".png");
-    node.querySelector('h1').innerText = person.first.toUpperCase();
-    node.querySelector('h2').innerText = person.last.toUpperCase();
+
+    if(winners){
+      node.querySelector('h1').innerText = (person.first.toUpperCase() + " " + person.last.toUpperCase()).trim();
+      node.querySelector('h2').innerText = person.position_short.toUpperCase();
+    } else {
+      node.querySelector('h1').innerText = person.first.toUpperCase();
+      node.querySelector('h2').innerText = person.last.toUpperCase();
+    }
   }
 }
 
