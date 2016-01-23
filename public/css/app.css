@@ -6799,13 +6799,6 @@ h6 {
 .visible-animate {
   opacity: 1;
 }
-.logo img {
-  width: 15em;
-  padding: 1em;
-}
-.top-bar {
-  background-color: rgba(51, 51, 51, 0.25);
-}
 .lt-wrapper {
   position: absolute;
   top: 0px;
@@ -6848,38 +6841,6 @@ h6 {
 }
 .lt-wrapper .lower-third2 .content h2 {
   font-size: 40px;
-}
-.singleProfileContainer {
-  position: absolute;
-  height: 100vw;
-}
-.singleProfileContainer .singleProfile {
-  bottom: -125%;
-  height: auto;
-  opacity: 0;
-  text-align: center;
-  font-family: "RobotoCondensed";
-  background-color: rgba(74, 74, 74, 0.5);
-  color: #f0f0f0;
-  padding: 5vh;
-  border-radius: 0.25vh 0;
-}
-.singleProfileContainer .singleProfile h1,
-.singleProfileContainer .singleProfile h2,
-.singleProfileContainer .singleProfile img {
-  margin-bottom: 0.5em;
-}
-.singleProfileContainer .singleProfile img {
-  background-color: rgba(115, 158, 201, 0.9);
-  background: -webkit-gradient(linear, left top, right bottom, from(rgba(60, 107, 154, 0.9)), to(rgba(115, 158, 201, 0.9)));
-  border: 3px solid rgba(115, 158, 201, 0.9);
-  border-image: -webkit-linear-gradient(left top, rgba(115, 158, 201, 0.9) 0%, rgba(60, 107, 154, 0.9) 100%);
-  border-image-slice: 1;
-  min-height: 200px;
-  border-radius: 0.25vh;
-}
-.singleProfileContainer .singleProfile ul li {
-  text-align: left;
 }
 .twitterContainer {
   height: 100vh;
@@ -7111,17 +7072,6 @@ h6 {
   font-family: "HelveticaNeue-Bold";
   font-size: 61px;
   -webkit-transform-origin: top left;
-}
-#blue-bg {
-  background: url('../img/blue.png') no-repeat center center fixed;
-  background-size: cover;
-  position: absolute;
-  float: left;
-  top: 0px;
-  left: 0px;
-  width: 1920px;
-  height: 1080px;
-  display: none;
 }
 .coming-up,
 .lower-third {
