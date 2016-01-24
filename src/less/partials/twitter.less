@@ -1,112 +1,128 @@
-.twitterContainer {
-  height: 100vh;
+.twitterPhoto {
+  color: white;
+  display: none;
+
+  background: #262626;
+
   width: 100vw;
-  position: absolute;
-  top: 0px;
-  left: 0px;
+  height: 100vh;
 
-  h3 {
-    font-size: 4em;
-  }
-  h3.info {
-    font-size: 3.5em;
-  }
-
-  .tweetOuter {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100vw;
+  .photo {
     height: 100vh;
-  }
-
-  .twitter {
-    height: auto;
-    max-width: 90vw;
-
+    width: 1235px;
     position: absolute;
-    left: 5vw;
-    top: 50vh;
-    transform: translateY(-50%);
+    top: 0;
+    left: 0;
 
-    color: @white;
-
-  }
-
-  .twitterNode {
-    transition: opacity 0.5s ease-in;
-  }
-
-  .twitter_logo {
-    height: auto;
-    width: 35vw;
-
-    position: absolute;
-    left: -50vw;
-    top: -7vw;
-    
-    z-index: 9999;
-
-    transform: translate(-50%, -50%);
-  }
-
-  .text {
-    height: auto;
-    max-width: 80vw;
-
-    position: relative;
-    margin-left: 10vw;
-
-    opacity: 0;
-
-    z-index: -1;
-  }
-
-  .twitter_img_landscape {
-    //height: 424px;
-    //width: 576px;
-    height: 28vw;
-    
-    position: relative;
-    left: 3.75vw;
-    top: 1vw;
-    
-    opacity: 0;
-
-    z-index: -1;
-
-    border-radius: 5px;
-
-  }
-
-  .info {
-    margin-top: 4vw;
-    margin-left: 10vw;
-
-    opacity: 0;
-
-    z-index: -1;
-  }
-
-  .profile_pic {
-    height: 8vw;
-    width: 8vw;
-
-    opacity: 0;
-
-    z-index: -1;
-
-    border-radius: 20px;
-    display: inline-block;
-
-    background-position: center;
     background-size: cover;
+    background-position: center;
 
-    vertical-align: middle;
+    box-shadow: inset 0px 0px 80px #262626;
   }
 
-  .username {
-    margin-left: 2vw;
+  .dataSide {
+    height: calc(1080px - 120px);
+    width: 685px;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    padding: 60px;
+
+    background: #262626;
+
+    .dataInner {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+
+      width: 565px;
+
+      // margin-top: -90px;
+    }
+
+    .name {
+      font-family: "HelveticaNeue";
+      margin-bottom: 90px;
+
+      img {
+        height: 120px;
+
+        margin-top: -20px;
+      }
+
+      h1 {
+        display: inline-block;
+        font-size: 52px;
+        font-family: "HelveticaNeue-Bold";
+        margin-left: 40px;
+      }
+    }
+
+    .message {
+      font-size: 52px;
+      // margin-top: 120px;
+      line-height: 1.1;
+
+      font-family: "HelveticaNeue-Bold";
+    }
+
+    .handle {
+      margin-top: 60px;
+
+      h2 {
+        font-size: 50px;
+        font-family: "HelveticaNeue";
+      }
+    }
+
+  }
+}
+
+.twitterText {
+  color: white;
+  display: none;
+
+  background: #262626;
+
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  
+  width: 1920px;
+  padding-bottom: 10px;
+
+  font-family: "HelveticaNeue";
+
+  .inner {
+    padding: 40px 200px;
+    margin-bottom: 50px;
   }
 
+  .top {
+
+    img {
+      height: 140px;
+      float: right;
+      margin-top: 10px;
+    }
+
+    .name {
+      display: inline-block;
+
+      h1 {
+        font-family: "HelveticaNeue-Bold";
+        font-size: 82px;
+      }
+      h2 {
+        font-size: 70px;
+      }
+    }
+  }
+
+  .message {
+    font-size: 100px;
+    margin-top: 70px;
+    line-height: 1.2;
+  }
 }

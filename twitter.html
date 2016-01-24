@@ -7,9 +7,41 @@
   </head>
 
   <body>
-  <div style="background:url('public/img/template/twitter-photo.jpg') no-repeat center center fixed; background-size: cover; position: absolute; float: left; top: 0px; left: 0px; width: 100vw; height: 100vh;"></div>
+  <div style="background:url('public/img/template/twitter-textjpg') no-repeat center center fixed; background-size: cover; position: absolute; float: left; top: 0px; left: 0px; width: 100vw; height: 100vh;z-index: -10;"></div>
     <div class="main">      
-      <div class="twitterContainer"></div>
+      <div class="twitterText">
+        <div class="inner">
+          <div class="top">
+            <div class="name">
+              <h1></h1>
+              <h2></h2>
+            </div>
+            <img src="public/img/twitter_150px.png"  />
+          </div>
+
+          <div class="message"></div>
+        </div>
+      </div>
+
+      <div class="twitterPhoto">
+        <div class="photo"></div>
+
+        <div class="dataSide">
+          <div class="dataInner">
+            <div class="name">
+              <img src="public/img/twitter_120px.png" />
+              <h1></h1>
+            </div>
+
+            <div class="message"></div>
+
+            <div class="handle">
+              <h2></h2>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div> <!-- / .main -->
 
     <!-- Scripts -->
@@ -22,6 +54,9 @@
     <script type="text/javascript" src="public/lib/socket.io-client/socket.io.js"></script>
     <script type="text/javascript" src="public/js/data.js"></script>
     <script type="text/javascript" src="public/js/app.js"></script>
+    <script type="text/javascript">
+    renderTweet(findDataById('tweet'));
+    </script>
 
   </body>
 </html>

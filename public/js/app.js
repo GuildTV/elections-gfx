@@ -50,225 +50,85 @@ function fake(){
   update("<templateData><componentData id=\"f0\"><data id=\"text\" value=\"Rob Sumner\" /></componentData><componentData id=\"f1\"><data id=\"text\" value=\"Is better than Julian\" /></componentData><componentData id=\"f2\"><data id=\"text\" value=\"#4455a5\" /></componentData><componentData id=\"f3\"><data id=\"text\" value=\"rollIn\" /></componentData><componentData id=\"f4\"><data id=\"text\" value=\"rollOut\" /></componentData></templateData>");
 }
 
-var Twitter = React.createClass({displayName: "Twitter",
-  componentDidMount: function(){
-    console.log("Tweet mounted");
-  },
-  componentWillUnmount: function(){
-    console.log("Tweet unmounted");
-  },
-  componentWillAppear: function(callback) {
-    console.log("Tweet animating");
 
-    var td = $(this.refs.tweet),
-        tl = new TimelineLite();
+function renderTweet(data){
+  if(data.img){
+    var root = document.querySelector('.twitterPhoto');
+    root.style.display = "block";
 
-    // ensure the image position is centered
-    if(td.find('.twitter_img').length > 0){
-      var img = new Image();
-      img.onload = function(){
-        var imageMargin = ((td.find('.tweet').width() - td.find('.twitter_img_landscape').width())/2)+"px";
-        td.find('.twitter_img_landscape').css('left', imageMargin);
-      };
-      img.src = td.find('.twitter_img')[0].src;
-    }
+    root.querySelector('.name h1').innerText = data.username;
+    root.querySelector('.message').innerText = data.text;
+    root.querySelector('.handle h2').innerText = "@"+data.handle;
 
-    // ensure the tweet is centered
-    var globalLeft = ((1920 - td.width())/2)+"px";
-    td.css('left', globalLeft);
+    root.querySelector('.photo').style.backgroundImage = "url("+data.img+")";
+  } else {
+    var root = document.querySelector('.twitterText');
+    root.style.display = "block";
 
-    // ensure the twitter logo is vertically centered
-    var iconLargeTopPos = (td.find('.tweet').height()/2)+"px";
-    td.find('.twitter_logo').css('top', iconLargeTopPos);
-
-    var iconLargeLeftPos = (td.find('.tweet').width()/2)+"px";
-    //var iconLeftPos = (td.find('.tweet').width()/2)+"px";//td.find('.tweet').offset().left+"px";
-
-    tl.to(td.find(".twitter_logo"), 0.25, {left: iconLargeLeftPos})// left: "32.5vw"
-      .to(td.find(".twitter_logo"), 0.25, {width:"172.8px", left: "86.4px", top: "86.4px"}, "+=0.75") //width: "9vw"
-      .to(td.find(".text"), 0.5, {autoAlpha: 1}, "-=0.25")
-      .to(td.find(".info"), 0.5, {autoAlpha: 1}, "-=0.5")
-      .to(td.find(".twitter_img"), 0.5, {autoAlpha: 1}, "-=0.5")
-      .to(td.find(".profile_pic"), 0.5, {autoAlpha: 1}, "-=0.5")
-      .to(td.find(".username"), 0.5, {autoAlpha: 1}, "-=0.5")
-      .to(td.find(".time_ago"), 0.5, {autoAlpha: 1, onComplete: callback}, "-=0.5");
-  },
-
-  //TODO - replace this. needs to be called on changing tweet, instead of other animation
-  componentWillEnter: function(callback) {
-    console.log("Tweet changing");
-    var td = $(this.refs.tweet),
-        tl = new TimelineLite();
-
-    // some dimensions/positions wont match the animation above
-    /*tl.to(td.find(".twitter_logo"), 0.25, {width:"50%", left:"10vw"})
-      .to(td.find(".text"), 0.5, {autoAlpha: 0}, "-=0.25")
-      .to(td.find(".info"), 0.5, {autoAlpha: 0}, "-=0.5")
-      .to(td.find(".twitter_img"), 0.5, {autoAlpha: 0}, "-=0.5")
-      .to(td.find(".profile_pic"), 0.5, {autoAlpha: 0}, "-=0.5")
-      .to(td.find(".username"), 0.5, {autoAlpha: 0}, "-=0.5")
-      .to(td.find(".time_ago"), 0.5, {autoAlpha: 0}, "-=0.5")
-      .to(td.find(".twitter_logo"), 0.25, {width:"9vw", left: 0, top: "5px"}, "+=0.75")
-      .to(td.find(".text"), 0.5, {autoAlpha: 1}, "-=0.25")
-      .to(td.find(".info"), 0.5, {autoAlpha: 1}, "-=0.5")
-      .to(td.find(".twitter_img"), 0.5, {autoAlpha: 1}, "-=0.5")
-      .to(td.find(".profile_pic"), 0.5, {autoAlpha: 1}, "-=0.5")
-      .to(td.find(".username"), 0.5, {autoAlpha: 1}, "-=0.5")
-      .to(td.find(".time_ago"), 0.5, {autoAlpha: 1, onComplete: callback}, "-=0.5");*/
-
-      return this.componentWillAppear(callback);
-  },
-
-
-  componentWillLeave: function(callback){
-    console.log("LT leaving");
-
-    var tl = new TimelineLite();
-
-    //TODO - reverse in animation
-    tl.to(this.refs.tweet, 0.3, {autoAlpha: 0, onComplete: callback});
-  },
-
-  render: function() {
-    var time_ago = this.timeSince(this.props.data.created_at);
-    var media = (this.props.data.entities.media !== undefined && this.props.data.entities.media.length > 0 ?React.createElement("img", {className: "twitter_img_landscape twitter_img", src:  this.props.data.entities.media[0].media_url}):"");
-
-    var profile_pic = this.props.data.user.profile_image_url.replace("_normal", "");
-
-    return (
-      React.createElement("div", {className: "tweetOuter"}, 
-        React.createElement("div", {className: "twitter", ref: "tweet"}, 
-          React.createElement("img", {className: "twitter_logo", src: "public/img/twitter_white.png"}), 
-          React.createElement("div", {className: "tweet"}, 
-            React.createElement("h3", {className: "text"},  this.props.data.text), 
-              media, 
-            React.createElement("h3", {className: "info"}, 
-              React.createElement("div", {className: "profile_pic", style: { backgroundImage: 'url('+profile_pic+')'}}), 
-              React.createElement("span", {className: "username"}, "@",  this.props.data.user.screen_name, " (",  this.props.data.user.name, "),"), 
-              React.createElement("span", {className: "time_ago"}, " ", time_ago, " ago")
-            )
-          )
-        )
-      )
-    );
-  },
-
-  timeSince: function(date) {
-    tdate = new Date(date)
-    var seconds = Math.floor((new Date() - tdate) / 1000);
-
-    var interval = Math.floor(seconds / 31536000);
-
-    if (interval > 1) {
-        return interval + " years";
-    }
-    interval = Math.floor(seconds / 2592000);
-    if (interval > 1) {
-        return interval + " months";
-    }
-    interval = Math.floor(seconds / 86400);
-    if (interval > 1) {
-        return interval + " days";
-    }
-    interval = Math.floor(seconds / 3600);
-    if (interval > 1) {
-        return interval + " hours";
-    }
-    interval = Math.floor(seconds / 60);
-    if (interval > 1) {
-        return interval + " minutes";
-    }
-    return Math.floor(seconds) + " seconds";
+    root.querySelector('.name h1').innerText = data.username;
+    root.querySelector('.name h2').innerText = "@"+data.handle;
+    root.querySelector('.message').innerText = data.text;
   }
-});
+}
+var App = {
+  wrapper: null,
+  eventName: "Guild Elections",
+  socket: false,
 
-
-var TwitterPhoto = React.createClass({displayName: "TwitterPhoto",
-  componentDidMount: function(){
-    console.log("Photo Tweet mounted");
-  },
-  componentWillUnmount: function(){
-    console.log("Photo Tweet unmounted");
-  },
-  componentWillAppear: function(callback) {
-    console.log("Photo Tweet animating");
-
-    var td = $(this.refs.tweet),
-        tl = new TimelineLite();
-
-    // ensure the image position is centered
-    if(td.find('.twitter_img').length > 0){
-      var img = new Image();
-      img.onload = function(){
-        var imageMargin = ((td.find('.tweet').width() - td.find('.twitter_img_landscape').width())/2)+"px";
-        td.find('.twitter_img_landscape').css('left', imageMargin);
-      };
-      img.src = td.find('.twitter_img')[0].src;
-    }
-
-    // ensure the tweet is centered
-    var globalLeft = ((1920 - td.width())/2)+"px";
-    td.css('left', globalLeft);
-
-    // ensure the twitter logo is vertically centered
-    var iconLargeTopPos = (td.find('.tweet').height()/2)+"px";
-    td.find('.twitter_logo').css('top', iconLargeTopPos);
-
-    var iconLargeLeftPos = (td.find('.tweet').width()/2)+"px";
-    //var iconLeftPos = (td.find('.tweet').width()/2)+"px";//td.find('.tweet').offset().left+"px";
-
-    tl.to(td.find(".twitter_logo"), 0.25, {left: iconLargeLeftPos})// left: "32.5vw"
-      .to(td.find(".twitter_logo"), 0.25, {width:"172.8px", left: "86.4px", top: "86.4px"}, "+=0.75") //width: "9vw"
-      .to(td.find(".text"), 0.5, {autoAlpha: 1}, "-=0.25")
-      .to(td.find(".info"), 0.5, {autoAlpha: 1}, "-=0.5")
-      .to(td.find(".twitter_img"), 0.5, {autoAlpha: 1}, "-=0.5")
-      .to(td.find(".profile_pic"), 0.5, {autoAlpha: 1}, "-=0.5")
-      .to(td.find(".username"), 0.5, {autoAlpha: 1}, "-=0.5")
-      .to(td.find(".time_ago"), 0.5, {autoAlpha: 1, onComplete: callback}, "-=0.5");
+  setEventName: function(eventName) {
+    console.log(eventName);
+    App.eventName = eventName;
   },
 
-  //TODO - replace this. needs to be called on changing tweet, instead of other animation
-  componentWillEnter: function(callback) {
-    console.log("Photo Tweet changing");
+  connectToWebsocket: function(ip) {
+    if(App.socket)
+      return;
 
-    return this.componentWillAppear(callback);
+    if(ip === undefined)
+      ip = "192.168.26.105:4054";
+    
+    App.socket = io.connect('http://' + ip);
+    
+    App.socket.on('tweet.use', function (data) {
+      console.log(data);
+      App.renderTweet(data);
+    });
+
+    App.socket.on('tweet.stop', function () {
+      App.renderTweet(false);
+    });
   },
 
-  componentWillLeave: function(callback){
-    console.log("Photo Tweet leaving");
+  disconnectWebsocket: function(){
+    if(!App.socket)
+      return;
 
-    var tl = new TimelineLite();
+    App.stopWidget();
 
-    //TODO - reverse in animation
-    tl.to(this.refs.tweet, 0.3, {autoAlpha: 0, onComplete: callback});
+    App.socket.disconnect();
+    App.socket = false;
   },
 
-  render: function() {
-    var time_ago = "HAODF";
-    var media = (this.props.data.entities.media !== undefined && this.props.data.entities.media.length > 0 ?React.createElement("img", {className: "twitter_img_landscape twitter_img", src:  this.props.data.entities.media[0].media_url}):"");
+  renderTweet: function(data){
+    if(!App.wrapper)
+      App.wrapper = ReactDOM.render(React.createElement(TwitterWrap, null), $(".twitterContainer")[0]);
 
-    var profile_pic = this.props.data.user.profile_image_url.replace("_normal", "");
-
-    return (
-      React.createElement("div", {className: "tweetOuter"}, 
-        React.createElement("div", {className: "twitter", ref: "tweet"}, 
-          React.createElement("img", {className: "twitter_logo", src: "public/img/twitter_white.png"}), 
-          React.createElement("div", {className: "tweet"}, 
-            React.createElement("h3", {className: "text"},  this.props.data.text), 
-              media, 
-            React.createElement("h3", {className: "info"}, 
-              React.createElement("div", {className: "profile_pic", style: { backgroundImage: 'url('+profile_pic+')'}}), 
-              React.createElement("span", {className: "username"}, "@",  this.props.data.user.screen_name, " (",  this.props.data.user.name, "),"), 
-              React.createElement("span", {className: "time_ago"}, " ", time_ago, " ago")
-            )
-          )
-        )
-      )
-    );
+    App.wrapper.changeData(data);
   }
-});
+};
 
 
+function renderPhotoTweet(data){
+  console.log(data);
+
+  var root = document.querySelector('.twitterPhoto');
+
+  root.querySelector('.name h1').innerText = data.username;
+  root.querySelector('.message').innerText = data.text;
+  root.querySelector('.handle h2').innerText = "@"+data.handle;
+
+  root.querySelector('.photo').style.backgroundImage = "url("+data.img+")";
+}
 var ReactTransitionGroup = React.addons.TransitionGroup;
 
 var TwitterWrap = React.createClass({displayName: "TwitterWrap",
