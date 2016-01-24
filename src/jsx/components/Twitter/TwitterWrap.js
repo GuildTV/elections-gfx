@@ -18,9 +18,11 @@ var TwitterWrap = React.createClass({
   },
 
   render: function(){
-    var tweet = this.state.data?(<Twitter key={this.state.data.id} data={this.state.data} />):(<div></div>);
-
-    App.showHideBlue(!!this.state.data);
+    var tweet = <div></div>;
+    if(this.state.data && this.state.data.img)
+      tweet = <TwitterPhoto key={this.state.data.id} data={this.state.data} />;
+    else if (this.state.data)
+      tweet = <Twitter key={this.state.data.id} data={this.state.data} />;
 
     return (
       <div>
