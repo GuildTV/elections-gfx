@@ -1,6 +1,19 @@
+.twitterPhoto,
+.twitterText {
+  opacity: 0;
+  // display: none;
+
+  transition: opacity 0.5s;
+}
+
+.twitterPhoto.visible,
+.twitterText.visible {
+  opacity: 1;
+  display: block;
+}
+
 .twitterPhoto {
   color: white;
-  display: none;
 
   background: #262626;
 
@@ -81,7 +94,6 @@
 
 .twitterText {
   color: white;
-  display: none;
 
   background: #262626;
 

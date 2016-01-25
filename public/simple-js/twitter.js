@@ -1,11 +1,5 @@
 var App = {
-  eventName: "Guild Elections",
   socket: false,
-
-  setEventName: function(eventName) {
-    console.log(eventName);
-    App.eventName = eventName;
-  },
 
   connectToWebsocket: function(ip) {
     if(App.socket)
@@ -41,8 +35,9 @@ function renderTweet(data){
     document.querySelector('.twitterText').style.display = "none";
     
   } else if(data.img){
+    window.imageUrl = data.img;
+
     var root = document.querySelector('.twitterPhoto');
-    root.style.display = "block";
 
     root.querySelector('.name h1').innerText = data.username;
     root.querySelector('.message').innerText = data.text;
@@ -51,7 +46,6 @@ function renderTweet(data){
     root.querySelector('.photo').style.backgroundImage = "url("+data.img+")";
   } else {
     var root = document.querySelector('.twitterText');
-    root.style.display = "block";
 
     root.querySelector('.name h1').innerText = data.username;
     root.querySelector('.name h2').innerText = "@"+data.handle;

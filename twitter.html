@@ -50,7 +50,43 @@
     <script type="text/javascript" src="public/js/data.js"></script>
     <script type="text/javascript" src="public/simple-js/twitter.js"></script>
     <script type="text/javascript">
-      renderTweet(findDataById('tweet'));
+
+      function play() { // animate in
+        if(window.imageUrl){
+          var img = new Image();
+          img.onload = animate;
+          img.src = window.imageUrl;
+        } else {
+          animate();
+        }
+      }
+
+      function animate() {
+        console.log("Animating");
+
+        var root = document.querySelector(window.imageUrl?'.twitterPhoto':'.twitterText');
+        root.classList.add('visible');
+      }
+
+      function stop() { // animate out
+        console.log("Clearing");
+
+        var root = document.querySelector(window.imageUrl?'.twitterPhoto':'.twitterText');
+        root.classList.remove('visible');
+      }
+
+      function update(str) {
+        var data = xmlToObject(str);
+
+        renderTweet(data);
+      }
+
+      function fakePhoto(){
+        update("<templateData><componentData id=\"handle\"><data id=\"text\" value=\"wef\"/></componentData><componentData id=\"username\"><data id=\"text\" value=\"World Economic Forum\"/></componentData><componentData id=\"message\"><data id=\"text\" value=\"Have humans pushed the world into a new geological age? https://t.co/wD4NBKzUKN #science https://t.co/LYkZ6IGNdv\"/></componentData><componentData id=\"img\"><data id=\"text\" value=\"http://pbs.twimg.com/media/CY9RFG6WkAA6VGu.png:large\"/></componentData></templateData>");
+        play();
+      }
+
+      // renderTweet(findDataById('tweet'));
     </script>
 
   </body>
