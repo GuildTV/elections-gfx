@@ -7,7 +7,8 @@
 
   <body>
     <div class="lt-wrapper">
-      <div style="background:url('public/img/template/name-lt.png') no-repeat center center fixed; background-size: cover; position: absolute; float: left; top: 0px; left: 0px; width: 1920px; height: 1080px;"></div>
+      <img src="public/img/name-lt-v2.png" class="bg" />
+
       <div class="lower-third2">    
         <div class="content">
           <div class="inner">
@@ -71,8 +72,6 @@
 
         outer.querySelector('h1').innerText = (data.name+"").toUpperCase();
         outer.querySelector('h2').innerText = (data.role+"").toUpperCase();
-
-        animate();
       }
 
       <!--
@@ -80,7 +79,7 @@
       -->
 
       function play(str){
-        //update(str);
+        animate();
       }
 
       function update(str){
