@@ -1,14 +1,19 @@
 function update(str){
   var data = xmlToObject(str);
 
-  var winners = !data.name;
-  var name = winners?"":data.name;
-  delete data.name;
+  var winners = !data.id;
+  var name = "";
 
   var people = [];
 
-  for(var i in data){
-    people.push(findDataById(data[i]));
+  if(winners){
+    for(var i in data){
+      people.push(findDataById(data[i]));
+    }
+  } else {
+    var d = findDataById(data.id);
+    people = d.people;
+    name = d.info.full;
   }
 
   if(people.length == 1 && people[0][0] !== undefined)
