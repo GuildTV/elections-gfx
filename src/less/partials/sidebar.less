@@ -5,12 +5,18 @@
 
   position: absolute;
   top: 55px;
+  // left: 2065px;
   left: 1465px;
+
+  visibility: hidden;
 
   text-transform: uppercase;
 
-  -webkit-transform: translateX(600px);
   -webkit-filter: url("#motionBlur");
+
+  &.visible {
+    visibility: visible;
+  }
 
   &.photo {
     .name {

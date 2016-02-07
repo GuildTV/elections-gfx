@@ -7243,9 +7243,12 @@ h6 {
   position: absolute;
   top: 55px;
   left: 1465px;
+  visibility: hidden;
   text-transform: uppercase;
-  -webkit-transform: translateX(600px);
   -webkit-filter: url("#motionBlur");
+}
+.sidebar.visible {
+  visibility: visible;
 }
 .sidebar.photo .name {
   height: 245px;

@@ -36,10 +36,11 @@ function animate(){
   letterSpacing();
 
   var dataWrapper = document.querySelector('.sidebar');
+  dataWrapper.classList.add('visible');
 
   var blurData = { myVal: blurStrength };
   
-  tl.to(dataWrapper, 0.6, { ease: Power1.easeOut, css: { x: 0 } })
+  tl.to(dataWrapper, 0.6, { ease: Power1.easeOut, css: { zIndex: 2000 } })
     .to(blurData, 0.6, { ease: Power2.easeIn, myVal: 0, onUpdate: animateBlur, onUpdateParams: ["{self}", dataWrapper, blurData] }, '-=0.6');
 }
 
@@ -57,10 +58,11 @@ function animateOut(){
   var tl = new TimelineLite();
 
   var dataWrapper = document.querySelector('.sidebar');
+  dataWrapper.classList.remove('visible');
 
   var blurData = { myVal: 0 };
   
-  tl.to(dataWrapper, 0.6, { ease: Power1.easeOut, css: { x: 600 } })
+  tl.to(dataWrapper, 0.6, { ease: Power1.easeOut, css: { zIndex: 1 } })
     .to(blurData, 0.6, { ease: Power2.easeIn, myVal: blurStrength, onUpdate: animateBlur, onUpdateParams: ["{self}", dataWrapper, blurData] }, '-=0.6');
 }
 
