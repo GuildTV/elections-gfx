@@ -6845,83 +6845,106 @@ h6 {
 .lt-wrapper .lower-third2 .content h2 {
   font-size: 40px;
 }
-.twitterContainer {
-  height: 100vh;
-  width: 100vw;
-  position: absolute;
-  top: 0px;
-  left: 0px;
+.twitterPhoto,
+.twitterText {
+  opacity: 0;
+  transition: opacity 0.5s;
 }
-.twitterContainer h3 {
-  font-size: 4em;
+.twitterPhoto.visible,
+.twitterText.visible {
+  opacity: 1;
+  display: block;
 }
-.twitterContainer h3.info {
-  font-size: 3.5em;
-}
-.twitterContainer .tweetOuter {
-  position: absolute;
-  top: 0px;
-  left: 0px;
+.twitterPhoto {
+  color: white;
+  background: #262626;
   width: 100vw;
   height: 100vh;
 }
-.twitterContainer .twitter {
-  height: auto;
-  max-width: 90vw;
+.twitterPhoto .photo {
+  height: 100vh;
+  width: 1235px;
   position: absolute;
-  left: 5vw;
-  top: 50vh;
-  transform: translateY(-50%);
-  color: #ffffff;
-}
-.twitterContainer .twitterNode {
-  transition: opacity 0.5s ease-in;
-}
-.twitterContainer .twitter_logo {
-  height: auto;
-  width: 35vw;
-  position: absolute;
-  left: -50vw;
-  top: -7vw;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-}
-.twitterContainer .text {
-  height: auto;
-  max-width: 80vw;
-  position: relative;
-  margin-left: 10vw;
-  opacity: 0;
-  z-index: -1;
-}
-.twitterContainer .twitter_img_landscape {
-  height: 28vw;
-  position: relative;
-  left: 3.75vw;
-  top: 1vw;
-  opacity: 0;
-  z-index: -1;
-  border-radius: 5px;
-}
-.twitterContainer .info {
-  margin-top: 4vw;
-  margin-left: 10vw;
-  opacity: 0;
-  z-index: -1;
-}
-.twitterContainer .profile_pic {
-  height: 8vw;
-  width: 8vw;
-  opacity: 0;
-  z-index: -1;
-  border-radius: 20px;
-  display: inline-block;
-  background-position: center;
+  top: 0;
+  left: 0;
   background-size: cover;
-  vertical-align: middle;
+  background-position: center;
+  box-shadow: inset 0px 0px 80px #262626;
 }
-.twitterContainer .username {
-  margin-left: 2vw;
+.twitterPhoto .dataSide {
+  height: calc(960px);
+  width: 685px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 60px;
+  background: #262626;
+}
+.twitterPhoto .dataSide .dataInner {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  width: 565px;
+}
+.twitterPhoto .dataSide .name {
+  font-family: "HelveticaNeue";
+  margin-bottom: 90px;
+}
+.twitterPhoto .dataSide .name img {
+  height: 120px;
+  margin-top: -20px;
+}
+.twitterPhoto .dataSide .name h1 {
+  display: inline-block;
+  font-size: 52px;
+  font-family: "HelveticaNeue-Bold";
+  margin-left: 40px;
+}
+.twitterPhoto .dataSide .message {
+  font-size: 52px;
+  line-height: 1.1;
+  font-family: "HelveticaNeue-Bold";
+}
+.twitterPhoto .dataSide .handle {
+  margin-top: 60px;
+}
+.twitterPhoto .dataSide .handle h2 {
+  font-size: 50px;
+  font-family: "HelveticaNeue";
+}
+.twitterText {
+  color: white;
+  background: #262626;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  width: 1920px;
+  padding-bottom: 10px;
+  font-family: "HelveticaNeue";
+}
+.twitterText .inner {
+  padding: 40px 200px;
+  margin-bottom: 50px;
+}
+.twitterText .top img {
+  height: 140px;
+  float: right;
+  margin-top: 10px;
+}
+.twitterText .top .name {
+  display: inline-block;
+}
+.twitterText .top .name h1 {
+  font-family: "HelveticaNeue-Bold";
+  font-size: 82px;
+}
+.twitterText .top .name h2 {
+  font-size: 70px;
+}
+.twitterText .message {
+  font-size: 100px;
+  margin-top: 70px;
+  line-height: 1.2;
 }
 .multiProfileContainer {
   height: 100vh;
