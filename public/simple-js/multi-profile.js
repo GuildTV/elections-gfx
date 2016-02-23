@@ -1,35 +1,33 @@
 function update(str){
-  var data = xmlToObject(str);
+  var xml = (new DOMParser()).parseFromString(str,"text/xml");
+  var components = xml.querySelectorAll('componentData');
+  str = components[0].childNodes[0].nodeValue
 
-  var winners = !data.id;
+  var data = window.data = JSON.parse(str);
+
+  var winners = !data.position;
   var name = "";
 
-  var people = [];
+  var people = data.candidates;
 
-  if(winners){
-    for(var i in data){
-      people.push(findDataById(data[i]));
-    }
-  } else {
-    var d = findDataById(data.id);
-    people = d.people;
-    name = d.info.full;
+  if(!winners){
+    name = data.position.fullName;
   }
 
   if(people.length == 1 && people[0][0] !== undefined)
     people = people[0];
 
   //is group of candidates
-  if(name){
-    var peopleNew = [];
-    for(var i = 0; i < people.length; i++){
-      var person = people[i];
+  // if(name){
+  //   var peopleNew = [];
+  //   for(var i = 0; i < people.length; i++){
+  //     var person = people[i];
 
-      if(person.first != "RON")
-        peopleNew.push(person);
-    }
-    people = peopleNew;
-  }
+  //     if(person.first != "RON")
+  //       peopleNew.push(person);
+  //   }
+  //   people = peopleNew;
+  // }
 
   document.querySelector('h1.title').innerText = name.toUpperCase();
 
@@ -51,14 +49,14 @@ function update(str){
       continue;
     }
 
-    node.querySelector('img').setAttribute('src', "public/img/roles/"+person.pid+"/"+person.uid+".png");
+    node.querySelector('img').setAttribute('src', person.photo);
 
     if(winners){
-      node.querySelector('h1').innerText = (person.first.toUpperCase() + " " + person.last.toUpperCase()).trim();
-      node.querySelector('h2').innerText = person.position.mini.toUpperCase();
+      node.querySelector('h1').innerText = (person.firstName.toUpperCase() + " " + person.lastName.toUpperCase()).trim();
+      node.querySelector('h2').innerText = person.position.miniName.toUpperCase();
     } else {
-      node.querySelector('h1').innerText = person.first.toUpperCase();
-      node.querySelector('h2').innerText = person.last.toUpperCase();
+      node.querySelector('h1').innerText = person.firstName.toUpperCase();
+      node.querySelector('h2').innerText = person.lastName.toUpperCase();
     }
   }
 }
