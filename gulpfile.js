@@ -10,11 +10,6 @@ var plugins = require("gulp-load-plugins")({
   replaceString: /\bgulp[\-.]/
 });
 
-gulp.task('data', function() {
-  return gulp.src(src + 'data/**/*.js')
-    .pipe(plugins.concat('data.js'))
-    .pipe(gulp.dest(dest + 'js'));
-});
  // Compile CSS from less files
 gulp.task('less', function() {
     return gulp.src(src + 'less/app.less')
@@ -24,10 +19,8 @@ gulp.task('less', function() {
 
  // Watch for changes in files
 gulp.task('watch', function() {
-  // Watch .js files
-  gulp.watch(src + 'data/**/*.js', ['data']);
   // Watch .scss files
   gulp.watch(src + 'less/**/*.less', ['less']);
  });
  // Default Task
-gulp.task('default', ['data', 'less', 'watch']);
+gulp.task('default', ['less', 'watch']);

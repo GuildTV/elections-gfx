@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="public/css/app.css" />
+  </head>
+
+  <body>
+  <!-- <div style="background:url('public/img/template/sidebar-photo-blank.png') no-repeat center center fixed; background-size: cover; position: absolute; float: left; top: 0px; left: 0px; width: 1920px; height: 1080px; z-index: -200;"></div> -->
+    <div class="main">
+      <div class="sidebar visible">
+        <div class="position">
+          <h1></h1>
+          <h2></h2>
+        </div>
+        <div class="name">
+          <img />
+          <div>
+            <h1></h1>
+            <h2></h2>
+          </div>
+        </div>
+        <div class="manifesto_heading">MANIFESTO</div>
+        <div class="manifesto">
+        </div>
+      </div>
+
+    </div> <!-- / .main -->
+
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="filters hidden">
+      <defs>
+        <filter id="motionBlur">
+          <feGaussianBlur id="svg-blur-inner" in="SourceGraphic" stdDeviation="12,0" />
+        </filter>
+      </defs>
+    </svg>
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="public/lib/gsap/TweenMax.js"></script>
+    <script type="text/javascript" src="public/simple-js/sidebar.js"></script>
+    <script type="text/javascript">
+
+      function play(str){
+        //update(str);
+        animate();
+      }
+
+      function update(str){
+        var xml = (new DOMParser()).parseFromString(str,"text/xml");
+        var components = xml.querySelectorAll('componentData');
+        str = components[0].childNodes[0].nodeValue
+
+        var data = window.data = JSON.parse(str);
+
+        render(data.id, data, false);
+      }
+      
+      function fake(){
+        update("<templateData><componentData id=\"id\"><data id=\"text\" value=\"welfare-ross\" /></componentData><componentData id=\"votes\"><data id=\"text\" value=\"99,999\" /></componentData><componentData id=\"elect\"><data id=\"text\" value=\"1\" /></componentData></templateData>");
+      }
+      
+      function fakePhoto(){
+        update("<templateData><componentData id=\"id\"><data id=\"text\" value=\"ado-ben\" /></componentData><componentData id=\"votes\"><data id=\"text\" value=\"99,999\" /></componentData><componentData id=\"photo\"><data id=\"text\" value=\"1\" /></componentData></templateData>");
+      }
+
+      // setTimeout(fake, 1);
+      // setTimeout(fakePhoto, 1);
+      // setTimeout(animate, 1000);
+
+    </script>
+  </body>
+</html>

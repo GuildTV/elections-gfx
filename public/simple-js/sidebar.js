@@ -1,24 +1,27 @@
 
-function render(id, data){
-  var person = findDataById(id);
+function render(id, data, showPhoto){
+  var person = data;
 
   var holder = document.querySelector('.sidebar');
 
-  if(data.photo){
+  if(showPhoto){
     holder.classList.add('photo');
-    holder.querySelector('img').src = "public/img/roles/"+person.pid+"/"+person.uid+".png";
+    holder.querySelector('img').src = person.photo;
   }
 
-  holder.querySelector('.position h1').innerText = person.position.compact;
-  holder.querySelector('.position h2').innerText = data.elect?"elect":"candidate";
+  holder.querySelector('.position h1').innerText = person.position.compactName;
+  holder.querySelector('.position h2').innerText = data.elected?"elect":"candidate";
 
-  holder.querySelector('.name h1').innerText = person.first;
-  holder.querySelector('.name h2').innerText = person.last;
+  holder.querySelector('.name h1').innerText = person.firstName;
+  holder.querySelector('.name h2').innerText = person.lastName;
 
   var manifesto = holder.querySelector('.manifesto');
-  for(var i in person.manifestoPoints){
-    manifesto.innerHTML += "<p>"+person.manifestoPoints[i]+"</p>";
-  }
+  manifesto.innerHTML += "<p>"+person.manifesto.one+"</p>";
+  manifesto.innerHTML += "<p>"+person.manifesto.two+"</p>";
+  manifesto.innerHTML += "<p>"+person.manifesto.three+"</p>";
+  // for(var i in person.manifesto){
+  //   manifesto.innerHTML += "<p>"+person.manifesto[i]+"</p>";
+  // }
 }
 
 function stop(){

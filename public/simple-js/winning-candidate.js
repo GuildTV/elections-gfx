@@ -5,8 +5,6 @@ function render(id, data){
   document.getElementById('voteCount').innerText = (data.votes+"").toUpperCase();
   document.getElementById('candidateName').innerHTML = person.first.toUpperCase()+" <br /><strong>"+person.last.toUpperCase()+"</strong>";
   document.getElementById('candidatePhoto').src = "public/img/roles/"+person.pid+"/"+person.uid+".png";
-
-  animate();
 }
 
 function stop(){
