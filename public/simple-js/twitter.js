@@ -1,33 +1,3 @@
-var App = {
-  socket: false,
-
-  connectToWebsocket: function(ip) {
-    if(App.socket)
-      return;
-
-    if(ip === undefined)
-      ip = "192.168.26.105:4054";
-    
-    App.socket = io.connect('http://' + ip);
-    
-    App.socket.on('tweet.use', function (data) {
-      console.log(data);
-      renderTweet(data);
-    });
-
-    App.socket.on('tweet.stop', function () {
-      renderTweet(false);
-    });
-  },
-
-  disconnectWebsocket: function(){
-    if(!App.socket)
-      return;
-
-    App.socket.disconnect();
-    App.socket = false;
-  }
-};
 
 function renderTweet(data){
   if(!data) {
