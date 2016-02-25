@@ -1,10 +1,47 @@
 .imageSide {
+  background: #ddd;
+
   #chartContainer{
-    background: green;
-    margin-top: 200px;
-    height: 610px;
+    // margin-top: 200px;
+    height: 600px;
     width: 900px;
     // margin-left: 50px;
+  }
+
+  .myTooltip {
+    position: absolute;
+    z-index: 10000;
+    opacity: 1;
+    transition: 0.5s opacity;
+    font-size: 28px;
+    font-family: "HelveticaNeue-Bold";
+
+    &.invisible {
+      opacity: 0;
+    }
+  }
+
+  canvas {
+    height: 600px;
+    float: left;
+    position: absolute;
+    top: 200px;
+  }
+
+  canvas.previous {
+    margin-top: -10px;
+    margin-left: -10px;
+    opacity: 0.5;
+
+    transition: 0.5s all;
+  }
+
+  canvas.gone {
+    margin-top: -20px;
+    margin-left: -20px;
+    opacity: 0;
+
+    transition: 0.5s all;
   }
 }
 

@@ -31,5 +31,8 @@
         "bower_components/socket.io-client/socket.io.js"
       ]
     }
+  },
+  "dependencies": {
+    "Chart.js": "chartjs#~1.0.2"
   }
 }

@@ -7325,11 +7325,41 @@ h6 {
   margin: 15px 0 40px;
   color: #202020;
 }
+.imageSide {
+  background: #ddd;
+}
 .imageSide #chartContainer {
-  background: green;
-  margin-top: 200px;
-  height: 610px;
+  height: 600px;
   width: 900px;
+}
+.imageSide .myTooltip {
+  position: absolute;
+  z-index: 10000;
+  opacity: 1;
+  transition: 0.5s opacity;
+  font-size: 28px;
+  font-family: "HelveticaNeue-Bold";
+}
+.imageSide .myTooltip.invisible {
+  opacity: 0;
+}
+.imageSide canvas {
+  height: 600px;
+  float: left;
+  position: absolute;
+  top: 200px;
+}
+.imageSide canvas.previous {
+  margin-top: -10px;
+  margin-left: -10px;
+  opacity: 0.5;
+  transition: 0.5s all;
+}
+.imageSide canvas.gone {
+  margin-top: -20px;
+  margin-left: -20px;
+  opacity: 0;
+  transition: 0.5s all;
 }
 a.canvasjs-chart-credit {
   display: none;
