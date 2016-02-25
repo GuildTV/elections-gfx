@@ -7325,3 +7325,12 @@ h6 {
   margin: 15px 0 40px;
   color: #202020;
 }
+.imageSide #chartContainer {
+  background: green;
+  margin-top: 200px;
+  height: 610px;
+  width: 900px;
+}
+a.canvasjs-chart-credit {
+  display: none;
+}

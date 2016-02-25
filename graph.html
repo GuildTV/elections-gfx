@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="public/css/app.css" />
+  </head>
+
+  <body>
+  <div style="background:url('public/img/template/graph.jpg') no-repeat center center fixed; background-size: cover; position: absolute; float: left; top: 0px; left: 0px; width: 100vw; height: 100vh; z-index: -200;"></div>
+    <div class="main">
+      <div class="winningCandidateContainer">
+        <div class="dataSide stats">
+        </div>
+        <div class="imageSide">
+          <div id="chartContainer"></div>
+        </div>
+      </div>
+
+    </div> <!-- / .main -->
+
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="filters hidden">
+      <defs>
+        <filter id="motionBlur">
+          <feGaussianBlur id="svg-blur-inner" in="SourceGraphic" stdDeviation="12,0" />
+        </filter>
+      </defs>
+    </svg>
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="public/lib/canvasjs.min.js"></script>
+    <script type="text/javascript" src="public/simple-js/graph.js"></script>
+    <script type="text/javascript">
+
+      function play(str){
+        animate();
+      }
+
+      function update(str){
+        render();
+      }
+      
+         update("<templateData><componentData id=\"id\"><data id=\"text\" value=\"pres-jack\" /></componentData><componentData id=\"votes\"><data id=\"text\" value=\"99,999\" /></templateData>");
+
+    </script>
+  </body>
+</html>
