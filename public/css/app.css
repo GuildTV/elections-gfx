@@ -7327,6 +7327,7 @@ h6 {
 }
 .imageSide {
   background: #ddd;
+  width: 850px !important;
 }
 .imageSide #chartContainer {
   height: 600px;
@@ -7344,10 +7345,12 @@ h6 {
   opacity: 0;
 }
 .imageSide canvas {
-  height: 600px;
+  height: 550px;
+  width: 850px;
   float: left;
   position: absolute;
-  top: 200px;
+  top: 170px;
+  margin-left: 50px;
 }
 .imageSide canvas.previous {
   margin-top: -10px;
@@ -7363,4 +7366,21 @@ h6 {
 }
 a.canvasjs-chart-credit {
   display: none;
+}
+.chartFooter {
+  top: 730px;
+  position: absolute;
+  width: 950px;
+}
+.chartFooter table,
+.chartFooter .myRow {
+  text-align: left;
+  width: 950px;
+}
+.chartFooter .myLabel {
+  display: inline-block;
+  text-align: center;
+  color: #333;
+  font-family: "HelveticaNeue";
+  font-size: 22px;
 }

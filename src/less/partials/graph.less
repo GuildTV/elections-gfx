@@ -1,5 +1,6 @@
 .imageSide {
   background: #ddd;
+  width: 850px !important;
 
   #chartContainer{
     // margin-top: 200px;
@@ -22,10 +23,12 @@
   }
 
   canvas {
-    height: 600px;
+    height: 550px;
+    width: 850px;
     float: left;
     position: absolute;
-    top: 200px;
+    top: 170px;
+    margin-left: 50px;
   }
 
   canvas.previous {
@@ -47,4 +50,24 @@
 
 a.canvasjs-chart-credit {
   display: none;
+}
+
+.chartFooter {
+  top: 730px;
+  position: absolute;
+  width: 950px;
+
+  table, .myRow {
+    text-align: left;
+    width: 950px;
+
+  }
+
+  .myLabel {
+    display: inline-block;
+    text-align: center;
+    color: #333;
+    font-family: "HelveticaNeue";
+    font-size: 22px;
+  }
 }
