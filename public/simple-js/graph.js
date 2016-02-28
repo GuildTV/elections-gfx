@@ -203,7 +203,7 @@ var Graphs = {
     var leftMargin = (Graphs.columnWidth + Graphs.columnSeperation) / 2;
     var spacerWidth = (Graphs.columnWidth + Graphs.columnSeperation);
 
-    document.querySelector('.chartFooter').style.marginLeft = -(leftMargin-50)+"px";
+    document.querySelector('.chartFooter').style.marginLeft = -(leftMargin-75)+"px";
     var rowWidth = 900 + leftMargin * 2;
     tr1.style.width = rowWidth+"px";
     tr2.style.width = rowWidth+"px";

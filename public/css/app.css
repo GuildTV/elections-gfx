@@ -7326,7 +7326,6 @@ h6 {
   color: #202020;
 }
 .imageSide {
-  background: #ddd;
   width: 850px !important;
 }
 .imageSide #chartContainer {
@@ -7350,7 +7349,7 @@ h6 {
   float: left;
   position: absolute;
   top: 170px;
-  margin-left: 50px;
+  margin-left: 75px;
 }
 .imageSide canvas.previous {
   margin-top: -10px;
