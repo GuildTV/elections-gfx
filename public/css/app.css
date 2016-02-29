@@ -7325,18 +7325,41 @@ h6 {
   margin: 15px 0 40px;
   color: #202020;
 }
-.imageSide {
-  width: 850px !important;
+.imageSide #chartLabels,
+.imageSide #chartWrapper {
+  display: inline-block;
+  height: 750px;
 }
-.imageSide #chartContainer {
-  height: 600px;
-  width: 900px;
+.imageSide #chartLabels {
+  width: 300px;
+  margin-left: 50px;
+  overflow: hidden;
+  margin-top: 45px;
+}
+.imageSide #chartLabels .myLabel {
+  background: #272727;
+  height: 55px;
+  width: 100%;
+  margin-top: 50px;
+  display: block;
+  text-align: left;
+  line-height: 55px;
+  padding: 0 10px;
+  font-size: 32px;
+  color: #fff;
+  transition: opacity 0.5s;
+}
+.imageSide #chartLabels .myLabel.disabled {
+  opacity: 0.25;
+}
+.imageSide #chartWrapper {
+  width: 425px;
 }
 .imageSide .myTooltip {
   position: absolute;
   z-index: 10000;
   opacity: 1;
-  transition: 0.5s opacity;
+  transition: 0.375s opacity;
   font-size: 28px;
   font-family: "HelveticaNeue-Bold";
 }
@@ -7348,8 +7371,8 @@ h6 {
   width: 850px;
   float: left;
   position: absolute;
-  top: 170px;
-  margin-left: 75px;
+  top: 50px;
+  margin-left: -5px;
 }
 .imageSide canvas.previous {
   margin-top: -10px;
@@ -7358,8 +7381,6 @@ h6 {
   transition: 0.5s all;
 }
 .imageSide canvas.gone {
-  margin-top: -20px;
-  margin-left: -20px;
   opacity: 0;
   transition: 0.5s all;
 }

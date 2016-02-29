@@ -33,6 +33,7 @@
     }
   },
   "dependencies": {
-    "Chart.js": "chartjs#~1.0.2"
+    "Chart.js": "chartjs#~1.0.2",
+    "Chart.HorizontalBar.js": "chart.horizontalbar#~1.0.3"
   }
 }

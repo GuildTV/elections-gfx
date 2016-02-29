@@ -15,6 +15,9 @@ function render(){
 
 // ============================================
 
+var TARGET_BAR_THICKNESS = 55;
+var AREA_HEIGHT = 750;
+
 var myLabels = [
   "Aghamirzayev".toUpperCase(),
   "Cherekaeva".toUpperCase(),
@@ -46,17 +49,18 @@ Chart.defaults.global.scaleShowLabels = false;
 Chart.defaults.global.scaleLineColor = "transparent";
 Chart.defaults.global.scaleFontColor = "transparent";
 Chart.defaults.global.scaleFontSize = 22;
+Chart.defaults.global.maintainAspectRatio = false;
 
 Chart.defaults.global.customTooltips = function(tooltip) {
   if(tooltip == false || !tooltip.text)
     return;
 
-  var elm = document.getElementById('tooltip'+tooltip.x)
+  var elm = document.getElementById('tooltip'+tooltip.y)
 
   if(!elm){
     elm = document.createElement('span');
     document.getElementById('chartWrapper').appendChild(elm);   
-    elm.setAttribute('id', 'tooltip'+tooltip.x); 
+    elm.setAttribute('id', 'tooltip'+tooltip.y); 
   }
 
   elm.innerHTML = tooltip.text;
@@ -67,8 +71,9 @@ Chart.defaults.global.customTooltips = function(tooltip) {
   elm.style.left = (chart.offsetLeft+tooltip.x)+"px";
   elm.style.top = (chart.offsetTop+tooltip.y)+"px";
 
-  elm.style.marginLeft = -(elm.offsetWidth/2)+"px";
-  elm.style.marginTop = -(elm.offsetHeight)+"px";
+  // elm.style.marginLeft = -(elm.offsetWidth)+"px";
+  elm.style.marginLeft = "10px";
+  elm.style.marginTop = -(elm.offsetHeight/2)+"px";
 
   if(elm.classList.contains('invisible'))
     elm.classList.remove('invisible');
@@ -83,15 +88,15 @@ var Graphs = {
       hidden.remove();
     }
 
-    var previous = document.querySelector('canvas.previous');
-    if(previous){
-      previous.classList.add('gone');
-      previous.classList.remove('previous');
-    }
+    // var previous = document.querySelector('canvas.previous');
+    // if(previous){
+    //   previous.classList.add('gone');
+    //   previous.classList.remove('previous');
+    // }
 
     var current = document.querySelector('canvas.current');
     if(current){
-      current.classList.add('previous');
+      current.classList.add('gone');
       current.classList.remove('current');
     }
   },
@@ -109,10 +114,9 @@ var Graphs = {
 
     var ctx = canvas.getContext('2d');
 
-    var colSep = (850 / initialData.labels.length) - Graphs.columnWidth;
-    Graphs.columnSeperation = colSep;
+    var barSpacing = Graphs.barSpacing = (AREA_HEIGHT - (initialData.labels.length * TARGET_BAR_THICKNESS)) / (initialData.labels.length * 2);
 
-    Graphs.current = new Chart(ctx).Bar(initialData, {
+    Graphs.current = new Chart(ctx).HorizontalBar(initialData, {
       scaleBeginAtZero: true,
       scaleShowGridLines: true,
       scaleShowVerticalLines: false,
@@ -121,7 +125,7 @@ var Graphs = {
       barShowStroke: false,
       responsive : true,
 
-      barValueSpacing: colSep,
+      barValueSpacing: barSpacing,
 
       tooltipFillColor: "transparent",
       tooltipFontColor: "#333",
@@ -146,12 +150,22 @@ var Graphs = {
           if(elm == null || elm.classList.contains('invisible'))
             continue;
 
-          elm.style.top = (chart.offsetTop+bar.y)+"px";
+          elm.style.x = (chart.offsetLeft+bar.x)+"px";
         }
       },
     });
 
     Graphs.createLabels();
+  },
+
+  nextRound: function(eliminate){
+    Graphs.addRound();
+
+    var oldLabel = document.querySelector('#graphLabel'+eliminate);
+    if(oldLabel)
+      oldLabel.classList.add('disabled');
+
+
   },
 
   removeAllTooltip: function(){
@@ -166,7 +180,8 @@ var Graphs = {
   },
 
   addData: function(i, v){
-    Graphs.current.datasets[0].bars[i].value = v;
+    var labelCount = initialData.labels.length;
+    Graphs.current.datasets[0].bars[labelCount-1-i].value = v;
 
     // var currentMax = Graphs.current.scale.stepValue * Graphs.current.scale.steps;
     // var newStepCount = v / Graphs.current.scale.stepValue;
@@ -188,38 +203,51 @@ var Graphs = {
   },
 
   createLabels: function(){
-    // var table = document.createElement('table');
-    // document.querySelector('.chartFooter').appendChild(table);
-    var tr1 = document.createElement('div');
-    tr1.classList.add('myRow');
-    document.querySelector('.chartFooter').appendChild(tr1);
-    var tr2 = document.createElement('div');
-    tr2.classList.add('myRow');
-    document.querySelector('.chartFooter').appendChild(tr2);
+    var wrapper = document.querySelector('#chartLabels');
 
     var labelCount = initialData.labels.length;
 
-    var fullWidth = 2 * (Graphs.columnWidth + Graphs.columnSeperation);
-    var leftMargin = (Graphs.columnWidth + Graphs.columnSeperation) / 2;
-    var spacerWidth = (Graphs.columnWidth + Graphs.columnSeperation);
-
-    document.querySelector('.chartFooter').style.marginLeft = -(leftMargin-75)+"px";
-    var rowWidth = 900 + leftMargin * 2;
-    tr1.style.width = rowWidth+"px";
-    tr2.style.width = rowWidth+"px";
-
-    for(var i = 0; i <= labelCount; i++){
-      if(i == 0){
-        Graphs.addLabel(tr1, fullWidth, myLabels[i]);
-        Graphs.addLabel(tr2, spacerWidth, "");
-      } else if (i == labelCount){
-        var tr = i%2 == 0 ? tr1 : tr2;
-        Graphs.addLabel(tr, spacerWidth, "");
-      } else {
-        var tr = i%2 == 0 ? tr1 : tr2;
-        Graphs.addLabel(tr, fullWidth, myLabels[i]);
-      }  
+    for(var i = 0; i < labelCount; i++){
+      var elm = document.createElement('div');
+      elm.classList.add('myLabel')
+      elm.setAttribute('id', 'graphLabel'+i);
+      elm.innerHTML = myLabels[i];
+      elm.style.marginTop = (Graphs.barSpacing*2)+"px";
+      wrapper.appendChild(elm);
     }
+
+    // var table = document.createElement('table');
+    // document.querySelector('.chartFooter').appendChild(table);
+    // var tr1 = document.createElement('div');
+    // tr1.classList.add('myRow');
+    // document.querySelector('.chartFooter').appendChild(tr1);
+    // var tr2 = document.createElement('div');
+    // tr2.classList.add('myRow');
+    // document.querySelector('.chartFooter').appendChild(tr2);
+
+    // var labelCount = initialData.labels.length;
+
+    // var fullWidth = 2 * (Graphs.columnWidth + Graphs.columnSeperation);
+    // var leftMargin = (Graphs.columnWidth + Graphs.columnSeperation) / 2;
+    // var spacerWidth = (Graphs.columnWidth + Graphs.columnSeperation);
+
+    // document.querySelector('.chartFooter').style.marginLeft = -(leftMargin-75)+"px";
+    // var rowWidth = 900 + leftMargin * 2;
+    // tr1.style.width = rowWidth+"px";
+    // tr2.style.width = rowWidth+"px";
+
+    // for(var i = 0; i <= labelCount; i++){
+    //   if(i == 0){
+    //     Graphs.addLabel(tr1, fullWidth, myLabels[i]);
+    //     Graphs.addLabel(tr2, spacerWidth, "");
+    //   } else if (i == labelCount){
+    //     var tr = i%2 == 0 ? tr1 : tr2;
+    //     Graphs.addLabel(tr, spacerWidth, "");
+    //   } else {
+    //     var tr = i%2 == 0 ? tr1 : tr2;
+    //     Graphs.addLabel(tr, fullWidth, myLabels[i]);
+    //   }  
+    // }
   },
 
   addLabel: function(tr, width, val){

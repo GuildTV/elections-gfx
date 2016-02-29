@@ -1,18 +1,48 @@
 .imageSide {
-  width: 850px !important;
 
-  #chartContainer{
-    // margin-top: 200px;
-    height: 600px;
-    width: 900px;
-    // margin-left: 50px;
+  #chartLabels, #chartWrapper {
+    display: inline-block;
+    height: 750px;
+  }
+
+  #chartLabels {
+    width: 300px;
+    margin-left: 50px;
+    overflow: hidden;
+    margin-top: 45px;
+
+    .myLabel {
+      background: #272727;
+      height: 55px;
+      width: 100%;
+      margin-top: 50px;
+      display: block;
+
+      text-align: left;
+      line-height: 55px;
+      padding: 0 10px;
+
+      font-size: 32px;
+      color: #fff;
+
+      transition: opacity 0.5s;
+
+      &.disabled {
+        opacity: 0.25;
+      }
+
+    }
+  }
+
+  #chartWrapper {
+    width: 425px;
   }
 
   .myTooltip {
     position: absolute;
     z-index: 10000;
     opacity: 1;
-    transition: 0.5s opacity;
+    transition: 0.375s opacity; // 0.5*0.75
     font-size: 28px;
     font-family: "HelveticaNeue-Bold";
 
@@ -26,8 +56,9 @@
     width: 850px;
     float: left;
     position: absolute;
-    top: 170px;
-    margin-left: 75px;
+    top: 50px;
+    margin-left: -5px;
+    // margin-left: 75px;
   }
 
   canvas.previous {
@@ -39,8 +70,8 @@
   }
 
   canvas.gone {
-    margin-top: -20px;
-    margin-left: -20px;
+    // margin-top: -20px;
+    // margin-left: -20px;
     opacity: 0;
 
     transition: 0.5s all;
