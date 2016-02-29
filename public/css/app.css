@@ -7344,7 +7344,7 @@ h6 {
   display: block;
   text-align: left;
   line-height: 55px;
-  padding: 0 10px;
+  padding: 0 15px;
   font-size: 32px;
   color: #fff;
   transition: opacity 0.5s;
@@ -7373,12 +7373,6 @@ h6 {
   position: absolute;
   top: 50px;
   margin-left: -5px;
-}
-.imageSide canvas.previous {
-  margin-top: -10px;
-  margin-left: -10px;
-  opacity: 0.5;
-  transition: 0.5s all;
 }
 .imageSide canvas.gone {
   opacity: 0;
