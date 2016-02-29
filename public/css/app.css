@@ -7325,18 +7325,30 @@ h6 {
   margin: 15px 0 40px;
   color: #202020;
 }
-.imageSide #chartLabels,
-.imageSide #chartWrapper {
-  display: inline-block;
-  height: 750px;
-}
 .imageSide #chartLabels {
   width: 300px;
   margin-left: 50px;
+}
+.imageSide #chartWrapper {
+  width: 425px;
+}
+.wideGraph #chartLabels {
+  width: 500px;
+  margin-left: 75px;
+}
+.wideGraph #chartWrapper {
+  width: 1225px;
+}
+#chartLabels,
+#chartWrapper {
+  display: inline-block;
+  height: 750px;
+}
+#chartLabels {
   overflow: hidden;
   margin-top: 45px;
 }
-.imageSide #chartLabels .myLabel {
+#chartLabels .myLabel {
   background: #272727;
   height: 55px;
   width: 100%;
@@ -7349,24 +7361,10 @@ h6 {
   color: #fff;
   transition: opacity 0.5s;
 }
-.imageSide #chartLabels .myLabel.disabled {
+#chartLabels .myLabel.disabled {
   opacity: 0.25;
 }
-.imageSide #chartWrapper {
-  width: 425px;
-}
-.imageSide .myTooltip {
-  position: absolute;
-  z-index: 10000;
-  opacity: 1;
-  transition: 0.375s opacity;
-  font-size: 28px;
-  font-family: "HelveticaNeue-Bold";
-}
-.imageSide .myTooltip.invisible {
-  opacity: 0;
-}
-.imageSide canvas {
+#chartWrapper canvas {
   height: 550px;
   width: 850px;
   float: left;
@@ -7374,9 +7372,20 @@ h6 {
   top: 50px;
   margin-left: -5px;
 }
-.imageSide canvas.gone {
+#chartWrapper canvas.gone {
   opacity: 0;
   transition: 0.5s all;
+}
+.myTooltip {
+  position: absolute;
+  z-index: 10000;
+  opacity: 1;
+  transition: 0.375s opacity;
+  font-size: 28px;
+  font-family: "HelveticaNeue-Bold";
+}
+.myTooltip.invisible {
+  opacity: 0;
 }
 a.canvasjs-chart-credit {
   display: none;

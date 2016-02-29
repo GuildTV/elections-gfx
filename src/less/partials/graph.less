@@ -1,56 +1,58 @@
 .imageSide {
-
-  #chartLabels, #chartWrapper {
-    display: inline-block;
-    height: 750px;
-  }
-
   #chartLabels {
     width: 300px;
     margin-left: 50px;
-    overflow: hidden;
-    margin-top: 45px;
-
-    .myLabel {
-      background: #272727;
-      height: 55px;
-      width: 100%;
-      margin-top: 50px;
-      display: block;
-
-      text-align: left;
-      line-height: 55px;
-      padding: 0 15px;
-
-      font-size: 32px;
-      color: #fff;
-
-      transition: opacity 0.5s;
-
-      &.disabled {
-        opacity: 0.25;
-      }
-
-    }
   }
 
   #chartWrapper {
     width: 425px;
   }
+}
 
-  .myTooltip {
-    position: absolute;
-    z-index: 10000;
-    opacity: 1;
-    transition: 0.375s opacity; // 0.5*0.75
-    font-size: 28px;
-    font-family: "HelveticaNeue-Bold";
-
-    &.invisible {
-      opacity: 0;
-    }
+.wideGraph {
+  #chartLabels {
+    width: 500px;
+    margin-left: 75px;
   }
 
+  #chartWrapper {
+    width: 1225px;
+  } 
+}
+
+#chartLabels, #chartWrapper {
+  display: inline-block;
+  height: 750px;
+}
+
+#chartLabels {
+  overflow: hidden;
+  margin-top: 45px;
+
+  .myLabel {
+    background: #272727;
+    height: 55px;
+    width: 100%;
+    margin-top: 50px;
+    display: block;
+
+    text-align: left;
+    line-height: 55px;
+    padding: 0 15px;
+
+    font-size: 32px;
+    color: #fff;
+
+    transition: opacity 0.5s;
+
+    &.disabled {
+      opacity: 0.25;
+    }
+
+  }
+}
+
+#chartWrapper {
   canvas {
     height: 550px;
     width: 850px;
@@ -64,6 +66,19 @@
     opacity: 0;
 
     transition: 0.5s all;
+  }
+}
+
+.myTooltip {
+  position: absolute;
+  z-index: 10000;
+  opacity: 1;
+  transition: 0.375s opacity; // 0.5*0.75
+  font-size: 28px;
+  font-family: "HelveticaNeue-Bold";
+
+  &.invisible {
+    opacity: 0;
   }
 }
 
