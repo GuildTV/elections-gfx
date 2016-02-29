@@ -189,6 +189,9 @@ var Graphs = {
       elm.style.marginTop = (Graphs.barSpacing*2)+"px";
       wrapper.appendChild(elm);
     }
-  }
+  },
 
+  setTitle: function(title){
+    var elm = document.querySelector('#graphRoleTitle').innerHTML = title;
+  }
 };

@@ -7357,7 +7357,8 @@ h6 {
   text-align: left;
   line-height: 55px;
   padding: 0 15px;
-  font-size: 32px;
+  font-family: "HelveticaNeue-Bold";
+  font-size: 30px;
   color: #fff;
   transition: opacity 0.5s;
 }
@@ -7387,23 +7388,14 @@ h6 {
 .myTooltip.invisible {
   opacity: 0;
 }
-a.canvasjs-chart-credit {
-  display: none;
-}
-.chartFooter {
-  top: 730px;
+#graphRoleTitle {
   position: absolute;
-  width: 950px;
-}
-.chartFooter table,
-.chartFooter .myRow {
-  text-align: left;
-  width: 950px;
-}
-.chartFooter .myLabel {
-  display: inline-block;
+  bottom: 147px;
+  width: 100vw;
   text-align: center;
-  color: #333;
+  height: 59px;
+  line-height: 59px;
+  color: white;
   font-family: "HelveticaNeue";
-  font-size: 22px;
+  font-size: 40px;
 }
