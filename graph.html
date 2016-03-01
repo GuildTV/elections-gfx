@@ -23,10 +23,13 @@
     </div> <!-- / .main -->
 
     <!-- Scripts -->
+    <script type="text/javascript" src="public/lib/socket.io-client/socket.io.js"></script>
     <script type="text/javascript" src="public/lib/Chart.js/Chart.min.js"></script>
     <script type="text/javascript" src="public/lib/Chart.HorizontalBar.js/Chart.HorizontalBar.js"></script>
     <script type="text/javascript" src="public/simple-js/graph.js"></script>
     <script type="text/javascript">
+
+
 
       Graphs.myLabels = [
         "Aghamirzayev".toUpperCase(),
@@ -44,11 +47,20 @@
       }
 
       function update(str){
-        render();
-        Graphs.setTitle('TEST ROLE');
+        var xml = (new DOMParser()).parseFromString(str,"text/xml");
+        var id = xml.querySelector('#id #text').getAttribute('value');
+        var server = xml.querySelector('#server #text').getAttribute('value');
+
+        window.socket = io(server);
+        window.socket.on('load', Graphs.initialLoad);
+        window.socket.on('eliminate', Graphs.socketEliminate);
+        window.socket.on('vote', Graphs.socketVote);
+
+        // render();
+        // Graphs.setTitle('TEST ROLE');
       }
       
-         update("<templateData><componentData id=\"id\"><data id=\"text\" value=\"pres-jack\" /></componentData><componentData id=\"votes\"><data id=\"text\" value=\"99,999\" /></templateData>");
+      update("<templateData><componentData id=\"id\"><data id=\"text\" value=\"d7e3bbe0-1d47-4eb6-8749-9181d1049890\" /></componentData><componentData id=\"server\"><data id=\"text\" value=\"http://localhost:3355\" /></templateData>");
 
     </script>
   </body>

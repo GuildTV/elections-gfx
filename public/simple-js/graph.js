@@ -151,10 +151,13 @@ var Graphs = {
   nextRound: function(eliminate){
     Graphs.addRound();
 
-    var oldLabel = document.querySelector('#graphLabel'+eliminate);
+    Graphs.setEliminated(eliminate);
+  },
+
+  setEliminated: function(id){
+    var oldLabel = document.querySelector('#graphLabel'+id);
     if(oldLabel)
       oldLabel.classList.add('disabled');
-
   },
 
   removeAllTooltip: function(){
@@ -167,6 +170,9 @@ var Graphs = {
   },
 
   addData: function(i, v){
+    if(v == undefined || v == null)
+      return;
+    
     var labelCount = Graphs.myLabels.length;
     Graphs.current.datasets[0].bars[labelCount-1-i].value = v;
 
@@ -192,6 +198,39 @@ var Graphs = {
   },
 
   setTitle: function(title){
-    var elm = document.querySelector('#graphRoleTitle').innerHTML = title;
+    document.querySelector('#graphRoleTitle').innerHTML = title;
+  },
+
+  initialLoad: function(data){
+    console.log("LOAD", data);
+
+    Graphs.setTitle(data.position.fullName);
+    Graphs.myLabels = data.labels;
+
+    // set eliminated candidates
+    for(var i in data.eliminated){
+      Graphs.setEliminated(data.eliminated[i]);
+    }
+
+    // add starting round of votes
+    var votes = data.votes[data.eliminated.length];
+    if(!votes || votes.length == 0)
+      return;
+
+    for(var i in votes){
+      Graphs.addData(i, votes[i]);
+    }
+  },
+
+  socketEliminate: function(data){
+    console.log("ELIMINATE", data);
+
+    Graphs.nextRound(data.index);
+  },
+
+  socketVote: function(data){
+    console.log("VOTE", data);
+
+    Graphs.addData(data.index, data.count);
   }
 };
