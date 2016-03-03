@@ -172,7 +172,7 @@ var Graphs = {
   addData: function(i, v){
     if(v == undefined || v == null)
       return;
-    
+
     var labelCount = Graphs.myLabels.length;
     Graphs.current.datasets[0].bars[labelCount-1-i].value = v;
 
@@ -206,6 +206,8 @@ var Graphs = {
 
     Graphs.setTitle(data.position.fullName);
     Graphs.myLabels = data.labels;
+    Graphs.addRound();
+    Graphs.createLabels();
 
     // set eliminated candidates
     for(var i in data.eliminated){

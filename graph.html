@@ -56,6 +56,10 @@
         window.socket.on('eliminate', Graphs.socketEliminate);
         window.socket.on('vote', Graphs.socketVote);
 
+        window.socket.on('connect', function(){
+          window.socket.emit('load', { role: id });
+        });
+
         // render();
         // Graphs.setTitle('TEST ROLE');
       }
