@@ -7,7 +7,7 @@
   </head>
 
   <body>
-  <div style="background:url('public/img/template/graph-empty.jpg') no-repeat center center fixed; background-size: cover; position: absolute; float: left; top: 0px; left: 0px; width: 100vw; height: 100vh; z-index: -200;"></div>
+  <!-- <div style="background:url('public/img/template/graph-empty.jpg') no-repeat center center fixed; background-size: cover; position: absolute; float: left; top: 0px; left: 0px; width: 100vw; height: 100vh; z-index: -200;"></div> -->
     <div class="main">
       <div class="winningCandidateContainer">
         <div class="dataSide stats">
@@ -29,18 +29,9 @@
     <script type="text/javascript" src="public/simple-js/graph.js"></script>
     <script type="text/javascript">
 
-
-
-      Graphs.myLabels = [
-        "Aghamirzayev".toUpperCase(),
-        // "Cherekaeva".toUpperCase(),
-        "Guan".toUpperCase(),
-        "Liu".toUpperCase(),
-        "Mohammed".toUpperCase(),
-        "Nwaiwu".toUpperCase(),
-        // "Nwaiwu".toUpperCase(),
-        "RON"
-      ];
+      function stop(){
+        document.querySelector('body').style.display = "none";
+      }
 
       function play(str){
         animate();
@@ -59,12 +50,9 @@
         window.socket.on('connect', function(){
           window.socket.emit('load', { role: id });
         });
-
-        // render();
-        // Graphs.setTitle('TEST ROLE');
       }
       
-      update("<templateData><componentData id=\"id\"><data id=\"text\" value=\"d7e3bbe0-1d47-4eb6-8749-9181d1049890\" /></componentData><componentData id=\"server\"><data id=\"text\" value=\"http://localhost:3355\" /></templateData>");
+      // update("<templateData><componentData id=\"id\"><data id=\"text\" value=\"d7e3bbe0-1d47-4eb6-8749-9181d1049890\" /></componentData><componentData id=\"server\"><data id=\"text\" value=\"http://localhost:3355\" /></templateData>");
 
     </script>
   </body>

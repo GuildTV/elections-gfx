@@ -1,20 +1,4 @@
 
-
-function render(){
-  Graphs.addRound();
-
-  // Graphs.addData(0, 50);
-  // Graphs.addData(1, 10)
-  // Graphs.addData(2, 99);
-  // Graphs.addData(3, 99);
-  // Graphs.addData(4, 99);
-  // Graphs.addData(5, 99);
-  // Graphs.addData(6, 99);
-  // Graphs.addData(7, 99);
-}
-
-// ============================================
-
 var TARGET_BAR_THICKNESS = 55;
 var TARGET_BAR_SPACING = 20*2;
 var MAX_AREA_HEIGHT = 750;
