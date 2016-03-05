@@ -37,11 +37,16 @@
       text-align: center;
 
       &.winners {
-        margin-top: 50px !important;
+        &.count7, &.count8 {
+          margin-top: 35px !important;
+        }
+        &.count5, &.count6, &.count4 {
+          margin-top: 240px;
+        }
 
         h1, h2 {
           line-height: 1.1 !important;
-          font-size: 42px !important;
+          font-size: 40px !important;
         }       
       }
 
@@ -81,7 +86,7 @@
 
           h1, h2 {
             line-height: 1.1;
-            font-size: 50px;
+            font-size: 37px;
           }
         }
       }
@@ -101,7 +106,7 @@
 
           h1, h2 {
             line-height: 1;
-            font-size: 50px;
+            font-size: 45px;
           }
         }
       }
@@ -135,6 +140,7 @@
       padding: 0;
 
       display: inline-block;
+      vertical-align: top;
 
       .image {
         margin: auto;
@@ -162,18 +168,20 @@
 
         opacity: 0;
 		
-		-webkit-transform-origin: left;
+        -webkit-transform-origin: left;
 
         h1 {
           font-family: "HelveticaNeue";
-          font-size: 61px;
+          font-size: 45px;
           -webkit-transform-origin: bottom left;
+          white-space: nowrap;
         }
 
         h2 {
           font-family: "HelveticaNeue-Bold";
-          font-size: 61px;
+          font-size: 45px;
           -webkit-transform-origin: top left;
+          white-space: nowrap;
 		}
       }
     }

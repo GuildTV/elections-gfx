@@ -17,18 +17,6 @@ function update(str){
   if(people.length == 1 && people[0][0] !== undefined)
     people = people[0];
 
-  //is group of candidates
-  // if(name){
-  //   var peopleNew = [];
-  //   for(var i = 0; i < people.length; i++){
-  //     var person = people[i];
-
-  //     if(person.first != "RON")
-  //       peopleNew.push(person);
-  //   }
-  //   people = peopleNew;
-  // }
-
   document.querySelector('h1.title').innerText = name.toUpperCase();
 
   var peopleDiv = document.querySelector('.people');
@@ -52,7 +40,7 @@ function update(str){
     node.querySelector('img').setAttribute('src', person.photo);
 
     if(winners){
-      node.querySelector('h1').innerText = (person.firstName.toUpperCase() + " " + person.lastName.toUpperCase()).trim();
+      node.querySelector('h1').innerHTML = (person.firstName.toUpperCase() + "<br />" + person.lastName.toUpperCase()).trim();
       node.querySelector('h2').innerText = person.position.miniName.toUpperCase();
     } else {
       node.querySelector('h1').innerText = person.firstName.toUpperCase();

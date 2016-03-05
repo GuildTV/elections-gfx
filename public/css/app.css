@@ -6977,13 +6977,19 @@ h6 {
 .multiProfileContainer .multiProfileOuter .people {
   text-align: center;
 }
-.multiProfileContainer .multiProfileOuter .people.winners {
-  margin-top: 50px !important;
+.multiProfileContainer .multiProfileOuter .people.winners.count7,
+.multiProfileContainer .multiProfileOuter .people.winners.count8 {
+  margin-top: 35px !important;
+}
+.multiProfileContainer .multiProfileOuter .people.winners.count5,
+.multiProfileContainer .multiProfileOuter .people.winners.count6,
+.multiProfileContainer .multiProfileOuter .people.winners.count4 {
+  margin-top: 240px;
 }
 .multiProfileContainer .multiProfileOuter .people.winners h1,
 .multiProfileContainer .multiProfileOuter .people.winners h2 {
   line-height: 1.1 !important;
-  font-size: 42px !important;
+  font-size: 40px !important;
 }
 .multiProfileContainer .multiProfileOuter .people.count7,
 .multiProfileContainer .multiProfileOuter .people.count8 {
@@ -7021,7 +7027,7 @@ h6 {
 .multiProfileContainer .multiProfileOuter .people.count6 .multiProfile h1,
 .multiProfileContainer .multiProfileOuter .people.count6 .multiProfile h2 {
   line-height: 1.1;
-  font-size: 50px;
+  font-size: 37px;
 }
 .multiProfileContainer .multiProfileOuter .people.count5 {
   margin-top: 215px;
@@ -7037,7 +7043,7 @@ h6 {
 .multiProfileContainer .multiProfileOuter .people.count5 .multiProfile h1,
 .multiProfileContainer .multiProfileOuter .people.count5 .multiProfile h2 {
   line-height: 1;
-  font-size: 50px;
+  font-size: 45px;
 }
 .multiProfileContainer .multiProfileOuter .people.count4 .multiProfile {
   margin: 0px 15px;
@@ -7067,6 +7073,7 @@ h6 {
 .multiProfileContainer .multiProfileOuter .multiProfile {
   padding: 0;
   display: inline-block;
+  vertical-align: top;
 }
 .multiProfileContainer .multiProfileOuter .multiProfile .image {
   margin: auto;
@@ -7091,13 +7098,15 @@ h6 {
 }
 .multiProfileContainer .multiProfileOuter .multiProfile .name h1 {
   font-family: "HelveticaNeue";
-  font-size: 61px;
+  font-size: 45px;
   -webkit-transform-origin: bottom left;
+  white-space: nowrap;
 }
 .multiProfileContainer .multiProfileOuter .multiProfile .name h2 {
   font-family: "HelveticaNeue-Bold";
-  font-size: 61px;
+  font-size: 45px;
   -webkit-transform-origin: top left;
+  white-space: nowrap;
 }
 .coming-up,
 .lower-third {
@@ -7262,11 +7271,11 @@ h6 {
 .sidebar.photo .name div {
   padding-top: 85px;
   position: absolute;
-  padding-left: 200px;
+  padding-left: 210px;
 }
 .sidebar.photo .name div h1,
 .sidebar.photo .name div h2 {
-  font-size: 35px;
+  font-size: 30px;
 }
 .sidebar.photo .manifesto p {
   margin-bottom: 30px;
@@ -7282,12 +7291,12 @@ h6 {
   padding: 20px 15px 0;
 }
 .sidebar .position h1 {
-  font-size: 30px;
+  font-size: 26px;
   font-family: "HelveticaNeue-Bold";
   white-space: nowrap;
 }
 .sidebar .position h2 {
-  font-size: 32px;
+  font-size: 28px;
   font-family: "HelveticaNeue";
 }
 .sidebar .name {

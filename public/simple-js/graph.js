@@ -182,7 +182,7 @@ var Graphs = {
   },
 
   setTitle: function(title){
-    document.querySelector('#graphRoleTitle').innerHTML = title;
+    document.querySelector('#graphRoleTitle').innerHTML = title.toUpperCase();
   },
 
   initialLoad: function(data){
