@@ -34,25 +34,27 @@
       }
 
       function play(str){
-        // animate();
-      }
-
-      function update(str){
-        var xml = (new DOMParser()).parseFromString(str,"text/xml");
-        var id = xml.querySelector('#id #text').getAttribute('value');
-        var server = xml.querySelector('#server #text').getAttribute('value');
-
-        window.socket = io(server);
+        window.socket = io(window.xmlServer);
         window.socket.on('load', Graphs.initialLoad);
         window.socket.on('eliminate', Graphs.socketEliminate);
         window.socket.on('vote', Graphs.socketVote);
 
         window.socket.on('connect', function(){
-          window.socket.emit('load', { role: id });
+          window.socket.emit('load', { role: window.xmlId });
         });
       }
+
+      function update(str){
+        var xml = (new DOMParser()).parseFromString(str,"text/xml");
+        var id = window.xmlId = xml.querySelector('#id #text').getAttribute('value');
+        var server = window.xmlServer = xml.querySelector('#server #text').getAttribute('value');
+
+        console.log(id, server);
+      }
       
-      // update("<templateData><componentData id=\"id\"><data id=\"text\" value=\"d7e3bbe0-1d47-4eb6-8749-9181d1049890\" /></componentData><componentData id=\"server\"><data id=\"text\" value=\"http://localhost:3355\" /></templateData>");
+      //update("<templateData><componentData id=\"id\"><data id=\"text\" value=\"c7cbcb39-827a-4c78-bdae-2e1f91af597f\" /></componentData><componentData id=\"server\"><data id=\"text\" value=\"http://localhost:3355\" /></templateData>");
+      //play();
+
 
     </script>
   </body>
