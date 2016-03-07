@@ -1,5 +1,5 @@
 @ {
-	110 CGADD caspar-graphics/elections-2016-v2/src/flash/name-lt-v2/name-lt-v2.xfl candidate
+	110 CGADD caspar-graphics/elections-2016-v2/src/flash/name-lt-v2/name-lt-v2.xfl @candidate
 }
 @Q {
 	110 CGPLAY

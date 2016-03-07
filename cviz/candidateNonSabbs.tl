@@ -99,7 +99,7 @@
 }
 @END 999 {
     999 LOAD GE2016/BURN/BURNWITHAUDIO
-    210 CGADD caspar-graphics/elections-2016-v2/MULTI-PROFILE @data9
+    200 CGADD caspar-graphics/elections-2016-v2/MULTI-PROFILE @data9
 }
 # PLAY #9
 @Q {
@@ -123,7 +123,7 @@
 }
 @END 999 {
     999 LOAD GE2016/BURN/BURNWITHAUDIO
-    210 CGADD caspar-graphics/elections-2016-v2/MULTI-PROFILE @data11
+    200 CGADD caspar-graphics/elections-2016-v2/MULTI-PROFILE @data11
 }
 # PLAY #11
 @Q {
@@ -137,6 +137,9 @@
     999 LOAD GE2016/BURN/BURNWITHAUDIO
 }
 #CLEAR
+@Q {
+    999 PLAY
+}
 @7 999 {
 	100 STOP
 	100 CLEAR

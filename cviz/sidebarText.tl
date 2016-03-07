@@ -1,7 +1,7 @@
 @ {
     110 TRANSFORM 0.31 0 1 1 1 Linear
     100 TRANSFORM 0.31 0 1 1 1 Linear
-	110 CGADD caspar-graphics/elections-2016-v2/sidebar-text candidate
+	110 CGADD caspar-graphics/elections-2016-v2/sidebar-text @candidate
 	100 LOAD GE2016/SIDEBAR-TEXT-IN-STATIC
 	101 LOAD GE2016/SIDEBAR-TEXT-LOOP
 }
