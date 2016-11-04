@@ -3,6 +3,9 @@ var TARGET_BAR_THICKNESS = 55;
 var TARGET_BAR_SPACING = 20*2;
 var MAX_AREA_HEIGHT = 750;
 
+var PAGE_FADE_DURATION = 500;
+var ANIMATION_STEPS = 60;
+
 Chart.defaults.global.showScale = false;
 Chart.defaults.global.scaleShowLabels = false;
 Chart.defaults.global.scaleLineColor = "transparent";
@@ -39,6 +42,7 @@ Chart.defaults.global.customTooltips = function(tooltip) {
 
 var Graphs = {
   columnWidth: 90,
+  currentRole: null,
 
   shuffleExistingCanvas: function(){
     var hidden = document.querySelector('canvas.gone');
@@ -96,6 +100,8 @@ var Graphs = {
       scaleShowVerticalLines: false,
       scaleGridLineColor: "#000",
 
+      animation: false,
+
       barShowStroke: false,
       responsive : true,
 
@@ -115,21 +121,35 @@ var Graphs = {
       },
       onAnimationProgress: function()
       {
-        var chart = Graphs.currentCanvas;
-
-        for(var i in this.datasets[0].bars){
-          var bar = this.datasets[0].bars[i];
-
-          var elm = document.getElementById('tooltip'+Math.floor(bar.y+1));
-          if(elm == null || elm.classList.contains('invisible'))
-            continue;
-
-          elm.style.left = (chart.offsetLeft+bar.x)+"px";
-        }
+        Graphs.resizeChart();
       },
     });
 
     Graphs.createLabels();
+  },
+
+  resizeChart(){
+    var chart = Graphs.currentCanvas;
+
+    for(var i in Graphs.current.datasets[0].bars){
+      var bar = Graphs.current.datasets[0].bars[i];
+
+      var elm = document.getElementById('tooltip'+Math.floor(bar.y+1));
+      if(elm == null || elm.classList.contains('invisible'))
+        continue;
+
+      elm.style.left = (chart.offsetLeft+bar.x)+"px";
+    }
+  },
+
+  updateChart(animate){
+    console.log("UPD", animate)
+    // Graphs.current.options.animationSteps = animate ? ANIMATION_STEPS : 1;
+    Graphs.current.options.animation = !!animate;
+    Graphs.current.update();
+    Graphs.current.options.animation = false;
+    // if (!animate)
+    //   Graphs.resizeChart();
   },
 
   nextRound: function(eliminate){
@@ -157,17 +177,19 @@ var Graphs = {
     if(v == undefined || v == null)
       return;
 
-    var labelCount = Graphs.myLabels.length;
-    Graphs.current.datasets[0].bars[labelCount-1-i].value = v;
+    // var labelCount = Graphs.myLabels.length;
+    // Graphs.current.datasets[0].bars[labelCount-1-i].value = v;
 
-    Graphs.current.update();
+    // // Graphs.current.options.animation = true; 
+    // Graphs.current.update();
+    // Graphs.current.options.animation = false; 
   },
 
   createLabels: function(){
     var wrapper = document.querySelector('#chartLabels');
 
     if(wrapper.innerHTML.length > 10)
-      return;
+      wrapper.innerHTML = "";
 
     var labelCount = Graphs.myLabels.length;
 
@@ -175,7 +197,8 @@ var Graphs = {
       var elm = document.createElement('div');
       elm.classList.add('myLabel')
       elm.setAttribute('id', 'graphLabel'+i);
-      elm.innerHTML = Graphs.myLabels[i];
+      elm.setAttribute('data-id', Graphs.myLabels[i].id);
+      elm.innerHTML = Graphs.myLabels[i].name;
       elm.style.marginTop = (Graphs.barSpacing*2)+"px";
       wrapper.appendChild(elm);
     }
@@ -185,38 +208,109 @@ var Graphs = {
     document.querySelector('#graphRoleTitle').innerHTML = title.toUpperCase();
   },
 
-  initialLoad: function(data){
-    console.log("LOAD", data);
+  showHideGraph: function(vis, cb){
+    if (!cb) cb = function(){};
 
-    Graphs.setTitle(data.position.fullName);
-    Graphs.myLabels = data.labels;
-    Graphs.addRound();
-    Graphs.createLabels();
+    console.log("SHOW/HIDE", vis)
 
-    // set eliminated candidates
-    for(var i in data.eliminated){
-      Graphs.setEliminated(data.eliminated[i]);
+    var elm = document.querySelector('.main');
+    if (vis){
+      if (!elm.classList.contains("invisible"))
+        return cb();
+
+      elm.classList.remove("invisible");
+    } else {
+      if (elm.classList.contains("invisible"))
+        return cb();
+
+      elm.classList.add("invisible");
     }
 
-    // add starting round of votes
-    var votes = data.votes[data.eliminated.length];
-    if(!votes || votes.length == 0)
-      return;
+    setTimeout(cb, PAGE_FADE_DURATION);
+  },
 
-    for(var i in votes){
-      Graphs.addData(i, votes[i]);
+  getLabelIndex: function(id){
+    var elms = document.querySelectorAll('.myLabel');
+    for(var i = 0; i<elms.length; i++){
+      if (elms[i].getAttribute('data-id') == id)
+        return i;
     }
+
+    return -1;
   },
 
-  socketEliminate: function(data){
-    console.log("ELIMINATE", data);
+  setRoundData: function(round, animate){
+    // Remove eliminated state
+    var elms = document.querySelectorAll('.myLabel');
+    for(var i = 0; i<elms.length; i++){
+      if(elms[i].classList)
+        elms[i].classList.remove('disabled');
+    }
 
-    Graphs.nextRound(data.index);
+    var results = round.querySelectorAll('result');
+    for(var i = 0; i<results.length; i++){
+      var res = results[i];
+
+      // Set eliminated when appropriate
+      var index = Graphs.getLabelIndex(res.getAttribute('candidate'));
+      var eliminated = res.getAttribute('eliminated');
+      if (eliminated && elms[index])
+        elms[index].classList.add('disabled');
+
+      // Set value
+      var labelCount = Graphs.myLabels.length;
+      var number = parseInt(res.innerHTML);
+      if (isNaN(number))
+        number = 0;
+
+      Graphs.current.datasets[0].bars[labelCount-index-1].value = number;
+    }
+
+    Graphs.updateChart(animate);
   },
 
-  socketVote: function(data){
-    console.log("VOTE", data);
+  scrapeData: function(){
+    $.ajax(window.apiUrl, {
+      cache: false,
+      dataType: "xml"
+    }).then(function (res){
+      window.blah = res;
+      Graphs.setData(res);
+    })
+  },
 
-    Graphs.addData(data.index, data.count);
+  setData: function(xml){
+    console.log("SET", xml);
+    const positionElm = xml.querySelector('position');
+    var round = xml.querySelector('rounds:last-child');
+
+    // TODO - TESTING MODE BELOW:
+    var rounds = xml.querySelectorAll('rounds round');
+    round = rounds[Math.floor(Math.random() * rounds.length)];
+
+    if (Graphs.currentRole != positionElm.id) {
+      return Graphs.showHideGraph(false, function(){
+        var candidates = xml.querySelectorAll('candidates candidate');
+
+        var labels = $.map(candidates, function(v){
+          return {
+            id: v.id,
+            name: v.innerHTML
+          };
+        })
+
+        Graphs.currentRole = positionElm.id;
+        Graphs.setTitle(positionElm.innerHTML);
+        Graphs.myLabels = labels;
+        Graphs.removeAllTooltip();
+        Graphs.addRound();
+        Graphs.createLabels();
+        Graphs.setRoundData(round, false);
+
+        Graphs.showHideGraph(true);
+      });
+    }
+
+    console.log("UNHANDLED");
   }
 };

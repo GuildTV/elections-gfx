@@ -7408,3 +7408,10 @@ h6 {
   font-family: "HelveticaNeue";
   font-size: 40px;
 }
+.main {
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+.main.invisible {
+  opacity: 0;
+}
