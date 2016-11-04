@@ -47,6 +47,8 @@ var Graphs = {
   currentRole: null,
   currentRound: -1,
 
+  updating: false,
+
   shuffleExistingCanvas: function(){
     var hidden = document.querySelector('canvas.gone');
     if(hidden){
@@ -264,13 +266,17 @@ var Graphs = {
   },
 
   setData: function(xml){
+    if (Graphs.updating)
+      return;
+
     // console.log("SET", xml);
     const positionElm = xml.querySelector('position');
-    var round = xml.querySelector('rounds:last-child');
+    var round = xml.querySelector('rounds round:last-child');
 
     // TODO - TESTING MODE BELOW:
-    var rounds = xml.querySelectorAll('rounds round');
-    round = rounds[Math.floor(Math.random() * rounds.length)];
+    // var rounds = xml.querySelectorAll('rounds round');
+    // round = rounds[Math.floor(Math.random() * rounds.length)];
+    console.log(round)
 
     // If role has changed, fade out and back in
     if (Graphs.currentRole != positionElm.id) {
@@ -294,7 +300,9 @@ var Graphs = {
         Graphs.createLabels();
         Graphs.setRoundData(round, false);
 
-        Graphs.showHideGraph(true);
+        Graphs.showHideGraph(true, function(){
+          Graphs.updating = false;
+        });
       });
     }
 
@@ -315,8 +323,9 @@ var Graphs = {
 
         Graphs.showHiddenGraph();
       }, 350);
-      
     }
+
+    Graphs.updating = false;
   },
 
   showHiddenGraph(){
@@ -326,5 +335,14 @@ var Graphs = {
     for (var i=0; i<tooltips.length; i++){
       tooltips[i].classList.remove('pending');
     }
+  },
+
+  startScraping(){
+    if (Graphs.scraper)
+      return;
+
+    Graphs.scraper = setInterval(function(){
+      Graphs.scrapeData();
+    }, window.apiInterval);
   }
 };
