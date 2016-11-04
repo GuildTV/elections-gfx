@@ -7351,7 +7351,7 @@ h6 {
 #chartLabels,
 #chartWrapper {
   display: inline-block;
-  height: 750px;
+  height: 775px;
 }
 #chartLabels {
   overflow: hidden;
@@ -7359,12 +7359,12 @@ h6 {
 }
 #chartLabels .myLabel {
   background: #272727;
-  height: 55px;
+  height: 54px;
   width: 100%;
-  margin-top: 50px;
+  margin-top: 41px;
   display: block;
   text-align: left;
-  line-height: 55px;
+  line-height: 54px;
   padding: 0 15px;
   font-family: "HelveticaNeue-Bold";
   font-size: 30px;
@@ -7381,6 +7381,11 @@ h6 {
   position: absolute;
   top: 50px;
   margin-left: -5px;
+  opacity: 0;
+  transition: 0.5s opacity;
+}
+#chartWrapper canvas.current {
+  opacity: 1;
 }
 #chartWrapper canvas.gone {
   opacity: 0;
@@ -7394,7 +7399,8 @@ h6 {
   font-size: 28px;
   font-family: "HelveticaNeue-Bold";
 }
-.myTooltip.invisible {
+.myTooltip.invisible,
+.myTooltip.pending {
   opacity: 0;
 }
 #graphRoleTitle {
@@ -7412,6 +7418,6 @@ h6 {
   opacity: 1;
   transition: opacity 0.5s;
 }
-.main.invisible {
+.main.invisibleMain {
   opacity: 0;
 }

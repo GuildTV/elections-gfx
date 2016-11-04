@@ -4,7 +4,6 @@ var TARGET_BAR_SPACING = 20*2;
 var MAX_AREA_HEIGHT = 750;
 
 var PAGE_FADE_DURATION = 500;
-var ANIMATION_STEPS = 60;
 
 Chart.defaults.global.showScale = false;
 Chart.defaults.global.scaleShowLabels = false;
@@ -38,11 +37,15 @@ Chart.defaults.global.customTooltips = function(tooltip) {
 
   if(elm.classList.contains('invisible'))
     elm.classList.remove('invisible');
+
+  if(!Graphs.currentCanvas.classList.contains('current'))
+    elm.classList.add('pending');
 };
 
 var Graphs = {
   columnWidth: 90,
   currentRole: null,
+  currentRound: -1,
 
   shuffleExistingCanvas: function(){
     var hidden = document.querySelector('canvas.gone');
@@ -57,16 +60,18 @@ var Graphs = {
     }
   },
 
-  addRound: function(){
+  addRound: function(setCurrent){
     Graphs.removeAllTooltip();
     Graphs.shuffleExistingCanvas();
 
     var wrapper = document.getElementById('chartWrapper');
     var canvas = Graphs.currentCanvas = document.createElement('canvas');
     wrapper.appendChild(canvas);
-    canvas.classList.add('current');
     canvas.height = 550;
     canvas.width = 850;
+
+    if (setCurrent)
+      canvas.classList.add('current');
 
     var ctx = canvas.getContext('2d');
 
@@ -77,6 +82,8 @@ var Graphs = {
     wrapper.style.height = chartHeight+"px";
     canvas.style.marginTop = marginTop + "px";
     document.querySelector('#chartLabels').style.marginTop = (marginTop+45) + "px";
+
+    console.log("spacing", barSpacing, "height", chartHeight)
 
 
     var labels = [];
@@ -101,11 +108,12 @@ var Graphs = {
       scaleGridLineColor: "#000",
 
       animation: false,
+      imageSmoothingEnabled: false,
 
       barShowStroke: false,
       responsive : true,
 
-      barValueSpacing: barSpacing,
+      barValueSpacing: barSpacing-0,
 
       tooltipFillColor: "transparent",
       tooltipFontColor: "#333",
@@ -124,8 +132,6 @@ var Graphs = {
         Graphs.resizeChart();
       },
     });
-
-    Graphs.createLabels();
   },
 
   resizeChart(){
@@ -143,25 +149,11 @@ var Graphs = {
   },
 
   updateChart(animate){
-    console.log("UPD", animate)
-    // Graphs.current.options.animationSteps = animate ? ANIMATION_STEPS : 1;
+    console.log("render", animate)
+
     Graphs.current.options.animation = !!animate;
     Graphs.current.update();
     Graphs.current.options.animation = false;
-    // if (!animate)
-    //   Graphs.resizeChart();
-  },
-
-  nextRound: function(eliminate){
-    Graphs.addRound();
-
-    Graphs.setEliminated(eliminate);
-  },
-
-  setEliminated: function(id){
-    var oldLabel = document.querySelector('#graphLabel'+id);
-    if(oldLabel)
-      oldLabel.classList.add('disabled');
   },
 
   removeAllTooltip: function(){
@@ -173,18 +165,6 @@ var Graphs = {
     }
   },
 
-  addData: function(i, v){
-    if(v == undefined || v == null)
-      return;
-
-    // var labelCount = Graphs.myLabels.length;
-    // Graphs.current.datasets[0].bars[labelCount-1-i].value = v;
-
-    // // Graphs.current.options.animation = true; 
-    // Graphs.current.update();
-    // Graphs.current.options.animation = false; 
-  },
-
   createLabels: function(){
     var wrapper = document.querySelector('#chartLabels');
 
@@ -194,12 +174,16 @@ var Graphs = {
     var labelCount = Graphs.myLabels.length;
 
     for(var i = 0; i < labelCount; i++){
+      var name = Graphs.myLabels[i].name.toUpperCase();
+      parts = name.trim().split(" ");
+      name = parts[parts.length-1];
+
       var elm = document.createElement('div');
       elm.classList.add('myLabel')
       elm.setAttribute('id', 'graphLabel'+i);
       elm.setAttribute('data-id', Graphs.myLabels[i].id);
-      elm.innerHTML = Graphs.myLabels[i].name;
-      elm.style.marginTop = (Graphs.barSpacing*2)+"px";
+      elm.innerHTML = name;
+      // elm.style.marginTop = (Graphs.barSpacing*2)+"px";
       wrapper.appendChild(elm);
     }
   },
@@ -211,19 +195,19 @@ var Graphs = {
   showHideGraph: function(vis, cb){
     if (!cb) cb = function(){};
 
-    console.log("SHOW/HIDE", vis)
+    // console.log("SHOW/HIDE", vis)
 
     var elm = document.querySelector('.main');
     if (vis){
-      if (!elm.classList.contains("invisible"))
+      if (!elm.classList.contains("invisibleMain"))
         return cb();
 
-      elm.classList.remove("invisible");
+      elm.classList.remove("invisibleMain");
     } else {
-      if (elm.classList.contains("invisible"))
+      if (elm.classList.contains("invisibleMain"))
         return cb();
 
-      elm.classList.add("invisible");
+      elm.classList.add("invisibleMain");
     }
 
     setTimeout(cb, PAGE_FADE_DURATION);
@@ -280,7 +264,7 @@ var Graphs = {
   },
 
   setData: function(xml){
-    console.log("SET", xml);
+    // console.log("SET", xml);
     const positionElm = xml.querySelector('position');
     var round = xml.querySelector('rounds:last-child');
 
@@ -288,6 +272,7 @@ var Graphs = {
     var rounds = xml.querySelectorAll('rounds round');
     round = rounds[Math.floor(Math.random() * rounds.length)];
 
+    // If role has changed, fade out and back in
     if (Graphs.currentRole != positionElm.id) {
       return Graphs.showHideGraph(false, function(){
         var candidates = xml.querySelectorAll('candidates candidate');
@@ -299,11 +284,13 @@ var Graphs = {
           };
         })
 
+        Graphs.shuffleExistingCanvas();
         Graphs.currentRole = positionElm.id;
+        Graphs.currentRound = parseInt(round.getAttribute('number'));
         Graphs.setTitle(positionElm.innerHTML);
         Graphs.myLabels = labels;
         Graphs.removeAllTooltip();
-        Graphs.addRound();
+        Graphs.addRound(true);
         Graphs.createLabels();
         Graphs.setRoundData(round, false);
 
@@ -311,6 +298,33 @@ var Graphs = {
       });
     }
 
-    console.log("UNHANDLED");
+    var newRound = parseInt(round.getAttribute('number'));
+
+    if (newRound == Graphs.currentRound){
+      console.log("UPD round", Graphs.currentRound);
+      Graphs.setRoundData(round, true);
+
+    } else  {
+      console.log("Change round from " + Graphs.currentRound + " to " + newRound);
+
+      Graphs.addRound(false);
+      Graphs.currentRound = newRound;
+
+      setTimeout(function() {
+        Graphs.setRoundData(round, false);
+
+        Graphs.showHiddenGraph();
+      }, 350);
+      
+    }
+  },
+
+  showHiddenGraph(){
+    Graphs.currentCanvas.classList.add('current');
+
+    var tooltips = document.querySelectorAll('.myTooltip.pending');
+    for (var i=0; i<tooltips.length; i++){
+      tooltips[i].classList.remove('pending');
+    }
   }
 };

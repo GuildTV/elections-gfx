@@ -134,7 +134,7 @@
 						yAbsolute = (this.endPoint + this.calculateYInvertXY(barIndex) - (yHeight / 2)) - 5,
 						barHeight = this.calculateBarHeight(datasetCount);
 					if (datasetCount > 1) yAbsolute = yAbsolute + (barHeight * (datasetIndex - 1)) - (datasetIndex * options.barDatasetSpacing) + barHeight/2;
-					return yAbsolute;
+					return Math.round(yAbsolute);
 				},
 
         buildCalculatedLabels : function() {
