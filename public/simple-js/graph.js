@@ -276,7 +276,6 @@ var Graphs = {
     // TODO - TESTING MODE BELOW:
     // var rounds = xml.querySelectorAll('rounds round');
     // round = rounds[Math.floor(Math.random() * rounds.length)];
-    console.log(round)
 
     // If role has changed, fade out and back in
     if (Graphs.currentRole != positionElm.id) {
