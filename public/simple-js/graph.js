@@ -226,11 +226,15 @@ var Graphs = {
   },
 
   setRoundData: function(round, animate){
+    var changed = [];
+
     // Remove eliminated state
     var elms = document.querySelectorAll('.myLabel');
     for(var i = 0; i<elms.length; i++){
-      if(elms[i].classList)
+      if(elms[i].classList) {
+        changed[i] = elms[i].classList.contains('disabled');
         elms[i].classList.remove('disabled');
+      }
     }
 
     var results = round.querySelectorAll('result');
@@ -240,8 +244,10 @@ var Graphs = {
       // Set eliminated when appropriate
       var index = Graphs.getLabelIndex(res.getAttribute('candidate'));
       var eliminated = res.getAttribute('eliminated');
-      if (eliminated && elms[index])
+      if (eliminated && elms[index]){
+        changed[index] = !changed[index];
         elms[index].classList.add('disabled');
+      }
 
       // Set value
       var labelCount = Graphs.myLabels.length;
@@ -250,6 +256,14 @@ var Graphs = {
         number = 0;
 
       Graphs.current.datasets[0].bars[labelCount-index-1].value = number;
+    }
+
+    for(var i=0; i<elms.length; i++){
+      if (!changed[i])
+        continue;
+
+      Graphs.removeAllTooltip();
+      break;
     }
 
     Graphs.updateChart(animate);
