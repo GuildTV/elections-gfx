@@ -13,7 +13,7 @@ Chart.defaults.global.scaleFontSize = 22;
 Chart.defaults.global.maintainAspectRatio = false;
 
 Chart.defaults.global.customTooltips = function(tooltip) {
-  if(tooltip == false || !tooltip.text)
+  if(Graphs.updating || tooltip == false || !tooltip.text)
     return;
 
   var elm = document.getElementById('tooltip'+Math.floor(tooltip.y))
@@ -294,9 +294,9 @@ var Graphs = {
         Graphs.currentRound = parseInt(round.getAttribute('number'));
         Graphs.setTitle(positionElm.innerHTML);
         Graphs.myLabels = labels;
-        Graphs.removeAllTooltip();
         Graphs.addRound(true);
         Graphs.createLabels();
+        Graphs.removeAllTooltip();
         Graphs.setRoundData(round, false);
 
         Graphs.showHideGraph(true, function(){
