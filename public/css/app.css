@@ -7341,12 +7341,15 @@ h6 {
 .imageSide #chartWrapper {
   width: 425px;
 }
+.wideGraph {
+  padding: 0 10%;
+}
 .wideGraph #chartLabels {
-  width: 500px;
+  width: 450px;
   margin-left: 75px;
 }
 .wideGraph #chartWrapper {
-  width: 1225px;
+  width: 1000px;
 }
 #chartLabels,
 #chartWrapper {

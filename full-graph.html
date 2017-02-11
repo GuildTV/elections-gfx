@@ -7,7 +7,7 @@
   </head>
 
   <body>
-  <div style="background:url('public/img/template/graph-full-empty.jpg') no-repeat center center fixed; background-size: cover; position: absolute; float: left; top: 0px; left: 0px; width: 100vw; height: 100vh; z-index: -200;"></div>
+  <!--<div style="background:url('public/img/template/graph-full-empty.jpg') no-repeat center center fixed; background-size: cover; position: absolute; float: left; top: 0px; left: 0px; width: 100vw; height: 100vh; z-index: -200;"></div>-->
     <div class="main">
       <div class="winningCandidateContainer">
         <div class="wideGraph">
@@ -21,32 +21,33 @@
     </div> <!-- / .main -->
 
     <!-- Scripts -->
+    <script type="text/javascript" src="public/lib/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="public/lib/Chart.js/Chart.min.js"></script>
     <script type="text/javascript" src="public/lib/Chart.HorizontalBar.js/Chart.HorizontalBar.js"></script>
     <script type="text/javascript" src="public/simple-js/graph.js"></script>
     <script type="text/javascript">
 
-      Graphs.myLabels = [
-        "Aghamirzayev".toUpperCase(),
-        // "Cherekaeva".toUpperCase(),
-        "Guan".toUpperCase(),
-        "Liu".toUpperCase(),
-        "Mohammed".toUpperCase(),
-        "Nwaiwu".toUpperCase(),
-        // "Nwaiwu".toUpperCase(),
-        "RON"
-      ];
+      function stop(){
+        document.querySelector('body').style.display = "none";
+      }
 
       function play(str){
-        animate();
+        // TODO - start scraper
+        Graphs.startScraping();
       }
 
       function update(str){
-        render();
-        Graphs.setTitle('TEST ROLE');
+        var xml = (new DOMParser()).parseFromString(str,"text/xml");
+        var server = window.apiUrl = xml.querySelector('#server #text').getAttribute('value');
+        var interval = window.apiInterval = parseInt(xml.querySelector('#interval #text').getAttribute('value'));
+
+        console.log(server, interval);
       }
       
-         update("<templateData><componentData id=\"id\"><data id=\"text\" value=\"pres-jack\" /></componentData><componentData id=\"votes\"><data id=\"text\" value=\"99,999\" /></templateData>");
+      // update("<templateData><componentData id=\"server\"><data id=\"text\" value=\"http://localhost:8088/graph\" /></componentData><componentData id=\"interval\"><data id=\"text\" value=\"1000\" /></componentData></templateData>");
+      // play();
+
+      // Graphs.scrapeData();
 
     </script>
   </body>
