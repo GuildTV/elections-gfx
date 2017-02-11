@@ -9,19 +9,16 @@ function render(id, data, showPhoto){
     holder.querySelector('img').src = person.photo;
   }
 
-  holder.querySelector('.position h1').innerText = person.position.compactName;
+  holder.querySelector('.position h1').innerText = person.Position.compactName;
   holder.querySelector('.position h2').innerText = data.elected?"elect":"candidate";
 
   holder.querySelector('.name h1').innerText = person.firstName;
   holder.querySelector('.name h2').innerText = person.lastName;
 
   var manifesto = holder.querySelector('.manifesto');
-  manifesto.innerHTML += "<p>"+person.manifesto.one+"</p>";
-  manifesto.innerHTML += "<p>"+person.manifesto.two+"</p>";
-  manifesto.innerHTML += "<p>"+person.manifesto.three+"</p>";
-  // for(var i in person.manifesto){
-  //   manifesto.innerHTML += "<p>"+person.manifesto[i]+"</p>";
-  // }
+  manifesto.innerHTML += "<p>"+person.manifestoOne+"</p>";
+  manifesto.innerHTML += "<p>"+person.manifestoTwo+"</p>";
+  manifesto.innerHTML += "<p>"+person.manifestoThree+"</p>";
 }
 
 function stop(){

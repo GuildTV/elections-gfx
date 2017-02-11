@@ -41,7 +41,7 @@ function update(str){
 
     if(winners){
       node.querySelector('h1').innerHTML = (person.firstName.toUpperCase() + "<br />" + person.lastName.toUpperCase()).trim();
-      node.querySelector('h2').innerText = person.position.miniName.toUpperCase();
+      node.querySelector('h2').innerText = person.Position.miniName.toUpperCase();
     } else {
       node.querySelector('h1').innerText = person.firstName.toUpperCase();
       node.querySelector('h2').innerText = person.lastName.toUpperCase();
