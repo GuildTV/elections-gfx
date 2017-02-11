@@ -22,3 +22,19 @@ function renderTweet(data){
     root.querySelector('.message').innerText = data.text;
   }
 }
+
+function xmlToObject(str){
+  var data = {};
+
+  var xml = (new DOMParser()).parseFromString(str,"text/xml");
+  var components = xml.querySelectorAll('componentData');
+
+  for(var i=0; i < components.length; i++){
+    var node = components[i];
+    var id = node.getAttribute('id');
+
+    data[id] = node.querySelector('#text').getAttribute('value');
+  }
+
+  return data;
+}
