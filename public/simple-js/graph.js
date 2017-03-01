@@ -251,7 +251,7 @@ var Graphs = {
 
       // Set value
       var labelCount = Graphs.myLabels.length;
-      var number = parseInt(res.innerHTML);
+      var number = parseInt(res.getAttribute('votes'));
       if (isNaN(number))
         number = 0;
 
@@ -284,7 +284,7 @@ var Graphs = {
       return;
 
     // console.log("SET", xml);
-    const positionElm = xml.querySelector('position');
+    const positionElm = xml.querySelector('title');
     var round = xml.querySelector('rounds round:last-child');
 
     // TODO - TESTING MODE BELOW:
@@ -292,7 +292,7 @@ var Graphs = {
     // round = rounds[Math.floor(Math.random() * rounds.length)];
 
     // If role has changed, fade out and back in
-    if (Graphs.currentRole != positionElm.id) {
+    if (Graphs.currentRole != positionElm.innerHTML) {
       return Graphs.showHideGraph(false, function(){
         var candidates = xml.querySelectorAll('candidates candidate');
 
@@ -304,7 +304,7 @@ var Graphs = {
         })
 
         Graphs.shuffleExistingCanvas();
-        Graphs.currentRole = positionElm.id;
+        Graphs.currentRole = positionElm.innerHTML;
         Graphs.currentRound = parseInt(round.getAttribute('number'));
         Graphs.setTitle(positionElm.innerHTML);
         Graphs.myLabels = labels;
