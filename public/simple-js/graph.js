@@ -142,7 +142,7 @@ var Graphs = {
     for(var i in Graphs.current.datasets[0].bars){
       var bar = Graphs.current.datasets[0].bars[i];
 
-      var elm = document.getElementById('tooltip'+Math.floor(bar.y+1));
+      var elm = document.getElementById('tooltip'+Math.floor(bar.y));
       if(elm == null || elm.classList.contains('invisible'))
         continue;
 
@@ -237,25 +237,30 @@ var Graphs = {
       }
     }
 
-    var results = round.querySelectorAll('result');
-    for(var i = 0; i<results.length; i++){
-      var res = results[i];
+    if (round != null){
+      var results = round.querySelectorAll('result');
+      for(var i = 0; i<results.length; i++){
+        var res = results[i];
 
-      // Set eliminated when appropriate
-      var index = Graphs.getLabelIndex(res.getAttribute('candidate'));
-      var eliminated = res.getAttribute('eliminated');
-      if (eliminated && elms[index]){
-        changed[index] = !changed[index];
-        elms[index].classList.add('disabled');
+        // Set eliminated when appropriate
+        var index = Graphs.getLabelIndex(res.getAttribute('candidate'));
+        var eliminated = res.getAttribute('eliminated');
+        if (eliminated && elms[index]){
+          changed[index] = !changed[index];
+          elms[index].classList.add('disabled');
+        }
+
+        // Set value
+        var labelCount = Graphs.myLabels.length;
+        var number = parseInt(res.getAttribute('votes'));
+        if (isNaN(number))
+          number = 0;
+
+        // if (Graphs.current.datasets[0].bars[labelCount-index-1].value != number)
+        //   changed[i] = true;
+
+        Graphs.current.datasets[0].bars[labelCount-index-1].value = number;
       }
-
-      // Set value
-      var labelCount = Graphs.myLabels.length;
-      var number = parseInt(res.getAttribute('votes'));
-      if (isNaN(number))
-        number = 0;
-
-      Graphs.current.datasets[0].bars[labelCount-index-1].value = number;
     }
 
     for(var i=0; i<elms.length; i++){
@@ -305,7 +310,7 @@ var Graphs = {
 
         Graphs.shuffleExistingCanvas();
         Graphs.currentRole = positionElm.innerHTML;
-        Graphs.currentRound = parseInt(round.getAttribute('number'));
+        Graphs.currentRound = parseInt(!round ? 0 : round.getAttribute('number'));
         Graphs.setTitle(positionElm.innerHTML);
         Graphs.myLabels = labels;
         Graphs.addRound(true);
@@ -319,7 +324,7 @@ var Graphs = {
       });
     }
 
-    var newRound = parseInt(round.getAttribute('number'));
+    var newRound = parseInt(!round ? 0 : round.getAttribute('number'));
 
     if (newRound == Graphs.currentRound){
       console.log("UPD round", Graphs.currentRound);
