@@ -11,12 +11,16 @@ Chart.defaults.global.scaleLineColor = "transparent";
 Chart.defaults.global.scaleFontColor = "transparent";
 Chart.defaults.global.scaleFontSize = 22;
 Chart.defaults.global.maintainAspectRatio = false;
+Chart.defaults.global.animationEasing = "easeOutCubic";
+Chart.defaults.global.animationSteps = 25;
 
 Chart.defaults.global.customTooltips = function(tooltip) {
   if(Graphs.updating || tooltip == false || !tooltip.text)
     return;
 
   var elm = document.getElementById('tooltip'+Math.floor(tooltip.y))
+
+  var chart = Graphs.currentCanvas;
 
   if(!elm){
     elm = document.createElement('span');
@@ -25,15 +29,10 @@ Chart.defaults.global.customTooltips = function(tooltip) {
   }
 
   elm.innerHTML = tooltip.text;
-  elm.classList.add('myTooltip');
-
-  var chart = Graphs.currentCanvas;
-
-  elm.style.left = (chart.offsetLeft+tooltip.x)+"px";
   elm.style.top = (chart.offsetTop+tooltip.y)+"px";
-
-  elm.style.marginLeft = "10px";
+  elm.classList.add('myTooltip');
   elm.style.marginTop = -(elm.offsetHeight/2)+"px";
+  elm.style.transform = "translateX("+Math.round(chart.offsetLeft+tooltip.x)+"px)";
 
   if(elm.classList.contains('invisible'))
     elm.classList.remove('invisible');
@@ -143,10 +142,12 @@ var Graphs = {
       var bar = Graphs.current.datasets[0].bars[i];
 
       var elm = document.getElementById('tooltip'+Math.floor(bar.y));
+      if (elm == null)
+         elm = document.getElementById('tooltip'+Math.floor(bar.y+1));
       if(elm == null || elm.classList.contains('invisible'))
         continue;
 
-      elm.style.left = (chart.offsetLeft+bar.x)+"px";
+      elm.style.transform =  "translateX("+Math.round(chart.offsetLeft+bar.x)+"px)";
     }
   },
 

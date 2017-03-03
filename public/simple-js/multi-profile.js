@@ -70,9 +70,17 @@ function letterSpacing(){
 	var space2 = (h2.clientWidth-h2.scrollWidth)/(h2.textContent.length-1);
     	
 	if(space1 < 0)
-		h1.style.letterSpacing = space1+"px";
-	if(space2 < 0)
-		h2.style.letterSpacing = space2+"px";
+      h1.style.letterSpacing = space1+"px";
+    if(space2 < 0){
+      if (space2 < -3.5)
+        h2.style.letterSpacing = "-3.5px";
+      else
+        h2.style.letterSpacing = space2+"px";
+
+      if (space2 < -3.5){
+        h2.style.transform = "scaleX(" + (h2.clientWidth/h2.scrollWidth) + ")";
+      }
+    }
 	
   }
 }

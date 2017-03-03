@@ -7372,6 +7372,10 @@ h6 {
   font-family: "HelveticaNeue-Bold";
   font-size: 30px;
   color: #fff;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  will-change: opacity, transform;
   transition: opacity 0.5s;
 }
 #chartLabels .myLabel.disabled {
@@ -7401,6 +7405,8 @@ h6 {
   transition: 0.375s opacity;
   font-size: 28px;
   font-family: "HelveticaNeue-Bold";
+  left: 0;
+  margin-left: 10px;
 }
 .myTooltip.invisible,
 .myTooltip.pending {
