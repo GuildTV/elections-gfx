@@ -14,6 +14,20 @@ Chart.defaults.global.maintainAspectRatio = false;
 Chart.defaults.global.animationEasing = "easeOutCubic";
 Chart.defaults.global.animationSteps = 25;
 
+window.LOOKUP_TABLE = {
+  "Activities &amp; Development Officer": {
+    "Shannon Farm 'N' Fresh": "Shannon Farmer",
+    "Alina": "Alina Morosan",
+  },
+  "Welfare Officer": {
+    "Agony Aunt Anna ": "Anna Lyndon",
+    "Mother Hen": "Henrietta Green",
+  },
+  "Housing &amp; Community Officer ": {
+    'Joanna "Iguana"': "Joanna Prejbeanu"
+  }
+}
+
 Chart.defaults.global.customTooltips = function(tooltip) {
   if(Graphs.updating || tooltip == false || !tooltip.text)
     return;
@@ -168,16 +182,20 @@ var Graphs = {
     }
   },
 
-  createLabels: function(){
+  createLabels: function(title){
     var wrapper = document.querySelector('#chartLabels');
 
     if(wrapper.innerHTML.length > 10)
       wrapper.innerHTML = "";
 
     var labelCount = Graphs.myLabels.length;
-
+  
     for(var i = 0; i < labelCount; i++){
-      var name = Graphs.myLabels[i].name.toUpperCase();
+    var key = Graphs.myLabels[i].name;
+    
+    
+    
+      var name = key.toUpperCase();
       parts = name.trim().split(" ");
       name = parts[parts.length-1];
 
@@ -303,9 +321,15 @@ var Graphs = {
         var candidates = xml.querySelectorAll('candidates candidate');
 
         var labels = $.map(candidates, function(v){
+        var name = v.innerHTML;
+        console.log(name);
+        if (window.LOOKUP_TABLE[positionElm.innerHTML] !== undefined && window.LOOKUP_TABLE[positionElm.innerHTML][name] !== undefined){
+          name = window.LOOKUP_TABLE[positionElm.innerHTML][name];
+          }
+      
           return {
             id: v.id,
-            name: v.innerHTML
+            name: name
           };
         })
 
@@ -315,7 +339,7 @@ var Graphs = {
         Graphs.setTitle(positionElm.innerHTML);
         Graphs.myLabels = labels;
         Graphs.addRound(true);
-        Graphs.createLabels();
+        Graphs.createLabels(positionElm.innerHTML);
         Graphs.removeAllTooltip();
         Graphs.setRoundData(round, false);
 
