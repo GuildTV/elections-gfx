@@ -1,0 +1,20 @@
+* {
+  /*-webkit-box-sizing: border-box;
+  Box-Sizing:border-box;                              */     /* This sets all elements to be the actual set dimensions, disregarding padding and borders */
+  -webkit-backface-visibility: hidden;                     /* Hide the backface of elements - usuefull for 3d effects */
+  -webkit-transition: translate3d(0,0,0);                  /* Turns on hardware acceleration - not known to be of benefit in CCG, but won't hurt */
+}
+html, body {
+  width:1920px;                                            /* Set to your channel's resolution */
+  height:1080px;                                           /* Set to your channel's resolution */
+  margin:0;                                                /* Use all available space */
+  padding:0;                                               /* Use all available space */
+  background:transparent;                                  /* The HTML consumer actually makes your background transparent by default, unless a color or image is specified - but this might be usefull when debugging in browsers */
+  overflow:hidden;                                         /* Hide any overflowing elements - to disable scollbars */
+  -webkit-font-smoothing:antialiased !important;           /* Set aliasing of fonts - possible options: none, antialiased,  subpixel-antialiased */
+}
+
+// @font-face {
+//   font-family: "HelveticaBold";
+//   src: url("/font/Helvetica-Bold.otf");
+// }

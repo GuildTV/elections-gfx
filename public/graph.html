@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+
+  </head>
+
+  <body>
+    <div id="template-bg"></div>
+    <div class="main invisibleMain">
+      <div class="winningCandidateContainer">
+        <div class="dataSide stats">
+        </div>
+        <div class="imageSide">
+          <div id="chartLabels"></div>
+          <div id="chartWrapper"></div>
+        </div>
+      </div>
+
+      <h1 id='graphRoleTitle'></h1>
+
+    </div> <!-- / .main -->
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="lib/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="lib/Chart.js/Chart.min.js"></script>
+    <script type="text/javascript" src="lib/Chart.HorizontalBar.js/Chart.HorizontalBar.js"></script>
+
+    <script src="/dist/bundle.js"></script>
+    <script type="text/javascript">
+      window.setupGraph();
+    </script>
+  </body>
+</html>

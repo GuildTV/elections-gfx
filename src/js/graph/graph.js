@@ -55,7 +55,7 @@ Chart.defaults.global.customTooltips = function(tooltip) {
     elm.classList.add('pending');
 };
 
-var Graphs = {
+const Graphs = {
   columnWidth: 90,
   currentRole: null,
   currentRound: -1,
@@ -389,3 +389,5 @@ var Graphs = {
     }, window.apiInterval);
   }
 };
+
+export default Graphs;
