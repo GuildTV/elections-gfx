@@ -19,11 +19,6 @@ window.update = function(str){
 	console.log(server, interval);
 }
 
-// update("<templateData><componentData id=\"server\"><data id=\"text\" value=\"http://localhost:8088/graph\" /></componentData><componentData id=\"interval\"><data id=\"text\" value=\"1000\" /></componentData></templateData>");
-// play();
-
-// Graphs.scrapeData();
-
 
 
 if (window.location.hash.indexOf("dev") != -1){
@@ -31,4 +26,11 @@ if (window.location.hash.indexOf("dev") != -1){
 
 	document.body.classList.add("dev");
 
+	update("<templateData><componentData id=\"server\"><data id=\"text\" value=\"http://10.42.13.111:8088/api/graph\" /></componentData><componentData id=\"interval\"><data id=\"text\" value=\"1000\" /></componentData></templateData>");
+	play();
+
+	// Graphs.scrapeData();
 }
+
+	update("<templateData><componentData id=\"server\"><data id=\"text\" value=\"http://10.42.13.111:8088/api/graph\" /></componentData><componentData id=\"interval\"><data id=\"text\" value=\"1000\" /></componentData></templateData>");
+	play();

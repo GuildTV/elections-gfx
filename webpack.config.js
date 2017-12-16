@@ -3,7 +3,7 @@ const path = require('path');
 const config = {
   context: __dirname + '/src', // `__dirname` is root of project and `src` is source
   entry: {
-    app: './app.js',
+    app: './js/app.js',
   },
   output: {
     path: __dirname,

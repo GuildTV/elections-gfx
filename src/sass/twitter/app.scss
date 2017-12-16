@@ -1,3 +1,8 @@
+@import "../variables";
+@import "../common";
+@import "../casparcg";
+@import "./dev";
+
 .twitterPhoto,
 .twitterText {
   opacity: 0;
@@ -78,6 +83,7 @@
       line-height: 1.1;
 
       font-family: "HelveticaNeue-Bold";
+      overflow-wrap: break-word;
     }
 
     .handle {
@@ -136,5 +142,6 @@
     font-size: 100px;
     margin-top: 70px;
     line-height: 1.2;
+    overflow-wrap: break-word;
   }
 }

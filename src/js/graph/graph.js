@@ -196,7 +196,7 @@ const Graphs = {
     
     
       var name = key.toUpperCase();
-      parts = name.trim().split(" ");
+      const parts = name.trim().split(" ");
       name = parts[parts.length-1];
 
       var elm = document.createElement('div');
