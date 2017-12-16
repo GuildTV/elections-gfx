@@ -1,0 +1,16 @@
+@ {
+    999 LOADBG GE2016/BURN/BURNWITHAUDIO
+	210 MIXER OPACITY 0
+#	210 CG ADD 0 caspar-graphics/elections-2016-v2/MULTI-PROFILE 0 @data
+}
+# TODO delay may need changing to give template enough time to load reliably
+@DELAY 10 {
+	999 PLAY
+#	210 CG PLAY
+}
+@7 999 {
+    210 SWAP 1-200
+}
+@END 999 {
+    210 CLEAR
+}
