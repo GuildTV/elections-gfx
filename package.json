@@ -1,12 +1,11 @@
 {
   "name": "elections-graphics",
   "private": true,
-  "version": "0.0.0",
+  "version": "3.0.0",
   "description": "Guild Elections graphics package",
   "main": " ",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server --progress --colors --public --disable-host-check --host 0.0.0.0",
+    "start": "webpack-dev-server --progress --colors --public --disable-host-check --host 0.0.0.0",
     "dist": "NODE_ENV=production webpack -p --progress --colors"
   },
   "author": "",

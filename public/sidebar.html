@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+  </head>
+
+  <body>
+    <div id="template-bg"></div>
+    <div class="main">
+      <div class="sidebar visible">
+        <div class="position">
+          <h1></h1>
+          <h2></h2>
+        </div>
+        <div class="name">
+          <img />
+          <div>
+            <h1></h1>
+            <h2></h2>
+          </div>
+        </div>
+        <div class="manifesto_heading">MANIFESTO</div>
+        <div class="manifesto">
+        </div>
+      </div>
+
+    </div> <!-- / .main -->
+
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="filters hidden">
+      <defs>
+        <filter id="motionBlur">
+          <feGaussianBlur id="svg-blur-inner" in="SourceGraphic" stdDeviation="12,0" />
+        </filter>
+      </defs>
+    </svg>
+
+    <script src="/dist/bundle.js"></script>
+    <script type="text/javascript">
+      window.setupSidebar();
+    </script>
+  </body>
+</html>

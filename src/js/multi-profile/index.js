@@ -1,10 +1,10 @@
 require("sass/multi-profile/app.scss");
 
-window.update = function(str){
-  var xml = (new DOMParser()).parseFromString(str,"text/xml");
-  var components = xml.querySelectorAll('componentData');
-  str = components[0].childNodes[0].nodeValue
+import {TweenMax, Power2, TimelineLite} from "gsap";
 
+import nullImg from '../ronImg';
+
+window.update = function(str){
   var data = window.data = JSON.parse(str);
 
   var winners = !data.position;
@@ -39,7 +39,7 @@ window.update = function(str){
       continue;
     }
 
-    node.querySelector('img').setAttribute('src', person.photo);
+    node.querySelector('img').setAttribute('src', person.photo || nullImg);
 
     if(winners){
       node.querySelector('h1').innerHTML = (person.firstName.toUpperCase() + "<br />" + person.lastName.toUpperCase()).trim();
@@ -105,25 +105,23 @@ if (window.location.hash.indexOf("dev") != -1){
 
   document.body.classList.add("dev");
 
+  // function fakeWinners(){
+  //   update("<templateData>"+
+  //   	"<componentData id=\"f0\"><data id=\"text\" value=\"pres-jack\" /></componentData>"+
+		// "<componentData id=\"d0\"><data id=\"text\" value=\"pres-jack\" /></componentData>"+
+		// "<componentData id=\"f2\"><data id=\"text\" value=\"pres-jack\" /></componentData>"+
+		// "<componentData id=\"f3\"><data id=\"text\" value=\"pres-jack\" /></componentData>"+
+		// "<componentData id=\"f4\"><data id=\"text\" value=\"pres-ron\" /></componentData>"+
+		// "<componentData id=\"f5\"><data id=\"text\" value=\"pres-jack\" /></componentData>"+
+		// "<componentData id=\"f6\"><data id=\"text\" value=\"pres-jack\" /></componentData>"+
+		// "</templateData>");
+  // }
+
   function fakeRole(){
-    update("<templateData>"+
-    	"<componentData id=\"id\"><data id=\"text\" value=\"so\" /></componentData>"+
-    	"</templateData>");
+    update('{"candidates":[{"id":27,"uid":"ado-adam-elmi","positionId":8,"firstName":"Adam","lastName":"Elmi","photo":null,"manifestoOne":"Non-traditional jobs career fair","manifestoTwo":"Expand Hands Up funding","manifestoThree":"How to run your society workshop","order":1,"elected":false,"createdAt":"2017-02-28T21:51:20.000Z","updatedAt":"2017-03-03T21:05:19.000Z","PositionId":8},{"id":28,"uid":"ado-shannon-farmer","positionId":8,"firstName":"Shannon","lastName":"Farmer","photo":null,"manifestoOne":"Room booking via Guild App","manifestoTwo":"Improve Guild\'s media center","manifestoThree":"Guild promotion as priority","order":2,"elected":false,"createdAt":"2017-02-28T21:52:38.000Z","updatedAt":"2017-02-28T21:52:38.000Z","PositionId":8},{"id":30,"uid":"ado-alina-morosan","positionId":8,"firstName":"Alina","lastName":"Morosan","photo":null,"manifestoOne":"Widen collaboration with other students unions","manifestoTwo":"Encouraging students to get involved with societies","manifestoThree":"Access new sources of funding","order":4,"elected":false,"createdAt":"2017-02-28T21:55:40.000Z","updatedAt":"2017-03-03T21:05:38.000Z","PositionId":8},{"id":31,"uid":"ado-george-thomas","positionId":8,"firstName":"George","lastName":"Thomas","photo":null,"manifestoOne":"Improve society inclusivity","manifestoTwo":"Improve room allocation and society storage","manifestoThree":"Promote and introduce events to cater to all members of the university","order":5,"elected":false,"createdAt":"2017-02-28T22:01:50.000Z","updatedAt":"2017-02-28T22:01:50.000Z","PositionId":8},{"id":32,"uid":"ado-maddy-tysoe","positionId":8,"firstName":"Maddy","lastName":"Tysoe","photo":null,"manifestoOne":"Maximise society potential","manifestoTwo":"Assisting events management","manifestoThree":"Developing media collaboration","order":6,"elected":false,"createdAt":"2017-02-28T22:03:35.000Z","updatedAt":"2017-03-03T15:30:33.000Z","PositionId":8}],"position":{"id":8,"type":"candidateSabb","fullName":"Activities and Development Officer","compactName":"Activities & Development","miniName":"ADO","order":2,"winnerOrder":2,"sidebarUseOfficer":true,"createdAt":"2017-02-11T13:44:09.000Z","updatedAt":"2017-02-11T13:44:09.000Z"}}')
   }
 
-  function fakeWinners(){
-    update("<templateData>"+
-    	"<componentData id=\"f0\"><data id=\"text\" value=\"pres-jack\" /></componentData>"+
-		"<componentData id=\"d0\"><data id=\"text\" value=\"pres-jack\" /></componentData>"+
-		"<componentData id=\"f2\"><data id=\"text\" value=\"pres-jack\" /></componentData>"+
-		"<componentData id=\"f3\"><data id=\"text\" value=\"pres-jack\" /></componentData>"+
-		"<componentData id=\"f4\"><data id=\"text\" value=\"pres-ron\" /></componentData>"+
-		"<componentData id=\"f5\"><data id=\"text\" value=\"pres-jack\" /></componentData>"+
-		"<componentData id=\"f6\"><data id=\"text\" value=\"pres-jack\" /></componentData>"+
-		"</templateData>");
-  }
-
-  setTimeout(fakeWinners, 1);
+  // setTimeout(fakeWinners, 1);
   setTimeout(fakeRole, 1);
   setTimeout(animate, 50);
 }

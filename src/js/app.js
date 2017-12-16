@@ -13,3 +13,8 @@ window.setupMultiProfile = function() {
   require("./multi-profile");
 };
 
+window.setupSidebar = function() {
+  require("./sidebar");
+};
+
+
