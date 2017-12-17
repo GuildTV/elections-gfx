@@ -14,20 +14,6 @@ Chart.defaults.global.maintainAspectRatio = false;
 Chart.defaults.global.animationEasing = "easeOutCubic";
 Chart.defaults.global.animationSteps = 25;
 
-window.LOOKUP_TABLE = {
-  "Activities &amp; Development Officer": {
-    "Shannon Farm 'N' Fresh": "Shannon Farmer",
-    "Alina": "Alina Morosan",
-  },
-  "Welfare Officer": {
-    "Agony Aunt Anna ": "Anna Lyndon",
-    "Mother Hen": "Henrietta Green",
-  },
-  "Housing &amp; Community Officer ": {
-    'Joanna "Iguana"': "Joanna Prejbeanu"
-  }
-};
-
 Chart.defaults.global.customTooltips = function(tooltip) {
   if(Graphs.updating || tooltip == false || !tooltip.text)
     return;
@@ -103,7 +89,7 @@ const Graphs = {
 
 
     const labels = [];
-    Graphs.myLabels.ForEach(() => labels.push(""));
+    Graphs.myLabels.forEach(() => labels.push(""));
     
     const initialData = {
       labels : labels,
@@ -325,8 +311,8 @@ const Graphs = {
         const labels = $.map(candidates, function(v){
           let name = v.innerHTML;
           console.log(name);
-          if (window.LOOKUP_TABLE[positionElm.innerHTML] !== undefined && window.LOOKUP_TABLE[positionElm.innerHTML][name] !== undefined){
-            name = window.LOOKUP_TABLE[positionElm.innerHTML][name];
+          if (window.CONFIG.Graph.LookupTable[positionElm.innerHTML] !== undefined && window.CONFIG.Graph.LookupTable[positionElm.innerHTML][name] !== undefined){
+            name = window.CONFIG.Graph.LookupTable[positionElm.innerHTML][name];
           }
       
           return {

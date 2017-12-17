@@ -41,7 +41,8 @@ const config = {
   },
   plugins: [
     new CopyWebpackPlugin([
-      {from:'../public',to:'.'} 
+      {from:'../public',to:'.'},
+      {from:'../config.js',to:'.'},
     ]),
   ],
   devServer: {
