@@ -3,14 +3,14 @@
 	# 998 is reserved for the out, so it has time to load
 	998 LOADBG GE2016/BURN/BURNWITHAUDIO
 	100 LOADBG GE2016/BGLOOP
-	110 LOADBG GE2016/WINNER-BOARD-FOOTER
-#	200 CGADD caspar-graphics/elections-2016-v2/MULTI-PROFILE @data
+	110 LOADBG GE2016/winning-candidate-footer
+	200 CG ADD 0 http://10.42.13.111:8080/multi-profile.html 0 @data
 }
 @CUE Show {
     999 PLAY
 }
 @7 999 {
-#    200 CGPLAY
+    200 CG PLAY 0
 	100 LOOP
 	110 PLAY
 }

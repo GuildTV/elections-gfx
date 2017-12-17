@@ -1,13 +1,13 @@
 @ {
   200 MIXER FILL 0.52 0 1 1 1 Linear
-  201 MIXER FILL 0.52 0 1 1 1 Linear
+  201 MIXER FILL 0.364 0 1 1 1 Linear
   200 LOADBG GE2016/BGLOOP2
-#  201 CG ADD 0 http://localhost:8080/sidebar.html 1
+  201 CG ADD 0 http://10.42.13.111:8080/sidebar.html 1 @data
 }
 
 @Q Show {
   200 MIXER FILL 0.156 0 1 1 54 Linear DEFER
-  201 MIXER FILL 0.156 0 1 1 54 Linear DEFER
+  201 MIXER FILL 0 0 1 1 54 Linear DEFER
   
   200 LOOP
 
