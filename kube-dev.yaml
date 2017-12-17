@@ -1,0 +1,41 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    name: xplosion-dev
+  name: xplosion-dev
+  namespace: gfx
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        name: xplosion-dev
+    spec:
+      containers:
+      - image: guildtv/website:xplosion-dev-latest
+        name: xplosion-dev
+        ports:
+          - containerPort: 5000
+            protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: xplosion-dev
+  namespace: gfx
+spec:
+  ports:
+    - name: http
+      port: 5000 # the port that this service should serve on
+      targetPort: 5000
+      nodePort: 0
+      protocol: TCP
+  # just like the selector in the replication controller,
+  # but this time it identifies the set of pods to load balance
+  # traffic to.
+  selector:
+    name: xplosion-dev
+  type: NodePort
