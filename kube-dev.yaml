@@ -2,8 +2,8 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   labels:
-    name: xplosion-dev
-  name: xplosion-dev
+    name: elections-dev
+  name: elections-dev
   namespace: gfx
 spec:
   replicas: 1
@@ -12,11 +12,11 @@ spec:
   template:
     metadata:
       labels:
-        name: xplosion-dev
+        name: elections-dev
     spec:
       containers:
-      - image: guildtv/website:xplosion-dev-latest
-        name: xplosion-dev
+      - image: guildtv/website:elections-dev-latest
+        name: elections-dev
         ports:
           - containerPort: 5000
             protocol: TCP
@@ -24,7 +24,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: xplosion-dev
+  name: elections-dev
   namespace: gfx
 spec:
   ports:
@@ -37,5 +37,5 @@ spec:
   # but this time it identifies the set of pods to load balance
   # traffic to.
   selector:
-    name: xplosion-dev
+    name: elections-dev
   type: NodePort

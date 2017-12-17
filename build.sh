@@ -9,7 +9,6 @@ if ! [ -z "$1" ]; then
   docker push "guildtv/website:elections-dev-$1"
 
   if ! [ -z "$KUBE_API" ]; then
-    cd ../..
     
     curl -O "https://storage.googleapis.com/kubernetes-release/release/$KUBE_VERSION/bin/linux/amd64/kubectl"
     chmod +x kubectl

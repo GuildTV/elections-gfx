@@ -1,4 +1,5 @@
 const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const config = {
   context: __dirname + '/src', // `__dirname` is root of project and `src` is source
@@ -6,8 +7,8 @@ const config = {
     app: './js/app.js',
   },
   output: {
-    path: __dirname,
-    filename: "./dist/bundle.js"
+    path: path.resolve(__dirname, "dist"),
+    filename: "./bundle.js"
   },
   module: {
     rules: [
@@ -24,7 +25,7 @@ const config = {
         loader: 'babel-loader',
         query: {
           presets: [ 
-            [ "env", { "targets": { "chrome": 60 } } ],
+            [ "env", {  } ],
           ]
         }
       },
@@ -38,6 +39,11 @@ const config = {
       }
     ]
   },
+  plugins: [
+    new CopyWebpackPlugin([
+      {from:'../public',to:'.'} 
+    ]),
+  ],
   devServer: {
     contentBase: __dirname + '/public',
     proxy: {
