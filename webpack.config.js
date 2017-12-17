@@ -46,9 +46,6 @@ const config = {
   ],
   devServer: {
     contentBase: __dirname + '/public',
-    proxy: {
-      "/api": "http://localhost:5000",
-    },
   },
   resolve: {
     modules: [

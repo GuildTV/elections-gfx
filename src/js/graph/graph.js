@@ -1,9 +1,9 @@
 
-var TARGET_BAR_THICKNESS = 55;
-var TARGET_BAR_SPACING = 20*2;
-var MAX_AREA_HEIGHT = 750;
+const TARGET_BAR_THICKNESS = 55;
+const TARGET_BAR_SPACING = 20*2;
+const MAX_AREA_HEIGHT = 750;
 
-var PAGE_FADE_DURATION = 500;
+const PAGE_FADE_DURATION = 500;
 
 Chart.defaults.global.showScale = false;
 Chart.defaults.global.scaleShowLabels = false;
@@ -26,20 +26,20 @@ window.LOOKUP_TABLE = {
   "Housing &amp; Community Officer ": {
     'Joanna "Iguana"': "Joanna Prejbeanu"
   }
-}
+};
 
 Chart.defaults.global.customTooltips = function(tooltip) {
   if(Graphs.updating || tooltip == false || !tooltip.text)
     return;
 
-  var elm = document.getElementById('tooltip'+Math.floor(tooltip.y))
+  let elm = document.getElementById('tooltip'+Math.floor(tooltip.y));
 
-  var chart = Graphs.currentCanvas;
+  const chart = Graphs.currentCanvas;
 
   if(!elm){
     elm = document.createElement('span');
     document.getElementById('chartWrapper').appendChild(elm);   
-    elm.setAttribute('id', 'tooltip'+Math.floor(tooltip.y)) 
+    elm.setAttribute('id', 'tooltip'+Math.floor(tooltip.y)); 
   }
 
   elm.innerHTML = tooltip.text;
@@ -64,12 +64,12 @@ const Graphs = {
   inflight: false,
 
   shuffleExistingCanvas: function(){
-    var hidden = document.querySelector('canvas.gone');
+    const hidden = document.querySelector('canvas.gone');
     if(hidden){
       hidden.remove();
     }
 
-    var current = document.querySelector('canvas.current');
+    const current = document.querySelector('canvas.current');
     if(current){
       current.classList.add('gone');
       current.classList.remove('current');
@@ -80,8 +80,8 @@ const Graphs = {
     Graphs.removeAllTooltip();
     Graphs.shuffleExistingCanvas();
 
-    var wrapper = document.getElementById('chartWrapper');
-    var canvas = Graphs.currentCanvas = document.createElement('canvas');
+    const wrapper = document.getElementById('chartWrapper');
+    const canvas = Graphs.currentCanvas = document.createElement('canvas');
     wrapper.appendChild(canvas);
     canvas.height = 550;
     canvas.width = 850;
@@ -89,24 +89,23 @@ const Graphs = {
     if (setCurrent)
       canvas.classList.add('current');
 
-    var ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d');
 
-    var barSpacing = Graphs.barSpacing = TARGET_BAR_SPACING/2;
+    const barSpacing = Graphs.barSpacing = TARGET_BAR_SPACING/2;
 
-    var chartHeight = (TARGET_BAR_SPACING + TARGET_BAR_THICKNESS) * Graphs.myLabels.length;
-    var marginTop = (MAX_AREA_HEIGHT - chartHeight)/2;
+    const chartHeight = (TARGET_BAR_SPACING + TARGET_BAR_THICKNESS) * Graphs.myLabels.length;
+    const marginTop = (MAX_AREA_HEIGHT - chartHeight)/2;
     wrapper.style.height = chartHeight+"px";
     canvas.style.marginTop = marginTop + "px";
     document.querySelector('#chartLabels').style.marginTop = (marginTop+45) + "px";
 
-    console.log("spacing", barSpacing, "height", chartHeight)
+    console.log("spacing", barSpacing, "height", chartHeight);
 
 
-    var labels = [];
-    for(var i in Graphs.myLabels){
-      labels.push("");
-    }
-    var initialData = {
+    const labels = [];
+    Graphs.myLabels.ForEach(() => labels.push(""));
+    
+    const initialData = {
       labels : labels,
       datasets : [
         {
@@ -151,12 +150,12 @@ const Graphs = {
   },
 
   resizeChart(){
-    var chart = Graphs.currentCanvas;
+    const chart = Graphs.currentCanvas;
 
-    for(var i in Graphs.current.datasets[0].bars){
-      var bar = Graphs.current.datasets[0].bars[i];
+    for(let i in Graphs.current.datasets[0].bars){
+      const bar = Graphs.current.datasets[0].bars[i];
 
-      var elm = document.getElementById('tooltip'+Math.floor(bar.y));
+      let elm = document.getElementById('tooltip'+Math.floor(bar.y));
       if (elm == null)
          elm = document.getElementById('tooltip'+Math.floor(bar.y+1));
       if(elm == null || elm.classList.contains('invisible'))
@@ -167,7 +166,7 @@ const Graphs = {
   },
 
   updateChart(animate){
-    console.log("render", animate)
+    console.log("render", animate);
 
     Graphs.current.options.animation = !!animate;
     Graphs.current.update();
@@ -175,33 +174,31 @@ const Graphs = {
   },
 
   removeAllTooltip: function(){
-    var elms = document.querySelectorAll('.myTooltip');
+    const elms = document.querySelectorAll('.myTooltip');
 
-    for(var i in elms){
+    for(let i in elms){
       if(elms[i].classList)
         elms[i].classList.add('invisible');
     }
   },
 
-  createLabels: function(title){
-    var wrapper = document.querySelector('#chartLabels');
+  createLabels: function(){
+    const wrapper = document.querySelector('#chartLabels');
 
     if(wrapper.innerHTML.length > 10)
       wrapper.innerHTML = "";
 
-    var labelCount = Graphs.myLabels.length;
+    const labelCount = Graphs.myLabels.length;
   
-    for(var i = 0; i < labelCount; i++){
-    var key = Graphs.myLabels[i].name;
+    for(let i = 0; i < labelCount; i++){
+      const key = Graphs.myLabels[i].name;
     
-    
-    
-      var name = key.toUpperCase();
+      let name = key.toUpperCase();
       const parts = name.trim().split(" ");
       name = parts[parts.length-1];
 
-      var elm = document.createElement('div');
-      elm.classList.add('myLabel')
+      const elm = document.createElement('div');
+      elm.classList.add('myLabel');
       elm.setAttribute('id', 'graphLabel'+i);
       elm.setAttribute('data-id', Graphs.myLabels[i].id);
       elm.innerHTML = name;
@@ -219,7 +216,7 @@ const Graphs = {
 
     // console.log("SHOW/HIDE", vis)
 
-    var elm = document.querySelector('.main');
+    const elm = document.querySelector('.main');
     if (vis){
       if (!elm.classList.contains("invisibleMain"))
         return cb();
@@ -236,8 +233,8 @@ const Graphs = {
   },
 
   getLabelIndex: function(id){
-    var elms = document.querySelectorAll('.myLabel');
-    for(var i = 0; i<elms.length; i++){
+    const elms = document.querySelectorAll('.myLabel');
+    for(let i = 0; i<elms.length; i++){
       if (elms[i].getAttribute('data-id') == id)
         return i;
     }
@@ -246,11 +243,11 @@ const Graphs = {
   },
 
   setRoundData: function(round, animate){
-    var changed = [];
+    const changed = [];
 
     // Remove eliminated state
-    var elms = document.querySelectorAll('.myLabel');
-    for(var i = 0; i<elms.length; i++){
+    const elms = document.querySelectorAll('.myLabel');
+    for(let i = 0; i<elms.length; i++){
       if(elms[i].classList) {
         changed[i] = elms[i].classList.contains('disabled');
         elms[i].classList.remove('disabled');
@@ -258,21 +255,21 @@ const Graphs = {
     }
 
     if (round != null){
-      var results = round.querySelectorAll('result');
-      for(var i = 0; i<results.length; i++){
-        var res = results[i];
+      const results = round.querySelectorAll('result');
+      for(let i = 0; i<results.length; i++){
+        const res = results[i];
 
         // Set eliminated when appropriate
-        var index = Graphs.getLabelIndex(res.getAttribute('candidate'));
-        var eliminated = res.getAttribute('eliminated');
+        const index = Graphs.getLabelIndex(res.getAttribute('candidate'));
+        const eliminated = res.getAttribute('eliminated');
         if (eliminated && elms[index]){
           changed[index] = !changed[index];
           elms[index].classList.add('disabled');
         }
 
         // Set value
-        var labelCount = Graphs.myLabels.length;
-        var number = parseInt(res.getAttribute('votes'));
+        const labelCount = Graphs.myLabels.length;
+        let number = parseInt(res.getAttribute('votes'));
         if (isNaN(number))
           number = 0;
 
@@ -283,7 +280,7 @@ const Graphs = {
       }
     }
 
-    for(var i=0; i<elms.length; i++){
+    for(let i=0; i<elms.length; i++){
       if (!changed[i])
         continue;
 
@@ -305,7 +302,7 @@ const Graphs = {
     }).then(function (res){
       Graphs.inflight = false;
       Graphs.setData(res);
-    })
+    });
   },
 
   setData: function(xml){
@@ -314,7 +311,7 @@ const Graphs = {
 
     // console.log("SET", xml);
     const positionElm = xml.querySelector('title');
-    var round = xml.querySelector('rounds round:last-child');
+    const round = xml.querySelector('rounds round:last-child');
 
     // TODO - TESTING MODE BELOW:
     // var rounds = xml.querySelectorAll('rounds round');
@@ -323,20 +320,20 @@ const Graphs = {
     // If role has changed, fade out and back in
     if (Graphs.currentRole != positionElm.innerHTML) {
       return Graphs.showHideGraph(false, function(){
-        var candidates = xml.querySelectorAll('candidates candidate');
+        const candidates = xml.querySelectorAll('candidates candidate');
 
-        var labels = $.map(candidates, function(v){
-        var name = v.innerHTML;
-        console.log(name);
-        if (window.LOOKUP_TABLE[positionElm.innerHTML] !== undefined && window.LOOKUP_TABLE[positionElm.innerHTML][name] !== undefined){
-          name = window.LOOKUP_TABLE[positionElm.innerHTML][name];
+        const labels = $.map(candidates, function(v){
+          let name = v.innerHTML;
+          console.log(name);
+          if (window.LOOKUP_TABLE[positionElm.innerHTML] !== undefined && window.LOOKUP_TABLE[positionElm.innerHTML][name] !== undefined){
+            name = window.LOOKUP_TABLE[positionElm.innerHTML][name];
           }
       
           return {
             id: v.id,
             name: name
           };
-        })
+        });
 
         Graphs.shuffleExistingCanvas();
         Graphs.currentRole = positionElm.innerHTML;
@@ -354,7 +351,7 @@ const Graphs = {
       });
     }
 
-    var newRound = parseInt(!round ? 0 : round.getAttribute('number'));
+    const newRound = parseInt(!round ? 0 : round.getAttribute('number'));
 
     if (newRound == Graphs.currentRound){
       console.log("UPD round", Graphs.currentRound);
@@ -379,8 +376,8 @@ const Graphs = {
   showHiddenGraph(){
     Graphs.currentCanvas.classList.add('current');
 
-    var tooltips = document.querySelectorAll('.myTooltip.pending');
-    for (var i=0; i<tooltips.length; i++){
+    const tooltips = document.querySelectorAll('.myTooltip.pending');
+    for (let i=0; i<tooltips.length; i++){
       tooltips[i].classList.remove('pending');
     }
   },

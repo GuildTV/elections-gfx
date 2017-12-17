@@ -1,12 +1,12 @@
 require("sass/sidebar/app.scss");
 
-import {TweenMax, Power2, TimelineLite} from "gsap";
+import { Power2, TimelineLite } from "gsap";
 
 import nullImg from '../ronImg';
 
 window.play = function(){
   animate();
-}
+};
 
 window.update = function(str){
   const data = window.data = JSON.parse(str);
@@ -29,15 +29,15 @@ window.update = function(str){
   manifesto.innerHTML = "<p>"+data.manifestoOne+"</p>"
                       + "<p>"+data.manifestoTwo+"</p>"
                       + "<p>"+data.manifestoThree+"</p>";
-}
+};
 
 window.stop = function(){
   document.querySelector('body').innerHTML = "";
-}
+};
 
 window.remove = function() {
   document.querySelector('body').innerHTML = "";
-}
+};
 
 function animate(){
   const tl = new TimelineLite();
@@ -80,21 +80,21 @@ if (window.location.hash.indexOf("dev") != -1){
 
     const dataWrapper = document.querySelector('.sidebar');
     dataWrapper.classList.remove('visible');
-  }
+  };
 
   window.fakePhoto = function(){
     document.body.classList.remove("dev-photo", "dev-text");
     document.body.classList.add("dev-photo");
 
-    update('{"id":23,"uid":"pres-kris-burnett","positionId":1,"firstName":"Kris","lastName":"Burnett","photo":"'+nullImg+'","manifestoOne":"Safer Selly Scheme","manifestoTwo":"Cheaper food and drink (Happy hour)","manifestoThree":"High speed reliable WiFi","order":1,"elected":false,"createdAt":"2017-02-28T21:33:19.000Z","updatedAt":"2017-03-03T21:21:12.000Z","PositionId":1,"Position":{"id":1,"type":"candidateSabb","fullName":"President","compactName":"Presidential","miniName":"President","order":10,"winnerOrder":10,"sidebarUseOfficer":false,"createdAt":"2017-02-11T13:44:09.000Z","updatedAt":"2017-03-03T15:53:04.000Z"}}');
-    setTimeout(play, 50);
-  }
+    window.update('{"id":23,"uid":"pres-kris-burnett","positionId":1,"firstName":"Kris","lastName":"Burnett","photo":"'+nullImg+'","manifestoOne":"Safer Selly Scheme","manifestoTwo":"Cheaper food and drink (Happy hour)","manifestoThree":"High speed reliable WiFi","order":1,"elected":false,"createdAt":"2017-02-28T21:33:19.000Z","updatedAt":"2017-03-03T21:21:12.000Z","PositionId":1,"Position":{"id":1,"type":"candidateSabb","fullName":"President","compactName":"Presidential","miniName":"President","order":10,"winnerOrder":10,"sidebarUseOfficer":false,"createdAt":"2017-02-11T13:44:09.000Z","updatedAt":"2017-03-03T15:53:04.000Z"}}');
+    setTimeout(window.play, 50);
+  };
   window.fakeText = function(){
     document.body.classList.remove("dev-photo", "dev-text");
     document.body.classList.add("dev-text");
 
-    update('{"id":23,"uid":"pres-kris-burnett","positionId":1,"firstName":"Kris","lastName":"Burnett","photo":null,"manifestoOne":"Safer Selly Scheme","manifestoTwo":"Cheaper food and drink (Happy hour)","manifestoThree":"High speed reliable WiFi","order":1,"elected":false,"createdAt":"2017-02-28T21:33:19.000Z","updatedAt":"2017-03-03T21:21:12.000Z","PositionId":1,"Position":{"id":1,"type":"candidateSabb","fullName":"President","compactName":"Presidential","miniName":"President","order":10,"winnerOrder":10,"sidebarUseOfficer":false,"createdAt":"2017-02-11T13:44:09.000Z","updatedAt":"2017-03-03T15:53:04.000Z"}}');
-    setTimeout(play, 50);
-  }
+    window.update('{"id":23,"uid":"pres-kris-burnett","positionId":1,"firstName":"Kris","lastName":"Burnett","photo":null,"manifestoOne":"Safer Selly Scheme","manifestoTwo":"Cheaper food and drink (Happy hour)","manifestoThree":"High speed reliable WiFi","order":1,"elected":false,"createdAt":"2017-02-28T21:33:19.000Z","updatedAt":"2017-03-03T21:21:12.000Z","PositionId":1,"Position":{"id":1,"type":"candidateSabb","fullName":"President","compactName":"Presidential","miniName":"President","order":10,"winnerOrder":10,"sidebarUseOfficer":false,"createdAt":"2017-02-11T13:44:09.000Z","updatedAt":"2017-03-03T15:53:04.000Z"}}');
+    setTimeout(window.play, 50);
+  };
 
 }

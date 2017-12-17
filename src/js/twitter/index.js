@@ -44,19 +44,19 @@ function xmlToObject(str){
 
 window.play = function() { // animate in
   if(window.imageUrl){
-    var img = new Image();
+    const img = new Image();
     img.onload = animate;
     img.src = window.imageUrl;
   } else {
     animate();
   }
-}
+};
 
-window.animate = function() {
+function animate() {
   console.log("Animating");
 
-  var root = document.querySelector(window.imageUrl?'.twitterPhoto':'.twitterText');
-  root.classList.add('visible');
+  const elm = document.querySelector(window.imageUrl?'.twitterPhoto':'.twitterText');
+  elm.classList.add('visible');
 }
 
 window.stop = function() { // animate out
@@ -64,13 +64,13 @@ window.stop = function() { // animate out
 
   document.querySelector('.twitterPhoto').classList.remove('visible');
   document.querySelector('.twitterText').classList.remove('visible');
-}
+};
 
 window.update = function(str) {
-  var data = xmlToObject(str);
+  const data = xmlToObject(str);
 
   renderTweet(data);
-}
+};
 
 if (window.location.hash.indexOf("dev") != -1){
   console.log("DEV MODE");
@@ -78,27 +78,27 @@ if (window.location.hash.indexOf("dev") != -1){
   document.body.classList.add("dev");
 
   window.devText = function(){
-    update("<templateData>"+
+    window.update("<templateData>"+
       "<componentData id=\"handle\"><data id=\"text\" value=\"GuildTelevision\"/></componentData>"+
       "<componentData id=\"username\"><data id=\"text\" value=\"World Economic Forum\"/></componentData>"+
       "<componentData id=\"text\"><data id=\"text\" value=\"Have humans pushed the world into a new geological age? https://t.co/wD4NBKzUKN #science https://t.co/LYkZ6IGNdv\"/></componentData>"+
       "</templateData>");
 
-    setTimeout(play, 50);
-  }
+    setTimeout(window.play, 50);
+  };
 
   window.devPhoto = function(){
-    update("<templateData>"+
+    window.update("<templateData>"+
       "<componentData id=\"handle\"><data id=\"text\" value=\"GuildTelevision\"/></componentData>"+
       "<componentData id=\"username\"><data id=\"text\" value=\"World Economic Forum\"/></componentData>"+
       "<componentData id=\"text\"><data id=\"text\" value=\"Have humans pushed the world into a new geological age? https://t.co/wD4NBKzUKN #science https://t.co/LYkZ6IGNdv\"/></componentData>"+
       "<componentData id=\"img\"><data id=\"text\" value=\"http://pbs.twimg.com/media/CY9RFG6WkAA6VGu.png:large\"/></componentData>"+
       "</templateData>");
 
-    setTimeout(play, 50);
-  }
+    setTimeout(window.play, 50);
+  };
 
   window.devClean = function(){
-    stop();
-  }
+    window.stop();
+  };
 }
