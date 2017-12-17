@@ -14,6 +14,10 @@ body.dev {
 
 		z-index: -200;
 		display: block;
+
+    &.full {
+      background:url('/img/template/multi-profile/SampleStill.jpg') no-repeat center center fixed; 
+    }
 	}
   
   #dev-controls {
