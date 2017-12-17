@@ -2,10 +2,21 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
+    <style>
+      body {
+        opacity: 0;
+      }
+    </style>
   </head>
 
   <body>
     <div id="template-bg"></div>
+    <div id="dev-controls" style="display: none">
+      <p>Server URL: <input id="devUrl" type="text" value="http://10.42.13.111:8088/api/graph" /></p>
+      <p>Poll Interval: <input id="devInterval" type="text" value="1000" /></p>
+      <p><button onclick="window.devConnect()">Apply</button></p>
+    </div>
+
     <div class="main invisibleMain">
       <div class="winningCandidateContainer">
         <div class="dataSide stats">

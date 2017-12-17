@@ -1,6 +1,8 @@
 require("sass/twitter/app.scss");
 
 function renderTweet(data){
+  window.imageUrl = undefined;
+
   if(!data) {
     document.querySelector('.twitterPhoto').style.display = "none";
     document.querySelector('.twitterText').style.display = "none";
@@ -60,8 +62,8 @@ window.animate = function() {
 window.stop = function() { // animate out
   console.log("Clearing");
 
-  var root = document.querySelector(window.imageUrl?'.twitterPhoto':'.twitterText');
-  root.classList.remove('visible');
+  document.querySelector('.twitterPhoto').classList.remove('visible');
+  document.querySelector('.twitterText').classList.remove('visible');
 }
 
 window.update = function(str) {
@@ -75,20 +77,28 @@ if (window.location.hash.indexOf("dev") != -1){
 
   document.body.classList.add("dev");
 
-  // Test Image
-  // update("<templateData>"+
-  //   "<componentData id=\"handle\"><data id=\"text\" value=\"GuildTelevision\"/></componentData>"+
-  //   "<componentData id=\"username\"><data id=\"text\" value=\"World Economic Forum\"/></componentData>"+
-  //   "<componentData id=\"text\"><data id=\"text\" value=\"Have humans pushed the world into a new geological age? https://t.co/wD4NBKzUKN #science https://t.co/LYkZ6IGNdv\"/></componentData>"+
-  //   "<componentData id=\"img\"><data id=\"text\" value=\"http://pbs.twimg.com/media/CY9RFG6WkAA6VGu.png:large\"/></componentData>"+
-  //   "</templateData>");
+  window.devText = function(){
+    update("<templateData>"+
+      "<componentData id=\"handle\"><data id=\"text\" value=\"GuildTelevision\"/></componentData>"+
+      "<componentData id=\"username\"><data id=\"text\" value=\"World Economic Forum\"/></componentData>"+
+      "<componentData id=\"text\"><data id=\"text\" value=\"Have humans pushed the world into a new geological age? https://t.co/wD4NBKzUKN #science https://t.co/LYkZ6IGNdv\"/></componentData>"+
+      "</templateData>");
 
-  // Test Text
-  update("<templateData>"+
-    "<componentData id=\"handle\"><data id=\"text\" value=\"GuildTelevision\"/></componentData>"+
-    "<componentData id=\"username\"><data id=\"text\" value=\"World Economic Forum\"/></componentData>"+
-    "<componentData id=\"text\"><data id=\"text\" value=\"Have humans pushed the world into a new geological age? https://t.co/wD4NBKzUKN #science https://t.co/LYkZ6IGNdv\"/></componentData>"+
-    "</templateData>");
+    setTimeout(play, 50);
+  }
 
-  setTimeout(play, 1000);
+  window.devPhoto = function(){
+    update("<templateData>"+
+      "<componentData id=\"handle\"><data id=\"text\" value=\"GuildTelevision\"/></componentData>"+
+      "<componentData id=\"username\"><data id=\"text\" value=\"World Economic Forum\"/></componentData>"+
+      "<componentData id=\"text\"><data id=\"text\" value=\"Have humans pushed the world into a new geological age? https://t.co/wD4NBKzUKN #science https://t.co/LYkZ6IGNdv\"/></componentData>"+
+      "<componentData id=\"img\"><data id=\"text\" value=\"http://pbs.twimg.com/media/CY9RFG6WkAA6VGu.png:large\"/></componentData>"+
+      "</templateData>");
+
+    setTimeout(play, 50);
+  }
+
+  window.devClean = function(){
+    stop();
+  }
 }

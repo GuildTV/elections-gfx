@@ -61,6 +61,7 @@ const Graphs = {
   currentRound: -1,
 
   updating: false,
+  inflight: false,
 
   shuffleExistingCanvas: function(){
     var hidden = document.querySelector('canvas.gone');
@@ -294,11 +295,15 @@ const Graphs = {
   },
 
   scrapeData: function(){
+    if (Graphs.inflight)
+      return;
+    
+    Graphs.inflight = true;
     $.ajax(window.apiUrl, {
       cache: false,
       dataType: "xml"
     }).then(function (res){
-      window.blah = res;
+      Graphs.inflight = false;
       Graphs.setData(res);
     })
   },
@@ -387,6 +392,14 @@ const Graphs = {
     Graphs.scraper = setInterval(function(){
       Graphs.scrapeData();
     }, window.apiInterval);
+  },
+
+  stopScraping(){
+    if (!Graphs.scraper)
+      return;
+
+    clearInterval(Graphs.scraper);
+    Graphs.scraper = null;
   }
 };
 

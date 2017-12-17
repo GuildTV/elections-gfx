@@ -1,11 +1,12 @@
 body.dev {
 
   #template-bg {
-    background: url('/img/template/sidebar-photo-blank.png') #00ff00 no-repeat center center fixed; 
+    background: #00ff00 no-repeat center center fixed; 
     background-size: cover; 
 
     position: absolute; 
     float: left; 
+    display: block;
 
     top: 0px; 
     left: 0px; 
@@ -15,4 +16,21 @@ body.dev {
     z-index: -200;
   }
   
+  #dev-controls {
+    top: 100px;
+    left: 100px;
+    width: 300px;
+    position: absolute;
+
+    z-index: 9000;
+    display: block !important;
+  }
+}
+
+body.dev-photo #template-bg{
+    background: url('/img/template/sidebar-photo-blank.png') #00ff00 no-repeat center center fixed; 
+}
+
+body.dev-text #template-bg{
+    background: url('/img/template/sidebar-blank.png') #00ff00 no-repeat center center fixed; 
 }

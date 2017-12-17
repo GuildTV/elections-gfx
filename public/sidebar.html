@@ -2,12 +2,25 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
+    <style>
+      body {
+        opacity: 0;
+      }
+    </style>
   </head>
 
   <body>
     <div id="template-bg"></div>
+    <div id="dev-controls" style="display: none">
+      <p>
+        <button onclick="window.devClean()">Reset</button>
+        <button onclick="window.fakePhoto()">Show Photo</button>
+        <button onclick="window.fakeText()">Show Text</button>
+      </p>
+    </div>
+
     <div class="main">
-      <div class="sidebar visible">
+      <div class="sidebar">
         <div class="position">
           <h1></h1>
           <h2></h2>
@@ -26,10 +39,10 @@
 
     </div> <!-- / .main -->
 
-    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="filters hidden">
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="filters">
       <defs>
         <filter id="motionBlur">
-          <feGaussianBlur id="svg-blur-inner" in="SourceGraphic" stdDeviation="12,0" />
+          <feGaussianBlur in="SourceGraphic" stdDeviation="12,0" />
         </filter>
       </defs>
     </svg>

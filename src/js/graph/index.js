@@ -26,11 +26,18 @@ if (window.location.hash.indexOf("dev") != -1){
 
 	document.body.classList.add("dev");
 
-	update("<templateData><componentData id=\"server\"><data id=\"text\" value=\"http://10.42.13.111:8088/api/graph\" /></componentData><componentData id=\"interval\"><data id=\"text\" value=\"1000\" /></componentData></templateData>");
-	play();
+	// update("<templateData><componentData id=\"server\"><data id=\"text\" value=\"http://10.42.13.111:8088/api/graph\" /></componentData><componentData id=\"interval\"><data id=\"text\" value=\"1000\" /></componentData></templateData>");
+	// play();
 
 	// Graphs.scrapeData();
+
+	window.devConnect = function(){
+		Graphs.stopScraping();
+		window.apiUrl = document.querySelector("#devUrl").value;
+		window.apiInterval = document.querySelector("#devInterval").value;
+		play();
+	}
 }
 
-	update("<templateData><componentData id=\"server\"><data id=\"text\" value=\"http://10.42.13.111:8088/api/graph\" /></componentData><componentData id=\"interval\"><data id=\"text\" value=\"1000\" /></componentData></templateData>");
-	play();
+	// update("<templateData><componentData id=\"server\"><data id=\"text\" value=\"http://10.42.13.111:8088/api/graph\" /></componentData><componentData id=\"interval\"><data id=\"text\" value=\"1000\" /></componentData></templateData>");
+	// play();

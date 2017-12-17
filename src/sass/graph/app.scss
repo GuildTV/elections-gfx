@@ -4,6 +4,14 @@
 @import "./dev";
 @import "./split-layout";
 
+body {
+  opacity: 1;
+}
+
+#template-bg {
+  display: none;
+}
+
 .imageSide {
   #chartLabels {
     width: 300px;

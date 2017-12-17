@@ -4,9 +4,18 @@
     <meta charset="UTF-8">
   </head>
 
-  <body style="visibility:hidden">
+  <body>
     <div id="template-bg"></div>
-    <div class="main">
+    <div id="dev-controls" style="display: none">
+      <p>Number to show: <input id="devCount" value="5" /></p>
+      <p>
+        <button onclick="window.devClean()">Reset</button>
+        <button onclick="window.devRole()">Show Role</button>
+        <button onclick="window.devWinner()">Show Winner</button>
+      </p>
+    </div>
+
+    <div class="main" style="visibility:hidden">
       <div class="multiProfileContainer">
         <div>
           <div class='multiProfileOuter'>

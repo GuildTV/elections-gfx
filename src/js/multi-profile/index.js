@@ -22,6 +22,11 @@ window.update = function(str){
   document.querySelector('h1.title').innerText = name.toUpperCase();
 
   var peopleDiv = document.querySelector('.people');
+  for (let c of peopleDiv.classList) {
+    if (c.indexOf("count") == 0)
+      peopleDiv.classList.remove(c);
+  }
+
   peopleDiv.classList.add('count'+people.length);
   
   var smallest = 1;
@@ -35,9 +40,11 @@ window.update = function(str){
     var person = people[i];
 
     if(person === undefined){
-      peopleDiv.removeChild(node);
+      node.style.display = "none";
+      // peopleDiv.removeChild(node);
       continue;
     }
+    node.style.display = null;
 
     node.querySelector('img').setAttribute('src', person.photo || nullImg);
 
@@ -90,9 +97,10 @@ function letterSpacing(){
 function animate(){
   var tl = new TimelineLite();
 
-  setTimeout(letterSpacing, 50);
+  letterSpacing();
+  // setTimeout(letterSpacing, 50);
 
-  document.body.style.visibility = "visible";
+  document.querySelector('.main').style.visibility = "visible";
 
   var elm = document.querySelectorAll('.multiProfile div.name');
 
@@ -105,23 +113,58 @@ if (window.location.hash.indexOf("dev") != -1){
 
   document.body.classList.add("dev");
 
-  // function fakeWinners(){
-  //   update("<templateData>"+
-  //   	"<componentData id=\"f0\"><data id=\"text\" value=\"pres-jack\" /></componentData>"+
-		// "<componentData id=\"d0\"><data id=\"text\" value=\"pres-jack\" /></componentData>"+
-		// "<componentData id=\"f2\"><data id=\"text\" value=\"pres-jack\" /></componentData>"+
-		// "<componentData id=\"f3\"><data id=\"text\" value=\"pres-jack\" /></componentData>"+
-		// "<componentData id=\"f4\"><data id=\"text\" value=\"pres-ron\" /></componentData>"+
-		// "<componentData id=\"f5\"><data id=\"text\" value=\"pres-jack\" /></componentData>"+
-		// "<componentData id=\"f6\"><data id=\"text\" value=\"pres-jack\" /></componentData>"+
-		// "</templateData>");
-  // }
+  window.devClean = function(){
+    document.querySelector('.main').style.visibility = "hidden";
 
-  function fakeRole(){
-    update('{"candidates":[{"id":27,"uid":"ado-adam-elmi","positionId":8,"firstName":"Adam","lastName":"Elmi","photo":null,"manifestoOne":"Non-traditional jobs career fair","manifestoTwo":"Expand Hands Up funding","manifestoThree":"How to run your society workshop","order":1,"elected":false,"createdAt":"2017-02-28T21:51:20.000Z","updatedAt":"2017-03-03T21:05:19.000Z","PositionId":8},{"id":28,"uid":"ado-shannon-farmer","positionId":8,"firstName":"Shannon","lastName":"Farmer","photo":null,"manifestoOne":"Room booking via Guild App","manifestoTwo":"Improve Guild\'s media center","manifestoThree":"Guild promotion as priority","order":2,"elected":false,"createdAt":"2017-02-28T21:52:38.000Z","updatedAt":"2017-02-28T21:52:38.000Z","PositionId":8},{"id":30,"uid":"ado-alina-morosan","positionId":8,"firstName":"Alina","lastName":"Morosan","photo":null,"manifestoOne":"Widen collaboration with other students unions","manifestoTwo":"Encouraging students to get involved with societies","manifestoThree":"Access new sources of funding","order":4,"elected":false,"createdAt":"2017-02-28T21:55:40.000Z","updatedAt":"2017-03-03T21:05:38.000Z","PositionId":8},{"id":31,"uid":"ado-george-thomas","positionId":8,"firstName":"George","lastName":"Thomas","photo":null,"manifestoOne":"Improve society inclusivity","manifestoTwo":"Improve room allocation and society storage","manifestoThree":"Promote and introduce events to cater to all members of the university","order":5,"elected":false,"createdAt":"2017-02-28T22:01:50.000Z","updatedAt":"2017-02-28T22:01:50.000Z","PositionId":8},{"id":32,"uid":"ado-maddy-tysoe","positionId":8,"firstName":"Maddy","lastName":"Tysoe","photo":null,"manifestoOne":"Maximise society potential","manifestoTwo":"Assisting events management","manifestoThree":"Developing media collaboration","order":6,"elected":false,"createdAt":"2017-02-28T22:03:35.000Z","updatedAt":"2017-03-03T15:30:33.000Z","PositionId":8}],"position":{"id":8,"type":"candidateSabb","fullName":"Activities and Development Officer","compactName":"Activities & Development","miniName":"ADO","order":2,"winnerOrder":2,"sidebarUseOfficer":true,"createdAt":"2017-02-11T13:44:09.000Z","updatedAt":"2017-02-11T13:44:09.000Z"}}')
+    const elms = document.querySelectorAll('.multiProfile div.name');
+    for (let e of elms){
+      e.style.top = null;
+      e.style.opacity = null;
+    }
   }
 
-  // setTimeout(fakeWinners, 1);
-  setTimeout(fakeRole, 1);
-  setTimeout(animate, 50);
+  window.devRole = function(){
+    const candidates = [
+      {"id":27,"uid":"ado-adam-elmi","positionId":8,"firstName":"Adam","lastName":"Elmi","photo":null,"manifestoOne":"Non-traditional jobs career fair","manifestoTwo":"Expand Hands Up funding","manifestoThree":"How to run your society workshop","order":1,"elected":false,"createdAt":"2017-02-28T21:51:20.000Z","updatedAt":"2017-03-03T21:05:19.000Z","PositionId":8},
+      {"id":28,"uid":"ado-shannon-farmer","positionId":8,"firstName":"Shannon","lastName":"Farmer","photo":null,"manifestoOne":"Room booking via Guild App","manifestoTwo":"Improve Guild\'s media center","manifestoThree":"Guild promotion as priority","order":2,"elected":false,"createdAt":"2017-02-28T21:52:38.000Z","updatedAt":"2017-02-28T21:52:38.000Z","PositionId":8},
+      {"id":30,"uid":"ado-alina-morosan","positionId":8,"firstName":"Alina","lastName":"Morosan","photo":null,"manifestoOne":"Widen collaboration with other students unions","manifestoTwo":"Encouraging students to get involved with societies","manifestoThree":"Access new sources of funding","order":4,"elected":false,"createdAt":"2017-02-28T21:55:40.000Z","updatedAt":"2017-03-03T21:05:38.000Z","PositionId":8},
+      {"id":31,"uid":"ado-george-thomas","positionId":8,"firstName":"George","lastName":"Thomas","photo":null,"manifestoOne":"Improve society inclusivity","manifestoTwo":"Improve room allocation and society storage","manifestoThree":"Promote and introduce events to cater to all members of the university","order":5,"elected":false,"createdAt":"2017-02-28T22:01:50.000Z","updatedAt":"2017-02-28T22:01:50.000Z","PositionId":8},
+      {"id":32,"uid":"ado-maddy-tysoe","positionId":8,"firstName":"Maddy","lastName":"Tysoe","photo":null,"manifestoOne":"Maximise society potential","manifestoTwo":"Assisting events management","manifestoThree":"Developing media collaboration","order":6,"elected":false,"createdAt":"2017-02-28T22:03:35.000Z","updatedAt":"2017-03-03T15:30:33.000Z","PositionId":8},
+      {"id":27,"uid":"ado-adam-elmi","positionId":8,"firstName":"Adam","lastName":"Elmi","photo":null,"manifestoOne":"Non-traditional jobs career fair","manifestoTwo":"Expand Hands Up funding","manifestoThree":"How to run your society workshop","order":1,"elected":false,"createdAt":"2017-02-28T21:51:20.000Z","updatedAt":"2017-03-03T21:05:19.000Z","PositionId":8},
+      {"id":28,"uid":"ado-shannon-farmer","positionId":8,"firstName":"Shannon","lastName":"Farmer","photo":null,"manifestoOne":"Room booking via Guild App","manifestoTwo":"Improve Guild\'s media center","manifestoThree":"Guild promotion as priority","order":2,"elected":false,"createdAt":"2017-02-28T21:52:38.000Z","updatedAt":"2017-02-28T21:52:38.000Z","PositionId":8},
+      {"id":30,"uid":"ado-alina-morosan","positionId":8,"firstName":"Alina","lastName":"Morosan","photo":null,"manifestoOne":"Widen collaboration with other students unions","manifestoTwo":"Encouraging students to get involved with societies","manifestoThree":"Access new sources of funding","order":4,"elected":false,"createdAt":"2017-02-28T21:55:40.000Z","updatedAt":"2017-03-03T21:05:38.000Z","PositionId":8},
+      {"id":31,"uid":"ado-george-thomas","positionId":8,"firstName":"George","lastName":"Thomas","photo":null,"manifestoOne":"Improve society inclusivity","manifestoTwo":"Improve room allocation and society storage","manifestoThree":"Promote and introduce events to cater to all members of the university","order":5,"elected":false,"createdAt":"2017-02-28T22:01:50.000Z","updatedAt":"2017-02-28T22:01:50.000Z","PositionId":8},
+      {"id":32,"uid":"ado-maddy-tysoe","positionId":8,"firstName":"Maddy","lastName":"Tysoe","photo":null,"manifestoOne":"Maximise society potential","manifestoTwo":"Assisting events management","manifestoThree":"Developing media collaboration","order":6,"elected":false,"createdAt":"2017-02-28T22:03:35.000Z","updatedAt":"2017-03-03T15:30:33.000Z","PositionId":8},
+    ];
+
+    const count = parseInt(document.querySelector("#devCount").value);
+    console.log(count, candidates.length)
+    const toShow = candidates.slice(0, count);
+
+    update(JSON.stringify({"candidates":toShow,"position":{"id":8,"type":"candidateSabb","fullName":"Activities and Development Officer","compactName":"Activities & Development","miniName":"ADO","order":2,"winnerOrder":2,"sidebarUseOfficer":true,"createdAt":"2017-02-11T13:44:09.000Z","updatedAt":"2017-02-11T13:44:09.000Z"}}));
+    setTimeout(animate, 50);
+  }
+
+  window.devWinner = function(){
+    const candidates = [
+      {"id":27,"uid":"ado-adam-elmi","positionId":8,"firstName":"Adam","lastName":"Elmi","photo":null,"manifestoOne":"Non-traditional jobs career fair","manifestoTwo":"Expand Hands Up funding","manifestoThree":"How to run your society workshop","order":1,"elected":false,"createdAt":"2017-02-28T21:51:20.000Z","updatedAt":"2017-03-03T21:05:19.000Z","PositionId":8,"Position":{"id":8,"type":"candidateSabb","fullName":"Activities and Development Officer","compactName":"Activities & Development","miniName":"ADO","order":2,"winnerOrder":2,"sidebarUseOfficer":true,"createdAt":"2017-02-11T13:44:09.000Z","updatedAt":"2017-02-11T13:44:09.000Z"}},
+      {"id":28,"uid":"ado-shannon-farmer","positionId":8,"firstName":"Shannon","lastName":"Farmer","photo":null,"manifestoOne":"Room booking via Guild App","manifestoTwo":"Improve Guild\'s media center","manifestoThree":"Guild promotion as priority","order":2,"elected":false,"createdAt":"2017-02-28T21:52:38.000Z","updatedAt":"2017-02-28T21:52:38.000Z","PositionId":8,"Position":{"id":8,"type":"candidateSabb","fullName":"Activities and Development Officer","compactName":"Activities & Development","miniName":"ADO","order":2,"winnerOrder":2,"sidebarUseOfficer":true,"createdAt":"2017-02-11T13:44:09.000Z","updatedAt":"2017-02-11T13:44:09.000Z"}},
+      {"id":30,"uid":"ado-alina-morosan","positionId":8,"firstName":"Alina","lastName":"Morosan","photo":null,"manifestoOne":"Widen collaboration with other students unions","manifestoTwo":"Encouraging students to get involved with societies","manifestoThree":"Access new sources of funding","order":4,"elected":false,"createdAt":"2017-02-28T21:55:40.000Z","updatedAt":"2017-03-03T21:05:38.000Z","PositionId":8,"Position":{"id":8,"type":"candidateSabb","fullName":"Activities and Development Officer","compactName":"Activities & Development","miniName":"ADO","order":2,"winnerOrder":2,"sidebarUseOfficer":true,"createdAt":"2017-02-11T13:44:09.000Z","updatedAt":"2017-02-11T13:44:09.000Z"}},
+      {"id":31,"uid":"ado-george-thomas","positionId":8,"firstName":"George","lastName":"Thomas","photo":null,"manifestoOne":"Improve society inclusivity","manifestoTwo":"Improve room allocation and society storage","manifestoThree":"Promote and introduce events to cater to all members of the university","order":5,"elected":false,"createdAt":"2017-02-28T22:01:50.000Z","updatedAt":"2017-02-28T22:01:50.000Z","PositionId":8,"Position":{"id":8,"type":"candidateSabb","fullName":"Activities and Development Officer","compactName":"Activities & Development","miniName":"ADO","order":2,"winnerOrder":2,"sidebarUseOfficer":true,"createdAt":"2017-02-11T13:44:09.000Z","updatedAt":"2017-02-11T13:44:09.000Z"}},
+      {"id":32,"uid":"ado-maddy-tysoe","positionId":8,"firstName":"Maddy","lastName":"Tysoe","photo":null,"manifestoOne":"Maximise society potential","manifestoTwo":"Assisting events management","manifestoThree":"Developing media collaboration","order":6,"elected":false,"createdAt":"2017-02-28T22:03:35.000Z","updatedAt":"2017-03-03T15:30:33.000Z","PositionId":8,"Position":{"id":8,"type":"candidateSabb","fullName":"Activities and Development Officer","compactName":"Activities & Development","miniName":"ADO","order":2,"winnerOrder":2,"sidebarUseOfficer":true,"createdAt":"2017-02-11T13:44:09.000Z","updatedAt":"2017-02-11T13:44:09.000Z"}},
+      {"id":27,"uid":"ado-adam-elmi","positionId":8,"firstName":"Adam","lastName":"Elmi","photo":null,"manifestoOne":"Non-traditional jobs career fair","manifestoTwo":"Expand Hands Up funding","manifestoThree":"How to run your society workshop","order":1,"elected":false,"createdAt":"2017-02-28T21:51:20.000Z","updatedAt":"2017-03-03T21:05:19.000Z","PositionId":8,"Position":{"id":8,"type":"candidateSabb","fullName":"Activities and Development Officer","compactName":"Activities & Development","miniName":"ADO","order":2,"winnerOrder":2,"sidebarUseOfficer":true,"createdAt":"2017-02-11T13:44:09.000Z","updatedAt":"2017-02-11T13:44:09.000Z"}},
+      {"id":28,"uid":"ado-shannon-farmer","positionId":8,"firstName":"Shannon","lastName":"Farmer","photo":null,"manifestoOne":"Room booking via Guild App","manifestoTwo":"Improve Guild\'s media center","manifestoThree":"Guild promotion as priority","order":2,"elected":false,"createdAt":"2017-02-28T21:52:38.000Z","updatedAt":"2017-02-28T21:52:38.000Z","PositionId":8,"Position":{"id":8,"type":"candidateSabb","fullName":"Activities and Development Officer","compactName":"Activities & Development","miniName":"ADO","order":2,"winnerOrder":2,"sidebarUseOfficer":true,"createdAt":"2017-02-11T13:44:09.000Z","updatedAt":"2017-02-11T13:44:09.000Z"}},
+      {"id":30,"uid":"ado-alina-morosan","positionId":8,"firstName":"Alina","lastName":"Morosan","photo":null,"manifestoOne":"Widen collaboration with other students unions","manifestoTwo":"Encouraging students to get involved with societies","manifestoThree":"Access new sources of funding","order":4,"elected":false,"createdAt":"2017-02-28T21:55:40.000Z","updatedAt":"2017-03-03T21:05:38.000Z","PositionId":8,"Position":{"id":8,"type":"candidateSabb","fullName":"Activities and Development Officer","compactName":"Activities & Development","miniName":"ADO","order":2,"winnerOrder":2,"sidebarUseOfficer":true,"createdAt":"2017-02-11T13:44:09.000Z","updatedAt":"2017-02-11T13:44:09.000Z"}},
+      {"id":31,"uid":"ado-george-thomas","positionId":8,"firstName":"George","lastName":"Thomas","photo":null,"manifestoOne":"Improve society inclusivity","manifestoTwo":"Improve room allocation and society storage","manifestoThree":"Promote and introduce events to cater to all members of the university","order":5,"elected":false,"createdAt":"2017-02-28T22:01:50.000Z","updatedAt":"2017-02-28T22:01:50.000Z","PositionId":8,"Position":{"id":8,"type":"candidateSabb","fullName":"Activities and Development Officer","compactName":"Activities & Development","miniName":"ADO","order":2,"winnerOrder":2,"sidebarUseOfficer":true,"createdAt":"2017-02-11T13:44:09.000Z","updatedAt":"2017-02-11T13:44:09.000Z"}},
+      {"id":32,"uid":"ado-maddy-tysoe","positionId":8,"firstName":"Maddy","lastName":"Tysoe","photo":null,"manifestoOne":"Maximise society potential","manifestoTwo":"Assisting events management","manifestoThree":"Developing media collaboration","order":6,"elected":false,"createdAt":"2017-02-28T22:03:35.000Z","updatedAt":"2017-03-03T15:30:33.000Z","PositionId":8,"Position":{"id":8,"type":"candidateSabb","fullName":"Activities and Development Officer","compactName":"Activities & Development","miniName":"ADO","order":2,"winnerOrder":2,"sidebarUseOfficer":true,"createdAt":"2017-02-11T13:44:09.000Z","updatedAt":"2017-02-11T13:44:09.000Z"}},
+    ];
+
+    const count = parseInt(document.querySelector("#devCount").value);
+    console.log(count, candidates.length)
+    const toShow = candidates.slice(0, count);
+
+    update(JSON.stringify({"candidates":toShow}));
+    setTimeout(animate, 50);
+  }
+
 }

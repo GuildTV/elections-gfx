@@ -13,6 +13,16 @@ body.dev {
 		height: 100vh; 
 
 		z-index: -200;
+		display: block;
 	}
-	
+  
+  #dev-controls {
+    top: 100px;
+    left: 100px;
+    width: 300px;
+    position: absolute;
+
+    z-index: 9000;
+    display: block !important;
+  }
 }

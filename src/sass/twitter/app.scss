@@ -3,6 +3,14 @@
 @import "../casparcg";
 @import "./dev";
 
+body {
+  visibility: visible;
+}
+
+#template-bg {
+  display: none;
+}
+
 .twitterPhoto,
 .twitterText {
   opacity: 0;

@@ -1,7 +1,8 @@
 body.dev {
 
 	#template-bg {
-		background:url('/img/template/twitter-text.jpg') no-repeat center center fixed; 
+		// background:url('/img/template/twitter-text.jpg') no-repeat center center fixed; 
+		background: #00ff00 no-repeat center center fixed; 
 		background-size: cover; 
 
 		position: absolute; 
@@ -13,6 +14,17 @@ body.dev {
 		height: 100vh; 
 
 		z-index: -200;
+    display: block;
 	}
+  
+  #dev-controls {
+    top: 100px;
+    left: 100px;
+    width: 300px;
+    position: absolute;
+
+    z-index: 9000;
+    display: block !important;
+  }
 	
 }

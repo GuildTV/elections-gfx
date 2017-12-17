@@ -3,6 +3,10 @@
 @import "../casparcg";
 @import "./dev";
 
+#template-bg {
+  display: none;
+}
+
 .multiProfileContainer {
   height: 100vh;
   width: 100vw;
