@@ -1,6 +1,8 @@
 require("sass/twitter/app.scss");
 
-function renderTweet(data){
+window.update = function(str) {
+  const data = JSON.parse(str);
+
   window.imageUrl = undefined;
 
   if(!data) {
@@ -24,22 +26,6 @@ function renderTweet(data){
     root.querySelector('.name h2').innerText = "@"+data.handle;
     root.querySelector('.message').innerText = data.text;
   }
-}
-
-function xmlToObject(str){
-  const data = {};
-
-  const xml = (new DOMParser()).parseFromString(str,"text/xml");
-  const components = xml.querySelectorAll('componentData');
-
-  for(let i=0; i < components.length; i++){
-    const node = components[i];
-    const id = node.getAttribute('id');
-
-    data[id] = node.querySelector('#text').getAttribute('value');
-  }
-
-  return data;
 }
 
 window.play = function() { // animate in
@@ -66,34 +52,19 @@ window.stop = function() { // animate out
   document.querySelector('.twitterText').classList.remove('visible');
 };
 
-window.update = function(str) {
-  const data = xmlToObject(str);
-
-  renderTweet(data);
-};
-
 if (window.location.hash.indexOf("dev") != -1){
   console.log("DEV MODE");
 
   document.body.classList.add("dev");
 
   window.devText = function(){
-    window.update("<templateData>"+
-      "<componentData id=\"handle\"><data id=\"text\" value=\"GuildTelevision\"/></componentData>"+
-      "<componentData id=\"username\"><data id=\"text\" value=\"World Economic Forum\"/></componentData>"+
-      "<componentData id=\"text\"><data id=\"text\" value=\"Have humans pushed the world into a new geological age? https://t.co/wD4NBKzUKN #science https://t.co/LYkZ6IGNdv\"/></componentData>"+
-      "</templateData>");
+    window.update('{"raw_id":706217834804875300,"id":706209435849465900,"handle":"addictedtowheat","username":"Zedeepee","text":"Jaffrina should have won. #guildelections"}');
 
     setTimeout(window.play, 50);
   };
 
   window.devPhoto = function(){
-    window.update("<templateData>"+
-      "<componentData id=\"handle\"><data id=\"text\" value=\"GuildTelevision\"/></componentData>"+
-      "<componentData id=\"username\"><data id=\"text\" value=\"World Economic Forum\"/></componentData>"+
-      "<componentData id=\"text\"><data id=\"text\" value=\"Have humans pushed the world into a new geological age? https://t.co/wD4NBKzUKN #science https://t.co/LYkZ6IGNdv\"/></componentData>"+
-      "<componentData id=\"img\"><data id=\"text\" value=\"http://pbs.twimg.com/media/CY9RFG6WkAA6VGu.png:large\"/></componentData>"+
-      "</templateData>");
+    window.update('{"raw_id":706217834804875300,"id":706209435849465900,"handle":"addictedtowheat","username":"Zedeepee","text":"Jaffrina should have won. #guildelections","img":"http://pbs.twimg.com/media/CY9RFG6WkAA6VGu.png:large"}');
 
     setTimeout(window.play, 50);
   };
