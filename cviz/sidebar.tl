@@ -1,31 +1,23 @@
 @ {
-	100 LOADBG GE2016/BGLOOP2
-	100 MIXER FILL 0.52 0 1 1 1 Linear
-	101 MIXER FILL 0.364 0 1 1 1 Linear
-	101 CG ADD 0 http://10.42.13.111:8080/sidebar.html 1 @data
+	100 CG ADD 1 GE2018/SIDEBAR-ANI 0 <templateData></templateData>
 }
 @CUE Show {
-    100 LOOP
-	100 MIXER FILL 0.156 0 1 1 53 Linear DEFER
-	101 MIXER FILL 0 0 1 1 53 Linear DEFER
-	0 MIXER COMMIT
+	100 CG PLAY 1
 }
 @DELAY 8 {
 #	ATEM MACRO RUN 0
-	HTTP POST http://10.42.13.111:5000/api/player/run/0
+#	HTTP POST http://10.42.13.111:5000/api/player/run/0
 
 }
 
 @RUNCHILDORCUE change Clear {
-	100 MIXER FILL 0.52 0 1 1 53 Linear DEFER
-	101 MIXER FILL 0.364 0 1 1 53 Linear DEFER
-	0 MIXER COMMIT
+	100 CG NEXT 1
 }
 @DELAY 7 {
 #	ATEM MACRO RUN 1
-	HTTP POST http://10.42.13.111:5000/api/player/run/1
+#	HTTP POST http://10.42.13.111:5000/api/player/run/1
 }
 
-@DELAY 55 {
-
+# wait for end of scene
+@END 100 {
 }
