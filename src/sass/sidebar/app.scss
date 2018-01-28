@@ -12,123 +12,172 @@ body {
 }
 
 .sidebar {
-  width: 455px;
-  height: 930px;
+  width: 100vw;
+  height: 100vh;
 
   position: absolute;
-  top: 55px;
-  // left: 2065px;
-  left: 1465px;
+  top: 0;
+  left: 0;
 
   visibility: hidden;
-
-  text-transform: uppercase;
-
-  -webkit-filter: url("#motionBlur");
 
   &.visible {
     visibility: visible;
   }
 
-  img {
-    display: none;
-  }
-
   &.photo {
-    .name {
-      height: 245px;
+    .heading {
+      #role, #type {
+        display: none;
+      }
+    }
 
-      img {
-        width: 250px;
-        float: left;
-        margin-top: -4px;
-        margin-left: -5px;
+    .image {
+      display: block;
+    }
+
+    .background {
+      top: 312px;
+
+      .name {
+        display: none;
+      }
+
+      .img_role {
         display: block;
       }
+    }
+    .manifesto {
+      margin-top: 50px;
 
-      &> div {
-        padding-top: 85px;
-        position: absolute;
-        padding-left: 210px;
-
-        h1, h2 {
-          font-size: 30px;
-        }
-
+      .line1 {
+        top: 140px;
       }
 
-    }
+      .line2 {
+        top: 248px;
+      }
 
-    .manifesto p {
-      margin-bottom: 30px;
+      .line3 {
+        top: 356px;
+      }
     }
-
   }
 
-  > div, .name div {
-    padding: 20px 30px 0;
+  .image {
+    display: none;
+    position: absolute;
+    width: 100vh;
+    height: 312px;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+
+    img {
+      margin-top: 112px;
+      margin-left: 48px;
+      height: 200px;
+    }
+
+    #name {
+      text-transform: uppercase;
+      display: inline-block;
+      width: 350px;
+      position: absolute;
+      height: 140px;
+      bottom: 0;
+
+    }
   }
 
-  .position {
-    height: 110px;
-    color: white;
-    font-family: "HelveticaNeue";
+  .background {
+    width: 100vw;
+    height: 518px;
 
-    padding: 20px 15px 0;
+    position: absolute;
+    left: 0;
+    top: 196px;
+
+    background: #272727;
+    // background: red;
+    // opacity: 0.5;
+  }
+
+  .heading {
+    position: absolute;
+    width: 100vh;
+    height: 190px;
+    overflow: hidden;
+    top: 0;
+    left: 0;
 
     h1 {
-      font-size: 26px;
-      // margin: 2px 0;
+      text-transform: uppercase;
+      margin-left: 48px;
       font-family: "HelveticaNeue-Bold";
-
-      white-space: nowrap;
+      font-size: 45px;
+      color: #272727;
+      width: calc(100vw - 1280px - 65px);
+      line-height: 0.9;
     }
-    h2 {
-      font-size: 28px;
-      font-family: "HelveticaNeue";
+
+    #role {
+      margin-top: 109px;
     }
   }
 
   .name {
-    height: 130px;
-    padding: 0;
+    margin-left: 48px;
+    margin-top: 10px;
 
-    &> div {
-      padding-top: 18px;
-    }
-
-    h1 {
-      font-size: 40px;
-      font-family: "HelveticaNeue";
-      color: #202020;
-    }
     h2 {
-      font-size: 40px;
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 30px;
       font-family: "HelveticaNeue-Bold";
-      margin-top: -5px;
-      color: #202020;
     }
   }
+  .img_role {
+    margin-left: 48px;
+    margin-top: 10px;
+    display: none;
 
-  .manifesto_heading {
-    height: 75px;
-    font-size: 30px;
-    font-family: "HelveticaNeue";
-    color: white;
-    padding-top: 15px;
+    h2 {
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 30px;
+      font-family: "HelveticaNeue";
+      width: calc(100vw - 1280px - 65px);
+    }
   }
 
   .manifesto {
 
-    padding-right: 50px;
-
-    p {
-      font-size: 30px;
+    h3 {
+      color: #fff;
       font-family: "HelveticaNeue";
-      line-height: 1.1;
-      margin: 15px 0 40px;
-      color: #202020;
-
+      font-size: 30px;
+      line-height: 1.2;
+      width: calc(100vw - 1280px - 65px);
     }
+
+    .line1 {
+      position: absolute;
+      top: 116px;
+      left: 48px;
+    }
+
+    .line2 {
+      position: absolute;
+      top: 224px;
+      left: 48px;
+    }
+
+    .line3 {
+      position: absolute;
+      top: 332px;
+      left: 48px;
+    }
+
   }
 }

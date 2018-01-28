@@ -17,8 +17,8 @@ body.dev {
   }
   
   #dev-controls {
-    top: 100px;
-    left: 100px;
+    top: 50px;
+    left: 50px;
     width: 300px;
     position: absolute;
 
@@ -28,9 +28,13 @@ body.dev {
 }
 
 body.dev-photo #template-bg{
-    background: url('/img/template/sidebar-photo-blank.png') #00ff00 no-repeat center center fixed; 
+    // background: url('/img/template/sidebar2018photo.png') #00ff00 no-repeat center center fixed; 
+    background: none;
+    width: 640px;
 }
 
 body.dev-text #template-bg{
-    background: url('/img/template/sidebar-blank.png') #00ff00 no-repeat center center fixed; 
+    // background: url('/img/template/sidebar2018.png') #00ff00 no-repeat center center fixed; 
+    background: none;
+    width: 640px;
 }
