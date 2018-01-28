@@ -8,7 +8,10 @@ window.play = function(){
 };
 
 window.update = function(str){
-  const data = window.data = JSON.parse(str);
+  let data = window.data = JSON.parse(str);
+  if (data.sidebar_data)
+    data = JSON.parse(data.sidebar_data);
+
   const holder = document.querySelector('.sidebar');
 
   // Note, sidebar-name-test.html can be used to check this split for all roles

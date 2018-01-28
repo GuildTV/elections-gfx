@@ -1,5 +1,5 @@
 @ {
-	100 CG ADD 1 GE2018/SIDEBAR-ANI 0 <templateData></templateData>
+	100 CG ADD 1 GE2018/SIDEBAR-ANI 0 @data
 }
 @CUE Show {
 	100 CG PLAY 1

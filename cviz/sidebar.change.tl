@@ -1,5 +1,5 @@
 @ {
-  200 CG ADD 1 GE2018/SIDEBAR-ANI 0 <templateData></templateData>
+  200 CG ADD 1 GE2018/SIDEBAR-ANI 0 @data
 }
 
 @Q Show {

@@ -2,7 +2,7 @@
 <scene width="1920" height="1080" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/CasparCG/Server/2.1.0/core/producer/scene/scene.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
   <variables>
-    <variable type="number" public="true" id="left">0</variable>
+    <variable type="string" public="true" id="sidebar_data"></variable>
   </variables>
 
   <!--
@@ -15,19 +15,31 @@
   <layers>
     <layer id="bg">
       <producer>GE2018/DRAFTBG LOOP</producer>
-      <x>${1280 + left}</x>
+      <x>1280</x>
       <y>-75</y>
     </layer>
     <layer id="shadow">
       <producer>GE2018/sidebar/sidebar-shadow</producer>
-      <x>${left}</x>
+      <x>0</x>
       <y>-75</y>
     </layer>
 
-    <!-- <layer id="content">
-      <producer>GE2018/sidebar/content-sample</producer>
-      <x>${1280 + left}</x>
-      <y>0</y>
+    <!-- <layer id="position">
+      <producer>[TEXT] "" 0 0 size 15 color #262626 font HelveticaNeue-Bold</producer>
+      <x>0</x>
+      <y>100</y>
+      <parameters>
+        <text>${sidebar_data}</text>
+      </parameters>
     </layer> -->
+
+    <layer id="content">
+      <producer>[CG] http://localhost:8080/sidebar.html [AUTOPLAY] [JSON] string sidebar_data</producer>
+      <x>1280</x>
+      <y>0</y>
+      <parameters>
+        <sidebar_data>${sidebar_data}</sidebar_data>
+      </parameters>
+    </layer>
   </layers>
 </scene>
