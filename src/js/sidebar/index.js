@@ -11,7 +11,12 @@ window.update = function(str){
   const data = window.data = JSON.parse(str);
   const holder = document.querySelector('.sidebar');
 
-  holder.querySelector('.heading #role').innerText = data.Position.compactName;
+  // Note, sidebar-name-test.html can be used to check this split for all roles
+  let text_role = data.Position.compactName;;
+  const text_split_pos = text_role.toLowerCase().indexOf("officer");
+  if (text_split_pos == text_role.indexOf(" ") + 1) // one split which is before officer
+    text_role = text_role.substring(0, text_split_pos) + "\n" + text_role.substring(text_split_pos);
+  holder.querySelector('.heading #role').innerText = text_role;
   holder.querySelector('.heading #type').innerText = data.elected?"elect":"candidate";
 
   if(data.photo){
@@ -24,7 +29,13 @@ window.update = function(str){
   }
 
   holder.querySelector('.name h2').innerText = data.firstName + " " + data.lastName;
-  holder.querySelector('.img_role h2').innerText = data.Position.compactName + (data.elected?" Elect":" Candidate");
+
+  let img_role = data.Position.compactName + (data.elected?" Elect":" Candidate");
+  // Note, sidebar-name-test.html can be used to check this split for all roles
+  const img_split_pos = img_role.toLowerCase().indexOf("officer");
+  if (img_split_pos >= 16)
+    img_role = img_role.substring(0, img_split_pos) + "\n" + img_role.substring(img_split_pos);
+  holder.querySelector('.img_role h2').innerText = img_role;
 
   holder.querySelector('.manifesto .line1 h3').innerText = data.manifestoOne;
   holder.querySelector('.manifesto .line2 h3').innerText = data.manifestoTwo;

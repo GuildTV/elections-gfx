@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <style>
+      @font-face {
+          font-family: "HelveticaNeue";
+          src: url(/fonts/HelveticaNeue.ttf);
+      }
+      @font-face {
+          font-family: "HelveticaNeue-Bold";
+          src: url(/fonts/HelveticaNeue-Bold.ttf);
+      }
+
+      body {
+        column-count: 2;
+      }
+
+      .role {
+        width: 575px;
+        background: green;
+        break-inside: avoid-column;
+      }
+
+      /* photo sidebar */
+      .role h2 {
+        text-transform: uppercase;
+        width: 575px;
+        font-family: "HelveticaNeue";
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 30px;
+        font-weight: 500;
+      }
+
+      /* text sidebar */
+      .role h1 {
+        text-transform: uppercase;
+        width: 575px;
+        font-family: "HelveticaNeue-Bold";
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 45px;
+        font-weight: 500;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="role">
+      <h2>Presidential Candidate</h2>
+      <h1>Presidential Candidate</h1>
+    </div>
+    <div class="role">
+      <h2>Activities and Employability Officer Candidate</h2>
+      <h1>Activities and Employability Officer</h1>
+    </div>
+    <div class="role">
+      <h2>Education Officer Candidate</h2>
+      <h1>Education Officer</h1>
+    </div>
+    <div class="role">
+      <h2>International Officer Candidate</h2>
+      <h1>International Officer</h1>
+    </div>
+    <div class="role">
+      <h2>Postgraduate Officer Candidate</h2>
+      <h1>Postgraduate Officer</h1>
+    </div>
+    <div class="role">
+      <h2>Sports Officer Candidate</h2>
+      <h1>Sports Officer</h1>
+    </div>
+    <div class="role">
+      <h2>Welfare and Community Officer Candidate</h2>
+      <h1>Welfare and Community Officer</h1>
+    </div>
+
+    <!-- Don't normally have manifesto data, so sidebar cant be used -->
+    <!-- <div class="role">
+      <h2>Anti-Racism; Anti-Fascism Officer Candidate</h2>
+      <h1>Anti-Racism; Anti-Fascism Officer</h1>
+    </div>
+    <div class="role">
+      <h2>Commuter Students' Officer Candidate</h2>
+      <h1>Commuter Students' Officer</h1>
+    </div>
+    <div class="role">
+      <h2>Disabled Students' Officer Candidate</h2>
+      <h1>Disabled Students' Officer</h1>
+    </div>
+    <div class="role">
+      <h2>Ethnic Minority Students' Officer Candidate</h2>
+      <h1>Ethnic Minority Students' Officer</h1>
+    </div>
+    <div class="role">
+      <h2>Ethical &amp; Environmental Officer Candidate</h2>
+      <h1>Ethical &amp; Environmental Officer</h1>
+    </div>
+    <div class="role">
+      <h2>LGBTQ Students’ Officer Candidate</h2>
+      <h1>LGBTQ Students’ Officer</h1>
+    </div>
+    <div class="role">
+      <h2>Mature Students' Officer Candidate</h2>
+      <h1>Mature Students' Officer</h1>
+    </div>
+    <div class="role">
+      <h2>Trans Students' Officer Candidate</h2>
+      <h1>Trans Students' Officer</h1>
+    </div>
+    <div class="role">
+      <h2>Womens Officer Candidate</h2>
+      <h1>Womens Officer</h1>
+    </div> -->
+
+    <script type="text/javascript">
+      // photo sidebar
+      var elms = document.querySelectorAll('.role h2');
+      for(var e of elms){
+        var txt = e.innerText;
+        var splitPos = txt.toLowerCase().indexOf("officer");
+        if (splitPos >= 16){
+          e.innerText = txt.substring(0, splitPos) + "\n" + txt.substring(splitPos);
+        }
+      }
+
+      // text sidebar
+      var elms = document.querySelectorAll('.role h1');
+      for(var e of elms){
+        var txt = e.innerText;
+        var splitPos = txt.toLowerCase().indexOf("officer");
+        if (splitPos == txt.indexOf(" ") + 1){ // one split which is before officer
+          e.innerText = txt.substring(0, splitPos) + "\n" + txt.substring(splitPos);
+        }
+      }
+    </script>
+  </body>
+</html>
