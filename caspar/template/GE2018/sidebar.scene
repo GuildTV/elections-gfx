@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scene width="1920" height="1080" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/CasparCG/Server/2.1.0/core/producer/scene/scene.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <variables>
+    <variable type="number" public="true" id="left">0</variable>
+  </variables>
+
+  <!--
+    Atem DVE config:
+    size: 0.67
+    x: -5.30
+    y: 1.20
+  -->
+
+  <layers>
+    <layer id="bg">
+      <producer>GE2018/DRAFTBG LOOP</producer>
+      <x>${1280 + left}</x>
+      <y>-75</y>
+    </layer>
+    <layer id="shadow">
+      <producer>GE2018/sidebar/sidebar-shadow</producer>
+      <x>${left}</x>
+      <y>-75</y>
+    </layer>
+
+    <!-- <layer id="content">
+      <producer>GE2018/sidebar/content-sample</producer>
+      <x>${1280 + left}</x>
+      <y>0</y>
+    </layer> -->
+  </layers>
+</scene>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scene width="1920" height="1080" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/CasparCG/Server/2.1.0/core/producer/scene/scene.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <variables>
+  </variables>
+
+  <layers>
+    <layer id="bg">
+      <producer>GE2018/DRAFTBG LOOP</producer>
+      <x>0</x>
+      <y>0</y>
+    </layer>
+    <layer id="drop_shadow_mid_mask">
+      <producer>GE2018/SPLITSCREEN/SPLITSCREEN-SHADOW2</producer>
+      <x>0</x>
+      <y>0</y>
+      <crop>
+        <upper_left_y>72</upper_left_y>
+      </crop>
+    </layer>
+
+    <layer id="footer">
+      <producer>GE2018/SPLITSCREEN/SPLITSCREEN-TEXTBAR</producer>
+      <x>0</x>
+      <y>0</y>
+    </layer>
+  </layers>
+</scene>

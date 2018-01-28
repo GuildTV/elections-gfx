@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scene width="1920" height="1080" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/CasparCG/Server/2.1.0/core/producer/scene/scene.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <variables>
+    <!-- for animating separately -->
+    <variable type="number" id="left">700</variable>
+
+  </variables>
+
+  <layers>
+    <layer id="sidebar">
+      <producer>GE2018/SIDEBAR</producer>
+      <x>${variable.left}</x>
+      <y>0</y>
+    </layer>
+  </layers>
+
+  <marks>
+    <mark at="0" type="start" label="intro" />
+    <mark at="35" type="stop" label="test" />
+    <mark at="100" type="start" label="outro" />
+    <mark at="120" type="remove"/>
+  </marks>
+
+  <timelines>
+    <timeline variable="variable.left">
+      <keyframe at="0">700</keyframe>
+      <keyframe at="15" easing="linear">0</keyframe>
+      <keyframe at="100">0</keyframe>
+      <keyframe at="115" easing="linear">700</keyframe>
+    </timeline>
+  </timelines>
+</scene>
