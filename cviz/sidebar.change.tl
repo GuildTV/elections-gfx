@@ -1,5 +1,6 @@
 @ {
   200 CG ADD 1 GE2018/SIDEBAR-ANI 0 @data
+  200 MIXER CLIP 0.66667 0 1 1
 }
 
 @Q Show {
@@ -8,8 +9,11 @@
 
 @SCENESTOP 200 test {
   # Fade out, to make sure the shadow edge cut isnt visible
-  # TODO - need to figure out how to stop the shadow glitch
-  100 MIXER OPACITY 0 5 Linear
+  200 MIXER CLIP 0 0 1 1 DEFER
+
+  100 MIXER OPACITY 0 1 Linear DEFER
+
+  0 MIXER COMMIT
 }
 
 # Wait for fade to finish, then clear

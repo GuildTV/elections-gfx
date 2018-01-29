@@ -3,6 +3,8 @@
 
   <variables>
     <variable type="string" public="true" id="sidebar_data"></variable>
+
+    <variable type="number" public="true" id="blur">0</variable>
   </variables>
 
   <!--
@@ -17,26 +19,20 @@
       <producer>GE2018/DRAFTBG LOOP</producer>
       <x>1280</x>
       <y>-75</y>
+      <blur_x>${blur}</blur_x>
     </layer>
     <layer id="shadow">
       <producer>GE2018/sidebar/sidebar-shadow</producer>
       <x>0</x>
       <y>-75</y>
+      <blur_x>${blur}</blur_x>
     </layer>
-
-    <!-- <layer id="position">
-      <producer>[TEXT] "" 0 0 size 15 color #262626 font HelveticaNeue-Bold</producer>
-      <x>0</x>
-      <y>100</y>
-      <parameters>
-        <text>${sidebar_data}</text>
-      </parameters>
-    </layer> -->
 
     <layer id="content">
       <producer>[CG] http://localhost:8080/sidebar.html [AUTOPLAY] [JSON] string sidebar_data</producer>
       <x>1280</x>
       <y>0</y>
+      <blur_x>${blur}</blur_x>
       <parameters>
         <sidebar_data>${sidebar_data}</sidebar_data>
       </parameters>

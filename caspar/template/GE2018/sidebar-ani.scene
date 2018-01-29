@@ -5,6 +5,7 @@
 
     <!-- for animating separately -->
     <variable type="number" id="left">700</variable>
+    <variable type="number" id="blur">0</variable>
 
   </variables>
 
@@ -15,6 +16,7 @@
       <y>0</y>
       <parameters>
         <sidebar_data>${sidebar_data}</sidebar_data>
+        <blur>${variable.blur}</blur>
       </parameters>
     </layer>
   </layers>
@@ -32,6 +34,12 @@
       <keyframe at="15" easing="linear">0</keyframe>
       <keyframe at="100">0</keyframe>
       <keyframe at="115" easing="linear">700</keyframe>
+    </timeline>
+    <timeline variable="variable.blur">
+      <keyframe at="0">15</keyframe>
+      <keyframe at="15" easing="linear">0</keyframe>
+      <keyframe at="100">0</keyframe>
+      <keyframe at="115" easing="linear">15</keyframe>
     </timeline>
   </timelines>
 </scene>
