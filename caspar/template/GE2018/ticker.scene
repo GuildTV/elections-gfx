@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scene width="1920" height="1080" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/CasparCG/Server/2.1.0/core/producer/scene/scene.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <variables>
+    <variable type="string" public="true" id="time_format">%H:%M</variable>
+    <variable type="number" public="true" id="time_offset">-25</variable>
+
+    <!-- for animating separately -->
+    <variable type="number" id="ticker_y">100</variable>
+
+  </variables>
+
+  <layers>
+    <layer id="tickerbg">
+      <producer>GE2018/LT/TICKER-BAR</producer>
+      <x>0</x>
+      <y>${variable.ticker_y}</y>
+    </layer>
+    <layer id="tickerclock">
+      <producer>[TEXT] "" 0 0 size 25 color #000000 font HelveticaNeue-Bold</producer>
+      <x>110</x>
+      <y>${variable.ticker_y + 1018.5}</y>
+      <parameters>
+        <text>${date(time_format, time_offset)}</text>
+      </parameters>
+    </layer>
+  </layers>
+
+  <marks>
+    <mark at="0" type="start" label="intro" />
+    <mark at="35" type="stop" label="clear" />
+    <mark at="100" type="start" label="outro" />
+    <mark at="135" type="remove"/>
+  </marks>
+
+  <timelines>
+    <timeline variable="variable.ticker_y">
+      <keyframe at="0">100</keyframe>
+      <keyframe at="10" easing="linear">0</keyframe>
+      <keyframe at="125">0</keyframe>
+      <keyframe at="135" easing="linear">100</keyframe>
+    </timeline>
+  </timelines>
+</scene>
