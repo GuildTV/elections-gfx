@@ -20,15 +20,19 @@
 
   .title {
     text-align: center;
-    font-size: 40px;
+    font-size: 35px;
     color: white;
-    font-family: "HelveticaNeue";
+    font-family: "HelveticaNeue-Medium";
 
     display: block;
     width: 100vw;
 
     position: absolute;
-    bottom: 156px;
+    bottom: 168px;
+
+    height: 65px;
+    line-height: 55px;
+    background: #212121;
   }
 
   .multiProfileOuter {
@@ -60,22 +64,22 @@
       }
 
       &.count7, &.count8 {
-        margin-top: 20px;
-        margin-bottom: 20px;
+        margin-top: 50px;
+        margin-bottom: 50px;
 
         .multiProfile {
-          width: 400px;
-          height: 370px;
+          width: 349px;
+          height: 330px;
 
           .image {
-            width: 260px;
+            width: 235px;
           }
 
           margin: 0px 15px 35px;
 
           h1, h2 {
             line-height: 1.1;
-            font-size: 50px;
+            font-size: 45px;
           }
         }
       }
@@ -101,7 +105,7 @@
       }
 
       &.count5 {
-        margin-top: 215px;
+        margin-top: 205px;
         margin-bottom: 215px;
 
         .multiProfile {
@@ -136,7 +140,7 @@
       }
       
       &.count1, &.count2, &.count3, &.count4{
-        margin-top: 190px;
+        margin-top: 170px;
         margin-bottom: 190px;
 
         .image {
