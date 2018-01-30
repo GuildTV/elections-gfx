@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scene width="1920" height="1080" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/CasparCG/Server/2.1.0/core/producer/scene/scene.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <variables>
+    <!-- for animating separately -->
+    <variable type="number" id="left">1000</variable>
+    <variable type="number" id="blur">0</variable>
+  </variables>
+
+  <layers>
+    <layer id="mask">
+      <producer>GE2018/Graph-Alpha</producer>
+      <x>${variable.left}</x>
+      <y>-75</y>
+      <is_key>true</is_key>
+    </layer>
+    <layer id="content">
+      <producer>DECKLINK DEVICE 5 FORMAT 1080i5000</producer>
+      <x>${variable.left}</x>
+      <y>0</y>
+      <blur_x>${variable.blur}</blur_x>
+    </layer>
+  </layers>
+
+  <marks>
+    <mark at="0" type="start" label="intro" />
+    <mark at="24" type="stop" label="wait" />
+    <mark at="25" type="start" label="go" />
+    <mark at="60" type="stop" label="test" />
+    <mark at="100" type="start" label="outro" />
+    <mark at="125" type="remove"/>
+  </marks>
+
+  <timelines>
+    <timeline variable="variable.left">
+      <keyframe at="25">1000</keyframe>
+      <keyframe at="45" easing="linear">0</keyframe>
+      <keyframe at="100">0</keyframe>
+      <keyframe at="120" easing="linear">1000</keyframe>
+    </timeline>
+    <timeline variable="variable.blur">
+      <keyframe at="25">15</keyframe>
+      <keyframe at="45" easing="linear">0</keyframe>
+      <keyframe at="100">0</keyframe>
+      <keyframe at="120" easing="linear">15</keyframe>
+    </timeline>
+  </timelines>
+</scene>
