@@ -18,6 +18,11 @@ window.update = function(str) {
     root.querySelector('.message').innerText = data.text;
     root.querySelector('.handle h2').innerText = "@"+data.handle;
 
+    if (data.text.length > 140){
+      const scale = (data.text.length - 140) / 140 * 10; // Between 0 and 20
+      root.querySelector('.message').style.fontSize = (52 - scale) + "px";
+    }
+
     root.querySelector('.photo').style.backgroundImage = "url("+data.img+")";
   } else {
     const root = document.querySelector('.twitterText');
@@ -25,6 +30,11 @@ window.update = function(str) {
     root.querySelector('.name h1').innerText = data.username;
     root.querySelector('.name h2').innerText = "@"+data.handle;
     root.querySelector('.message').innerText = data.text;
+
+    if (data.text.length > 140){
+      const scale = (data.text.length - 140) / 140 * 30; // Between 0 and 30
+      root.querySelector('.message').style.fontSize = (90 - scale) + "px";
+    }
   }
 }
 

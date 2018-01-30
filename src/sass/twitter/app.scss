@@ -7,6 +7,11 @@ body {
   visibility: visible;
 }
 
+.main {
+  position: absolute;
+  height: 900px;
+}
+
 #template-bg {
   display: none;
 }
@@ -31,10 +36,10 @@ body {
   background: #262626;
 
   width: 100vw;
-  height: 100vh;
+  height: 910px;
 
   .photo {
-    height: 100vh;
+    height: 910px;
     width: 1235px;
     position: absolute;
     top: 0;
@@ -82,6 +87,7 @@ body {
         font-size: 52px;
         font-family: "HelveticaNeue-Bold";
         margin-left: 40px;
+        width: 370px;
       }
     }
 
@@ -90,7 +96,7 @@ body {
       // margin-top: 120px;
       line-height: 1.1;
 
-      font-family: "HelveticaNeue-Bold";
+      font-family: "HelveticaNeue-Medium";
       overflow-wrap: break-word;
     }
 
@@ -147,7 +153,7 @@ body {
   }
 
   .message {
-    font-size: 100px;
+    font-size: 90px;
     margin-top: 70px;
     line-height: 1.2;
     overflow-wrap: break-word;
