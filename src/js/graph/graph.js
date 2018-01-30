@@ -340,7 +340,7 @@ const Graphs = {
     const newRound = parseInt(!round ? 0 : round.getAttribute('number'));
 
     if (newRound == Graphs.currentRound){
-      console.log("UPD round", Graphs.currentRound);
+      // console.log("UPD round", Graphs.currentRound);
       Graphs.setRoundData(round, true);
 
     } else  {

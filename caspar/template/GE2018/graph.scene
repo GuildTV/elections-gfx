@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scene width="1920" height="1080" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/CasparCG/Server/2.1.0/core/producer/scene/scene.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <variables>
+    <variable type="string" public="true" id="server_url">http://10.42.13.111:8088/api/graph</variable>
+    <variable type="number" public="true" id="interval">1000</variable>
+  </variables>
+
+  <layers>
+    <layer id="bgloop">
+      <producer>GE2018/DRAFTBG LOOP</producer>
+      <x>0</x>
+      <y>0</y>
+    </layer>
+    <layer id="shadow">
+      <producer>GE2018/Graph/shadow</producer>
+      <x>0</x>
+      <y>-75</y>
+    </layer>
+    <layer id="sidebg">
+      <producer>GE2018/DRAFTBG LOOP</producer>
+      <x>960</x>
+      <y>-75</y>
+    </layer>
+    <layer id="greybar">
+      <producer>[COLOR] #212121</producer>
+      <x>0</x>
+      <y>847</y>
+      <height>65</height>
+    </layer>
+    <layer id="content">
+      <producer>[CG] http://localhost:8080/graph.html [AUTOPLAY] [XML] string server number interval</producer>
+      <x>0</x>
+      <y>0</y>
+      <parameters>
+        <server>${server_url}</server>
+        <interval>${interval}</interval>
+      </parameters>
+    </layer>
+
+    <layer id="hole">
+      <producer>GE2018/Graph/video-hole</producer>
+      <x>0</x>
+      <y>0</y>
+    </layer>
+
+    <!-- just in case primary gfx dies -->
+    <layer id="ticker">
+      <producer>GE2018/LT/ticker-bar</producer>
+      <x>0</x>
+      <y>0</y>
+    </layer>
+    <layer id="bluebar">
+      <producer>GE2018/LT/blue-bar</producer>
+      <x>0</x>
+      <y>0</y>
+    </layer>
+  </layers>
+
+  <marks>
+  </marks>
+
+  <timelines>
+  </timelines>
+</scene>

@@ -16,6 +16,11 @@ window.update = function(str){
   const interval = window.apiInterval = parseInt(xml.querySelector('#interval #text').getAttribute('value'));
 
   console.log(server, interval);
+  if (Graphs.scraper)
+  {
+    Graphs.stopScraping();
+    Graphs.startScraping();
+  }
 };
 
 if (window.location.hash.indexOf("dev") != -1){
