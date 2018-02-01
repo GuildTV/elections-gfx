@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <style>
+      body {
+        opacity: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="template-bg"></div>
+    <div id="dev-controls" style="display: none">
+      <p>Server URL: <input id="devUrl" type="text" value="http://10.42.13.111:8088/api/ticker" /></p>
+      <!-- <p>Poll Interval: <input id="devInterval" type="text" value="100" /></p> -->
+      <p><button onclick="window.devConnect()">Apply</button></p>
+      <p><button onclick="window.purge()">Purge</button></p>
+      <p><button onclick="window.devPause()">Stop Now</button></p>
+    </div>
+
+    <div class="ticker-bar"></div>
+
+    <!-- Scripts -->
+    <script src="/bundle.js"></script>
+    <script src="/config.js"></script>
+    <script type="text/javascript">
+      window.setupTicker();
+    </script>
+  </body>
+</html>

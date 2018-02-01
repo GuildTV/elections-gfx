@@ -1,0 +1,48 @@
+@import "../variables";
+@import "../common";
+@import "../casparcg";
+@import "./dev";
+
+body {
+  opacity: 1;
+  overflow: hidden;
+  width: 1920px;
+  height: 1080px;
+}
+
+$barWidth: calc(100vw - 150px);
+
+.ticker-bar {
+  height: 40px;
+  width: $barWidth;
+
+  position: absolute;
+  top: 990px;
+  left: 150px;
+  overflow: hidden;
+
+  // background: #ff0000;
+  // opacity: 0.5;
+
+  line-height: 40px;
+  padding: 0 20px;
+
+  color: #272727;
+  font-size: 26px;
+  font-family: "HelveticaNeue-Medium";
+
+  .content {
+    overflow: hidden;
+    white-space: nowrap;
+    text-transform: uppercase;
+    position: absolute;
+    left: $barWidth;
+
+    span.spacer {
+        margin: 0 20px;
+        font-family: "HelveticaNeue";
+        font-size: 28px;
+        color: #272727;
+    }
+  }
+}

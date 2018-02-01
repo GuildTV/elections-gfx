@@ -17,4 +17,9 @@ window.setupSidebar = function() {
   require("./sidebar");
 };
 
+window.setupTicker = function() {
+  require("./ticker");
+};
+
+
 
