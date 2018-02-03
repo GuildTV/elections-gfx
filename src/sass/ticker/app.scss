@@ -10,7 +10,8 @@ body {
   height: 1080px;
 }
 
-$barWidth: calc(100vw - 150px);
+$barLeft: 200px;
+$barWidth: calc(100vw - #{$barLeft});
 
 .ticker-bar {
   height: 40px;
@@ -18,7 +19,7 @@ $barWidth: calc(100vw - 150px);
 
   position: absolute;
   top: 990px;
-  left: 150px;
+  left: $barLeft;
   overflow: hidden;
 
   // background: #ff0000;

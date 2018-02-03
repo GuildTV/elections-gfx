@@ -5,11 +5,15 @@ import { TimelineMax } from "gsap";
 const scrollRate = 100; // px per second
 const seperation = 0; // px
 
+let pollUrl = null;
+let pollInterval = 1000;
+
+let isRunning = false;
 let activeTimelines = [];
 let runningPurge = false;
 let nextData = [
-  "Some idiot got banned from campaigning for innaccurate campaign slogans",
-  "We talk to the leading expert in why students just don't give a fuck",
+  // "Some idiot got banned from campaigning for innaccurate campaign slogans",
+  // "We talk to the leading expert in why students just don't give a fuck",
   // "Coming up: Answers to your biggest Guild Elections questions",
   // "We find out what we can get away with saying on here",
 ];
@@ -18,12 +22,33 @@ let isFirstData = true;
 window.update = function(str) {
   const data = JSON.parse(str);
 
-  // TODO
+  pollUrl = data.url;
+  pollInterval = data.interval;
+}
 
+function scrape(){
+  return fetch(pollUrl, {cache: "no-store"})
+  .then(res => res.json())
+  .then(res => {
+    nextData = res.data || [];
+
+    if (res.purge)
+      purge();
+  })
+  .catch(() => {
+    console.log("Poll failed!")
+  }).then(() => {
+    console.log(pollInterval || 1000)
+    window.setTimeout(scrape, pollInterval)
+  });
 }
 
 window.play = function() { // animate in
-  window.run();
+  if (isRunning)
+    return;
+
+  isRunning = true;
+  scrape().then(() => window.run());
 }
 
 window.stop = function () {
@@ -116,9 +141,18 @@ if (window.location.hash.indexOf("dev") != -1){
   window.devPause = function(){
       for(let t of activeTimelines)
         t.pause();
-
   }
 
+  window.devSet = function() {
+    pollUrl = document.querySelector('#devUrl').value;
+    pollInterval = document.querySelector('#devInterval').value;
+  }
 
-  setTimeout(window.run, 150);
+  window.devRun = function (){
+    window.devSet();
+
+    window.play();
+  }
+
+  setTimeout(window.devRun, 150);
 }
