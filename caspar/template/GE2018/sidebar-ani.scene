@@ -4,8 +4,9 @@
     <variable type="string" public="true" id="sidebar_data"></variable>
 
     <!-- for animating separately -->
-    <variable type="number" id="left">700</variable>
+    <variable type="number" id="left">640</variable>
     <variable type="number" id="blur">0</variable>
+    <variable type="number" id="opacity">0</variable>
 
   </variables>
 
@@ -14,6 +15,9 @@
       <producer>GE2018/SIDEBAR</producer>
       <x>${variable.left}</x>
       <y>0</y>
+      <adjustments>
+        <opacity>${variable.opacity}</opacity>
+      </adjustments>
       <parameters>
         <sidebar_data>${sidebar_data}</sidebar_data>
         <blur>${variable.blur}</blur>
@@ -25,21 +29,27 @@
     <mark at="0" type="start" label="intro" />
     <mark at="35" type="stop" label="test" />
     <mark at="100" type="start" label="outro" />
-    <mark at="120" type="remove"/>
+    <mark at="135" type="remove"/>
   </marks>
 
   <timelines>
+    <timeline variable="variable.opacity">
+      <keyframe at="0">0</keyframe>
+      <keyframe at="1">1</keyframe>
+      <keyframe at="128">1</keyframe>
+      <keyframe at="129">0</keyframe>
+    </timeline>
     <timeline variable="variable.left">
-      <keyframe at="0">700</keyframe>
-      <keyframe at="15" easing="linear">0</keyframe>
+      <keyframe at="0">640</keyframe>
+      <keyframe at="30" easing="linear">0</keyframe>
       <keyframe at="100">0</keyframe>
-      <keyframe at="115" easing="linear">700</keyframe>
+      <keyframe at="129" easing="linear">640</keyframe>
     </timeline>
     <timeline variable="variable.blur">
       <keyframe at="0">15</keyframe>
-      <keyframe at="15" easing="linear">0</keyframe>
+      <keyframe at="30" easing="linear">0</keyframe>
       <keyframe at="100">0</keyframe>
-      <keyframe at="115" easing="linear">15</keyframe>
+      <keyframe at="129" easing="linear">15</keyframe>
     </timeline>
   </timelines>
 </scene>
