@@ -116,16 +116,17 @@ body {
 
 #graphRoleTitle {
   position: absolute;
-  bottom: 178px;
+  bottom: 98px;
+  left: 112px;
   // background: green;
   width: 100vw;
-  text-align: center;
-  height: 59px;
-  line-height: 59px;
+  text-align: left;
+  // height: 59px;
+  // line-height: 59px;
   color: white;
 
   font-family: "HelveticaNeue";
-  font-size: 40px;
+  font-size: 30px;
 }
 
 .main {

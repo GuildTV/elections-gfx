@@ -11,18 +11,11 @@
 
   <layers>
     <layer id="tickerbg">
-      <producer>GE2018/LT/TICKER-BAR</producer>
+      <producer>GE2018/TICKER-STATIC</producer>
       <x>0</x>
       <y>${variable.ticker_y}</y>
     </layer>
-    <layer id="tickerclock">
-      <producer>[TEXT] "" 0 0 size 25 color #000000 font HelveticaNeue-Bold</producer>
-      <x>110</x>
-      <y>${variable.ticker_y + 1018.5}</y>
-      <parameters>
-        <text>${date(time_format, time_offset)}</text>
-      </parameters>
-    </layer>
+    
   </layers>
 
   <marks>

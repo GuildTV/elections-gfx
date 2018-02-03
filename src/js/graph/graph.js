@@ -194,7 +194,7 @@ const Graphs = {
   },
 
   setTitle: function(title){
-    document.querySelector('#graphRoleTitle').innerHTML = title.toUpperCase();
+    document.querySelector('#graphRoleTitle').innerHTML = title;
   },
 
   showHideGraph: function(vis, cb){

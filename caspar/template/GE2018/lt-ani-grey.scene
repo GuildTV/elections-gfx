@@ -2,31 +2,15 @@
 <scene width="1920" height="1080" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/CasparCG/Server/2.1.0/core/producer/scene/scene.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <variables>
     <variable type="string" public="true" id="f0">GUILD ELECTIONS 2018</variable>
-    <variable type="string" public="true" id="f0">GUILD ELECTIONS 2018</variable>
-    <variable type="string" public="true" id="f2"></variable>
+    <variable type="string" public="true" id="f1"></variable>
 
     <!-- for animating separately -->
-    <variable type="number" id="blue_y">126.4</variable>
-    <variable type="number" id="blue_blur_y">0</variable>
     <variable type="number" id="grey_y">126.4</variable>
     <variable type="number" id="grey_blur_y">0</variable>
 
   </variables>
 
   <layers>
-    <layer id="bluebar">
-      <producer>GE2018/LT-STATIC</producer>
-      <x>0</x>
-      <y>${variable.blue_y}</y>
-      <clip>
-        <lower_right_y>1000</lower_right_y>
-      </clip>
-      <blur_y>${variable.blue_blur_y}</blur_y>
-      <parameters>
-        <f0>${f0}</f0>
-      </parameters>
-    </layer>
-
     <layer id="greybar">
       <producer>GE2018/LT-STATIC-GREY</producer>
       <x>0</x>
@@ -36,49 +20,30 @@
       </clip>
       <blur_y>${variable.grey_blur_y}</blur_y>
       <parameters>
-        <f0>${f1}</f0>
-        <f1>${f2}</f1>
+        <f0>${f0}</f0>
+        <f1>${f1}</f1>
       </parameters>
     </layer>
   </layers>
 
   <marks>
     <mark at="0" type="start" label="intro" />
-    <mark at="15" type="stop" label="grey" />
-
-    <mark at="30" type="start" label="grey2" />
-    <mark at="45" type="stop" label="clear" />
-
+    <mark at="15" type="stop" label="clear" />
     <mark at="100" type="start" label="outro" />
     <mark at="115" type="remove"/>
   </marks>
 
   <timelines>
-    <timeline variable="variable.blue_y">
+    <timeline variable="variable.grey_y">
       <keyframe at="0">126.4</keyframe>
       <keyframe at="10" easing="linear">0</keyframe>
       <keyframe at="100">0</keyframe>
       <keyframe at="110" easing="linear">126.4</keyframe>
     </timeline>
-    <timeline variable="variable.blue_blur_y">
+    <timeline variable="variable.grey_blur_y">
       <keyframe at="0">0</keyframe>
       <keyframe at="5" easing="linear">8</keyframe>
       <keyframe at="10" easing="linear">0</keyframe>
-      <keyframe at="100">0</keyframe>
-      <keyframe at="105" easing="linear">8</keyframe>
-      <keyframe at="110" easing="linear">0</keyframe>
-    </timeline>
-
-    <timeline variable="variable.grey_y">
-      <keyframe at="30">126.4</keyframe>
-      <keyframe at="40" easing="linear">0</keyframe>
-      <keyframe at="100">0</keyframe>
-      <keyframe at="110" easing="linear">126.4</keyframe>
-    </timeline>
-    <timeline variable="variable.grey_blur_y">
-      <keyframe at="30">0</keyframe>
-      <keyframe at="35" easing="linear">8</keyframe>
-      <keyframe at="40" easing="linear">0</keyframe>
       <keyframe at="100">0</keyframe>
       <keyframe at="105" easing="linear">8</keyframe>
       <keyframe at="110" easing="linear">0</keyframe>

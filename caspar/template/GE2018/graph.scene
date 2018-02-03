@@ -21,12 +21,25 @@
       <x>960</x>
       <y>-75</y>
     </layer>
-    <layer id="greybar">
+    <!-- <layer id="greybar">
       <producer>[COLOR] #212121</producer>
       <x>0</x>
       <y>847</y>
       <height>65</height>
+    </layer> -->
+
+    <layer id="hole">
+      <producer>GE2018/Graph/video-hole</producer>
+      <x>0</x>
+      <y>0</y>
     </layer>
+
+    <layer id="bluebar">
+      <producer>GE2018/LT-STATIC-GREY</producer>
+      <x>0</x>
+      <y>0</y>
+    </layer>
+
     <layer id="content">
       <producer>[CG] http://localhost:8080/graph.html [AUTOPLAY] [XML] string server number interval</producer>
       <x>0</x>
@@ -36,21 +49,10 @@
         <interval>${interval}</interval>
       </parameters>
     </layer>
-
-    <layer id="hole">
-      <producer>GE2018/Graph/video-hole</producer>
-      <x>0</x>
-      <y>0</y>
-    </layer>
-
+    
     <!-- just in case primary gfx dies -->
     <layer id="ticker">
-      <producer>GE2018/LT/ticker-bar</producer>
-      <x>0</x>
-      <y>0</y>
-    </layer>
-    <layer id="bluebar">
-      <producer>GE2018/LT/blue-bar</producer>
+      <producer>GE2018/TICKER-STATIC</producer>
       <x>0</x>
       <y>0</y>
     </layer>

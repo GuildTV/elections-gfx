@@ -1,24 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <scene width="1920" height="1080" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/CasparCG/Server/2.1.0/core/producer/scene/scene.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
   <variables>
-    <variable type="string" public="true" id="f0">Guild Elections 2018</variable>
-    
   </variables>
 
   <layers>
-    <layer id="bluebar">
-      <producer>GE2018/LT/BLUE-BAR</producer>
+    <layer id="bg">
+      <producer>GE2018/DRAFTBG LOOP</producer>
       <x>0</x>
       <y>0</y>
     </layer>
-    <layer id="bluetext">
-      <producer>[TEXT] "" 0 0 size 70 color #ffffff font HelveticaNeue-Bold</producer>
-      <x>107.7</x>
-      <y>969</y>
+
+    <layer id="blue_fallback">
+      <producer>GE2018/lt-static-grey</producer>
+      <x>0</x>
+      <y>0</y>
       <parameters>
-        <text>${f0}</text>
+        <f1>Tweet us @guildtelevision</f1>
       </parameters>
     </layer>
+    
+    <!-- just in case primary gfx dies -->
+    <layer id="ticker">
+      <producer>GE2018/TICKER-STATIC</producer>
+      <x>0</x>
+      <y>0</y>
+    </layer>
   </layers>
-
 </scene>
