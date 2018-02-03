@@ -1,0 +1,28 @@
+@ {
+	999 LOADBG GE2018/WipeWithSFX
+	998 LOADBG GE2018/WipeWithSFX
+	100 MIXER OPACITY 0
+	100 CG ADD 1 GE2018/SIDEBAR 0 @data
+}
+@CUE Show {
+	999 PLAY
+}
+@9 999 {
+	ATEM MACRO RUN 2
+#	HTTP POST http://10.42.13.110:5000/api/player/run/2
+	100 MIXER OPACITY 1
+	100 CG PLAY 1
+}
+
+@RUNCHILDORCUE change Clear {
+	998 PLAY
+}
+@9 998 {
+	ATEM MACRO RUN 3
+#	HTTP POST http://10.42.13.110:5000/api/player/run/3
+	100 CLEAR
+}
+
+# wait for end of scene
+@END 998 {
+}

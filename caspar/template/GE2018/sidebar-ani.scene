@@ -15,12 +15,12 @@
       <producer>GE2018/SIDEBAR</producer>
       <x>${variable.left}</x>
       <y>0</y>
+      <blur_x>${variable.blur}</blur_x>
       <adjustments>
         <opacity>${variable.opacity}</opacity>
       </adjustments>
       <parameters>
         <sidebar_data>${sidebar_data}</sidebar_data>
-        <blur>${variable.blur}</blur>
       </parameters>
     </layer>
   </layers>
