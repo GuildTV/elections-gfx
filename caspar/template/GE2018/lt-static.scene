@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scene width="1920" height="1080" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/CasparCG/Server/2.1.0/core/producer/scene/scene.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <variables>
+    <variable type="string" public="true" id="f0">Guild Elections 2018</variable>
+
+    <!-- for animating separately -->
+    <variable type="number" public="true" id="bar_y">0</variable>
+    <variable type="number" public="true" id="bar_blur_y">0</variable>
+
+  </variables>
+
+  <layers>
+    <layer id="bluebar">
+      <producer>GE2018/LT/BLUE-BAR</producer>
+      <x>0</x>
+      <y>${bar_y}</y>
+      <clip>
+        <lower_right_y>1000</lower_right_y>
+      </clip>
+      <blur_y>${bar_blur_y}</blur_y>
+    </layer>
+    <layer id="bluetext">
+      <producer>[TEXT] "" 0 0 size 70 color #ffffff font HelveticaNeue-Bold</producer>
+      <x>107.7</x>
+      <y>${bar_y + 969}</y>
+      <clip>
+        <lower_right_y>1000</lower_right_y>
+      </clip>
+      <blur_y>${bar_blur_y}</blur_y>
+      <parameters>
+        <text>${f0}</text>
+      </parameters>
+    </layer>
+  </layers>
+
+</scene>

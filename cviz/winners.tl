@@ -2,19 +2,17 @@
 	999 LOADBG GE2018/WipeWithSFX
 	# 998 is reserved for the out, so it has time to load
 	998 LOADBG GE2018/WipeWithSFX
-	100 LOADBG GE2018/DraftBg
-	#110 LOADBG GE2016/winning-candidate-footer
-	200 MIXER OPACITY 0
-	200 CG ADD 0 GE2018/winner4 1 @data
+	300 LOADBG GE2018/DraftBg
+	310 MIXER OPACITY 0
+	310 CG ADD 0 GE2018/winner4 1 @data
 }
 @CUE Show {
     999 PLAY
 }
 @9 999 {
-    200 MIXER OPACITY 1
-    200 CG NEXT 0
-	100 LOOP
-	110 PLAY
+    310 MIXER OPACITY 1
+    310 CG NEXT 0
+	300 LOOP
 }
 
 @RUNCHILDORCUE change End {
@@ -22,11 +20,10 @@
 }
 
 @9 998 {
-	100 STOP
-	100 CLEAR
-	110 CLEAR
-	200 CLEAR
-	210 CLEAR
+	300 STOP
+	300 CLEAR
+	310 CLEAR
+	311 CLEAR
 }
 @END 998 {
     998 CLEAR

@@ -13,7 +13,7 @@ window.update = function(str){
   if(people.length == 1 && people[0][0] !== undefined)
     people = people[0];
 
-  document.querySelector('h1.title').innerText = (winners ? "" : data.position.fullName).toUpperCase();
+  // document.querySelector('h1.title').innerText = (winners ? "" : data.position.fullName).toUpperCase();
 
   const peopleDiv = document.querySelector('.people');
   for (let c of peopleDiv.classList) {
