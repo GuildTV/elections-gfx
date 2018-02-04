@@ -2,8 +2,8 @@ require("sass/ticker/app.scss");
 
 import { TimelineMax } from "gsap";
 
-const scrollRate = 100; // px per second
-const seperation = 0; // px
+const fadeTime = 0.5;
+const screenTime = 6;
 
 let pollUrl = null;
 let pollInterval = 1000;
@@ -17,7 +17,6 @@ let nextData = [
   // "Coming up: Answers to your biggest Guild Elections questions",
   // "We find out what we can get away with saying on here",
 ];
-let isFirstData = true;
 
 window.update = function(str) {
   const data = JSON.parse(str);
@@ -56,56 +55,40 @@ window.stop = function () {
   purge();
 }
 
-function createItem(str, cl){
-  const e = document.createElement("span");
-  e.innerText = str;
-
-  if (cl)
-    e.classList.add(cl);
-
-  return e;
-}
 window.addNext = function() {
-  const elm = document.createElement("div");
-  elm.classList.add("content", "next");
-
+  const elm = document.querySelector('.ticker-bar');
+  
   for (let str of nextData){
-    elm.append(createItem(str));
-    elm.append(createItem("I", "spacer"));
+    const e = document.createElement("div");
+    e.classList.add("content", "next");
+    e.innerText = str;
+    elm.append(e);
   }
-
-  document.querySelector('.ticker-bar').append(elm);
 }
 
 window.run = function() {
-  window.addNext();
-  const elm = document.querySelector(".content.next");
-  elm.classList.remove("next");
-  const width = Math.max(400, elm.scrollWidth) + (isFirstData ? 33 : 0);
-  isFirstData = false;
-  elm.style.width = width + "px";
+  const elms = document.querySelectorAll(".content.next");
+  if (elms.length == 0)
+    window.addNext();
 
-  const prev = document.querySelectorAll(".content");
-  if (prev.length > 1){
-    const p = prev[prev.length-2];
-    const newLeft = p.scrollWidth + parseInt(p.style.left);
-    elm.style.left = newLeft + "px";
-  }
+  const cur = document.querySelector(".content.current");
+  const elm = document.querySelector(".content.next");
+  if (!elm)
+    return setTimeout(window.run, pollInterval);
+
+  elm.classList.remove("next");
+  elm.classList.add("current");
 
   const tl = new TimelineMax();
-
-  const movement = elm.offsetLeft + width;
-  const runtime = movement / scrollRate;
-  const nextTime = (width + seperation) / scrollRate;
-  tl.to(elm, runtime, {left: -width+"px", ease:Linear.easeNone})
+  if (cur)
+    tl.to(cur, fadeTime, {opacity: 0, ease:Linear.easeNone});
+  tl.to(elm, fadeTime, {opacity: 1, ease:Linear.easeNone})
     .addCallback(() => {
-      elm.remove();
-    }, runtime, [ elm ])
+      if (cur) cur.remove()
+    }, fadeTime, [ elm ])
     .addCallback(() => {
-      // run next one!
-      if (!runningPurge && tl.isActive())
-        window.run();
-    }, nextTime, [ elm ]);
+      window.run();
+    }, screenTime, [ elm ])
     activeTimelines.push(tl);
 }
 
@@ -115,7 +98,7 @@ window.purge = function() {
   const elm = document.querySelector(".ticker-bar");
   const tl = new TimelineMax();
 
-  tl.to(elm, 0.3, {opacity: 0, ease:Linear.easeNone})
+  tl.to(elm, fadeTime, {opacity: 0, ease:Linear.easeNone})
     .addCallback(() => {
       // Stop all active
       for(let t of activeTimelines)
@@ -156,3 +139,8 @@ if (window.location.hash.indexOf("dev") != -1){
 
   setTimeout(window.devRun, 150);
 }
+
+  window.devPause = function(){
+      for(let t of activeTimelines)
+        t.pause();
+  }

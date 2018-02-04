@@ -4,6 +4,8 @@
     <variable type="string" public="true" id="time_format">%H:%M</variable>
     <variable type="number" public="true" id="time_offset">-25</variable>
 
+    <variable type="string" public="true" id="url">http://10.42.13.111:8088/api/ticker</variable>
+    <variable type="number" public="true" id="interval">500</variable>
   </variables>
 
   <layers>
@@ -18,6 +20,15 @@
       <y>1018.5</y>
       <parameters>
         <text>${date(time_format, time_offset)}</text>
+      </parameters>
+    </layer>
+    <layer id="content">
+      <producer>[CG] http://localhost:8080/ticker.html [AUTOPLAY] [JSON] string url number interval</producer>
+      <x>0</x>
+      <y>0</y>
+      <parameters>
+        <url>${url}</url>
+        <interval>${interval}</interval>
       </parameters>
     </layer>
   </layers>

@@ -10,7 +10,7 @@ body {
   height: 1080px;
 }
 
-$barLeft: 200px;
+$barLeft: 190px;
 $barWidth: calc(100vw - #{$barLeft});
 
 .ticker-bar {
@@ -28,22 +28,15 @@ $barWidth: calc(100vw - #{$barLeft});
   line-height: 40px;
   padding: 0 20px;
 
-  color: #272727;
-  font-size: 26px;
-  font-family: "HelveticaNeue-Medium";
+  color: #000000;
+  font-size: 24px;
+  font-family: "HelveticaNeue-Bold";
 
   .content {
     overflow: hidden;
     white-space: nowrap;
     text-transform: uppercase;
     position: absolute;
-    left: $barWidth;
-
-    span.spacer {
-        margin: 0 20px;
-        font-family: "HelveticaNeue";
-        font-size: 28px;
-        color: #272727;
-    }
+    opacity: 0;
   }
 }
