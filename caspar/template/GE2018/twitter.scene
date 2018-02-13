@@ -5,11 +5,11 @@
   </variables>
 
   <layers>
-    <layer id="bg">
+    <!-- <layer id="bg">
       <producer>GE2018/DRAFTBG LOOP</producer>
       <x>0</x>
       <y>0</y>
-    </layer>
+    </layer> -->
 
     <layer id="blue_fallback">
       <producer>GE2018/lt-static-grey</producer>
