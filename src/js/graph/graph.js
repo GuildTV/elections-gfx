@@ -77,16 +77,19 @@ const Graphs = {
 
     const ctx = canvas.getContext('2d');
 
-    const barSpacing = Graphs.barSpacing = TARGET_BAR_SPACING/2;
+    let barSpacing = Graphs.barSpacing = TARGET_BAR_SPACING/2;
+    if (Graphs.myLabels.length > 8){
+      barSpacing *= 0.35;
+      Graphs.barSpacing *= 0.35;
+    }
 
-    const chartHeight = (TARGET_BAR_SPACING + TARGET_BAR_THICKNESS) * Graphs.myLabels.length;
+    const chartHeight = (barSpacing*2 + TARGET_BAR_THICKNESS) * Graphs.myLabels.length;
     const marginTop = (MAX_AREA_HEIGHT - chartHeight)/2;
     wrapper.style.height = chartHeight+"px";
     canvas.style.marginTop = marginTop + "px";
     document.querySelector('#chartLabels').style.marginTop = (marginTop+45) + "px";
 
     console.log("spacing", barSpacing, "height", chartHeight);
-
 
     const labels = [];
     Graphs.myLabels.forEach(() => labels.push(""));
@@ -180,15 +183,17 @@ const Graphs = {
       const key = Graphs.myLabels[i].name;
     
       let name = key.toUpperCase();
-      const parts = name.trim().split(" ");
-      name = parts[parts.length-1];
+      if (!Graphs.myLabels[i].useFull){
+        const parts = name.trim().split(" ");
+        name = parts[parts.length-1];
+      }
 
       const elm = document.createElement('div');
       elm.classList.add('myLabel');
       elm.setAttribute('id', 'graphLabel'+i);
       elm.setAttribute('data-id', Graphs.myLabels[i].id);
       elm.innerHTML = name;
-      // elm.style.marginTop = (Graphs.barSpacing*2)+"px";
+      elm.style.marginTop = (1+Graphs.barSpacing*2)+"px";
       wrapper.appendChild(elm);
     }
   },
@@ -310,15 +315,19 @@ const Graphs = {
 
         const labels = $.map(candidates, function(v){
           let name = v.innerHTML;
+
+          const res = {
+            id: v.id,
+            name: name,
+            useFull: false,
+          };
           console.log(name);
           if (window.CONFIG.Graph.LookupTable[positionElm.innerHTML] !== undefined && window.CONFIG.Graph.LookupTable[positionElm.innerHTML][name] !== undefined){
-            name = window.CONFIG.Graph.LookupTable[positionElm.innerHTML][name];
+            res.name = window.CONFIG.Graph.LookupTable[positionElm.innerHTML][name];
+            res.useFull = true;
           }
       
-          return {
-            id: v.id,
-            name: name
-          };
+          return res;
         });
 
         Graphs.shuffleExistingCanvas();

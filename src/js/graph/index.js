@@ -34,4 +34,9 @@ if (window.location.hash.indexOf("dev") != -1){
     window.apiInterval = document.querySelector("#devInterval").value;
     window.play();
   };
+
+
+    window.apiUrl = "http://localhost:13370/"
+    window.apiInterval = 200;
+    window.play();
 }
