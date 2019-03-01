@@ -11,9 +11,21 @@ window.play = function(){
 };
 
 window.update = function(str){
-  const xml = (new DOMParser()).parseFromString(str, "text/xml");
-  const server = window.apiUrl = xml.querySelector('#server #text').getAttribute('value');
-  const interval = window.apiInterval = parseInt(xml.querySelector('#interval #text').getAttribute('value'));
+  // const xml = (new DOMParser()).parseFromString(str, "text/xml");
+
+  // const server_elm = xml.querySelector('#server_url #text')
+  // const interval_elm = xml.querySelector('#interval #text')
+
+  // if (!server_elm || !interval_elm) {
+  //   console.log("Bad xml update, missing params:", str)
+  //   return;
+  // }
+
+  // const server = window.apiUrl = server_elm.getAttribute('value');
+  // const interval = window.apiInterval = parseInt(interval_elm.getAttribute('value'));
+  const server = window.apiUrl = "http://172.20.0.118:8088/api/graph";
+  const interval = window.apiInterval = 1000;
+
 
   console.log(server, interval);
   if (Graphs.scraper)
@@ -36,7 +48,7 @@ if (window.location.hash.indexOf("dev") != -1){
   };
 
 
-    window.apiUrl = "http://localhost:13370/"
-    window.apiInterval = 200;
-    window.play();
+    // window.apiUrl = "http://localhost:13370/"
+    // window.apiInterval = 200;
+    // window.play();
 }

@@ -170,6 +170,39 @@
         z-index: 10000;
       }
 
+      .name-double {
+        position: relative;
+        top: -120px;
+        z-index: -1;
+
+        line-height: 0.9;
+        text-align: center;
+        color: #262626;
+
+        opacity: 0;
+    
+        -webkit-transform-origin: left;
+
+          display: table-row;
+
+        .name1 {
+          display: table-cell;
+          h1, h2 {
+            text-align: right;
+          }
+        }
+        .amp {
+          display: table-cell;
+          padding: 0 8px;
+        }
+        .name2 {
+          display: table-cell;
+          h1, h2 {
+            text-align: left;
+          }
+        }
+      }
+
       .name {
         position: relative;
         top: -120px;
@@ -182,7 +215,9 @@
         opacity: 0;
 		
         -webkit-transform-origin: left;
+      }
 
+      .name, .name-double {
         h1 {
           font-family: "HelveticaNeue";
           font-size: 45px;
@@ -195,7 +230,7 @@
           font-size: 45px;
           -webkit-transform-origin: top left;
           white-space: nowrap;
-		}
+        }
       }
     }
 
