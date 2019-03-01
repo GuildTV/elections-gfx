@@ -5,12 +5,24 @@
   </variables>
 
   <layers>
+    <layer id="hole">
+      <producer>GE2018/SPLITSCREEN/SplitScreen-Alpha</producer>
+      <x>0</x>
+      <y>0</y>
+      <is_key>true</is_key>
+    </layer>
     <layer id="bg">
       <producer>GE2018/DRAFTBG LOOP</producer>
       <x>0</x>
       <y>0</y>
     </layer>
-    <layer id="drop_shadow_mid_mask">
+    <layer id="hole2">
+      <producer>GE2018/SPLITSCREEN/SplitScreen-Alpha</producer>
+      <x>0</x>
+      <y>0</y>
+      <is_key>true</is_key>
+    </layer>
+   <layer id="drop_shadow_mid_mask">
       <producer>GE2018/SPLITSCREEN/SPLITSCREEN-SHADOW2</producer>
       <x>0</x>
       <y>0</y>
@@ -18,7 +30,7 @@
         <upper_left_y>72</upper_left_y>
       </crop>
     </layer>
-
+ 
     <layer id="footer">
       <producer>GE2018/SPLITSCREEN/SPLITSCREEN-TEXTBAR</producer>
       <x>0</x>
@@ -27,7 +39,7 @@
 
     <!-- just in case primary gfx dies -->
     <layer id="ticker">
-      <producer>GE2018/TICKER-STATIC</producer>
+      <producer>GE2018/TICKER-empty</producer>
       <x>0</x>
       <y>0</y>
     </layer>
