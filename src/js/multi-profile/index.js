@@ -132,20 +132,22 @@ function letterSpacing(){
       const n1 = node.querySelector('.name1');
       const n2 = node.querySelector('.name2');
 
-      const w = (parent.parentElement.clientWidth - amp.clientWidth) / 2;
-      n1.style.maxWidth = w + "px";
-      n2.style.maxWidth = w + "px";
+      // TODO - this needs enabling after some fixing
 
-      const n1h1 = n1.querySelector('h1');
-      const n1h2 = n1.querySelector('h2');
-      runForPair(n1h1, n1h2, w)
+      // const w = (parent.parentElement.clientWidth - amp.clientWidth) / 2;
+      // n1.style.maxWidth = w + "px";
+      // n2.style.maxWidth = w + "px";
 
-      window.n1h1 = n1h1
-      window.n1h2 = n1h2
+      // const n1h1 = n1.querySelector('h1');
+      // const n1h2 = n1.querySelector('h2');
+      // runForPair(n1h1, n1h2, w)
 
-      const n2h1 = n2.querySelector('h1');
-      const n2h2 = n2.querySelector('h2');
-      runForPair(n2h1, n2h2, w)
+      // window.n1h1 = n1h1
+      // window.n1h2 = n1h2
+
+      // const n2h1 = n2.querySelector('h1');
+      // const n2h2 = n2.querySelector('h2');
+      // runForPair(n2h1, n2h2, w)
     }
   
   }
@@ -186,10 +188,10 @@ if (window.location.hash.indexOf("dev") != -1){
   window.devRole = function(){
     const candidates = [
       {"id":27,"uid":"ado-adam-elmi","positionId":8,"firstName":"Piangfan","lastName":"Naksukpaiboon","photo":null,"manifestoOne":"Non-traditional jobs career fair","manifestoTwo":"Expand Hands Up funding","manifestoThree":"How to run your society workshop","order":1,"elected":false,"createdAt":"2017-02-28T21:51:20.000Z","updatedAt":"2017-03-03T21:05:19.000Z","PositionId":8},
+      {"id":32,"uid":"ado-maddy-tysoe","positionId":8,"firstName":"Holly","lastName":"Battrick","photo":null,"firstName2":"Alif","lastName2":"Trevathan","photo2":null,"manifestoOne":"Maximise society potential","manifestoTwo":"Assisting events management","manifestoThree":"Developing media collaboration","order":1.4,"elected":false,"createdAt":"2017-02-28T22:03:35.000Z","updatedAt":"2017-03-03T15:30:33.000Z","PositionId":8},
       {"id":28,"uid":"ado-shannon-farmer","positionId":8,"firstName":"Namrata Ramchandra","lastName":"Bhoir","photo":null,"manifestoOne":"Room booking via Guild App","manifestoTwo":"Improve Guild's media center","manifestoThree":"Guild promotion as priority","order":2,"elected":false,"createdAt":"2017-02-28T21:52:38.000Z","updatedAt":"2017-02-28T21:52:38.000Z","PositionId":8},
       {"id":30,"uid":"ado-alina-morosan","positionId":8,"firstName":"Lucinda","lastName":"Bleichroeder-Baker","photo":null,"manifestoOne":"Widen collaboration with other students unions","manifestoTwo":"Encouraging students to get involved with societies","manifestoThree":"Access new sources of funding","order":4,"elected":false,"createdAt":"2017-02-28T21:55:40.000Z","updatedAt":"2017-03-03T21:05:38.000Z","PositionId":8},
       {"id":31,"uid":"ado-george-thomas","positionId":8,"firstName":"George","lastName":"Thomas","photo":null,"manifestoOne":"Improve society inclusivity","manifestoTwo":"Improve room allocation and society storage","manifestoThree":"Promote and introduce events to cater to all members of the university","order":5,"elected":false,"createdAt":"2017-02-28T22:01:50.000Z","updatedAt":"2017-02-28T22:01:50.000Z","PositionId":8},
-      {"id":32,"uid":"ado-maddy-tysoe","positionId":8,"firstName":"Holly","lastName":"Battrick","photo":null,"firstName2":"Alif","lastName2":"Trevathan","photo2":null,"manifestoOne":"Maximise society potential","manifestoTwo":"Assisting events management","manifestoThree":"Developing media collaboration","order":6,"elected":false,"createdAt":"2017-02-28T22:03:35.000Z","updatedAt":"2017-03-03T15:30:33.000Z","PositionId":8},
       {"id":27,"uid":"ado-adam-elmi","positionId":8,"firstName":"Adam","lastName":"Elmi","photo":null,"manifestoOne":"Non-traditional jobs career fair","manifestoTwo":"Expand Hands Up funding","manifestoThree":"How to run your society workshop","order":1,"elected":false,"createdAt":"2017-02-28T21:51:20.000Z","updatedAt":"2017-03-03T21:05:19.000Z","PositionId":8},
       {"id":28,"uid":"ado-shannon-farmer","positionId":8,"firstName":"Shannon","lastName":"Farmer","photo":null,"manifestoOne":"Room booking via Guild App","manifestoTwo":"Improve Guild's media center","manifestoThree":"Guild promotion as priority","order":2,"elected":false,"createdAt":"2017-02-28T21:52:38.000Z","updatedAt":"2017-02-28T21:52:38.000Z","PositionId":8},
       {"id":30,"uid":"ado-alina-morosan","positionId":8,"firstName":"Alina","lastName":"Morosan","photo":null,"manifestoOne":"Widen collaboration with other students unions","manifestoTwo":"Encouraging students to get involved with societies","manifestoThree":"Access new sources of funding","order":4,"elected":false,"createdAt":"2017-02-28T21:55:40.000Z","updatedAt":"2017-03-03T21:05:38.000Z","PositionId":8},
@@ -197,7 +199,8 @@ if (window.location.hash.indexOf("dev") != -1){
       {"id":32,"uid":"ado-maddy-tysoe","positionId":8,"firstName":"Maddy","lastName":"Tysoe","photo":null,"manifestoOne":"Maximise society potential","manifestoTwo":"Assisting events management","manifestoThree":"Developing media collaboration","order":6,"elected":false,"createdAt":"2017-02-28T22:03:35.000Z","updatedAt":"2017-03-03T15:30:33.000Z","PositionId":8},
     ];
 
-    const count = parseInt(document.querySelector("#devCount").value);
+    // const count = parseInt(document.querySelector("#devCount").value);
+    const count = 2;
     console.log(count, candidates.length);
     const toShow = candidates.slice(0, count);
 
