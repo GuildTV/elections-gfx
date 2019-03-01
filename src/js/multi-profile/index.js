@@ -52,8 +52,9 @@ window.update = function(str){
         node.querySelector('.name2 h2').innerHTML = person.lastName2.toUpperCase();
       } else {
         node.querySelector('.name-double').remove();
-        node.querySelector('h1').innerText = person.firstName2 ? person.firstName.toUpperCase() + " & " + person.firstName2.toUpperCase() : person.firstName.toUpperCase();
-        node.querySelector('h2').innerHTML = person.lastName2 ? person.lastName.toUpperCase() + " <span style=\"visibility:hidden\">_</span> " + person.lastName2.toUpperCase() : person.lastName.toUpperCase();
+        console.log(person.firstName.toUpperCase(), person.lastName.toUpperCase(), person)
+        node.querySelector('h1').innerText = person.firstName.toUpperCase();
+        node.querySelector('h2').innerHTML = person.lastName.toUpperCase();
       }
     }
   }
@@ -166,7 +167,7 @@ function animate(){
 
   tl.to(elm, 0.6, {top: "0px"})
     .to(elm, 0.2, {autoAlpha: 1}, '-=0.6')
-    .to(elm2, 0.6, {top: "0px"}, '-=0.2')
+    .to(elm2, 0.6, {top: "0px"}, '-=0.6')
     .to(elm2, 0.2, {autoAlpha: 1}, '-=0.6');
 }
 
