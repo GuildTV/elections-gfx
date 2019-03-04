@@ -118,20 +118,20 @@
       // photo sidebar
       var elms = document.querySelectorAll('.role h2');
       for(var e of elms){
-        var txt = e.innerText;
+        var txt = e.innerHTML;
         var splitPos = txt.toLowerCase().indexOf("officer");
         if (splitPos >= 16){
-          e.innerText = txt.substring(0, splitPos) + "\n" + txt.substring(splitPos);
+          e.innerHTML = txt.substring(0, splitPos) + "\n" + txt.substring(splitPos);
         }
       }
 
       // text sidebar
       var elms = document.querySelectorAll('.role h1');
       for(var e of elms){
-        var txt = e.innerText;
+        var txt = e.innerHTML;
         var splitPos = txt.toLowerCase().indexOf("officer");
         if (splitPos == txt.indexOf(" ") + 1){ // one split which is before officer
-          e.innerText = txt.substring(0, splitPos) + "\n" + txt.substring(splitPos);
+          e.innerHTML = txt.substring(0, splitPos) + "\n" + txt.substring(splitPos);
         }
       }
     </script>

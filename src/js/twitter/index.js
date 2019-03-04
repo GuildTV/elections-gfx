@@ -14,9 +14,9 @@ window.update = function(str) {
 
     const root = document.querySelector('.twitterPhoto');
 
-    root.querySelector('.name h1').innerText = data.username;
-    root.querySelector('.message').innerText = data.text;
-    root.querySelector('.handle h2').innerText = "@"+data.handle;
+    root.querySelector('.name h1').innerHTML = data.username;
+    root.querySelector('.message').innerHTML = data.text;
+    root.querySelector('.handle h2').innerHTML = "@"+data.handle;
 
     if (data.text.length > 140){
       const scale = (data.text.length - 140) / 140 * 10; // Between 0 and 20
@@ -27,9 +27,9 @@ window.update = function(str) {
   } else {
     const root = document.querySelector('.twitterText');
 
-    root.querySelector('.name h1').innerText = data.username;
-    root.querySelector('.name h2').innerText = "@"+data.handle;
-    root.querySelector('.message').innerText = data.text;
+    root.querySelector('.name h1').innerHTML = data.username;
+    root.querySelector('.name h2').innerHTML = "@"+data.handle;
+    root.querySelector('.message').innerHTML = data.text;
 
     if (data.text.length > 140){
       const scale = (data.text.length - 140) / 140 * 30; // Between 0 and 30

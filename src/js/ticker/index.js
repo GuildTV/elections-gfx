@@ -61,7 +61,7 @@ window.addNext = function() {
   for (let str of nextData){
     const e = document.createElement("div");
     e.classList.add("content", "next");
-    e.innerText = str;
+    e.innerHTML = str;
     elm.append(e);
   }
 }

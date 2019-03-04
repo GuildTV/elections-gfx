@@ -21,31 +21,31 @@ window.update = function(str){
     text_role = text_role.substring(0, text_split_pos) + "\n" + text_role.substring(text_split_pos);
   if (text_role.indexOf(" ") == -1)
     text_role = "\n" + text_role;
-  holder.querySelector('.heading #role').innerText = text_role;
-  // holder.querySelector('.heading #role').innerText = "";
-  //holder.querySelector('.heading #type').innerText = data.elected?"elect":"candidate";
+  holder.querySelector('.heading #role').innerHTML = text_role;
+  // holder.querySelector('.heading #role').innerHTML = "";
+  //holder.querySelector('.heading #type').innerHTML = data.elected?"elect":"candidate";
 
   if(data.photo){
     holder.classList.add('photo');
     holder.querySelector('.image img').src = data.photo;
     // holder.querySelector('.image img').src = "/img/template/candidate-sample.png";
-    holder.querySelector('.image #name').innerText = data.firstName + " " + data.lastName;
+    holder.querySelector('.image #name').innerHTML = data.firstName + " " + data.lastName;
   } else {
     holder.classList.remove('photo');
   }
 
-  holder.querySelector('.name h2').innerText = data.firstName + " " + data.lastName;
+  holder.querySelector('.name h2').innerHTML = data.firstName + " " + data.lastName;
 
   let img_role = data.Position.compactName + (data.elected?" Elect":" Candidate");
   // Note, sidebar-name-test.html can be used to check this split for all roles
   const img_split_pos = img_role.toLowerCase().indexOf("officer");
   if (img_split_pos >= 16)
     img_role = img_role.substring(0, img_split_pos) + "\n" + img_role.substring(img_split_pos);
-  holder.querySelector('.img_role h2').innerText = img_role;
+  holder.querySelector('.img_role h2').innerHTML = img_role;
 
-  holder.querySelector('.manifesto .line1 h3').innerText = data.manifestoOne;
-  holder.querySelector('.manifesto .line2 h3').innerText = data.manifestoTwo;
-  holder.querySelector('.manifesto .line3 h3').innerText = data.manifestoThree;
+  holder.querySelector('.manifesto .line1 h3').innerHTML = data.manifestoOne;
+  holder.querySelector('.manifesto .line2 h3').innerHTML = data.manifestoTwo;
+  holder.querySelector('.manifesto .line3 h3').innerHTML = data.manifestoThree;
 };
 
 window.stop = function(){

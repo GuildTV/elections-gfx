@@ -13,7 +13,7 @@ window.update = function(str){
   if(people.length == 1 && people[0][0] !== undefined)
     people = people[0];
 
-  // document.querySelector('h1.title').innerText = (winners ? "" : data.position.fullName).toUpperCase();
+  // document.querySelector('h1.title').innerHTML = (winners ? "" : data.position.fullName).toUpperCase();
 
   const peopleDiv = document.querySelector('.people');
   for (let c of peopleDiv.classList) {
@@ -42,18 +42,18 @@ window.update = function(str){
 
     if(winners){
       node.querySelector('h1').innerHTML = (person.firstName.toUpperCase() + "<br />" + person.lastName.toUpperCase()).trim();
-      node.querySelector('h2').innerText = person.Position.miniName.toUpperCase();
+      node.querySelector('h2').innerHTML = person.Position.miniName.toUpperCase();
     } else {
       if (person.firstName2 && person.lastName2) {
         node.querySelector('.name').remove();
-        node.querySelector('.name1 h1').innerText = person.firstName.toUpperCase();
+        node.querySelector('.name1 h1').innerHTML = person.firstName.toUpperCase();
         node.querySelector('.name1 h2').innerHTML = person.lastName.toUpperCase();
-        node.querySelector('.name2 h1').innerText = person.firstName2.toUpperCase();
+        node.querySelector('.name2 h1').innerHTML = person.firstName2.toUpperCase();
         node.querySelector('.name2 h2').innerHTML = person.lastName2.toUpperCase();
       } else {
         node.querySelector('.name-double').remove();
         console.log(person.firstName.toUpperCase(), person.lastName.toUpperCase(), person)
-        node.querySelector('h1').innerText = person.firstName.toUpperCase();
+        node.querySelector('h1').innerHTML = person.firstName.toUpperCase();
         node.querySelector('h2').innerHTML = person.lastName.toUpperCase();
       }
     }
