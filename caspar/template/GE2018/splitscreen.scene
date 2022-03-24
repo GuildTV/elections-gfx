@@ -38,11 +38,11 @@
     </layer>
 
     <!-- just in case primary gfx dies -->
-    <layer id="ticker">
+    <!-- <layer id="ticker">
       <producer>GE2018/TICKER-empty</producer>
       <x>0</x>
       <y>0</y>
-    </layer>
+    </layer> -->
     <layer id="blue_fallback">
       <producer>GE2018/lt-static</producer>
       <x>0</x>

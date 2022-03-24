@@ -267,6 +267,7 @@ const Graphs = {
         // if (Graphs.current.datasets[0].bars[labelCount-index-1].value != number)
         //   changed[i] = true;
 
+        if (Graphs.current.datasets[0].bars[labelCount-index-1])
         Graphs.current.datasets[0].bars[labelCount-index-1].value = number;
       }
     }
@@ -292,6 +293,7 @@ const Graphs = {
       dataType: "xml"
     }).then(function (res){
       Graphs.inflight = false;
+      console.log(res)
       Graphs.setData(res);
     });
   },
@@ -322,10 +324,10 @@ const Graphs = {
             useFull: false,
           };
           console.log(name);
-          if (window.CONFIG.Graph.LookupTable[positionElm.innerHTML] !== undefined && window.CONFIG.Graph.LookupTable[positionElm.innerHTML][name] !== undefined){
-            res.name = window.CONFIG.Graph.LookupTable[positionElm.innerHTML][name];
-            res.useFull = true;
-          }
+          // if (window.CONFIG.Graph.LookupTable[positionElm.innerHTML] !== undefined && window.CONFIG.Graph.LookupTable[positionElm.innerHTML][name] !== undefined){
+          //   res.name = window.CONFIG.Graph.LookupTable[positionElm.innerHTML][name];
+          //   res.useFull = true;
+          // }
       
           return res;
         });

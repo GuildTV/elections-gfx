@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <scene width="1920" height="1080" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/CasparCG/Server/2.1.0/core/producer/scene/scene.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <variables>
-    <variable type="string" public="true" id="server_url">http://172.20.0.118:8088/api/graph</variable>
+    <variable type="string" public="true" id="server_url">http://172.20.0.141:8088/api/graph</variable>
     <variable type="number" public="true" id="interval">1000</variable>
   </variables>
 
   <layers>
-    <layer id="hole">
+    <layer id="hole2">
       <producer>GE2018/Graph/Alpha-Atem</producer>
       <x>0</x>
       <y>0</y>
@@ -34,12 +34,11 @@
       <height>65</height>
     </layer> -->
 
-    <layer id="hole">
+    <!-- <layer id="hole">
       <producer>GE2018/Graph/video-hole</producer>
       <x>0</x>
       <y>0</y>
-      <!-- <is_key>true</is_key> -->
-    </layer>
+    </layer> -->
 
     <layer id="bluebar">
       <producer>GE2018/LT-STATIC-GREY</producer>
@@ -58,11 +57,11 @@
     </layer>
     
     <!-- just in case primary gfx dies -->
-    <layer id="ticker">
+    <!-- <layer id="ticker">
       <producer>GE2018/TICKER-empty</producer>
       <x>0</x>
       <y>0</y>
-    </layer>
+    </layer> -->
   </layers>
 
   <marks>

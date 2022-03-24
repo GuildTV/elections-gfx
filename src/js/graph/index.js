@@ -23,7 +23,7 @@ window.update = function(str){
 
   // const server = window.apiUrl = server_elm.getAttribute('value');
   // const interval = window.apiInterval = parseInt(interval_elm.getAttribute('value'));
-  const server = window.apiUrl = "http://172.20.0.118:8088/api/graph";
+  const server = window.apiUrl = "http://172.20.0.141:8088/api/graph";
   const interval = window.apiInterval = 1000;
 
 

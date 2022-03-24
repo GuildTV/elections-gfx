@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <scene width="1920" height="1080" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/CasparCG/Server/2.1.0/core/producer/scene/scene.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <variables>
-    <variable type="string" public="true" id="f0">GUILD ELECTIONS 2019</variable>
+    <variable type="string" public="true" id="f0">GUILD ELECTIONS 2022</variable>
     
   </variables>
 

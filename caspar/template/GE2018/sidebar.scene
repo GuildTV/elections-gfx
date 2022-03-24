@@ -25,7 +25,7 @@
     </layer>
 
     <layer id="content">
-      <producer>[CG] http://localhost:8080/sidebar.html [AUTOPLAY] [JSON] string sidebar_data</producer>
+      <producer>[CG] http://127.0.0.1:8080/sidebar.html [AUTOPLAY] [JSON] string sidebar_data</producer>
       <x>1280</x>
       <y>0</y>
       <parameters>
