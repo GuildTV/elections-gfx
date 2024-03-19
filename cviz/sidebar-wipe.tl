@@ -7,7 +7,7 @@
 @CUE Show {
 	999 PLAY
 }
-@9 999 {
+@12 999 {
 	ATEM MACRO RUN 2
 #	HTTP POST http://10.42.13.110:5000/api/player/run/2
 	100 MIXER OPACITY 1
@@ -17,7 +17,7 @@
 @RUNCHILDORCUE change Clear {
 	998 PLAY
 }
-@9 998 {
+@12 998 {
 	ATEM MACRO RUN 3
 #	HTTP POST http://10.42.13.110:5000/api/player/run/3
 	100 CLEAR

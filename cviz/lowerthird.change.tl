@@ -7,7 +7,7 @@
 
 @15 201 {
 # Wait for stop
-	200 SWAP 1-201
+	200 SWAP 3-201
 }
 @DELAY 1 {
 	201 CLEAR

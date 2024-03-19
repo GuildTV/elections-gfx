@@ -9,7 +9,7 @@
 @CUE Show {
     999 PLAY
 }
-@9 999 {
+@12 999 {
     310 MIXER OPACITY 1
     310 CG NEXT 0
 	300 LOOP
@@ -19,7 +19,7 @@
 	998 PLAY
 }
 
-@9 998 {
+@12 998 {
 	300 STOP
 	300 CLEAR
 	310 CLEAR

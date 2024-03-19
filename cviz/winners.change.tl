@@ -7,10 +7,10 @@
 @DELAY 10 {
 	999 PLAY
 }
-@9 999 {
+@12 999 {
 	311 CG NEXT 0
 	# note that we dont swap the transforms, so the opacity 0 sticks to 210
-    311 SWAP 1-310
+    311 SWAP 3-310
 }
 @END 999 {
     311 CLEAR

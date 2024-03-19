@@ -23,5 +23,5 @@
 
 # After clear has been done, swap the layers
 @DELAY 2 {
-  100 SWAP 1-101 TRANSFORMS
+  100 SWAP 3-101 TRANSFORMS
 }
